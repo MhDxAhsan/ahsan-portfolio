@@ -3,194 +3,556 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0b090b">
-<title>Muhammad Ahsan | Creative Portfolio</title>
+<meta name="description" content="Muhammad Ahsan — Graphic Designer, Web Developer and Shopify Designer.">
+<title>Muhammad Ahsan | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg:#0b090b; --panel:#171115; --red:#ff304f;
-  --white:#fff7f8; --muted:#b1a5aa; --line:#39252c;
+  --bg:#0b090b;
+  --panel:#171115;
+  --red:#ff304f;
+  --white:#fff7f8;
+  --muted:#b1a5aa;
+  --line:#39252c;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;line-height:1.65;overflow-x:hidden}
-body.lock{overflow:hidden}
-a{color:inherit;text-decoration:none}
-button,input{font:inherit}
-button{cursor:pointer}
-.wrap{width:min(1160px,calc(100% - 36px));margin:auto}
-.red{color:var(--red)}
-header{position:sticky;top:0;z-index:30;background:#0b090bed;backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
-nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.logo{font:700 1.45rem "Space Grotesk",sans-serif}
-.logo b{color:var(--red)}
-.navlinks{display:flex;gap:25px;color:#d2c5ca;font-size:.9rem}
-.navlinks a:hover{color:var(--red)}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;background:var(--red);color:white;border:1px solid var(--red);border-radius:8px;font-weight:700;transition:.2s}
-.btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px #ff304f35}
-.btn.outline{background:transparent;border-color:#69414a}
-.menu{display:none;color:white;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:85px; }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--white);
+  font-family:"DM Sans",sans-serif;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+a { color:inherit; text-decoration:none; }
+button,input { font:inherit; }
+button { cursor:pointer; }
+img { display:block; max-width:100%; }
+.wrap { width:min(1160px,calc(100% - 36px)); margin:auto; }
+.red { color:var(--red); }
 
-/* HERO ANIMATION */
-.hero{min-height:660px;padding:65px 0;display:grid;grid-template-columns:1.05fr .95fr;gap:35px;align-items:center}
-.hero-copy{animation:enter .8s both}
-.eyebrow{color:#ff8294;font-size:.77rem;font-weight:700;text-transform:uppercase;letter-spacing:2px}
-.pulse{display:inline-block;width:8px;height:8px;margin-right:9px;background:var(--red);border-radius:50%;box-shadow:0 0 15px var(--red);animation:pulse 2s infinite}
-h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.1}
-h1{font-size:clamp(3.3rem,6.5vw,5.8rem);letter-spacing:-3px;margin:23px 0}
-h1 .name{color:var(--red);text-shadow:0 0 35px #ff304f27}
-.lead{max-width:570px;color:var(--muted);font-size:1.05rem;line-height:1.85}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.hero-note{color:var(--muted);font-size:.82rem;margin-top:28px}
-.hero-note span{color:var(--red)}
-.visual{min-height:455px;position:relative;display:grid;place-items:center;perspective:1000px;animation:enter 1s .15s both}
-.orbit{position:absolute;width:min(390px,98%);aspect-ratio:1;border:1px solid #ff304f45;border-radius:50%;animation:spin 28s linear infinite}
-.orbit:before,.orbit:after{content:"";position:absolute;width:12px;height:12px;background:var(--red);border-radius:50%;box-shadow:0 0 20px var(--red)}
-.orbit:before{left:14%;top:12%}
-.orbit:after{right:2%;bottom:23%;width:8px;height:8px}
-.orbit.inner{width:min(300px,76%);border-style:dashed;animation-direction:reverse;animation-duration:35s}
-.portrait{position:relative;z-index:2;width:min(315px,76%);aspect-ratio:4/5;overflow:hidden;border:1px solid #ff304f9c;border-radius:23px;background:#380b18;box-shadow:0 0 70px #ff304f20;transform:rotateY(-7deg);transition:transform .25s}
-.portrait img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
-.portrait:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#130309e8,transparent 45%)}
-.portrait-label{position:absolute;z-index:3;bottom:16px;left:17px}
-.portrait-label strong{font:600 1.1rem "Space Grotesk",sans-serif}
-.portrait-label small{display:block;color:#e2c6cd}
-.floating{position:absolute;z-index:4;padding:10px 13px;background:#1b1116;border:1px solid #67303c;border-radius:8px;font-size:.8rem;font-weight:700;animation:float 4s ease-in-out infinite;box-shadow:0 0 30px #ff304f19}
-.floating.one{top:18%;left:0}
-.floating.two{right:0;bottom:14%;animation-delay:-2s}
-.ai-orb{position:absolute;z-index:5;top:4%;right:7%;width:67px;height:67px;display:grid;place-items:center;border-radius:50%;font:700 1.2rem "Space Grotesk",sans-serif;background:radial-gradient(circle at 30% 25%,#ff99a8,#ff304f 55%,#720a20);border:1px solid #ff98a8;box-shadow:0 0 0 9px #ff304f13,0 0 42px #ff304f60;animation:orb 4s ease-in-out infinite}
-.ai-orb small{position:absolute;top:73px;right:-8px;white-space:nowrap;background:#1b1116;border:1px solid #67303c;padding:4px 7px;border-radius:5px;font:600 .66rem "DM Sans",sans-serif}
+header {
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:#0b090bed;
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--line);
+}
+nav {
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.logo {
+  font:700 1.5rem "Space Grotesk",sans-serif;
+  letter-spacing:-1px;
+}
+.logo span { color:var(--red); }
+.navlinks { display:flex; gap:25px; font-size:.9rem; color:#d2c5ca; }
+.navlinks a:hover { color:var(--red); }
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:12px 18px;
+  background:var(--red);
+  color:white;
+  border:1px solid var(--red);
+  border-radius:8px;
+  font-weight:700;
+  transition:transform .22s,box-shadow .22s,background .22s;
+}
+.btn:hover {
+  transform:translateY(-3px);
+  box-shadow:0 9px 32px #ff304f35;
+  background:#e51f3e;
+}
+.btn.outline { background:transparent; border-color:#65404a; }
+.btn.outline:hover { background:#ff304f13; }
+.menu {
+  display:none;
+  background:var(--panel);
+  color:white;
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:8px 12px;
+}
 
-/* SECTIONS */
-section{padding:80px 0}
-.kicker{color:var(--red);font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:2px}
-.section-head{margin-bottom:28px}
-.section-head h2,.about h2,.assistant h2,.contact h2{font-size:clamp(2.3rem,5vw,3.6rem);letter-spacing:-1.5px;margin:12px 0}
-.section-head p,.about p,.assistant-copy p,.contact p{max-width:650px;color:var(--muted)}
-.services{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.service{padding:22px 18px;min-height:205px;background:linear-gradient(145deg,#1b1418,#100d10);border:1px solid var(--line);border-radius:13px;transition:.25s}
-.service:hover{transform:translateY(-5px);border-color:#a52b44;box-shadow:0 0 30px #ff304f17}
-.service-icon{width:46px;height:46px;border:1px solid #6b2938;border-radius:10px;display:grid;place-items:center;color:var(--red);font-size:1.5rem}
-.service h3{font-size:1.08rem;margin:17px 0 8px}
-.service p{font-size:.86rem;color:var(--muted);margin:0}
+/* HERO */
+.hero {
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:35px;
+  align-items:center;
+  min-height:660px;
+  padding:65px 0 75px;
+}
+.hero-copy { animation:enter .8s both; }
+.eyebrow {
+  color:#ff8294;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:.76rem;
+  font-weight:700;
+}
+.pulse {
+  display:inline-block;
+  width:8px;
+  height:8px;
+  margin-right:9px;
+  border-radius:50%;
+  background:var(--red);
+  box-shadow:0 0 15px var(--red);
+  animation:pulse 2s infinite;
+}
+h1,h2,h3 {
+  font-family:"Space Grotesk",sans-serif;
+  line-height:1.1;
+}
+h1 {
+  font-size:clamp(3.3rem,6.5vw,5.8rem);
+  letter-spacing:-3px;
+  margin:23px 0;
+}
+h1 .name { color:var(--red); text-shadow:0 0 35px #ff304f27; }
+.lead {
+  max-width:570px;
+  color:var(--muted);
+  font-size:1.05rem;
+  line-height:1.85;
+}
+.actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:26px; }
+.hero-note { color:var(--muted); font-size:.82rem; margin-top:28px; }
+.hero-note span { color:var(--red); }
 
-/* ONLY ACTUAL PROJECTS GO IN THIS SECTION */
-.work{background:linear-gradient(#100b0e,#0d090c);border-block:1px solid #2e1920}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}
-.filter{background:#171014;color:#c8b9bf;border:1px solid #492832;border-radius:7px;padding:9px 13px;font-size:.82rem}
-.filter.active,.filter:hover{background:var(--red);border-color:var(--red);color:white}
-.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.project{min-width:0;border:1px solid var(--line);background:var(--panel);border-radius:12px;overflow:hidden;transition:.25s}
-.project:hover{transform:translateY(-4px);border-color:#873042;box-shadow:0 0 30px #ff304f17}
-.project-open{width:100%;height:300px;padding:12px;position:relative;display:flex;align-items:center;justify-content:center;background:#100b0e;border:0}
-.project-open img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
-.view-label{position:absolute;right:9px;bottom:9px;background:var(--red);padding:6px 9px;border-radius:5px;font-size:.72rem;font-weight:700}
-.project-info{padding:15px 16px 18px}
-.project-info small{color:#ff8294;font-size:.68rem;letter-spacing:1.2px;text-transform:uppercase;font-weight:700}
-.project-info h3{font-size:1.08rem;margin:7px 0}
-.project-info p{font-size:.83rem;color:var(--muted);margin:0}
-.empty{grid-column:1/-1;color:var(--muted);padding:20px;border:1px dashed #6b2938;border-radius:10px}
+.visual {
+  min-height:455px;
+  position:relative;
+  display:grid;
+  place-items:center;
+  perspective:1000px;
+  animation:enter 1s .15s both;
+}
+.orbit {
+  position:absolute;
+  width:min(390px,98%);
+  aspect-ratio:1;
+  border:1px solid #ff304f45;
+  border-radius:50%;
+  animation:spin 28s linear infinite;
+}
+.orbit:before,.orbit:after {
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
+  background:var(--red);
+  border-radius:50%;
+  box-shadow:0 0 20px var(--red);
+}
+.orbit:before { left:14%; top:12%; }
+.orbit:after { right:2%; bottom:23%; width:8px; height:8px; }
+.orbit.inner {
+  width:min(300px,76%);
+  border-style:dashed;
+  animation-direction:reverse;
+  animation-duration:35s;
+}
+.portrait {
+  position:relative;
+  z-index:2;
+  width:min(315px,76%);
+  aspect-ratio:4/5;
+  overflow:hidden;
+  border:1px solid #ff304f9c;
+  border-radius:23px;
+  background:#380b18;
+  box-shadow:0 0 70px #ff304f20;
+  transform:rotateY(-7deg);
+  transition:transform .25s;
+}
+.portrait img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 25%;
+}
+.portrait:after {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(0deg,#130309e8,transparent 45%);
+}
+.portrait-label {
+  position:absolute;
+  z-index:3;
+  bottom:16px;
+  left:17px;
+}
+.portrait-label strong {
+  font:600 1.1rem "Space Grotesk",sans-serif;
+}
+.portrait-label small { display:block; color:#e2c6cd; }
+
+.floating {
+  position:absolute;
+  z-index:4;
+  padding:10px 13px;
+  background:#1b1116;
+  border:1px solid #67303c;
+  border-radius:8px;
+  font-size:.8rem;
+  font-weight:700;
+  animation:float 4s ease-in-out infinite;
+  box-shadow:0 0 30px #ff304f19;
+}
+.floating.one { top:18%; left:0; }
+.floating.two { right:0; bottom:14%; animation-delay:-2s; }
+
+/* GENERAL SECTIONS */
+section { padding:80px 0; }
+.kicker {
+  color:var(--red);
+  font-size:.76rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+.section-head { margin-bottom:28px; }
+.section-head h2,.about h2,.contact h2 {
+  font-size:clamp(2.3rem,5vw,3.6rem);
+  letter-spacing:-1.5px;
+  margin:12px 0;
+}
+.section-head p,.about p,.contact p { max-width:650px; color:var(--muted); }
+
+/* SERVICES */
+.services { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.service {
+  padding:22px 18px;
+  min-height:205px;
+  background:linear-gradient(145deg,#1b1418,#100d10);
+  border:1px solid var(--line);
+  border-radius:13px;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.service:hover {
+  transform:translateY(-5px);
+  border-color:#a52b44;
+  box-shadow:0 0 30px #ff304f17;
+}
+.service-icon {
+  width:46px;
+  height:46px;
+  border:1px solid #6b2938;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  color:var(--red);
+  font-size:1.5rem;
+}
+.service h3 { font-size:1.08rem; margin:17px 0 8px; }
+.service p { font-size:.86rem; color:var(--muted); margin:0; }
+
+/* PROJECT GALLERY */
+.work {
+  background:linear-gradient(#100b0e,#0d090c);
+  border-block:1px solid #2e1920;
+}
+.filters { display:flex; gap:8px; flex-wrap:wrap; margin:22px 0; }
+.filter {
+  background:#171014;
+  color:#c8b9bf;
+  border:1px solid #492832;
+  border-radius:7px;
+  padding:9px 13px;
+  font-size:.82rem;
+}
+.filter.active,.filter:hover {
+  background:var(--red);
+  border-color:var(--red);
+  color:white;
+}
+.projects { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.project {
+  min-width:0;
+  border:1px solid var(--line);
+  background:var(--panel);
+  border-radius:12px;
+  overflow:hidden;
+  animation:cardIn .35s both;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.project:hover {
+  transform:translateY(-4px);
+  border-color:#873042;
+  box-shadow:0 0 30px #ff304f17;
+}
+.project-open {
+  width:100%;
+  height:285px;
+  padding:12px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#100b0e;
+  border:0;
+}
+.project-open img {
+  display:block;
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+.view-label {
+  position:absolute;
+  right:9px;
+  bottom:9px;
+  background:var(--red);
+  padding:6px 9px;
+  border-radius:5px;
+  font-size:.72rem;
+  font-weight:700;
+}
+.project-info { padding:15px 16px 18px; }
+.project-info small {
+  color:#ff8294;
+  font-size:.68rem;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  font-weight:700;
+}
+.project-info h3 { font-size:1.08rem; margin:7px 0; }
+.project-info p { font-size:.83rem; color:var(--muted); margin:0; }
+.empty {
+  grid-column:1/-1;
+  color:var(--muted);
+  padding:20px;
+  border:1px dashed #6b2938;
+  border-radius:10px;
+}
+.more-wrap { display:flex; justify-content:center; margin-top:28px; }
+#showMore { min-width:205px; }
 
 /* ABOUT */
-.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center}
-.about-art{position:relative;min-height:300px;display:grid;place-items:center;overflow:hidden;border:1px solid #52212d;border-radius:16px;background:radial-gradient(circle,#451421,#160c11 68%)}
-.about-art:before,.about-art:after{content:"";position:absolute;width:220px;height:220px;border:1px solid #ff304f55;border-radius:50%}
-.about-art:after{width:160px;height:160px;border-style:dashed;animation:spin 36s linear infinite}
-.monogram{z-index:2;color:var(--red);font:700 7rem "Space Grotesk",sans-serif;letter-spacing:-10px;text-shadow:0 0 35px #ff304f55}
-.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
-.pills span{background:#171014;border:1px solid #492832;border-radius:5px;padding:7px 10px;font-size:.78rem}
-
-/* LOCAL ASSISTANT - NO EXTERNAL LOGIN */
-.assistant{background:#120b0f;border-block:1px solid #341720}
-.assistant-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:35px;align-items:center}
-.assistant-tag{display:inline-block;padding:6px 9px;border:1px solid #65303c;border-radius:5px;color:#ff899b;font-size:.72rem}
-.chat{border:1px solid #542431;border-radius:13px;background:#0d090c;overflow:hidden}
-.chat-head{display:flex;align-items:center;gap:11px;padding:15px;background:#181015;border-bottom:1px solid #392029}
-.bot-icon{width:41px;height:41px;border-radius:10px;background:var(--red);display:grid;place-items:center;font-size:1.3rem}
-.chat-head strong{display:block;font-size:.9rem}
-.chat-head small{display:block;color:var(--muted);font-size:.73rem}
-.status{margin-left:auto;color:#ff899b;font-size:.72rem}
-.messages{min-height:210px;max-height:310px;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
-.bubble{max-width:92%;padding:11px 13px;border-radius:10px;font-size:.86rem;white-space:pre-wrap;overflow-wrap:anywhere}
-.bubble.bot{align-self:flex-start;background:#20151b;border:1px solid #3e252d;color:#f7e8ed}
-.bubble.user{align-self:flex-end;background:var(--red);color:white}
-.chat-form{display:flex;gap:8px;padding:11px;border-top:1px solid #392029}
-.chat-form input{min-width:0;flex:1;background:#191116;color:white;border:1px solid #4a2833;border-radius:8px;padding:11px;outline:none}
-.chat-form input:focus{border-color:var(--red)}
-.chat-form button{background:var(--red);color:white;border:0;border-radius:8px;padding:0 14px;font-weight:700}
-.suggestions{display:flex;gap:7px;flex-wrap:wrap;padding:0 12px 12px}
-.suggestions button{background:#1a1116;border:1px solid #49232f;color:#e6cbd3;padding:6px 9px;border-radius:5px;font-size:.73rem}
-.chat-note{padding:0 13px 13px;font-size:.68rem;color:#a8969d}
+.about-grid {
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:40px;
+  align-items:center;
+}
+.about-art {
+  position:relative;
+  min-height:300px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  border:1px solid #52212d;
+  border-radius:16px;
+  background:radial-gradient(circle,#451421,#160c11 68%);
+}
+.about-art:before,.about-art:after {
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border:1px solid #ff304f55;
+  border-radius:50%;
+}
+.about-art:after {
+  width:160px;
+  height:160px;
+  border-style:dashed;
+  animation:spin 36s linear infinite;
+}
+.monogram {
+  z-index:2;
+  color:var(--red);
+  font:700 7rem "Space Grotesk",sans-serif;
+  letter-spacing:-10px;
+  text-shadow:0 0 35px #ff304f55;
+}
+.pills { display:flex; gap:8px; flex-wrap:wrap; margin-top:18px; }
+.pills span {
+  background:#171014;
+  border:1px solid #492832;
+  border-radius:5px;
+  padding:7px 10px;
+  font-size:.78rem;
+}
 
 /* CONTACT */
-.contact-card{padding:clamp(25px,5vw,45px);border:1px solid #5a2633;border-radius:15px;background:radial-gradient(ellipse at 100% 0%,#41111e,#1a0e13 53%,#100b0e);display:flex;align-items:center;justify-content:space-between;gap:25px}
-.contact-actions{display:grid;gap:10px;min-width:200px}
-footer{padding:27px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem}
-.footer-row{display:flex;justify-content:space-between;align-items:center;gap:17px;flex-wrap:wrap}
-.footer-links{display:flex;gap:16px}
-.footer-links a:hover{color:var(--red)}
-
-/* FULL IMAGE MODAL -- NO CROPPING */
-.lightbox{display:none;position:fixed;inset:0;z-index:1000;padding:14px;background:#050305f5;backdrop-filter:blur(12px);align-items:center;justify-content:center}
-.lightbox.open{display:flex;animation:fade .2s}
-.lb-inner{width:min(1200px,100%);height:95dvh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:10px}
-.lb-top,.lb-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;color:white}
-.lb-buttons{display:flex;gap:7px}
-.lb-buttons button{width:39px;height:39px;border:1px solid #61404a;background:#1c1116;color:white;border-radius:8px;font-size:1.1rem}
-.lb-stage{min-height:0;display:flex;align-items:center;justify-content:center}
-.lb-stage img{max-width:100%;max-height:100%;height:auto;width:auto;object-fit:contain}
-.lb-bottom{font-size:.76rem;color:#bfaeb5}
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s,transform .55s}
-.reveal.visible{opacity:1;transform:none}
-@keyframes enter{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes float{0%,100%{translate:0 0}50%{translate:0 -9px}}
-@keyframes orb{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.04)}}
-@keyframes pulse{50%{box-shadow:0 0 0 7px #ff304f13,0 0 18px var(--red)}}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-
-@media(max-width:900px){
- .hero{gap:14px}.services{grid-template-columns:repeat(2,1fr)}
- .projects{grid-template-columns:repeat(2,minmax(0,1fr))}
- .assistant-grid{grid-template-columns:1fr;gap:25px}
+.contact-card {
+  padding:clamp(25px,5vw,45px);
+  border:1px solid #5a2633;
+  border-radius:15px;
+  background:radial-gradient(ellipse at 100% 0%,#41111e,#1a0e13 53%,#100b0e);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
 }
-@media(max-width:620px){
- .wrap{width:calc(100% - 28px)}nav{height:65px}
- .navlinks{display:none;position:absolute;top:65px;left:14px;right:14px;background:#171014;border:1px solid var(--line);border-radius:10px;padding:8px;flex-direction:column;gap:0}
- .navlinks.open{display:flex}.navlinks a{padding:12px}.menu{display:block}
- nav>.btn{padding:9px 11px;font-size:.8rem}
- .hero{grid-template-columns:1fr;padding:36px 0 50px;gap:12px}
- .visual{grid-row:1;min-height:355px}.portrait{width:min(255px,73%)}
- .orbit{width:min(335px,98%)}.orbit.inner{width:min(250px,74%)}
- .ai-orb{width:55px;height:55px;font-size:1rem;right:3%;top:4%}
- .ai-orb small{top:61px}h1{font-size:clamp(3rem,13vw,4.4rem)}
- section{padding:58px 0}.services{gap:10px}.service{padding:16px 13px;min-height:190px}
- .projects{grid-template-columns:1fr;gap:14px}.project-open{height:300px}
- .about-grid{grid-template-columns:1fr;gap:24px}.about-art{min-height:230px;order:2}
- .contact-card{align-items:stretch;flex-direction:column}.contact-actions{width:100%}
- .footer-row{align-items:flex-start;flex-direction:column}
+.contact-actions { display:grid; gap:10px; min-width:200px; }
+footer { padding:27px 0; border-top:1px solid var(--line); color:var(--muted); font-size:.8rem; }
+.footer-row { display:flex; justify-content:space-between; align-items:center; gap:17px; flex-wrap:wrap; }
+.footer-links { display:flex; gap:16px; }
+.footer-links a:hover { color:var(--red); }
+
+/* FULL IMAGE VIEWER: NO CROPPING */
+.lightbox {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  padding:14px;
+  background:#050305f5;
+  backdrop-filter:blur(12px);
+  align-items:center;
+  justify-content:center;
 }
-@media(hover:none),(pointer:coarse){.cursor,.ring{display:none}}
-@media(prefers-reduced-motion:reduce){
- *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
- .reveal{opacity:1;transform:none}
+.lightbox.open { display:flex; animation:fade .2s; }
+.lb-inner {
+  width:min(1200px,100%);
+  height:95dvh;
+  display:grid;
+  grid-template-rows:auto minmax(0,1fr) auto;
+  gap:10px;
+}
+.lb-top,.lb-bottom {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  color:white;
+}
+.lb-buttons { display:flex; gap:7px; }
+.lb-buttons button {
+  width:39px;
+  height:39px;
+  border:1px solid #61404a;
+  background:#1c1116;
+  color:white;
+  border-radius:8px;
+  font-size:1.1rem;
+}
+.lb-stage {
+  min-height:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.lb-stage img {
+  max-width:100%;
+  max-height:100%;
+  height:auto;
+  width:auto;
+  object-fit:contain;
+}
+.lb-bottom { font-size:.76rem; color:#bfaeb5; }
+
+.reveal { opacity:0; transform:translateY(16px); transition:opacity .55s,transform .55s; }
+.reveal.visible { opacity:1; transform:none; }
+
+@keyframes enter {
+  from { opacity:0; transform:translateY(22px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+@keyframes float {
+  0%,100% { translate:0 0; }
+  50% { translate:0 -9px; }
+}
+@keyframes pulse {
+  50% { box-shadow:0 0 0 7px #ff304f13,0 0 18px var(--red); }
+}
+@keyframes fade { from {opacity:0} to {opacity:1} }
+@keyframes cardIn {
+  from {opacity:0;transform:translateY(8px)}
+  to {opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:900px) {
+  .hero { gap:14px; }
+  .services { grid-template-columns:repeat(2,1fr); }
+  .projects { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:620px) {
+  .wrap { width:calc(100% - 28px); }
+  nav { height:65px; }
+  .navlinks {
+    display:none;
+    position:absolute;
+    top:65px;
+    left:14px;
+    right:14px;
+    background:#171014;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:8px;
+    flex-direction:column;
+    gap:0;
+  }
+  .navlinks.open { display:flex; }
+  .navlinks a { padding:12px; }
+  .menu { display:block; }
+  nav>.btn { padding:9px 11px; font-size:.8rem; }
+  .hero { grid-template-columns:1fr; padding:36px 0 50px; gap:12px; }
+  .visual { grid-row:1; min-height:355px; }
+  .portrait { width:min(255px,73%); }
+  .orbit { width:min(335px,98%); }
+  .orbit.inner { width:min(250px,74%); }
+  h1 { font-size:clamp(3rem,13vw,4.4rem); }
+  section { padding:58px 0; }
+  .services { gap:10px; }
+  .service { padding:16px 13px; min-height:190px; }
+  .projects { grid-template-columns:1fr; gap:14px; }
+  .project-open { height:300px; }
+  .about-grid { grid-template-columns:1fr; gap:24px; }
+  .about-art { min-height:230px; order:2; }
+  .contact-card { align-items:stretch; flex-direction:column; }
+  .contact-actions { width:100%; }
+  .footer-row { align-items:flex-start; flex-direction:column; }
+}
+@media(hover:none),(pointer:coarse) {
+  .cursor,.ring { display:none; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+  .reveal { opacity:1; transform:none; }
 }
 </style>
 </head>
-<body>
-<div class="cursor" aria-hidden="true"></div><div class="ring" aria-hidden="true"></div>
 
+<body>
 <header>
 <nav class="wrap">
-  <a class="logo" href="#home">AHSAN<b>.</b></a>
+  <a class="logo" href="#home">AHSAN<span>.</span></a>
   <div class="navlinks" id="navlinks">
-    <a href="#services">Services</a><a href="#work">My Projects</a>
-    <a href="#about">About</a><a href="#assistant">Assistant</a>
+    <a href="#services">Services</a>
+    <a href="#work">My Projects</a>
+    <a href="#about">About</a>
   </div>
   <a class="btn" href="#contact">Let's Talk ↗</a>
-  <button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
+  <button class="menu" id="menu" aria-label="Toggle navigation" aria-expanded="false">☰</button>
 </nav>
 </header>
 
@@ -200,309 +562,445 @@ footer{padding:27px 0;border-top:1px solid var(--line);color:var(--muted);font-s
     <div class="eyebrow"><span class="pulse"></span> Creative Designer & Developer</div>
     <h1>Hi, I'm<br><span class="name">Muhammad</span><br>Ahsan<span class="red">.</span></h1>
     <p class="lead">I turn bold ideas into memorable designs, modern websites, and professional online stores. Creative thinking, clean execution, and experiences built for every screen.</p>
-    <div class="actions"><a class="btn" href="#work">Explore My Work ↘</a><a class="btn outline" href="mailto:mhdxahsan@gmail.com">Email Me ↗</a></div>
+    <div class="actions">
+      <a class="btn" href="#work">Explore My Work ↘</a>
+      <a class="btn outline" href="mailto:mhdxahsan@gmail.com">Email Me ↗</a>
+    </div>
     <p class="hero-note"><span>✦</span> Graphic Design · Web Development · Shopify · E-commerce</p>
   </div>
+
   <div class="visual" id="visual">
-    <div class="orbit"></div><div class="orbit inner"></div>
+    <div class="orbit"></div>
+    <div class="orbit inner"></div>
     <div class="portrait" id="portrait">
       <img src="assets/profile.jpg" alt="Muhammad Ahsan" fetchpriority="high">
-      <div class="portrait-label"><strong>Muhammad Ahsan</strong><small>Designer. Developer. Creator.</small></div>
+      <div class="portrait-label">
+        <strong>Muhammad Ahsan</strong>
+        <small>Designer. Developer. Creator.</small>
+      </div>
     </div>
     <div class="floating one">✦ Bold Visual Design</div>
     <div class="floating two">↗ Built for Every Screen</div>
-    <a class="ai-orb" href="#assistant" aria-label="Open portfolio assistant">AI<small>Portfolio helper ↗</small></a>
   </div>
 </section>
 
 <section id="services">
 <div class="wrap">
-  <div class="section-head reveal"><span class="kicker">What I Do</span><h2>Creative work.<br><span class="red">Digital impact.</span></h2><p>Design, development, and e-commerce solutions for ambitious ideas.</p></div>
+  <div class="section-head reveal">
+    <span class="kicker">What I Do</span>
+    <h2>Creative work.<br><span class="red">Digital impact.</span></h2>
+    <p>Design, development, and e-commerce solutions for ambitious ideas.</p>
+  </div>
   <div class="services">
-    <article class="service reveal"><div class="service-icon">✳</div><h3>Graphic Design</h3><p>Promotional graphics, social media posts, advertising creatives, and brand visuals.</p></article>
-    <article class="service reveal"><div class="service-icon">⌘</div><h3>Web Development</h3><p>Responsive websites, polished interfaces, smooth interactions, and custom experiences.</p></article>
-    <article class="service reveal"><div class="service-icon">▣</div><h3>Shopify & E-commerce</h3><p>Product-focused storefronts designed for clarity, trust, and easier shopping.</p></article>
-    <article class="service reveal"><div class="service-icon">✧</div><h3>AI & Automation</h3><p>Exploring helpful digital assistants and smarter workflows for online businesses.</p></article>
+    <article class="service reveal">
+      <div class="service-icon">✳</div>
+      <h3>Graphic Design</h3>
+      <p>Promotional graphics, social media posts, advertising creatives, and brand visuals.</p>
+    </article>
+    <article class="service reveal">
+      <div class="service-icon">⌘</div>
+      <h3>Web Development</h3>
+      <p>Responsive websites, polished interfaces, smooth interactions, and custom experiences.</p>
+    </article>
+    <article class="service reveal">
+      <div class="service-icon">▣</div>
+      <h3>Shopify & E-commerce</h3>
+      <p>Product-focused storefronts designed for clarity, trust, and easy shopping.</p>
+    </article>
+    <article class="service reveal">
+      <div class="service-icon">✧</div>
+      <h3>Creative Solutions</h3>
+      <p>Visual concepts and digital experiences tailored to each project.</p>
+    </article>
   </div>
 </div>
 </section>
 
 <section class="work" id="work">
 <div class="wrap">
-  <div class="section-head reveal"><span class="kicker">Selected Projects</span><h2>My <span class="red">Portfolio.</span></h2><p>Only your design projects appear here. Tap any image to see the complete artwork without cropping.</p></div>
+  <div class="section-head reveal">
+    <span class="kicker">Selected Projects</span>
+    <h2>My <span class="red">Portfolio.</span></h2>
+    <p>Three projects are shown first. Click Show More Projects to reveal more work. Click any image to see the complete artwork.</p>
+  </div>
+
   <div class="filters reveal" id="filters">
     <button class="filter active" data-filter="all">All Projects</button>
     <button class="filter" data-filter="graphic">Graphic Design</button>
     <button class="filter" data-filter="web">Web Design</button>
     <button class="filter" data-filter="shopify">Shopify & E-commerce</button>
   </div>
+
   <div class="projects" id="projects"></div>
+  <div class="more-wrap">
+    <button class="btn outline" id="showMore" type="button">Show More Projects ↓</button>
+  </div>
 </div>
 </section>
 
 <section id="about">
 <div class="wrap about-grid">
   <div class="about-art reveal"><span class="monogram">MA.</span></div>
-  <div class="about reveal"><span class="kicker">A Little About Me</span><h2>Making ideas<br><span class="red">stand out.</span></h2>
+  <div class="about reveal">
+    <span class="kicker">A Little About Me</span>
+    <h2>Making ideas<br><span class="red">stand out.</span></h2>
     <p>I'm Muhammad Ahsan, a digital creator focused on graphic design, web development, Shopify store design, and e-commerce. I enjoy bringing creative ideas to life with attention to detail and a modern visual style.</p>
-    <p>This portfolio can grow with you. Add an image to the assets folder, then copy one entry in the project list in this file and update its details.</p>
-    <div class="pills"><span>Graphic Design</span><span>Web Development</span><span>Shopify</span><span>E-commerce</span><span>JavaScript</span><span>AI Tools</span></div>
-  </div>
-</div>
-</section>
-
-<section class="assistant" id="assistant">
-<div class="wrap assistant-grid">
-  <div class="assistant-copy reveal"><span class="kicker">No Login Required</span><h2>Ask Ahsan's <span class="red">assistant.</span></h2>
-    <p>Ask about services, projects, contact details, or adding work to this website. This lightweight portfolio helper runs in your browser — no account prompt or external AI sign-in.</p>
-    <span class="assistant-tag">Instant answers · No sign-in</span>
-  </div>
-  <div class="chat reveal">
-    <div class="chat-head"><div class="bot-icon">✧</div><div><strong>Ahsan's Portfolio Assistant</strong><small>No login required</small></div><span class="status">● Ready</span></div>
-    <div class="messages" id="messages" aria-live="polite"><div class="bubble bot">Hi! I'm Ahsan's portfolio helper. Ask about graphic design, websites, Shopify, projects, or contact details.</div></div>
-    <div class="suggestions"><button type="button" data-question="What graphic design work do you do?">Graphic design</button><button type="button" data-question="How can I contact Ahsan?">Contact details</button><button type="button" data-question="How do I add a project?">Add a project</button></div>
-    <form class="chat-form" id="chatForm"><input id="chatInput" maxlength="400" placeholder="Ask a portfolio question…" aria-label="Ask the portfolio helper" required><button type="submit">Send ↗</button></form>
-    <div class="chat-note">This is a local portfolio helper, not a general-purpose generative AI model.</div>
+    <p>This portfolio is built to grow. Adding new projects is easy: upload the image and add one entry to the project list in this file.</p>
+    <div class="pills">
+      <span>Graphic Design</span>
+      <span>Web Development</span>
+      <span>Shopify</span>
+      <span>E-commerce</span>
+      <span>JavaScript</span>
+    </div>
   </div>
 </div>
 </section>
 
 <section id="contact">
 <div class="wrap">
-  <div class="contact-card reveal"><div class="contact"><span class="kicker">Have a Project?</span><h2>Let's create<br><span class="red">something great.</span></h2><p>Need graphics, a website, or an e-commerce store? Send your idea and let's discuss it.</p></div>
-    <div class="contact-actions"><a class="btn" href="mailto:mhdxahsan@gmail.com?subject=Project%20Enquiry">✉ Email Ahsan</a><a class="btn outline" href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">☏ WhatsApp Me</a></div>
+  <div class="contact-card reveal">
+    <div class="contact">
+      <span class="kicker">Have a Project?</span>
+      <h2>Let's create<br><span class="red">something great.</span></h2>
+      <p>Need graphics, a website, or an e-commerce store? Send your idea and let's discuss it.</p>
+    </div>
+    <div class="contact-actions">
+      <a class="btn" href="mailto:mhdxahsan@gmail.com?subject=Project%20Enquiry">✉ Email Ahsan</a>
+      <a class="btn outline" href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">☏ WhatsApp Me</a>
+    </div>
   </div>
 </div>
 </section>
 </main>
 
-<footer><div class="wrap footer-row"><a class="logo" href="#home">AHSAN<b>.</b></a><span>© <span id="year"></span> Muhammad Ahsan. Built with creativity.</span><div class="footer-links"><a href="#work">Projects</a><a href="mailto:mhdxahsan@gmail.com">Email</a><a href="https://wa.me/923319333080" target="_blank" rel="noopener">WhatsApp</a></div></div></footer>
+<footer>
+<div class="wrap footer-row">
+  <a class="logo" href="#home">AHSAN<span>.</span></a>
+  <span>© <span id="year"></span> Muhammad Ahsan. Built with creativity.</span>
+  <div class="footer-links">
+    <a href="#work">Projects</a>
+    <a href="mailto:mhdxahsan@gmail.com">Email</a>
+    <a href="https://wa.me/923319333080" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</div>
+</footer>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Project image viewer">
-  <div class="lb-inner"><div class="lb-top"><span id="lbTitle"></span><div class="lb-buttons"><button id="prev" aria-label="Previous image">←</button><button id="next" aria-label="Next image">→</button><button id="close" aria-label="Close viewer">×</button></div></div>
-  <div class="lb-stage"><img id="lbImage" alt=""></div><div class="lb-bottom"><span id="lbDescription"></span><span id="lbCount"></span></div></div>
+  <div class="lb-inner">
+    <div class="lb-top">
+      <span id="lbTitle"></span>
+      <div class="lb-buttons">
+        <button id="prev" aria-label="Previous image">←</button>
+        <button id="next" aria-label="Next image">→</button>
+        <button id="close" aria-label="Close viewer">×</button>
+      </div>
+    </div>
+    <div class="lb-stage"><img id="lbImage" alt=""></div>
+    <div class="lb-bottom"><span id="lbDescription"></span><span id="lbCount"></span></div>
+  </div>
 </div>
 
 <script>
-/* ADD PROJECTS HERE. Upload the image to assets/ first.
-   Categories: graphic, web, shopify.
-   The portfolio assistant is intentionally NOT a project. */
+/*
+HOW TO ADD A PROJECT:
+1. Upload its image into the assets folder.
+2. Copy one entry below.
+3. Change title, category, image filename and description.
+
+Categories: graphic, web, shopify.
+The gallery automatically displays new entries in batches of three.
+*/
 const PROJECTS = [
-  {title:"Quevvy Brand Launch",category:"graphic",image:"assets/quevvy-brand-launch.jpg",description:"Brand launch and promotional graphic."},
-  {title:"Dawat-e-Sheraz",category:"graphic",image:"assets/dawat-e-sheraz.jpg",description:"Restaurant promotional design."},
-  {title:"Sunday Biryani",category:"graphic",image:"assets/sunday-biryani.jpg",description:"Food promotion creative."},
-  {title:"Snitch Product Promo",category:"graphic",image:"assets/snitch-product-promo.jpg",description:"Product advertising creative."},
-  {title:"Nawabi Biryani",category:"graphic",image:"assets/nawabi-biryani.jpg",description:"Restaurant campaign artwork."},
-  {title:"RT Brand Campaign",category:"graphic",image:"assets/rt-brand-campaign.jpg",description:"Brand campaign design."},
-  {title:"Desi Oven Campaign",category:"graphic",image:"assets/desi-oven-campaign.jpg",description:"Food brand promotional artwork."},
-  {title:"Sarangi Biryani",category:"graphic",image:"assets/sarangi-biryani.jpg",description:"Restaurant promotional creative."},
-  {title:"Nawa Bistro Menu",category:"graphic",image:"assets/nawa-bistro-menu.jpg",description:"Bistro menu and food design."}
+  {
+    title:"Burger Next — Independence Day",
+    category:"graphic",
+    image:"assets/burgernext-independence.jpg",
+    description:"Independence Day promotional design."
+  },
+  {
+    title:"Nawabi Biryani",
+    category:"graphic",
+    image:"assets/nawabi-biryani.jpg",
+    description:"Restaurant social media creative."
+  },
+  {
+    title:"Dawat-e-Sheraz — Tikka Boti",
+    category:"graphic",
+    image:"assets/dawat-e-sheraz.jpg",
+    description:"Restaurant food promotion."
+  },
+  {
+    title:"Sarangi Biryani",
+    category:"graphic",
+    image:"assets/sarangi-biryani.jpg",
+    description:"Creative biryani advertising concept."
+  },
+  {
+    title:"Sunday Ritual — Chicken Biryani",
+    category:"graphic",
+    image:"assets/sunday-biryani.jpg",
+    description:"Restaurant promotional artwork."
+  },
+  {
+    title:"Fresh Palak Paneer",
+    category:"graphic",
+    image:"assets/palak-paneer.jpg",
+    description:"Food advertising creative."
+  },
+  {
+    title:"RT — Born in Pakistan",
+    category:"graphic",
+    image:"assets/rt-pakistan-campaign.jpg",
+    description:"Brand campaign design."
+  },
+  {
+    title:"Nawa Bistro — New Release",
+    category:"graphic",
+    image:"assets/nawa-bistro.jpg",
+    description:"Food and menu promotional design."
+  },
+  {
+    title:"Quevvy Brand Launch",
+    category:"graphic",
+    image:"assets/quevvy-brand.jpg",
+    description:"Brand launch campaign artwork."
+  },
+  {
+    title:"Desi Oven — Karachi Flavour",
+    category:"graphic",
+    image:"assets/desi-oven.jpg",
+    description:"Restaurant food campaign."
+  },
+  {
+    title:"Snitch Clothing",
+    category:"graphic",
+    image:"assets/snitch-polo.jpg",
+    description:"Clothing product advertisement."
+  },
+  {
+    title:"Hot & Delicious Burger",
+    category:"graphic",
+    image:"assets/burger-promo.jpg",
+    description:"Burger promotional creative."
+  }
 ];
 
 (() => {
+  "use strict";
   const $ = s => document.querySelector(s);
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const touch = matchMedia("(pointer: coarse)").matches;
-  let filter = "all", visible = [], current = 0, lastFocus = null, lastIntent = "", replyCount = 0;
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const coarsePointer = matchMedia("(pointer: coarse)").matches;
+
+  let filter = "all";
+  let visibleProjects = [];
+  let shownCount = 3;
+  let currentIndex = 0;
+  let lastFocus = null;
+
   $("#year").textContent = new Date().getFullYear();
 
-  const escapeHTML = s => String(s ?? "").replace(/[&<>"']/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  })[c]);
-
-  // Project gallery: no assistant card is included here.
-  function renderProjects() {
-    visible = PROJECTS.filter(p => filter === "all" || p.category === filter);
-    const grid = $("#projects");
-    if (!visible.length) {
-      grid.innerHTML = '<div class="empty">No projects in this category yet. Add your next design to the PROJECTS list in index.html.</div>';
-      return;
-    }
-    grid.innerHTML = visible.map((p,i) => `
-      <article class="project">
-        <button class="project-open" data-open="${i}" aria-label="Open full image: ${escapeHTML(p.title)}">
-          <img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" loading="lazy" decoding="async">
-          <span class="view-label">View full image ↗</span>
-        </button>
-        <div class="project-info"><small>${p.category === "graphic" ? "Graphic Design" : p.category === "web" ? "Web Design" : "Shopify & E-commerce"}</small>
-          <h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.description)}</p>
-        </div>
-      </article>`).join("");
-
-    grid.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => openViewer(+b.dataset.open,b)));
-    grid.querySelectorAll("img").forEach(img => img.addEventListener("error", () => {
-      img.alt = "Image missing — upload the matching image into the assets folder.";
-    }, {once:true}));
+  function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, ch => ({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    })[ch]);
   }
 
-  $("#filters").addEventListener("click", e => {
-    const b = e.target.closest("[data-filter]");
-    if (!b) return;
-    filter = b.dataset.filter;
-    document.querySelectorAll(".filter").forEach(x => x.classList.toggle("active", x === b));
+  function renderProjects() {
+    visibleProjects = PROJECTS.filter(p =>
+      filter === "all" || p.category === filter
+    );
+
+    const grid = $("#projects");
+    const moreButton = $("#showMore");
+
+    if (!visibleProjects.length) {
+      grid.innerHTML =
+        '<div class="empty">No projects in this category yet. Add one in the PROJECTS list in index.html.</div>';
+      moreButton.style.display = "none";
+      return;
+    }
+
+    const displayed = visibleProjects.slice(0, shownCount);
+
+    grid.innerHTML = displayed.map((p, i) => `
+      <article class="project">
+        <button class="project-open"
+          type="button"
+          data-open="${i}"
+          aria-label="Open full image: ${escapeHTML(p.title)}">
+          <img
+            src="${escapeHTML(p.image)}"
+            alt="${escapeHTML(p.title)}"
+            loading="lazy"
+            decoding="async">
+          <span class="view-label">View Full Image ↗</span>
+        </button>
+        <div class="project-info">
+          <small>${p.category === "graphic" ? "Graphic Design" :
+            p.category === "web" ? "Web Design" :
+            "Shopify & E-commerce"}</small>
+          <h3>${escapeHTML(p.title)}</h3>
+          <p>${escapeHTML(p.description)}</p>
+        </div>
+      </article>
+    `).join("");
+
+    grid.querySelectorAll("[data-open]").forEach(button => {
+      button.addEventListener("click", () =>
+        openViewer(Number(button.dataset.open), button)
+      );
+    });
+
+    grid.querySelectorAll("img").forEach(img => {
+      img.addEventListener("error", () => {
+        img.alt = "Image not found. Check the filename in the PROJECTS list.";
+      }, {once:true});
+    });
+
+    if (visibleProjects.length <= 3) {
+      moreButton.style.display = "none";
+    } else {
+      moreButton.style.display = "inline-flex";
+      moreButton.textContent =
+        shownCount >= visibleProjects.length
+          ? "Show Less ↑"
+          : "Show More Projects ↓";
+    }
+  }
+
+  $("#showMore").addEventListener("click", () => {
+    if (shownCount >= visibleProjects.length) {
+      shownCount = 3;
+      renderProjects();
+      $("#work").scrollIntoView({behavior:"smooth", block:"start"});
+    } else {
+      shownCount = Math.min(shownCount + 3, visibleProjects.length);
+      renderProjects();
+    }
+  });
+
+  $("#filters").addEventListener("click", event => {
+    const button = event.target.closest("[data-filter]");
+    if (!button) return;
+
+    filter = button.dataset.filter;
+    shownCount = 3;
+
+    document.querySelectorAll(".filter").forEach(item => {
+      item.classList.toggle("active", item === button);
+    });
+
     renderProjects();
   });
 
-  // The full-size viewer uses object-fit: contain, so the artwork is not cropped.
-  function openViewer(i, trigger) {
-    if (!visible.length) return;
-    current = (i + visible.length) % visible.length;
+  /* Full-size image viewer: complete artwork, never cropped. */
+  function openViewer(index, trigger) {
+    if (!visibleProjects.length) return;
+
+    currentIndex =
+      (index + visibleProjects.length) % visibleProjects.length;
+
     lastFocus = trigger || document.activeElement;
-    const p = visible[current];
-    $("#lbImage").src = p.image;
-    $("#lbImage").alt = p.title;
-    $("#lbTitle").textContent = p.title;
-    $("#lbDescription").textContent = p.description || "";
-    $("#lbCount").textContent = (current + 1) + " / " + visible.length;
+
+    const project = visibleProjects[currentIndex];
+
+    $("#lbImage").src = project.image;
+    $("#lbImage").alt = project.title;
+    $("#lbTitle").textContent = project.title;
+    $("#lbDescription").textContent = project.description;
+    $("#lbCount").textContent =
+      (currentIndex + 1) + " / " + visibleProjects.length;
+
     $("#lightbox").classList.add("open");
-    $("#lightbox").setAttribute("aria-hidden","false");
+    $("#lightbox").setAttribute("aria-hidden", "false");
     document.body.classList.add("lock");
     $("#close").focus();
   }
+
   function closeViewer() {
     $("#lightbox").classList.remove("open");
-    $("#lightbox").setAttribute("aria-hidden","true");
+    $("#lightbox").setAttribute("aria-hidden", "true");
     $("#lbImage").src = "";
     document.body.classList.remove("lock");
-    if (lastFocus?.focus) lastFocus.focus();
-  }
-  function stepViewer(n) { openViewer(current + n, lastFocus); }
-  $("#close").addEventListener("click",closeViewer);
-  $("#prev").addEventListener("click",()=>stepViewer(-1));
-  $("#next").addEventListener("click",()=>stepViewer(1));
-  $("#lightbox").addEventListener("click",e=>{if(e.target === $("#lightbox")) closeViewer()});
-  document.addEventListener("keydown",e=>{
-    if (!$("#lightbox").classList.contains("open")) return;
-    if (e.key === "Escape") closeViewer();
-    if (e.key === "ArrowLeft") stepViewer(-1);
-    if (e.key === "ArrowRight") stepViewer(1);
-  });
-  renderProjects();
 
-  // Mobile menu
-  $("#menu").addEventListener("click",()=>{
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  function stepViewer(amount) {
+    openViewer(currentIndex + amount, lastFocus);
+  }
+
+  $("#close").addEventListener("click", closeViewer);
+  $("#prev").addEventListener("click", () => stepViewer(-1));
+  $("#next").addEventListener("click", () => stepViewer(1));
+
+  $("#lightbox").addEventListener("click", event => {
+    if (event.target === $("#lightbox")) closeViewer();
+  });
+
+  document.addEventListener("keydown", event => {
+    if (!$("#lightbox").classList.contains("open")) return;
+
+    if (event.key === "Escape") closeViewer();
+    if (event.key === "ArrowLeft") stepViewer(-1);
+    if (event.key === "ArrowRight") stepViewer(1);
+  });
+
+  /* Mobile navigation */
+  $("#menu").addEventListener("click", () => {
     const open = $("#navlinks").classList.toggle("open");
-    $("#menu").setAttribute("aria-expanded",String(open));
+    $("#menu").setAttribute("aria-expanded", String(open));
     $("#menu").textContent = open ? "×" : "☰";
   });
-  $("#navlinks").querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
-    $("#navlinks").classList.remove("open");
-    $("#menu").setAttribute("aria-expanded","false");
-    $("#menu").textContent = "☰";
-  }));
 
-  // Animate content when it enters the screen.
-  if (!reduced && "IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(entries=>entries.forEach(e=>{
-      if (e.isIntersecting) { e.target.classList.add("visible"); observer.unobserve(e.target); }
-    }),{threshold:.1});
-    document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-  } else document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible"));
-
-  // Custom cursor and gentle portrait tilt only on desktop.
-  if (!touch && !reduced) {
-    const dot = $(".cursor"),ring = $(".ring");
-    document.addEventListener("mousemove",e=>{
-      dot.style.opacity = ring.style.opacity = "1";
-      dot.style.left = ring.style.left = e.clientX+"px";
-      dot.style.top = ring.style.top = e.clientY+"px";
+  $("#navlinks").querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      $("#navlinks").classList.remove("open");
+      $("#menu").setAttribute("aria-expanded", "false");
+      $("#menu").textContent = "☰";
     });
-    document.addEventListener("mouseover",e=>ring.classList.toggle("hover",!!e.target.closest("a,button,input")));
-    document.addEventListener("mouseleave",()=>dot.style.opacity=ring.style.opacity="0");
-    $("#visual").addEventListener("mousemove",e=>{
-      const r=$("#visual").getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-      $("#portrait").style.transform=`rotateY(${x*-10-4}deg) rotateX(${y*6}deg)`;
-    });
-    $("#visual").addEventListener("mouseleave",()=>$("#portrait").style.transform="rotateY(-7deg)");
-  }
-
-  // No third-party AI script, no login prompts, and no external data request.
-  // This is a local portfolio FAQ helper, not a generative AI model.
-  const responses = {
-    design:[
-      "My graphic design work includes promotional posters, food campaigns, product advertising, and social media creatives. Visit My Projects to see the examples.",
-      "I create visual designs for brands and businesses, including advertising creatives, product promotions and restaurant graphics. Tap a project card to open the full image.",
-      "For graphic design I focus on strong visual hierarchy, clear messaging, and an attractive layout that works well on digital screens."
-    ],
-    web:[
-      "My web development focus is responsive websites, modern layouts, smooth interactions, and mobile-friendly design.",
-      "I build and explore front-end experiences using HTML, CSS and JavaScript, with attention to both desktop and phone screens.",
-      "For a website project, send your idea and desired features to mhdxahsan@gmail.com."
-    ],
-    shopify:[
-      "I focus on Shopify and e-commerce storefront design, including clear product presentation and a smooth shopping journey.",
-      "For an online store, I aim for a professional look, easy product browsing, and layouts that work on mobile devices.",
-      "Tell Ahsan what you sell and what kind of online store you need. Email and WhatsApp links are available in the contact section."
-    ],
-    contact:[
-      "Email Muhammad Ahsan at mhdxahsan@gmail.com or WhatsApp +92 331 9333080.",
-      "You can reach Ahsan by email at mhdxahsan@gmail.com, or directly on WhatsApp: https://wa.me/923319333080",
-      "For project enquiries, send an email to mhdxahsan@gmail.com. WhatsApp is also available at +92 331 9333080."
-    ],
-    project:[
-      "To add a project, upload its image into the assets folder, then copy one object in the PROJECTS list in index.html. Update its title, category, image path and description.",
-      "The gallery is driven by the PROJECTS list near the bottom of index.html. Upload a new image to assets/, add its path there, and commit the changes.",
-      "Adding work takes two changes: upload the image into assets/ and create a new PROJECTS entry. Use category graphic, web, or shopify."
-    ],
-    about:[
-      "I'm the portfolio helper for Muhammad Ahsan, a digital creator interested in graphic design, web development, Shopify stores and e-commerce.",
-      "Muhammad Ahsan's portfolio showcases graphic design examples and his services in websites, e-commerce and digital creative work.",
-      "This site belongs to Muhammad Ahsan. Use the contact links to discuss a design, website or online store."
-    ],
-    helper:[
-      "This assistant runs in your browser and does not ask you to sign in. It answers portfolio-related questions using local rules; it is not a general-purpose generative AI model.",
-      "No login is needed here. The portfolio helper matches your question with information about Ahsan's services, projects, adding work and contact details.",
-      "This local version avoids external AI permission prompts. A fully generative AI chat would require a separately configured AI service and secure backend."
-    ]
-  };
-  function pick(intent) {
-    const list = responses[intent];
-    const answer = list[replyCount % list.length];
-    replyCount++;
-    return answer;
-  }
-  function makeAnswer(text) {
-    const q = text.toLowerCase();
-    if (/^(hi|hello|hey|salam|assalam|good morning|good evening)\b/.test(q)) {
-      return ["Hello! 👋 What would you like to know about Ahsan's work?","Hi there! Ask me about graphic design, websites, Shopify, projects or contact details.","Welcome! I can help you explore Ahsan's services and portfolio."][replyCount++%3];
-    }
-    if (/(add|upload|new).*(project|design|work|image)|(project|design).*(add|upload|new)|how.*add/.test(q)) { lastIntent="project"; return pick("project"); }
-    if (/(whatsapp|email|gmail|contact|hire|phone|number|reach)/.test(q)) { lastIntent="contact"; return pick("contact"); }
-    if (/(shopify|e.?commerce|online store|store design)/.test(q)) { lastIntent="shopify"; return pick("shopify"); }
-    if (/(graphic|poster|logo|social media|artwork|design work)/.test(q)) { lastIntent="design"; return pick("design"); }
-    if (/(website|web development|developer|coding|responsive)/.test(q)) { lastIntent="web"; return pick("web"); }
-    if (/(ai|assistant|login|permission|sign.?in|account|chatbot)/.test(q)) { lastIntent="helper"; return pick("helper"); }
-    if (/(who are you|about ahsan|who is ahsan|your name)/.test(q)) { lastIntent="about"; return pick("about"); }
-    if (/(more|explain|tell me more|details|go on)/.test(q) && lastIntent) return pick(lastIntent);
-    if (/(project|portfolio|work|picture|image|gallery)/.test(q)) { lastIntent="project"; return "There are nine graphic design examples in My Projects. Tap an image to open it in the full-size viewer. The assistant is separate from the project gallery."; }
-    return "I can help with graphic design, web development, Shopify and e-commerce, adding projects, or contact details. Try asking about one of those topics.";
-  }
-  function addBubble(text,kind) {
-    const el=document.createElement("div");
-    el.className="bubble "+kind;
-    el.textContent=text;
-    $("#messages").appendChild(el);
-    $("#messages").scrollTop=$("#messages").scrollHeight;
-  }
-  function sendMessage(text) {
-    const q=text.trim();
-    if (!q) return;
-    addBubble(q,"user");
-    $("#status").textContent="● Replying";
-    const answer=makeAnswer(q);
-    window.setTimeout(()=>{
-      addBubble(answer,"bot");
-      $("#status").textContent="● Ready";
-    },120);
-  }
-  $("#chatForm").addEventListener("submit",e=>{
-    e.preventDefault();
-    const input=$("#chatInput");
-    const q=input.value;
-    input.value="";
-    sendMessage(q);
   });
-  document.querySelectorAll("[data-question]").forEach(b=>b.addEventListener("click",()=>sendMessage(b.dataset.question)));
+
+  /* Smooth reveal animations on scroll */
+  if (!reducedMotion && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.1});
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  } else {
+    document.querySelectorAll(".reveal").forEach(el =>
+      el.classList.add("visible")
+    );
+  }
+
+  /* Gentle 3D portrait tilt on desktop */
+  if (!coarsePointer && !reducedMotion) {
+    $("#visual").addEventListener("mousemove", event => {
+      const rect = $("#visual").getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - .5;
+      const y = (event.clientY - rect.top) / rect.height - .5;
+
+      $("#portrait").style.transform =
+        `rotateY(${x * -10 - 4}deg) rotateX(${y * 6}deg)`;
+    });
+
+    $("#visual").addEventListener("mouseleave", () => {
+      $("#portrait").style.transform = "rotateY(-7deg)";
+    });
+  }
+
+  renderProjects();
 })();
 </script>
 </body>
