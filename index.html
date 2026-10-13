@@ -1,0 +1,713 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b090b">
+<meta name="description" content="Muhammad Ahsan — Graphic Designer, Web Developer, Shopify and E-commerce Designer.">
+<title>Muhammad Ahsan | Creative Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://js.puter.com/v2/"></script>
+
+<style>
+:root {
+  --bg:#0b090b;
+  --panel:#151114;
+  --panel2:#1d1519;
+  --red:#ff304f;
+  --red-dark:#a8102e;
+  --white:#fff7f8;
+  --muted:#b1a5aa;
+  --line:#352329;
+  --glow:0 0 45px #ff304f20;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth;scroll-padding-top:85px}
+body {
+  margin:0;background:var(--bg);color:var(--white);
+  font-family:"DM Sans",sans-serif;line-height:1.65;
+  overflow-x:hidden;
+}
+body.lock {overflow:hidden}
+a {color:inherit;text-decoration:none}
+button,input {font:inherit}
+button {cursor:pointer}
+img {display:block;max-width:100%}
+::selection {background:var(--red);color:white}
+.wrap {width:min(1160px,calc(100% - 36px));margin:auto}
+.red {color:var(--red)}
+.muted {color:var(--muted)}
+.cursor,.ring {
+  position:fixed;z-index:9999;pointer-events:none;
+  border-radius:50%;left:0;top:0;opacity:0;
+  transform:translate(-50%,-50%);
+}
+.cursor {width:7px;height:7px;background:var(--red)}
+.ring {width:31px;height:31px;border:1px solid var(--red);transition:width .16s,height .16s}
+.ring.hover {width:47px;height:47px;background:#ff304f14}
+
+header {
+  position:sticky;top:0;z-index:50;
+  background:#0b090be8;backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+nav {height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo {font:700 1.5rem "Space Grotesk",sans-serif;letter-spacing:-1px}
+.logo b {color:var(--red)}
+.navlinks {display:flex;gap:27px;color:#d2c5ca;font-size:.9rem}
+.navlinks a:hover {color:var(--red)}
+.btn {
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 19px;background:var(--red);color:white;
+  border:1px solid var(--red);border-radius:8px;font-weight:700;
+  transition:transform .22s,box-shadow .22s,background .22s;
+}
+.btn:hover {transform:translateY(-3px);box-shadow:0 9px 32px #ff304f35;background:#e51f3e}
+.btn.outline {background:transparent;border-color:#65404a}
+.btn.outline:hover {background:#ff304f13}
+.menu {display:none;background:var(--panel);color:white;border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+
+.hero {
+  display:grid;grid-template-columns:1.05fr .95fr;gap:40px;
+  align-items:center;min-height:680px;padding:65px 0 80px;
+}
+.eyebrow {
+  display:inline-flex;align-items:center;gap:10px;
+  color:#ff7186;text-transform:uppercase;letter-spacing:2px;
+  font-size:.75rem;font-weight:700;
+}
+.pulse {width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 15px var(--red)}
+h1,h2,h3 {font-family:"Space Grotesk",sans-serif;line-height:1.1}
+h1 {font-size:clamp(3.3rem,6.7vw,6rem);letter-spacing:-3px;margin:22px 0}
+h1 .name {color:var(--red);text-shadow:0 0 38px #ff304f26}
+.hero-copy {max-width:560px;color:var(--muted);font-size:1.05rem;line-height:1.85}
+.actions {display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
+.hero-note {margin-top:30px;font-size:.82rem;color:#a99ca2}
+.hero-note span {color:var(--red);margin-right:7px}
+
+.visual {min-height:470px;position:relative;display:grid;place-items:center;perspective:1000px}
+.orbit {
+  position:absolute;width:min(400px,98%);aspect-ratio:1;
+  border:1px solid #ff304f3c;border-radius:50%;
+  animation:spin 34s linear infinite;
+}
+.orbit:before,.orbit:after {
+  content:"";position:absolute;border-radius:50%;background:var(--red);
+  box-shadow:0 0 20px #ff304f99;
+}
+.orbit:before {width:13px;height:13px;top:11%;left:18%}
+.orbit:after {width:8px;height:8px;bottom:16%;right:2%}
+.orbit.two {width:min(315px,77%);border-style:dashed;animation-direction:reverse}
+.portrait {
+  position:relative;z-index:2;width:min(325px,77%);aspect-ratio:4/5;
+  border:1px solid #ff304f90;border-radius:23px;overflow:hidden;
+  background:#310b17;box-shadow:0 0 75px #ff304f1d;
+  transform:rotateY(-7deg);transition:transform .25s;
+}
+.portrait img {width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.portrait:after {
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(0deg,#17050ddd 0%,transparent 46%);
+}
+.portrait-label {position:absolute;z-index:3;bottom:17px;left:17px;right:17px}
+.portrait-label strong {font:600 1.15rem "Space Grotesk",sans-serif}
+.portrait-label small {display:block;color:#e2c6cd}
+.floating {
+  position:absolute;z-index:4;background:#1b1116;border:1px solid #58303b;
+  border-radius:9px;padding:11px 14px;color:#f8dfe5;
+  font-size:.8rem;font-weight:700;box-shadow:var(--glow);
+  animation:float 4.5s ease-in-out infinite;
+}
+.floating.one {left:0;top:18%}
+.floating.two {right:-2%;bottom:14%;animation-delay:-2.2s}
+
+section {padding:86px 0}
+.section-head {margin-bottom:31px}
+.kicker {color:var(--red);font-size:.76rem;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+.section-head h2,.about h2,.ai-copy h2,.contact h2 {
+  font-size:clamp(2.3rem,5vw,3.8rem);letter-spacing:-1.7px;margin:12px 0;
+}
+.section-head p {color:var(--muted);max-width:650px}
+
+.services {display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.service {
+  padding:24px 19px;min-height:210px;border:1px solid var(--line);
+  border-radius:14px;background:linear-gradient(145deg,#191216,#100d10);
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.service:hover {transform:translateY(-6px);border-color:#a92642;box-shadow:var(--glow)}
+.service-icon {
+  font-size:1.55rem;color:var(--red);width:47px;height:47px;
+  border:1px solid #5a2734;border-radius:10px;display:grid;place-items:center;
+}
+.service h3 {font-size:1.08rem;margin:20px 0 8px}
+.service p {font-size:.86rem;color:var(--muted);margin:0}
+
+.work {background:linear-gradient(180deg,#100b0e,#0d090c);border-block:1px solid #27151b}
+.filters {display:flex;flex-wrap:wrap;gap:8px;margin:23px 0}
+.filter {
+  border:1px solid #43252e;background:#140e12;color:#c8b9bf;
+  padding:9px 14px;border-radius:7px;font-size:.83rem;
+}
+.filter.active,.filter:hover {background:var(--red);border-color:var(--red);color:white}
+.projects {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}
+.project {
+  min-width:0;border:1px solid var(--line);border-radius:13px;overflow:hidden;
+  background:var(--panel);transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.project:hover {transform:translateY(-5px);border-color:#873042;box-shadow:var(--glow)}
+.project-open {
+  position:relative;width:100%;height:290px;padding:12px;border:0;
+  background:#100b0e;display:flex;align-items:center;justify-content:center;
+}
+.project-open img {max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.view-label {
+  position:absolute;right:10px;bottom:10px;background:#ff304f;color:white;
+  border-radius:5px;padding:7px 10px;font-size:.72rem;font-weight:700;
+  opacity:.96;
+}
+.project-info {padding:15px 16px 18px}
+.project-info small {color:#ff7186;font-size:.68rem;letter-spacing:1.3px;text-transform:uppercase;font-weight:700}
+.project-info h3 {font-size:1.07rem;letter-spacing:-.5px;margin:7px 0}
+.project-info p {font-size:.83rem;color:var(--muted);margin:0}
+.empty {grid-column:1/-1;padding:24px;border:1px dashed #61303c;color:var(--muted);border-radius:10px}
+
+.about-grid {display:grid;grid-template-columns:.8fr 1.2fr;gap:45px;align-items:center}
+.about-art {
+  min-height:330px;position:relative;overflow:hidden;display:grid;place-items:center;
+  border:1px solid #52212d;border-radius:17px;
+  background:radial-gradient(circle at center,#451421,#160c11 67%);
+}
+.about-art:before,.about-art:after {
+  content:"";position:absolute;width:220px;height:220px;border:1px solid #ff304f55;border-radius:50%;
+}
+.about-art:after {width:165px;height:165px;border-style:dashed}
+.monogram {font:700 7.4rem "Space Grotesk",sans-serif;letter-spacing:-12px;color:var(--red);text-shadow:0 0 40px #ff304f55;z-index:2}
+.about p {color:var(--muted)}
+.pills {display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.pills span {border:1px solid #45252e;background:#150e12;border-radius:6px;padding:7px 10px;font-size:.78rem;color:#e4d4d9}
+
+.ai-section {background:#120b0f;border-block:1px solid #341720}
+.ai-grid {display:grid;grid-template-columns:.92fr 1.08fr;gap:42px;align-items:center}
+.ai-copy p {color:var(--muted)}
+.ai-tag {display:inline-block;border:1px solid #65303c;border-radius:5px;color:#ff899b;padding:5px 9px;font-size:.72rem;margin-top:8px}
+.chat {border:1px solid #542431;border-radius:14px;background:#0d090c;overflow:hidden;box-shadow:0 0 55px #ff304f0c}
+.chat-head {display:flex;align-items:center;gap:12px;padding:16px;border-bottom:1px solid #392029;background:#181015}
+.bot-icon {width:42px;height:42px;border-radius:10px;background:#ff304f;color:white;display:grid;place-items:center;font-size:1.25rem}
+.chat-head strong {display:block;font-size:.9rem}
+.chat-head small {color:var(--muted);font-size:.74rem}
+.status {margin-left:auto;color:#ff7c91;font-size:.72rem;white-space:nowrap}
+.messages {
+  min-height:220px;max-height:310px;overflow:auto;padding:17px;
+  display:flex;flex-direction:column;gap:11px;
+}
+.bubble {padding:11px 13px;border-radius:10px;max-width:91%;font-size:.86rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.bubble.bot {background:#20151b;border:1px solid #3e252d;align-self:flex-start;color:#f7e8ed}
+.bubble.user {background:var(--red);color:white;align-self:flex-end}
+.bubble.error {border-color:#a14a38;color:#ffc7bc}
+.chat-form {padding:12px;display:flex;gap:8px;border-top:1px solid #392029}
+.chat-form input {
+  min-width:0;flex:1;background:#191116;color:white;
+  border:1px solid #4a2833;border-radius:8px;padding:12px;
+  outline:none;
+}
+.chat-form input:focus {border-color:var(--red)}
+.chat-form input::placeholder {color:#99858d}
+.chat-form button {border:0;background:var(--red);color:white;border-radius:8px;padding:0 16px;font-weight:700}
+.chat-form button:disabled {opacity:.55;cursor:wait}
+.chat-note {padding:0 14px 13px;font-size:.68rem;color:#8f7c84}
+.suggestions {display:flex;gap:7px;flex-wrap:wrap;padding:0 13px 13px}
+.suggestions button {background:#1a1116;border:1px solid #49232f;color:#e6cbd3;padding:6px 9px;border-radius:5px;font-size:.73rem}
+
+.contact-card {
+  padding:clamp(25px,5vw,50px);border:1px solid #5a2633;border-radius:16px;
+  background:radial-gradient(ellipse at 100% 0%,#41111e 0%,#1a0e13 52%,#100b0e 100%);
+  display:flex;align-items:center;justify-content:space-between;gap:25px;
+}
+.contact-card p {color:var(--muted);max-width:570px}
+.contact-actions {display:grid;gap:10px;min-width:205px}
+footer {padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem}
+.footer-row {display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.footer-links {display:flex;gap:18px}
+.footer-links a:hover {color:var(--red)}
+
+/* Full-size project viewer: images are contained, never cropped */
+.lightbox {
+  display:none;position:fixed;inset:0;z-index:1000;padding:14px;
+  background:#050305f5;backdrop-filter:blur(12px);
+  align-items:center;justify-content:center;
+}
+.lightbox.open {display:flex;animation:fade .2s}
+.lb-inner {width:min(1200px,100%);height:95dvh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:10px}
+.lb-top,.lb-bottom {display:flex;justify-content:space-between;align-items:center;gap:12px;color:white}
+.lb-title {font-weight:700}
+.lb-buttons {display:flex;gap:7px}
+.lb-buttons button {
+  width:39px;height:39px;border:1px solid #61404a;
+  background:#1c1116;color:white;border-radius:8px;font-size:1.1rem;
+}
+.lb-stage {min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.lb-stage img {max-width:100%;max-height:100%;height:auto;width:auto;object-fit:contain}
+.lb-bottom {font-size:.76rem;color:#bfaeb5}
+.reveal {opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.reveal.visible {opacity:1;transform:none}
+@keyframes spin {to{transform:rotate(360deg)}}
+@keyframes float {0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes fade {from{opacity:0}to{opacity:1}}
+
+@media(max-width:900px) {
+  .hero {gap:15px}
+  .services {grid-template-columns:repeat(2,1fr)}
+  .projects {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .project-open {height:260px}
+  .ai-grid {grid-template-columns:1fr;gap:25px}
+}
+@media(max-width:620px) {
+  .wrap {width:calc(100% - 28px)}
+  nav {height:65px}
+  .navlinks {
+    display:none;position:absolute;top:65px;left:14px;right:14px;
+    background:#171014;border:1px solid var(--line);border-radius:10px;
+    padding:8px;flex-direction:column;gap:0;
+  }
+  .navlinks.open {display:flex}
+  .navlinks a {padding:12px}
+  .menu {display:block}
+  nav>.btn {padding:10px 12px;font-size:.82rem}
+  .hero {grid-template-columns:1fr;padding:38px 0 55px;gap:16px}
+  .visual {grid-row:1;min-height:360px}
+  .portrait {width:min(265px,73%)}
+  .orbit {width:min(340px,98%)}
+  .orbit.two {width:min(255px,74%)}
+  h1 {font-size:clamp(3.15rem,13vw,4.5rem)}
+  section {padding:58px 0}
+  .services {gap:10px}
+  .service {padding:17px 13px;min-height:195px}
+  .projects {grid-template-columns:1fr;gap:14px}
+  .project-open {height:310px}
+  .about-grid {grid-template-columns:1fr;gap:25px}
+  .about-art {min-height:240px;order:2}
+  .contact-card {align-items:stretch;flex-direction:column}
+  .contact-actions {width:100%}
+  .footer-row {align-items:flex-start;flex-direction:column}
+}
+@media(hover:none),(pointer:coarse) {
+  .cursor,.ring {display:none}
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.01ms!important;animation-iteration-count:1!important;
+    scroll-behavior:auto!important;transition-duration:.01ms!important;
+  }
+  .reveal {opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="cursor" aria-hidden="true"></div>
+<div class="ring" aria-hidden="true"></div>
+
+<header>
+  <nav class="wrap">
+    <a class="logo" href="#home">AHSAN<span>.</span></a>
+    <div class="navlinks" id="navlinks">
+      <a href="#services">Services</a>
+      <a href="#work">Portfolio</a>
+      <a href="#about">About</a>
+      <a href="#assistant">AI Assistant</a>
+    </div>
+    <a class="btn" href="#contact">Let's Talk ↗</a>
+    <button class="menu" id="menu" aria-label="Toggle menu">☰</button>
+  </nav>
+</header>
+
+<main>
+<section class="wrap hero" id="home">
+  <div class="reveal">
+    <div class="eyebrow"><span class="pulse"></span> Creative Designer & Developer</div>
+    <h1>Hi, I'm<br><span class="name">Muhammad</span><br>Ahsan<span class="red">.</span></h1>
+    <p class="hero-copy">I turn bold ideas into memorable designs, modern websites, and professional online stores. Creative thinking, clean execution, and experiences built for every screen.</p>
+    <div class="actions">
+      <a class="btn" href="#work">Explore My Work ↘</a>
+      <a class="btn outline" href="mailto:mhdxahsan@gmail.com">Email Me ↗</a>
+    </div>
+    <p class="hero-note"><span>✦</span> Graphic Design · Web Development · Shopify · AI</p>
+  </div>
+
+  <div class="visual reveal" id="visual">
+    <div class="orbit"></div><div class="orbit two"></div>
+    <div class="portrait" id="portrait">
+      <img src="assets/profile.jpg" alt="Muhammad Ahsan" fetchpriority="high">
+      <div class="portrait-label">
+        <strong>Muhammad Ahsan</strong>
+        <small>Designer. Developer. Creator.</small>
+      </div>
+    </div>
+    <div class="floating one">✦ Bold Visual Design</div>
+    <div class="floating two">↗ Built for Every Screen</div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">What I Do</span>
+      <h2>Creative work.<br><span class="red">Digital impact.</span></h2>
+      <p>Design, development, and e-commerce solutions for ambitious ideas.</p>
+    </div>
+    <div class="services">
+      <article class="service reveal"><div class="service-icon">✳</div><h3>Graphic Design</h3><p>Promotional graphics, social media posts, advertising creatives, and brand visuals.</p></article>
+      <article class="service reveal"><div class="service-icon">⌘</div><h3>Web Development</h3><p>Responsive websites, polished interfaces, smooth interactions, and custom experiences.</p></article>
+      <article class="service reveal"><div class="service-icon">▣</div><h3>Shopify & E-commerce</h3><p>Product-focused storefronts designed for clarity, trust, and a better shopping experience.</p></article>
+      <article class="service reveal"><div class="service-icon">✧</div><h3>AI Agents</h3><p>AI-powered assistants and useful automations for digital projects and businesses.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Selected Projects</span>
+      <h2>My <span class="red">Portfolio.</span></h2>
+      <p>Explore my creative work. Select any image to open the complete artwork without cropping.</p>
+    </div>
+    <div class="filters reveal" id="filters">
+      <button class="filter active" data-filter="all">All Projects</button>
+      <button class="filter" data-filter="graphic">Graphic Design</button>
+      <button class="filter" data-filter="web">Web Design</button>
+      <button class="filter" data-filter="shopify">Shopify & E-commerce</button>
+    </div>
+    <div class="projects" id="projects"></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-art reveal"><span class="monogram">MA.</span></div>
+    <div class="about reveal">
+      <span class="kicker">A Little About Me</span>
+      <h2>Making ideas<br><span class="red">stand out.</span></h2>
+      <p>I'm Muhammad Ahsan, a digital creator focused on graphic design, web development, Shopify store design, and e-commerce. I enjoy bringing creative ideas to life with attention to detail and a modern visual style.</p>
+      <p>This portfolio is designed to grow as I do. New projects can be added by adding one small entry to the project list in this file and uploading their images.</p>
+      <div class="pills"><span>Graphic Design</span><span>Web Development</span><span>Shopify</span><span>E-commerce</span><span>JavaScript</span><span>AI Tools</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="ai-section" id="assistant">
+  <div class="wrap ai-grid">
+    <div class="ai-copy reveal">
+      <span class="kicker">Ask Me Anything</span>
+      <h2>Meet my <span class="red">AI assistant.</span></h2>
+      <p>Ask questions about my services, portfolio, or how to get in touch. This chat uses an AI model to generate replies instead of repeating one fixed message.</p>
+      <span class="ai-tag">AI-powered · Context-aware chat</span>
+    </div>
+    <div class="chat reveal">
+      <div class="chat-head">
+        <div class="bot-icon">✧</div>
+        <div><strong>Ahsan AI</strong><small style="display:block;color:var(--muted)">Portfolio assistant</small></div>
+        <span class="status" id="status">● Ready</span>
+      </div>
+      <div class="messages" id="messages" aria-live="polite">
+        <div class="bubble bot">Hey! 👋 I'm Ahsan's portfolio assistant. Ask me about graphic design, websites, Shopify, AI, or how to contact Ahsan.</div>
+      </div>
+      <div class="suggestions">
+        <button type="button" data-question="What graphic design services does Ahsan offer?">Graphic design</button>
+        <button type="button" data-question="How can I contact Ahsan?">Contact details</button>
+        <button type="button" data-question="How can I add a new project to this portfolio?">Adding projects</button>
+      </div>
+      <form class="chat-form" id="chatForm">
+        <input id="chatInput" maxlength="500" placeholder="Ask me a question..." aria-label="Ask Ahsan AI" required>
+        <button id="sendBtn" type="submit">Send ↗</button>
+      </form>
+      <div class="chat-note">AI responses can occasionally be inaccurate. Avoid entering private information.</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <div class="contact">
+        <span class="kicker">Have a Project?</span>
+        <h2>Let's create<br><span class="red">something great.</span></h2>
+        <p>Need graphics, a website, or an e-commerce store? Tell me about your idea. Let's make it happen.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="btn" href="mailto:mhdxahsan@gmail.com?subject=Project%20Enquiry">✉ Email Ahsan</a>
+        <a class="btn outline" href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">☏ WhatsApp Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <a class="logo" href="#home">AHSAN<span>.</span></a>
+    <span>© <span id="year"></span> Muhammad Ahsan. Built with creativity.</span>
+    <div class="footer-links"><a href="#work">Projects</a><a href="mailto:mhdxahsan@gmail.com">Email</a><a href="https://wa.me/923319333080" target="_blank" rel="noopener">WhatsApp</a></div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Project image viewer">
+  <div class="lb-inner">
+    <div class="lb-top"><span class="lb-title" id="lbTitle"></span><div class="lb-buttons"><button id="prev" aria-label="Previous project">←</button><button id="next" aria-label="Next project">→</button><button id="close" aria-label="Close viewer">×</button></div></div>
+    <div class="lb-stage"><img id="lbImage" alt=""></div>
+    <div class="lb-bottom"><span id="lbDescription"></span><span id="lbCount"></span></div>
+  </div>
+</div>
+
+<script>
+/* ==========================================================
+   ADD YOUR FUTURE PROJECTS HERE.
+   1. Upload the image into the assets folder.
+   2. Copy a project entry below and change the details.
+   Categories: graphic, web, shopify
+   ========================================================== */
+const PROJECTS = [
+  {title:"Quevvy Brand Launch",category:"graphic",image:"assets/quevvy-brand-launch.jpg",description:"Brand launch and promotional graphic."},
+  {title:"Dawat-e-Sheraz",category:"graphic",image:"assets/dawat-e-sheraz.jpg",description:"Restaurant promotional design."},
+  {title:"Sunday Biryani",category:"graphic",image:"assets/sunday-biryani.jpg",description:"Food promotion creative."},
+  {title:"Snitch Product Promo",category:"graphic",image:"assets/snitch-product-promo.jpg",description:"Product advertising creative."},
+  {title:"Nawabi Biryani",category:"graphic",image:"assets/nawabi-biryani.jpg",description:"Restaurant campaign artwork."},
+  {title:"RT Brand Campaign",category:"graphic",image:"assets/rt-brand-campaign.jpg",description:"Brand campaign design."},
+  {title:"Desi Oven Campaign",category:"graphic",image:"assets/desi-oven-campaign.jpg",description:"Food brand promotional artwork."},
+  {title:"Sarangi Biryani",category:"graphic",image:"assets/sarangi-biryani.jpg",description:"Restaurant promotional creative."},
+  {title:"Nawa Bistro Menu",category:"graphic",image:"assets/nawa-bistro-menu.jpg",description:"Bistro menu and food design."}
+];
+
+(() => {
+  "use strict";
+  const $ = s => document.querySelector(s);
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const touch = matchMedia("(pointer: coarse)").matches;
+  let currentFilter = "all";
+  let visibleProjects = [];
+  let currentIndex = 0;
+  let lastFocus = null;
+  let chatHistory = [];
+  let isSending = false;
+
+  $("#year").textContent = new Date().getFullYear();
+
+  // Projects and filter controls
+  function renderProjects() {
+    visibleProjects = PROJECTS.filter(p => currentFilter === "all" || p.category === currentFilter);
+    const grid = $("#projects");
+    if (!visibleProjects.length) {
+      grid.innerHTML = '<div class="empty">No projects here yet. Add your next design to the PROJECTS list in this file.</div>';
+      return;
+    }
+    grid.innerHTML = visibleProjects.map((p, i) => `
+      <article class="project">
+        <button class="project-open" type="button" data-open="${i}" aria-label="Open full image: ${escapeHTML(p.title)}">
+          <img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.title)}" loading="lazy" decoding="async">
+          <span class="view-label">View full image ↗</span>
+        </button>
+        <div class="project-info">
+          <small>${p.category === "graphic" ? "Graphic Design" : p.category === "web" ? "Web Design" : "Shopify & E-commerce"}</small>
+          <h3>${escapeHTML(p.title)}</h3>
+          <p>${escapeHTML(p.description || "Selected creative work.")}</p>
+        </div>
+      </article>`).join("");
+
+    grid.querySelectorAll("[data-open]").forEach(btn => {
+      btn.addEventListener("click", () => openViewer(Number(btn.dataset.open), btn));
+    });
+    grid.querySelectorAll("img").forEach(img => img.addEventListener("error", () => {
+      img.alt = "Image missing: check that this image exists in the assets folder.";
+    }, {once:true}));
+  }
+
+  function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, ch => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    })[ch]);
+  }
+
+  $("#filters").addEventListener("click", e => {
+    const btn = e.target.closest("[data-filter]");
+    if (!btn) return;
+    currentFilter = btn.dataset.filter;
+    document.querySelectorAll(".filter").forEach(b => b.classList.toggle("active", b === btn));
+    renderProjects();
+  });
+
+  // Full-size image viewer. object-fit: contain prevents cropping.
+  function openViewer(index, trigger) {
+    if (!visibleProjects.length) return;
+    currentIndex = (index + visibleProjects.length) % visibleProjects.length;
+    lastFocus = trigger || document.activeElement;
+    const p = visibleProjects[currentIndex];
+    $("#lbImage").src = p.image;
+    $("#lbImage").alt = p.title;
+    $("#lbTitle").textContent = p.title;
+    $("#lbDescription").textContent = p.description || "";
+    $("#lbCount").textContent = (currentIndex + 1) + " / " + visibleProjects.length;
+    $("#lightbox").classList.add("open");
+    $("#lightbox").setAttribute("aria-hidden","false");
+    document.body.classList.add("lock");
+    $("#close").focus();
+  }
+  function closeViewer() {
+    $("#lightbox").classList.remove("open");
+    $("#lightbox").setAttribute("aria-hidden","true");
+    $("#lbImage").src = "";
+    document.body.classList.remove("lock");
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function stepViewer(delta) {
+    openViewer((currentIndex + delta + visibleProjects.length) % visibleProjects.length, lastFocus);
+  }
+  $("#close").addEventListener("click", closeViewer);
+  $("#prev").addEventListener("click", () => stepViewer(-1));
+  $("#next").addEventListener("click", () => stepViewer(1));
+  $("#lightbox").addEventListener("click", e => { if (e.target === $("#lightbox")) closeViewer(); });
+  document.addEventListener("keydown", e => {
+    if (!$("#lightbox").classList.contains("open")) return;
+    if (e.key === "Escape") closeViewer();
+    if (e.key === "ArrowRight") stepViewer(1);
+    if (e.key === "ArrowLeft") stepViewer(-1);
+  });
+  renderProjects();
+
+  // Mobile navigation
+  $("#menu").addEventListener("click", () => {
+    const open = $("#navlinks").classList.toggle("open");
+    $("#menu").setAttribute("aria-expanded", String(open));
+    $("#menu").textContent = open ? "×" : "☰";
+  });
+  $("#navlinks").querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    $("#navlinks").classList.remove("open");
+    $("#menu").setAttribute("aria-expanded","false");
+    $("#menu").textContent = "☰";
+  }));
+
+  // Small reveal effects, with reduced-motion support
+  if (!reducedMotion && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    }), {threshold:.10});
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  } else {
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+  }
+
+  // Custom cursor only on a mouse/desktop
+  if (!touch && !reducedMotion) {
+    const dot = $(".cursor"), ring = $(".ring");
+    document.addEventListener("mousemove", e => {
+      dot.style.opacity = ring.style.opacity = "1";
+      dot.style.left = ring.style.left = e.clientX + "px";
+      dot.style.top = ring.style.top = e.clientY + "px";
+    });
+    document.addEventListener("mouseover", e => ring.classList.toggle("hover", !!e.target.closest("a,button,input")));
+    document.addEventListener("mouseleave", () => dot.style.opacity = ring.style.opacity = "0");
+    $("#visual").addEventListener("mousemove", e => {
+      const r = $("#visual").getBoundingClientRect();
+      const x = (e.clientX-r.left)/r.width-.5;
+      const y = (e.clientY-r.top)/r.height-.5;
+      $("#portrait").style.transform = `rotateY(${x*-10-4}deg) rotateX(${y*6}deg)`;
+    });
+    $("#visual").addEventListener("mouseleave", () => $("#portrait").style.transform = "rotateY(-7deg)");
+  }
+
+  // REAL AI chat using Puter.js instead of repeated fixed messages.
+  const systemPrompt = `
+You are Ahsan AI, the helpful and professional portfolio assistant for Muhammad Ahsan.
+Answer naturally and specifically to each message. Do not repeat a fixed fallback or canned reply.
+Use relevant conversation history and answer the user's actual question.
+Portfolio facts:
+- Name: Muhammad Ahsan.
+- Email: mhdxahsan@gmail.com
+- WhatsApp: +92 331 9333080; link https://wa.me/923319333080
+- Services: graphic design, web development, Shopify store design, e-commerce, and exploration of AI agents.
+- The portfolio showcases nine graphic design examples for food brands, restaurant promotions, brand campaigns, and product promotion.
+- Projects can be added by uploading an image to the assets folder and adding a matching entry to the PROJECTS array in index.html.
+- The portfolio's AI chat itself uses an external AI service. Do not claim to be a human.
+Be concise and friendly. Do not invent clients, qualifications, prices, project results, or services that are not stated here.
+If a question is outside the portfolio, answer helpfully when possible and then relate it to Ahsan's work when relevant.
+`;
+
+  function addBubble(text, role, extraClass="") {
+    const div = document.createElement("div");
+    div.className = "bubble " + role + (extraClass ? " " + extraClass : "");
+    div.textContent = text;
+    $("#messages").appendChild(div);
+    $("#messages").scrollTop = $("#messages").scrollHeight;
+    return div;
+  }
+
+  function getResponseText(result) {
+    const content = result?.message?.content ?? result?.text ?? result?.content;
+    if (typeof content === "string") return content;
+    if (Array.isArray(content)) return content.map(part => part.text || "").join("\n").trim();
+    return "";
+  }
+
+  async function askAI(question) {
+    if (isSending) return;
+    isSending = true;
+    $("#sendBtn").disabled = true;
+    $("#chatInput").disabled = true;
+    $("#status").textContent = "● Thinking...";
+    const typing = addBubble("Thinking…", "bot");
+    try {
+      if (!window.puter?.ai?.chat) {
+        throw new Error("The AI library did not load. Check your internet connection and reload the page.");
+      }
+      const messages = [
+        {role:"system",content:systemPrompt},
+        ...chatHistory.slice(-12),
+        {role:"user",content:question}
+      ];
+      const result = await puter.ai.chat(messages, {temperature:0.65, max_tokens:400});
+      const answer = getResponseText(result);
+      typing.remove();
+      if (!answer) throw new Error("The AI returned an empty reply. Please try again.");
+      addBubble(answer, "bot");
+      chatHistory.push({role:"user",content:question},{role:"assistant",content:answer});
+      chatHistory = chatHistory.slice(-12);
+      $("#status").textContent = "● Ready";
+    } catch (error) {
+      typing.remove();
+      addBubble(
+        "I couldn't connect to the AI service this time. Please try again in a moment. If this is your first time using it, the service may ask you to sign in or authorize AI usage. (" + (error?.message || "Connection error") + ")",
+        "bot",
+        "error"
+      );
+      $("#status").textContent = "● Connection issue";
+    } finally {
+      isSending = false;
+      $("#sendBtn").disabled = false;
+      $("#chatInput").disabled = false;
+      $("#chatInput").focus();
+    }
+  }
+
+  $("#chatForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const input = $("#chatInput");
+    const question = input.value.trim();
+    if (!question || isSending) return;
+    addBubble(question, "user");
+    input.value = "";
+    await askAI(question);
+  });
+
+  document.querySelectorAll("[data-question]").forEach(btn => btn.addEventListener("click", async () => {
+    const question = btn.dataset.question;
+    if (isSending) return;
+    addBubble(question, "user");
+    await askAI(question);
+  }));
+})();
+</script>
+</body>
+</html>
