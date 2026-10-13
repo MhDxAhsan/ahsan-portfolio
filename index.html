@@ -1,271 +1,471 @@
 
-/* ===== PREMIUM MOTION UPGRADE ===== */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b090b">
+<title>Muhammad Ahsan — Creative Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b090b;--card:#171115;--red:#ff304f;--white:#fff7f8;--muted:#b1a5aa;--line:#39252c}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;line-height:1.65;overflow-x:hidden}
+body.lock{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:min(1160px,calc(100% - 36px));margin:auto}
+.red{color:var(--red)}
+::selection{background:var(--red);color:white}
 
-:root {
-  --motion-red: #ff304f;
-  --motion-glow: 0 0 45px #ff304f35;
+/* INTRO / LOADING SCREEN */
+#loader{position:fixed;inset:0;background:#090709;z-index:99999;display:grid;place-items:center;transition:opacity .7s,visibility .7s}
+#loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-content{text-align:center}
+.loader-logo{font:700 clamp(3rem,10vw,5rem) "Space Grotesk",sans-serif;letter-spacing:-5px}
+.loader-logo span{color:var(--red);text-shadow:0 0 35px #ff304f80}
+.loader-line{width:190px;height:3px;background:#302027;margin:22px auto;overflow:hidden}
+.loader-line:after{content:"";display:block;width:45%;height:100%;background:var(--red);box-shadow:0 0 14px var(--red);animation:loadline 1.2s ease-in-out infinite alternate}
+.loader-sub{color:var(--muted);font-size:.75rem;letter-spacing:3px;text-transform:uppercase}
+.loader-dot{display:inline-block;animation:dotPulse 1s infinite alternate}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:50;background:#0b090bed;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font:700 1.5rem "Space Grotesk",sans-serif;letter-spacing:-1px}
+.logo span{color:var(--red)}
+.navlinks{display:flex;gap:25px;color:#d2c5ca;font-size:.9rem}
+.navlinks a:hover{color:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;background:var(--red);color:white;border:1px solid var(--red);border-radius:8px;font-weight:700;transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 32px #ff304f42}
+.btn.outline{background:transparent;border-color:#65404a}
+.btn.outline:hover{background:#ff304f13}
+.menu{display:none;background:var(--card);color:white;border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+
+/* HERO */
+.hero{min-height:660px;padding:60px 0 75px;display:grid;grid-template-columns:1.05fr .95fr;gap:35px;align-items:center;position:relative;isolation:isolate}
+.hero:before{content:"";position:absolute;z-index:-1;right:-5%;top:4%;width:440px;height:440px;background:radial-gradient(circle,#ff304f29,transparent 68%);animation:aura 5s ease-in-out infinite alternate;pointer-events:none}
+.hero-copy{animation:enter .9s both}
+.eyebrow{color:#ff8294;font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:2px}
+.pulse{display:inline-block;width:8px;height:8px;margin-right:9px;background:var(--red);border-radius:50%;box-shadow:0 0 15px var(--red);animation:pulse 2s infinite}
+h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.1}
+h1{font-size:clamp(3.3rem,6.5vw,5.8rem);letter-spacing:-3px;margin:23px 0}
+h1 .name{color:var(--red);text-shadow:0 0 35px #ff304f35}
+.lead{max-width:570px;color:var(--muted);font-size:1.05rem;line-height:1.85}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero-note{color:var(--muted);font-size:.82rem;margin-top:28px}
+.hero-note span{color:var(--red)}
+.visual{min-height:455px;position:relative;display:grid;place-items:center;perspective:1000px;animation:enter 1.1s .12s both}
+.orbit{position:absolute;width:min(395px,98%);aspect-ratio:1;border:1px solid #ff304f75;border-radius:50%;animation:spin 16s linear infinite;box-shadow:inset 0 0 30px #ff304f0c}
+.orbit:before,.orbit:after{content:"";position:absolute;width:12px;height:12px;background:var(--red);border-radius:50%;box-shadow:0 0 22px var(--red)}
+.orbit:before{left:14%;top:12%}
+.orbit:after{right:2%;bottom:23%;width:8px;height:8px}
+.orbit.inner{width:min(300px,75%);border-style:dashed;animation-duration:23s;animation-direction:reverse}
+.portrait{position:relative;z-index:2;width:min(315px,76%);aspect-ratio:4/5;overflow:hidden;border:1px solid #ff304f9c;border-radius:23px;background:#380b18;box-shadow:0 0 65px #ff304f24,0 25px 60px #0008;transform:rotateY(-7deg);animation:portraitFloat 5s ease-in-out infinite;transition:transform .25s}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.portrait:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#130309ed,transparent 45%)}
+.portrait-label{position:absolute;z-index:3;bottom:17px;left:17px}
+.portrait-label strong{font:600 1.1rem "Space Grotesk",sans-serif}
+.portrait-label small{display:block;color:#e2c6cd}
+.floating{position:absolute;z-index:4;padding:10px 13px;background:#1b1116;border:1px solid #67303c;border-radius:8px;font-size:.8rem;font-weight:700;box-shadow:0 0 30px #ff304f19;animation:badgeFloat 3.5s ease-in-out infinite}
+.floating.one{top:18%;left:0}
+.floating.two{right:0;bottom:14%;animation-delay:-1.7s}
+
+/* SECTIONS */
+section{padding:82px 0}
+.kicker{color:var(--red);font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:2px}
+.section-head{margin-bottom:30px}
+.section-head h2,.about h2,.contact h2{font-size:clamp(2.3rem,5vw,3.6rem);letter-spacing:-1.5px;margin:12px 0}
+.section-head p,.about p,.contact p{max-width:650px;color:var(--muted)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:none}
+
+/* SERVICES */
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.service{padding:23px 18px;min-height:205px;background:linear-gradient(145deg,#1b1418,#100d10);border:1px solid var(--line);border-radius:13px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.service:hover{transform:translateY(-6px);border-color:#a52b44;box-shadow:0 0 30px #ff304f18}
+.service-icon{width:46px;height:46px;border:1px solid #6b2938;border-radius:10px;display:grid;place-items:center;color:var(--red);font-size:1.5rem}
+.service h3{font-size:1.08rem;margin:17px 0 8px}
+.service p{font-size:.86rem;color:var(--muted);margin:0}
+
+/* PROJECT GALLERY */
+.work{background:linear-gradient(#100b0e,#0d090c);border-block:1px solid #2e1920}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}
+.filter{background:#171014;color:#c8b9bf;border:1px solid #492832;border-radius:7px;padding:9px 13px;font-size:.82rem}
+.filter.active,.filter:hover{background:var(--red);border-color:var(--red);color:white}
+.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}
+.project{min-width:0;border:1px solid var(--line);background:var(--card);border-radius:12px;overflow:hidden;transform-style:preserve-3d;transition:transform .23s,border-color .25s,box-shadow .25s;animation:cardEnter .45s both}
+.project:nth-child(2){animation-delay:.07s}
+.project:nth-child(3){animation-delay:.14s}
+.project:hover{transform:perspective(900px) rotateX(var(--ty,0deg)) rotateY(var(--tx,0deg)) translateY(-6px);border-color:var(--red);box-shadow:0 16px 40px #0007,0 0 25px #ff304f15}
+.project-open{width:100%;height:285px;padding:12px;position:relative;display:flex;align-items:center;justify-content:center;background:#100b0e;border:0;overflow:hidden}
+.project-open img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;transition:transform .4s}
+.project:hover .project-open img{transform:scale(1.035)}
+.view-label{position:absolute;right:9px;bottom:9px;background:var(--red);padding:6px 9px;border-radius:5px;font-size:.72rem;font-weight:700}
+.project-info{padding:15px 16px 18px}
+.project-info small{color:#ff8294;font-size:.68rem;letter-spacing:1.2px;text-transform:uppercase;font-weight:700}
+.project-info h3{font-size:1.08rem;margin:7px 0}
+.project-info p{font-size:.83rem;color:var(--muted);margin:0}
+.empty{grid-column:1/-1;color:var(--muted);padding:20px;border:1px dashed #6b2938;border-radius:10px}
+.more-wrap{display:flex;justify-content:center;margin-top:30px}
+#showMore{min-width:205px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center}
+.about-art{position:relative;min-height:300px;display:grid;place-items:center;overflow:hidden;border:1px solid #52212d;border-radius:16px;background:radial-gradient(circle,#451421,#160c11 68%)}
+.about-art:before,.about-art:after{content:"";position:absolute;width:220px;height:220px;border:1px solid #ff304f55;border-radius:50%}
+.about-art:after{width:160px;height:160px;border-style:dashed;animation:spin 32s linear infinite}
+.monogram{z-index:2;color:var(--red);font:700 7rem "Space Grotesk",sans-serif;letter-spacing:-10px;text-shadow:0 0 35px #ff304f55}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.pills span{background:#171014;border:1px solid #492832;border-radius:5px;padding:7px 10px;font-size:.78rem}
+
+/* CONTACT */
+.contact-card{padding:clamp(25px,5vw,45px);border:1px solid #5a2633;border-radius:15px;background:radial-gradient(ellipse at 100% 0%,#41111e,#1a0e13 53%,#100b0e);display:flex;align-items:center;justify-content:space-between;gap:25px}
+.contact-actions{display:grid;gap:10px;min-width:200px}
+footer{padding:27px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem}
+.footer-row{display:flex;justify-content:space-between;align-items:center;gap:17px;flex-wrap:wrap}
+.footer-links{display:flex;gap:16px}
+.footer-links a:hover{color:var(--red)}
+
+/* FULL SIZE IMAGE VIEWER */
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;padding:14px;background:#050305f5;backdrop-filter:blur(12px);align-items:center;justify-content:center}
+.lightbox.open{display:flex;animation:fade .2s}
+.lb-inner{width:min(1200px,100%);height:95dvh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:10px}
+.lb-top,.lb-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;color:white}
+.lb-buttons{display:flex;gap:7px}
+.lb-buttons button{width:39px;height:39px;border:1px solid #61404a;background:#1c1116;color:white;border-radius:8px;font-size:1.1rem}
+.lb-stage{min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.lb-stage img{max-width:100%;max-height:100%;height:auto;width:auto;object-fit:contain}
+.lb-bottom{font-size:.76rem;color:#bfaeb5}
+
+/* CUSTOM CURSOR + ANIMATIONS */
+.cursor,.cursor-ring{position:fixed;top:0;left:0;z-index:9998;pointer-events:none;border-radius:50%;opacity:0;transform:translate(-50%,-50%)}
+.cursor{width:7px;height:7px;background:var(--red)}
+.cursor-ring{width:32px;height:32px;border:1px solid var(--red);transition:width .2s,height .2s}
+.cursor-ring.hover{width:48px;height:48px;background:#ff304f13}
+body:after{content:"";position:fixed;top:0;left:0;height:3px;width:var(--scroll,0%);background:var(--red);box-shadow:0 0 12px var(--red);z-index:9997;pointer-events:none}
+
+@keyframes loadline{from{transform:translateX(-120%)}to{transform:translateX(240%)}}
+@keyframes dotPulse{from{opacity:.35}to{opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes aura{from{opacity:.45;transform:scale(.9)}to{opacity:1;transform:scale(1.12)}}
+@keyframes pulse{50%{box-shadow:0 0 0 7px #ff304f13,0 0 18px var(--red)}}
+@keyframes enter{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@keyframes portraitFloat{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes badgeFloat{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes cardEnter{from{opacity:0;translate:0 12px}to{opacity:1;translate:0 0}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+@media(max-width:900px){
+ .hero{gap:15px}
+ .services{grid-template-columns:repeat(2,1fr)}
+ .projects{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-
-/* Animated ambient background */
-.hero {
-  position: relative;
-  isolation: isolate;
+@media(max-width:620px){
+ .wrap{width:calc(100% - 28px)}
+ nav{height:65px}
+ .navlinks{display:none;position:absolute;top:65px;left:14px;right:14px;background:#171014;border:1px solid var(--line);border-radius:10px;padding:8px;flex-direction:column;gap:0}
+ .navlinks.open{display:flex}
+ .navlinks a{padding:12px}
+ .menu{display:block}
+ nav>.btn{padding:9px 11px;font-size:.8rem}
+ .hero{grid-template-columns:1fr;padding:34px 0 48px;gap:10px}
+ .visual{grid-row:1;min-height:350px}
+ .portrait{width:min(255px,73%)}
+ .orbit{width:min(335px,98%)}
+ .orbit.inner{width:min(250px,74%)}
+ .floating{font-size:.7rem;padding:8px 10px}
+ .floating.one{left:0}
+ .floating.two{right:0}
+ h1{font-size:clamp(3rem,13vw,4.4rem)}
+ section{padding:58px 0}
+ .services{gap:10px}
+ .service{padding:16px 13px;min-height:190px}
+ .projects{grid-template-columns:1fr;gap:14px}
+ .project-open{height:300px}
+ .about-grid{grid-template-columns:1fr;gap:24px}
+ .about-art{min-height:230px;order:2}
+ .contact-card{align-items:stretch;flex-direction:column}
+ .contact-actions{width:100%}
+ .footer-row{align-items:flex-start;flex-direction:column}
 }
-
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  right: 0;
-  top: 8%;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(
-    circle,
-    #ff304f25 0%,
-    #a8102e12 38%,
-    transparent 70%
-  );
-  filter: blur(20px);
-  animation: auraPulse 5s ease-in-out infinite alternate;
+@media(hover:none),(pointer:coarse){
+ .cursor,.cursor-ring{display:none}
+ .project:hover{transform:none}
 }
-
-/* Stronger 3D orbit */
-.visual {
-  transform-style: preserve-3d;
-  animation: heroArrive 1.1s cubic-bezier(.2,.8,.2,1) both;
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+ .reveal{opacity:1;transform:none}
 }
+</style>
+</head>
+<body>
+<div id="loader" aria-label="Loading portfolio">
+  <div class="loader-content">
+    <div class="loader-logo">AH<span>.</span></div>
+    <div class="loader-line"></div>
+    <div class="loader-sub">Loading experience <span class="loader-dot">●</span></div>
+  </div>
+</div>
+<div class="cursor"></div><div class="cursor-ring"></div>
 
-.visual .orbit {
-  border-color: #ff304f70;
-  box-shadow: inset 0 0 32px #ff304f0b;
-  animation: orbitalSpin 14s linear infinite;
-}
+<header>
+<nav class="wrap">
+  <a class="logo" href="#home">AHSAN<span>.</span></a>
+  <div class="navlinks" id="navlinks">
+    <a href="#services">Services</a>
+    <a href="#work">My Projects</a>
+    <a href="#about">About</a>
+  </div>
+  <a class="btn" href="#contact">Let's Talk ↗</a>
+  <button class="menu" id="menu" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+</nav>
+</header>
 
-.visual .orbit.inner {
-  animation-duration: 19s;
-  animation-direction: reverse;
-}
+<main>
+<section class="wrap hero" id="home">
+ <div class="hero-copy">
+  <div class="eyebrow"><span class="pulse"></span> Creative Designer & Developer</div>
+  <h1>Hi, I'm<br><span class="name">Muhammad</span><br>Ahsan<span class="red">.</span></h1>
+  <p class="lead">I turn bold ideas into memorable designs, modern websites, and professional online stores. Creative thinking, thoughtful details, and experiences built for every screen.</p>
+  <div class="actions">
+   <a class="btn" href="#work">Explore My Work ↘</a>
+   <a class="btn outline" href="mailto:mhdxahsan@gmail.com">Email Me ↗</a>
+  </div>
+  <p class="hero-note"><span>✦</span> Graphic Design · Web Development · Shopify · E-commerce</p>
+ </div>
+ <div class="visual" id="visual">
+  <div class="orbit"></div><div class="orbit inner"></div>
+  <div class="portrait" id="portrait">
+   <img src="assets/Porfolio Picture(4).jpg" alt="Muhammad Ahsan" fetchpriority="high">
+   <div class="portrait-label"><strong>Muhammad Ahsan</strong><small>Designer. Developer. Creator.</small></div>
+  </div>
+  <div class="floating one">✦ Bold Visual Design</div>
+  <div class="floating two">↗ Built for Every Screen</div>
+ </div>
+</section>
 
-.visual .portrait {
-  transform-style: preserve-3d;
-  will-change: transform;
-  animation: portraitHover 4.5s ease-in-out infinite;
-  box-shadow:
-    0 0 30px #ff304f20,
-    0 0 80px #ff304f13,
-    0 25px 60px #0009;
-}
+<section id="services">
+<div class="wrap">
+ <div class="section-head reveal"><span class="kicker">What I Do</span><h2>Creative work.<br><span class="red">Digital impact.</span></h2><p>Design, development, and e-commerce solutions for ambitious ideas.</p></div>
+ <div class="services">
+  <article class="service reveal"><div class="service-icon">✳</div><h3>Graphic Design</h3><p>Promotional graphics, social media posts, advertisements, and brand visuals.</p></article>
+  <article class="service reveal"><div class="service-icon">⌘</div><h3>Web Development</h3><p>Responsive websites, polished interfaces, smooth interactions, and custom experiences.</p></article>
+  <article class="service reveal"><div class="service-icon">▣</div><h3>Shopify & E-commerce</h3><p>Product-focused storefronts designed for clarity, trust, and easier shopping.</p></article>
+  <article class="service reveal"><div class="service-icon">✧</div><h3>Creative Solutions</h3><p>Visual concepts and digital experiences tailored to each project.</p></article>
+ </div>
+</div>
+</section>
 
-.portrait img {
-  transition: filter .4s;
-}
+<section class="work" id="work">
+<div class="wrap">
+ <div class="section-head reveal"><span class="kicker">Selected Projects</span><h2>My <span class="red">Portfolio.</span></h2><p>Three projects appear first. Click Show More to reveal the next three. Open any image to view the complete artwork without cropping.</p></div>
+ <div class="filters reveal" id="filters">
+  <button class="filter active" data-filter="all">All Projects</button>
+  <button class="filter" data-filter="graphic">Graphic Design</button>
+  <button class="filter" data-filter="web">Web Design</button>
+  <button class="filter" data-filter="shopify">Shopify & E-commerce</button>
+ </div>
+ <div class="projects" id="projects"></div>
+ <div class="more-wrap"><button class="btn outline" id="showMore" type="button">Show More Projects ↓</button></div>
+</div>
+</section>
 
-.portrait:hover img {
-  filter: saturate(1.12) contrast(1.04);
-}
+<section id="about">
+<div class="wrap about-grid">
+ <div class="about-art reveal"><span class="monogram">MA.</span></div>
+ <div class="about reveal"><span class="kicker">A Little About Me</span><h2>Making ideas<br><span class="red">stand out.</span></h2>
+  <p>I'm Muhammad Ahsan, a digital creator focused on graphic design, web development, Shopify store design, and e-commerce. I enjoy bringing creative ideas to life with attention to detail and a modern visual style.</p>
+  <p>This portfolio is made to grow: upload a new image and add one small entry in the project list near the bottom of this file.</p>
+  <div class="pills"><span>Graphic Design</span><span>Web Development</span><span>Shopify</span><span>E-commerce</span><span>JavaScript</span></div>
+ </div>
+</div>
+</section>
 
-.floating {
-  animation: badgeFloat 3s ease-in-out infinite;
-}
+<section id="contact">
+<div class="wrap">
+ <div class="contact-card reveal"><div class="contact"><span class="kicker">Have a Project?</span><h2>Let's create<br><span class="red">something great.</span></h2><p>Need graphics, a website, or an e-commerce store? Send your idea and let's discuss it.</p></div>
+  <div class="contact-actions"><a class="btn" href="mailto:mhdxahsan@gmail.com?subject=Project%20Enquiry">✉ Email Ahsan</a><a class="btn outline" href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">☏ WhatsApp Me</a></div>
+ </div>
+</div>
+</section>
+</main>
 
-.floating.two {
-  animation-delay: -1.5s;
-}
+<footer><div class="wrap footer-row"><a class="logo" href="#home">AHSAN<span>.</span></a><span>© <span id="year"></span> Muhammad Ahsan. Built with creativity.</span><div class="footer-links"><a href="#work">Projects</a><a href="mailto:mhdxahsan@gmail.com">Email</a><a href="https://wa.me/923319333080" target="_blank" rel="noopener">WhatsApp</a></div></div></footer>
 
-/* Glowing buttons */
-.btn {
-  position: relative;
-  overflow: hidden;
-}
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Project image viewer">
+ <div class="lb-inner"><div class="lb-top"><strong id="lbTitle"></strong><div class="lb-buttons"><button id="prev" aria-label="Previous image">←</button><button id="next" aria-label="Next image">→</button><button id="close" aria-label="Close viewer">×</button></div></div>
+  <div class="lb-stage"><img id="lbImage" alt=""></div><div class="lb-bottom"><span id="lbDescription"></span><span id="lbCount"></span></div>
+ </div>
+</div>
 
-.btn::after {
-  content: "";
-  position: absolute;
-  left: -120%;
-  top: 0;
-  width: 65%;
-  height: 100%;
-  background: linear-gradient(
-    100deg,
-    transparent,
-    #ffffff40,
-    transparent
-  );
-  transform: skewX(-20deg);
-  transition: left .6s ease;
-  pointer-events: none;
-}
+<script>
+/*
+ADD A PROJECT:
+1. Upload its image into assets/.
+2. Copy one project entry and change the title, category, filename and description.
+3. Categories: graphic, web, shopify.
+*/
+const PROJECTS = [
+ {title:"Graphic Design 01",category:"graphic",image:"assets/design1(2).jpeg",description:"Selected graphic design project."},
+ {title:"Graphic Design 02",category:"graphic",image:"assets/design2(3).jpeg",description:"Selected graphic design project."},
+ {title:"Graphic Design 03",category:"graphic",image:"assets/design3(3).jpeg",description:"Selected graphic design project."},
+ {title:"Graphic Design 04",category:"graphic",image:"assets/image 1(3).jpeg",description:"Selected graphic design project."},
+ {title:"Graphic Design 05",category:"graphic",image:"assets/image 2(3).jpeg",description:"Selected graphic design project."},
+ {title:"Graphic Design 06",category:"graphic",image:"assets/image 5(2).jpeg",description:"Selected graphic design project."},
+ {title:"Graphic Design 07",category:"graphic",image:"assets/image 7(3).jpeg",description:"Selected graphic design project."},
+ {title:"Graphic Design 08",category:"graphic",image:"assets/image 8(3).jpeg",description:"Selected graphic design project."},
+ {title:"Graphic Design 09",category:"graphic",image:"assets/image 9(3).jpeg",description:"Selected graphic design project."},
+ {title:"Graphic Design 10",category:"graphic",image:"assets/image 10(3).jpeg",description:"Selected graphic design project."},
+ {title:"Graphic Design 11",category:"graphic",image:"assets/image 12(3).jpeg",description:"Selected graphic design project."},
+ {title:"Graphic Design 12",category:"graphic",image:"assets/image(2).jpeg",description:"Selected graphic design project."}
+];
 
-.btn:hover::after {
-  left: 150%;
-}
+(() => {
+ const $=s=>document.querySelector(s);
+ const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ const coarse=matchMedia("(pointer: coarse)").matches;
+ let filter="all",visible=[],shown=3,current=0,focusBack=null;
 
-/* Three-dimensional project cards */
-.project {
-  transform-style: preserve-3d;
-  will-change: transform;
-  transition:
-    transform .22s ease,
-    border-color .25s,
-    box-shadow .25s;
-}
+ $("#year").textContent=new Date().getFullYear();
 
-.project:hover {
-  transform:
-    perspective(900px)
-    rotateX(var(--tilt-y, 0deg))
-    rotateY(var(--tilt-x, 0deg))
-    translateY(-7px);
-  border-color: var(--motion-red);
-  box-shadow:
-    0 18px 45px #0006,
-    0 0 28px #ff304f18;
-}
+ // Loading screen fades away even if the network is slow.
+ let loaderHidden=false;
+ function hideLoader(){
+  if(loaderHidden)return;
+  loaderHidden=true;
+  $("#loader").classList.add("hide");
+  document.body.classList.add("ready");
+ }
+ window.addEventListener("load",()=>setTimeout(hideLoader,800),{once:true});
+ setTimeout(hideLoader,2400);
 
-.project-open img {
-  transition: transform .5s cubic-bezier(.2,.8,.2,1);
-}
+ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
-.project:hover .project-open img {
-  transform: scale(1.045);
-}
-
-.project-info {
-  position: relative;
-  transform: translateZ(8px);
-}
-
-/* Cards enter smoothly */
-.project {
-  animation: projectAppear .5s both;
-}
-
-.project:nth-child(2) { animation-delay: .07s; }
-.project:nth-child(3) { animation-delay: .14s; }
-
-/* Scroll indicator at the very top */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: var(--page-progress, 0%);
-  background: var(--motion-red);
-  box-shadow: 0 0 12px var(--motion-red);
-  z-index: 99999;
-  pointer-events: none;
-}
-
-/* Custom desktop cursor */
-.motion-cursor,
-.motion-cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-}
-
-.motion-cursor {
-  width: 7px;
-  height: 7px;
-  background: var(--motion-red);
-}
-
-.motion-cursor-ring {
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--motion-red);
-  box-shadow: 0 0 16px #ff304f25;
-  transition:
-    width .2s,
-    height .2s,
-    background .2s;
-}
-
-.motion-cursor-ring.hovering {
-  width: 48px;
-  height: 48px;
-  background: #ff304f15;
-}
-
-.motion-cursor.visible,
-.motion-cursor-ring.visible {
-  opacity: 1;
-}
-
-@keyframes orbitalSpin {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes auraPulse {
-  from {
-    opacity: .45;
-    transform: scale(.9);
+ function render(){
+  visible=PROJECTS.filter(p=>filter==="all"||p.category===filter);
+  const grid=$("#projects"),more=$("#showMore");
+  if(!visible.length){
+   grid.innerHTML='<div class="empty">No projects in this category yet. Add one to the PROJECTS list.</div>';
+   more.style.display="none";
+   return;
   }
-  to {
-    opacity: 1;
-    transform: scale(1.12);
-  }
-}
+  grid.innerHTML=visible.slice(0,shown).map((p,i)=>`
+   <article class="project">
+    <button class="project-open" data-open="${i}" aria-label="View full image: ${esc(p.title)}">
+     <img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy" decoding="async">
+     <span class="view-label">View Full Image ↗</span>
+    </button>
+    <div class="project-info"><small>${p.category==="graphic"?"Graphic Design":p.category==="web"?"Web Design":"Shopify & E-commerce"}</small><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p></div>
+   </article>`).join("");
 
-@keyframes portraitHover {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -10px; }
-}
+  grid.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>openViewer(+b.dataset.open,b)));
+  grid.querySelectorAll("img").forEach(img=>img.addEventListener("error",()=>{img.style.opacity=".2";img.alt="Image not found — check the filename in assets/";},{once:true}));
 
-@keyframes badgeFloat {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -9px; }
-}
+  more.style.display=visible.length>3?"inline-flex":"none";
+  more.textContent=shown>=visible.length?"Show Less ↑":"Show More Projects ↓";
+ }
 
-@keyframes heroArrive {
-  from {
-    opacity: 0;
-    transform: translateY(25px) scale(.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
+ $("#showMore").addEventListener("click",()=>{
+  if(shown>=visible.length){shown=3;render();$("#work").scrollIntoView({behavior:"smooth"});}
+  else{shown=Math.min(shown+3,visible.length);render();}
+ });
 
-@keyframes projectAppear {
-  from {
-    opacity: 0;
-    translate: 0 14px;
-  }
-  to {
-    opacity: 1;
-    translate: 0 0;
-  }
-}
+ $("#filters").addEventListener("click",e=>{
+  const b=e.target.closest("[data-filter]");
+  if(!b)return;
+  filter=b.dataset.filter;shown=3;
+  document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));
+  render();
+ });
 
-@media (hover: none), (pointer: coarse) {
-  .motion-cursor,
-  .motion-cursor-ring {
-    display: none;
-  }
+ function openViewer(i,trigger){
+  if(!visible.length)return;
+  current=(i+visible.length)%visible.length;
+  focusBack=trigger||document.activeElement;
+  const p=visible[current];
+  $("#lbImage").src=p.image;$("#lbImage").alt=p.title;
+  $("#lbTitle").textContent=p.title;
+  $("#lbDescription").textContent=p.description;
+  $("#lbCount").textContent=(current+1)+" / "+visible.length;
+  $("#lightbox").classList.add("open");
+  $("#lightbox").setAttribute("aria-hidden","false");
+  document.body.classList.add("lock");$("#close").focus();
+ }
+ function closeViewer(){
+  $("#lightbox").classList.remove("open");$("#lightbox").setAttribute("aria-hidden","true");
+  $("#lbImage").src="";document.body.classList.remove("lock");
+  if(focusBack&&focusBack.focus)focusBack.focus();
+ }
+ function step(n){openViewer(current+n,focusBack);}
+ $("#close").addEventListener("click",closeViewer);
+ $("#prev").addEventListener("click",()=>step(-1));
+ $("#next").addEventListener("click",()=>step(1));
+ $("#lightbox").addEventListener("click",e=>{if(e.target===$("#lightbox"))closeViewer();});
+ document.addEventListener("keydown",e=>{
+  if(!$("#lightbox").classList.contains("open"))return;
+  if(e.key==="Escape")closeViewer();
+  if(e.key==="ArrowLeft")step(-1);
+  if(e.key==="ArrowRight")step(1);
+ });
 
-  .project:hover {
-    transform: none;
-  }
-}
+ $("#menu").addEventListener("click",()=>{
+  const open=$("#navlinks").classList.toggle("open");
+  $("#menu").setAttribute("aria-expanded",String(open));
+  $("#menu").textContent=open?"×":"☰";
+ });
+ $("#navlinks").querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+  $("#navlinks").classList.remove("open");$("#menu").setAttribute("aria-expanded","false");$("#menu").textContent="☰";
+ }));
 
-@media (max-width: 620px) {
-  .hero::before {
-    width: 290px;
-    height: 290px;
-    right: -60px;
-  }
+ // Reveal sections as they enter view.
+ if(!reduced&&"IntersectionObserver"in window){
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{
+   if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target);}
+  }),{threshold:.1});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+ }else document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible"));
 
-  .visual .portrait {
-    animation-duration: 5.5s;
-  }
-}
+ // Scroll progress and smooth desktop cursor.
+ function progress(){
+  const max=document.documentElement.scrollHeight-innerHeight;
+  document.documentElement.style.setProperty("--scroll",(max>0?scrollY/max*100:0)+"%");
+ }
+ addEventListener("scroll",progress,{passive:true});progress();
+
+ if(!coarse){
+  const dot=$(".cursor"),ring=$(".cursor-ring");
+  addEventListener("mousemove",e=>{
+   dot.style.opacity=ring.style.opacity="1";
+   dot.style.left=ring.style.left=e.clientX+"px";
+   dot.style.top=ring.style.top=e.clientY+"px";
+  },{passive:true});
+  document.addEventListener("mouseover",e=>ring.classList.toggle("hover",!!e.target.closest("a,button")));
+  document.addEventListener("mouseleave",()=>dot.style.opacity=ring.style.opacity="0");
+ }
+ if(!coarse&&!reduced){
+  $("#visual").addEventListener("mousemove",e=>{
+   const r=$("#visual").getBoundingClientRect();
+   const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+   $("#portrait").style.transform=`rotateY(${x*-10-4}deg) rotateX(${y*6}deg)`;
+  });
+  $("#visual").addEventListener("mouseleave",()=>$("#portrait").style.transform="rotateY(-7deg)");
+  document.addEventListener("mousemove",e=>{
+   const card=e.target.closest(".project");
+   if(!card)return;
+   const r=card.getBoundingClientRect();
+   card.style.setProperty("--tx",(((e.clientX-r.left)/r.width-.5)*7)+"deg");
+   card.style.setProperty("--ty",((.5-(e.clientY-r.top)/r.height)*7)+"deg");
+  },{passive:true});
+  document.addEventListener("mouseover",e=>{
+   if(!e.target.closest(".project"))return;
+   document.querySelectorAll(".project").forEach(c=>{if(c!==e.target.closest(".project")){c.style.setProperty("--tx","0deg");c.style.setProperty("--ty","0deg");}});
+  });
+ }
+ render();
+})();
+</script>
+</body>
+</html>
