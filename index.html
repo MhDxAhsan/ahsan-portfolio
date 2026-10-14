@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -244,6 +243,37 @@ button.project-card { cursor: pointer; }
   background: radial-gradient(circle, #ff263f24, #111116 70%);
   pointer-events: none;
 }
+
+/* Hide placeholder when the project image is available. */
+.project-thumb img:not([hidden]) ~ .project-fallback {
+  display: none;
+}
+
+/* GRAPHIC DESIGN GALLERY */
+.modal-gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: 12px;
+  padding: 14px;
+}
+.modal-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #17171d;
+}
+@media (max-width: 560px) {
+  .modal-gallery {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+}
+
 .project-fallback .symbol { color: var(--red); font-size: 42px; }
 .project-fallback h3 { font-size: 19px; }
 .project-fallback small { color: #aaa; font-size: 11px; }
@@ -307,8 +337,7 @@ footer {
   color: #888; font-size: 12px;
 }
 
-/* SCROLL REVEALS
-   Elements are visible by default. JS adds the animation class only after setup. */
+/* SCROLL REVEALS */
 .reveal { opacity: 1; transform: none; }
 .js-motion .reveal {
   opacity: 0; transform: translateY(24px);
@@ -612,7 +641,7 @@ footer {
         <button class="project-card reveal" type="button"
           data-title="Graphic Design"
           data-category="01 / Graphic Design"
-          data-description="My graphic design collection can include brand visuals, promotional graphics, social media designs and marketing artwork. Replace the preview image with your real work."
+          data-description="My graphic design collection includes brand visuals, promotional graphics, social media designs and marketing artwork."
           data-image="image%201.jpeg">
           <div class="project-thumb">
             <img src="image%201.jpeg" alt="Graphic design preview" onerror="this.hidden=true">
@@ -634,7 +663,7 @@ footer {
         <button class="project-card reveal" type="button"
           data-title="Web Development"
           data-category="02 / Web Development"
-          data-description="Responsive websites, landing pages and interactive interfaces built with HTML, CSS and JavaScript. Add screenshots or project links as your work grows."
+          data-description="Responsive websites, landing pages and interactive interfaces built with HTML, CSS and JavaScript."
           data-image="projects/web-development.jpg">
           <div class="project-thumb">
             <img src="projects/web-development.jpg" alt="Website preview" onerror="this.hidden=true">
@@ -656,7 +685,7 @@ footer {
         <button class="project-card reveal" type="button"
           data-title="Shopify Store Design"
           data-category="03 / E-commerce"
-          data-description="Shopify storefronts, product pages and e-commerce layouts designed to present products clearly. Add your store screenshot or published store link."
+          data-description="Shopify storefronts, product pages and e-commerce layouts designed to present products clearly."
           data-image="projects/shopify-store.jpg">
           <div class="project-thumb">
             <img src="projects/shopify-store.jpg" alt="Shopify store preview" onerror="this.hidden=true">
@@ -675,7 +704,6 @@ footer {
           </div>
         </button>
 
-        <!-- Other Projects is intentionally NOT clickable -->
         <div class="project-card coming-soon reveal" aria-label="Other projects coming soon">
           <div class="project-thumb">
             <div class="project-fallback">
@@ -692,12 +720,6 @@ footer {
           </div>
         </div>
       </div>
-
-      <p style="margin-top:20px;color:#888;font-size:12px;line-height:1.8">
-        Create a folder named <strong>projects</strong> and upload
-        <strong>graphic-design.jpg</strong>, <strong>web-development.jpg</strong>
-        and <strong>shopify-store.jpg</strong> inside it to display your images.
-      </p>
     </div>
   </section>
 
@@ -836,7 +858,7 @@ footer {
   </div>
 </div>
 
-<!-- PORTFOLIO CHAT ASSISTANT: no visitor login required -->
+<!-- PORTFOLIO CHAT ASSISTANT -->
 <button class="ai-launcher" id="aiLauncher" type="button"
         aria-label="Open Ahsan's portfolio assistant" aria-expanded="false">
   <span>✦</span><small>AI</small>
@@ -875,20 +897,23 @@ footer {
 <script>
 (function () {
   const loader = document.getElementById("loader");
+
   function hideLoader() {
     if (loader) loader.classList.add("hide");
   }
+
   window.addEventListener("load", hideLoader);
   setTimeout(hideLoader, 1800);
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  /* Scroll animations: content remains visible if observer setup fails. */
+  /* Scroll animations */
   const revealItems = document.querySelectorAll(".reveal");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if ("IntersectionObserver" in window && !reducedMotion) {
     document.body.classList.add("js-motion");
+
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -928,8 +953,41 @@ footer {
     const imagePath = card.dataset.image;
     const thumbnail = card.querySelector(".project-thumb img");
 
-    if (imagePath && thumbnail && !thumbnail.hidden &&
-        thumbnail.complete && thumbnail.naturalWidth > 0) {
+    if (card.dataset.title === "Graphic Design") {
+      const gallery = document.createElement("div");
+      gallery.className = "modal-gallery";
+
+      const imageFiles = [
+        "image%201.jpeg",
+        "image%202.jpeg",
+        "image%203.jpeg",
+        "image%204.jpeg",
+        "image%205.jpeg",
+        "image%206.jpeg",
+        "image%207.jpeg",
+        "image%208.jpeg",
+        "image%209.jpeg",
+        "image%2010.jpeg",
+        "image%2012.jpeg",
+        "image%2013.jpeg"
+      ];
+
+      imageFiles.forEach(function (src, index) {
+        const image = document.createElement("img");
+        image.src = src;
+        image.alt = "Graphic Design work " + (index + 1);
+        image.loading = "lazy";
+        gallery.appendChild(image);
+      });
+
+      modalVisual.appendChild(gallery);
+    } else if (
+      imagePath &&
+      thumbnail &&
+      !thumbnail.hidden &&
+      thumbnail.complete &&
+      thumbnail.naturalWidth > 0
+    ) {
       const image = document.createElement("img");
       image.src = imagePath;
       image.alt = (card.dataset.title || "Project") + " preview";
@@ -937,8 +995,10 @@ footer {
     } else {
       const fallback = document.createElement("p");
       fallback.className = "modal-fallback";
-      fallback.textContent = "Add your project image at " +
-        (imagePath || "the configured image path") + " to display it here.";
+      fallback.textContent =
+        "Add your project image at " +
+        (imagePath || "the configured image path") +
+        " to display it here.";
       modalVisual.appendChild(fallback);
     }
 
@@ -971,11 +1031,12 @@ footer {
 
   closeButton.addEventListener("click", closeProject);
   document.getElementById("modalDone").addEventListener("click", closeProject);
+
   modal.addEventListener("click", function (event) {
     if (event.target === modal) closeProject();
   });
 
-  /* Chat assistant: preset answers, no account or login needed. */
+  /* Portfolio assistant */
   const launcher = document.getElementById("aiLauncher");
   const chat = document.getElementById("chatPanel");
   const chatClose = document.getElementById("chatClose");
@@ -987,12 +1048,18 @@ footer {
     chat.classList.toggle("open", open);
     chat.setAttribute("aria-hidden", String(!open));
     launcher.setAttribute("aria-expanded", String(open));
-    if (open) setTimeout(function () { chatInput.focus(); }, 50);
+
+    if (open) {
+      setTimeout(function () {
+        chatInput.focus();
+      }, 50);
+    }
   }
 
   launcher.addEventListener("click", function () {
     toggleChat(!chat.classList.contains("open"));
   });
+
   chatClose.addEventListener("click", function () {
     toggleChat(false);
   });
@@ -1011,27 +1078,35 @@ footer {
     if (/hello|hi\b|hey|salam|assalam/.test(q)) {
       return "Hello! 👋 Welcome to Muhammad Ahsan's portfolio. Ask me about his services, skills, projects or contact details.";
     }
+
     if (/contact|email|mail|whatsapp|phone|number|reach|hire|connect/.test(q)) {
       return "You can contact Muhammad Ahsan at mhdxahsan@gmail.com or on WhatsApp at +92 331 9333080.\nEmail: mailto:mhdxahsan@gmail.com\nWhatsApp: https://wa.me/923319333080";
     }
+
     if (/service|offer|provide|what.*do/.test(q)) {
       return "Ahsan's services include graphic design, responsive web development, and Shopify store/e-commerce design. Use the Contact section to discuss your requirements.";
     }
+
     if (/project|portfolio|work|show|designs|website/.test(q)) {
-      return "The portfolio showcases Graphic Design, Web Development and Shopify Store Design. The Other Projects card says Coming Soon. Project preview images can be added in the projects folder.";
+      return "The portfolio showcases Graphic Design, Web Development and Shopify Store Design. The Other Projects card says Coming Soon.";
     }
+
     if (/skill|technology|tech|html|css|javascript|shopify|coding/.test(q)) {
       return "Ahsan lists Graphic Designing, Web Development, HTML, CSS, JavaScript, Shopify, E-commerce and Responsive Design among his skills.";
     }
+
     if (/about|who is|who's|ahsan/.test(q)) {
       return "Muhammad Ahsan is a creative designer and web developer focused on graphic design, modern responsive websites and Shopify e-commerce experiences.";
     }
+
     if (/price|cost|rate|budget|charge/.test(q)) {
       return "Pricing isn't listed on this portfolio. Please email mhdxahsan@gmail.com or message Ahsan on WhatsApp with your project requirements to discuss pricing.";
     }
+
     if (/coming soon|other project|future/.test(q)) {
       return "The Other Projects section is marked Coming Soon. More work can be added there in the future.";
     }
+
     if (/thank/.test(q)) {
       return "You're welcome! 😊 To discuss a project, contact Ahsan at mhdxahsan@gmail.com.";
     }
@@ -1042,8 +1117,10 @@ footer {
   function sendQuestion(text) {
     const clean = text.trim();
     if (!clean) return;
+
     addMessage(clean, "user");
     chatInput.value = "";
+
     setTimeout(function () {
       addMessage(answerQuestion(clean), "bot");
     }, 250);
