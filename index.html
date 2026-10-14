@@ -6,7 +6,6 @@
 <meta name="theme-color" content="#08080b">
 <meta name="description" content="Muhammad Ahsan — Graphic Designer, Web Developer and Shopify Specialist.">
 <title>Muhammad Ahsan | Creative Portfolio</title>
-
 <style>
 :root {
   --red: #ff263f;
@@ -28,7 +27,6 @@ a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
 button { cursor: pointer; }
 ::selection { background: var(--red); color: white; }
-
 .container { width: 90%; max-width: 1180px; margin: auto; }
 
 /* LOADER */
@@ -92,10 +90,16 @@ nav {
 }
 .logo { font-size: 28px; font-weight: 900; letter-spacing: -2px; }
 .logo span, footer b { color: var(--red); }
-.nav-links { display: flex; align-items: center; gap: 24px; font-size: 13px; color: #ccc; }
+.nav-links {
+  display: flex; align-items: center; gap: 24px;
+  font-size: 13px; color: #ccc;
+}
 .nav-links a { transition: color .25s; }
 .nav-links a:hover { color: var(--red); }
-.nav-contact { border: 1px solid #ff263f88; padding: 11px 15px; border-radius: 4px; }
+.nav-contact {
+  border: 1px solid #ff263f88;
+  padding: 11px 15px; border-radius: 4px;
+}
 
 /* BUTTONS */
 .buttons { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 28px; }
@@ -107,7 +111,10 @@ nav {
   transition: transform .3s, box-shadow .3s, background .3s;
 }
 .btn.primary { background: var(--red); border-color: var(--red); }
-.btn:hover { transform: translateY(-4px); box-shadow: 0 12px 30px #ff263f30; }
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px #ff263f30;
+}
 
 /* HERO */
 .hero {
@@ -136,7 +143,10 @@ h1 {
 }
 
 /* PORTRAIT */
-.visual { position: relative; max-width: 450px; width: 100%; justify-self: center; perspective: 1000px; }
+.visual {
+  position: relative; max-width: 450px; width: 100%;
+  justify-self: center; perspective: 1000px;
+}
 .photo-wrap {
   width: 84%; aspect-ratio: 4 / 5; margin: auto;
   position: relative; z-index: 2; overflow: hidden;
@@ -146,9 +156,11 @@ h1 {
   box-shadow: 0 25px 80px #ff263f25;
   animation: float 5s ease-in-out infinite;
 }
-.photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; transition: transform .5s;
+}
 .photo-wrap:hover img { transform: scale(1.05); }
-.photo-wrap img { transition: transform .5s; }
 .orbit {
   position: absolute; width: 105%; height: 65%;
   left: -2.5%; top: 17%; border: 1px solid #ff263f80;
@@ -171,7 +183,10 @@ h1 {
   border: 1px solid #ffffff20;
 }
 .photo-label strong { display: block; font-size: 13px; }
-.photo-label small { display: block; margin-top: 5px; color: #aaa; font-size: 10px; letter-spacing: 1px; }
+.photo-label small {
+  display: block; margin-top: 5px; color: #aaa;
+  font-size: 10px; letter-spacing: 1px;
+}
 
 /* GENERAL SECTIONS */
 .section { padding: 95px 0; border-top: 1px solid #ffffff12; }
@@ -179,7 +194,10 @@ h1 {
   display: flex; justify-content: space-between;
   align-items: end; gap: 25px; margin-bottom: 40px;
 }
-h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.15; letter-spacing: -2px; }
+h2 {
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.15; letter-spacing: -2px;
+}
 .section-description {
   max-width: 440px; color: var(--muted);
   font-size: 14px; line-height: 1.9;
@@ -190,14 +208,24 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.15; letter-spacing: -2px;
   display: grid; grid-template-columns: 1fr 1fr;
   align-items: center; gap: 45px;
 }
-.about-copy p { margin-top: 17px; color: var(--muted); font-size: 15px; line-height: 2; }
+.about-copy p {
+  margin-top: 17px; color: var(--muted);
+  font-size: 15px; line-height: 2;
+}
 .about-panel {
   padding: 28px; border: 1px solid #ffffff18;
-  border-radius: 8px; background: linear-gradient(145deg, #17171e, #0d0d12);
+  border-radius: 8px;
+  background: linear-gradient(145deg, #17171e, #0d0d12);
 }
 .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.stat { padding: 20px; border: 1px solid #ffffff16; background: #08080b88; }
-.stat strong { display: block; color: var(--red); font-size: 27px; margin-bottom: 8px; }
+.stat {
+  padding: 20px; border: 1px solid #ffffff16;
+  background: #08080b88;
+}
+.stat strong {
+  display: block; color: var(--red);
+  font-size: 27px; margin-bottom: 8px;
+}
 .stat span { color: var(--muted); font-size: 12px; line-height: 1.7; }
 
 /* SERVICES */
@@ -205,7 +233,8 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.15; letter-spacing: -2px;
 .card {
   position: relative; overflow: hidden; padding: 29px;
   min-height: 220px; border: 1px solid #ffffff18;
-  border-radius: 6px; background: linear-gradient(145deg, #141419, #0d0d11);
+  border-radius: 6px;
+  background: linear-gradient(145deg, #141419, #0d0d11);
   transition: transform .35s, border-color .35s;
 }
 .card::after {
@@ -220,22 +249,39 @@ h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.15; letter-spacing: -2px;
 .card p { color: var(--muted); font-size: 13px; line-height: 1.9; }
 
 /* PROJECTS */
-.projects-section { background: radial-gradient(ellipse at 50% 0%, #ff263f0a, transparent 60%); }
-.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.projects-section {
+  background: radial-gradient(ellipse at 50% 0%, #ff263f0a, transparent 60%);
+}
+.project-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
 .project-card {
-  width: 100%; min-width: 0; display: block; text-align: left;
-  color: white; background: #111116;
-  border: 1px solid #ffffff18; border-radius: 8px; overflow: hidden;
-  transition: transform .35s, border-color .35s, box-shadow .35s;
+  width: 100%; min-width: 0; display: block;
+  text-align: left; color: white; background: #111116;
+  border: 1px solid #ffffff18; border-radius: 8px;
+  overflow: hidden;
+  transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease;
 }
 button.project-card { cursor: pointer; }
-.project-card:hover, .project-card:focus-visible {
-  transform: translateY(-8px); border-color: var(--red);
-  box-shadow: 0 18px 45px #0008; outline: none;
+.project-card:hover,
+.project-card:focus-visible {
+  transform: translateY(-9px);
+  border-color: var(--red);
+  box-shadow: 0 18px 45px #ff263f25;
+  outline: none;
 }
-.project-thumb { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #17171d; }
-.project-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s; }
-.project-card:hover .project-thumb img { transform: scale(1.07); }
+.project-thumb {
+  position: relative; aspect-ratio: 4 / 3;
+  overflow: hidden; background: #17171d;
+}
+.project-thumb img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; opacity: 1;
+  transition: transform .5s ease, opacity .22s ease;
+}
+.project-thumb img.is-changing { opacity: .2; }
+.project-card:hover .project-thumb img { transform: scale(1.06); }
 .project-fallback {
   position: absolute; inset: 0; display: flex;
   flex-direction: column; align-items: center; justify-content: center;
@@ -243,37 +289,7 @@ button.project-card { cursor: pointer; }
   background: radial-gradient(circle, #ff263f24, #111116 70%);
   pointer-events: none;
 }
-
-/* Hide placeholder when the project image is available. */
-.project-thumb img:not([hidden]) ~ .project-fallback {
-  display: none;
-}
-
-/* GRAPHIC DESIGN GALLERY */
-.modal-gallery {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-content: start;
-  gap: 12px;
-  padding: 14px;
-}
-.modal-gallery img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 420px;
-  object-fit: contain;
-  border-radius: 8px;
-  background: #17171d;
-}
-@media (max-width: 560px) {
-  .modal-gallery {
-    grid-template-columns: 1fr;
-    padding: 10px;
-  }
-}
-
+.project-thumb img:not([hidden]) ~ .project-fallback { display: none; }
 .project-fallback .symbol { color: var(--red); font-size: 42px; }
 .project-fallback h3 { font-size: 19px; }
 .project-fallback small { color: #aaa; font-size: 11px; }
@@ -283,14 +299,21 @@ button.project-card { cursor: pointer; }
   border-radius: 50%; background: #08080bdd;
   border: 1px solid #ffffff35; font-size: 20px; transition: .3s;
 }
-.project-card:hover .project-open { background: var(--red); transform: rotate(45deg); }
+.project-card:hover .project-open {
+  background: var(--red); transform: rotate(45deg);
+}
 .project-info { padding: 20px; }
-.project-category { color: var(--red); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+.project-category {
+  color: var(--red); font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase;
+}
 .project-info h3 { margin: 10px 0; font-size: 19px; }
 .project-info p { color: var(--muted); font-size: 13px; line-height: 1.8; }
 .project-cta { margin-top: 15px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
 .coming-soon { cursor: default; }
-.coming-soon:hover { transform: translateY(-3px); border-color: #ffffff35; box-shadow: none; }
+.coming-soon:hover {
+  transform: translateY(-5px); border-color: #ffffff35;
+}
 .coming-soon .project-open { display: none; }
 
 /* SKILLS */
@@ -298,14 +321,22 @@ button.project-card { cursor: pointer; }
 .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
 .skill-tags span {
   padding: 11px 14px; border: 1px solid #ffffff25;
-  color: #ddd; font-size: 12px; border-radius: 3px; transition: .25s;
+  color: #ddd; font-size: 12px; border-radius: 3px;
+  transition: .25s;
 }
 .skill-tags span:hover { border-color: var(--red); transform: translateY(-3px); }
 .skill-bars { display: grid; gap: 22px; }
-.skill-line-head { display: flex; justify-content: space-between; margin-bottom: 9px; font-size: 13px; }
+.skill-line-head {
+  display: flex; justify-content: space-between;
+  margin-bottom: 9px; font-size: 13px;
+}
 .skill-line-head span:last-child { color: var(--muted); }
 .skill-track { height: 5px; background: #ffffff14; border-radius: 10px; overflow: hidden; }
-.skill-fill { height: 100%; width: 0; background: linear-gradient(90deg, #ff263f, #ff7787); transition: width 1.4s ease; }
+.skill-fill {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, #ff263f, #ff7787);
+  transition: width 1.4s ease;
+}
 .reveal.visible .skill-fill { width: var(--level); }
 
 /* WORK PROCESS */
@@ -322,13 +353,17 @@ button.project-card { cursor: pointer; }
 
 /* CONTACT */
 .contact-area {
-  padding: clamp(28px, 6vw, 65px); border: 1px solid #ffffff18;
-  border-radius: 8px; display: flex; align-items: center;
-  justify-content: space-between; gap: 30px;
+  padding: clamp(28px, 6vw, 65px);
+  border: 1px solid #ffffff18; border-radius: 8px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 30px;
   background: radial-gradient(ellipse at 85% 50%, #ff263f12, transparent 50%), #101014;
 }
 .contact-area p { margin-top: 15px; color: var(--muted); line-height: 1.8; font-size: 14px; }
-.contact-details { display: grid; gap: 12px; margin-top: 20px; font-size: 14px; overflow-wrap: anywhere; }
+.contact-details {
+  display: grid; gap: 12px; margin-top: 20px;
+  font-size: 14px; overflow-wrap: anywhere;
+}
 .contact-details a:hover { color: var(--red); }
 footer {
   width: 90%; max-width: 1180px; min-height: 100px;
@@ -355,10 +390,17 @@ footer {
 .modal-panel {
   width: min(1100px, 100%); max-height: 92vh; overflow: auto;
   background: #111116; border: 1px solid #ffffff25;
-  border-radius: 10px; display: grid; grid-template-columns: 1.2fr .8fr;
+  border-radius: 10px; display: grid;
+  grid-template-columns: 1.2fr .8fr;
 }
-.modal-visual { min-height: 350px; display: grid; place-items: center; background: #08080b; overflow: hidden; }
-.modal-visual img { width: 100%; height: 100%; max-height: 80vh; object-fit: contain; }
+.modal-visual {
+  min-height: 350px; display: grid; place-items: center;
+  background: #08080b; overflow: hidden;
+}
+.modal-visual img {
+  width: 100%; height: 100%; max-height: 80vh;
+  object-fit: contain;
+}
 .modal-fallback { padding: 35px; text-align: center; color: #aaa; line-height: 1.8; }
 .modal-content { align-self: center; padding: 35px; }
 .modal-content h2 { margin: 15px 0; }
@@ -380,7 +422,10 @@ footer {
   display: grid; place-items: center; font-size: 27px;
   transition: transform .25s, box-shadow .25s;
 }
-.ai-launcher:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 12px 40px #ff263f77; }
+.ai-launcher:hover {
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 12px 40px #ff263f77;
+}
 .ai-launcher::before {
   content: ""; position: absolute; inset: -6px;
   border: 1px solid #ff263f88; border-radius: 50%;
@@ -432,7 +477,8 @@ footer {
 .quick-prompts { display: flex; gap: 7px; flex-wrap: wrap; padding: 0 14px 12px; }
 .quick-prompts button {
   border: 1px solid #ff263f65; color: #ff8593;
-  background: #ff263f0c; border-radius: 20px; padding: 7px 10px; font-size: 11px;
+  background: #ff263f0c; border-radius: 20px;
+  padding: 7px 10px; font-size: 11px;
 }
 .quick-prompts button:hover { background: #ff263f24; }
 .chat-form {
@@ -477,7 +523,11 @@ footer {
   .modal-content { padding: 22px; }
   .modal-close { top: 8px; right: 8px; }
   .ai-launcher { right: 15px; bottom: 15px; width: 58px; height: 58px; }
-  .chat-panel { right: 10px; bottom: 84px; width: calc(100vw - 20px); height: min(560px, calc(100dvh - 105px)); }
+  .chat-panel {
+    right: 10px; bottom: 84px;
+    width: calc(100vw - 20px);
+    height: min(560px, calc(100dvh - 105px));
+  }
   footer { padding: 25px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -491,7 +541,6 @@ footer {
 }
 </style>
 </head>
-
 <body>
 <div id="loader">
   <div class="loader-inner">
@@ -514,7 +563,6 @@ footer {
 </nav>
 
 <main>
-  <!-- HERO -->
   <section class="hero" id="home">
     <div class="hero-copy reveal">
       <div class="eyebrow">Creative Designer & Developer</div>
@@ -531,7 +579,6 @@ footer {
       </div>
       <div class="hero-note">Design · Code · E-commerce · Creativity</div>
     </div>
-
     <div class="visual">
       <div class="glow"></div>
       <div class="orbit"></div>
@@ -547,7 +594,6 @@ footer {
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section class="section" id="about">
     <div class="container">
       <div class="section-top reveal">
@@ -555,28 +601,16 @@ footer {
           <div class="section-label">A Little About Me</div>
           <h2>Creative mind.<br>Digital builder.</h2>
         </div>
-        <p class="section-description">
-          I enjoy making ideas look great and work smoothly across screens.
-        </p>
+        <p class="section-description">I enjoy making ideas look great and work smoothly across screens.</p>
       </div>
-
       <div class="about-grid">
         <div class="about-copy reveal">
-          <p>
-            I'm Muhammad Ahsan, a creative designer and web developer
-            interested in graphic design, responsive websites and
-            e-commerce experiences.
-          </p>
-          <p>
-            My goal is to create work that looks professional, feels easy
-            to use and helps a business present itself clearly online.
-            I keep learning, experimenting and improving with every project.
-          </p>
+          <p>I'm Muhammad Ahsan, a creative designer and web developer interested in graphic design, responsive websites and e-commerce experiences.</p>
+          <p>My goal is to create work that looks professional, feels easy to use and helps a business present itself clearly online. I keep learning, experimenting and improving with every project.</p>
           <div class="buttons">
             <a class="btn primary" href="#contact">Let's Work Together ↗</a>
           </div>
         </div>
-
         <div class="about-panel reveal">
           <div class="stat-grid">
             <div class="stat"><strong>01</strong><span>Creative design approach</span></div>
@@ -589,7 +623,6 @@ footer {
     </div>
   </section>
 
-  <!-- SERVICES -->
   <section class="section" id="services">
     <div class="container">
       <div class="section-top reveal">
@@ -597,12 +630,8 @@ footer {
           <div class="section-label">What I Do</div>
           <h2>Creative work. Real impact.</h2>
         </div>
-        <p class="section-description">
-          A combination of visual creativity, technical skills and
-          thoughtful digital experiences.
-        </p>
+        <p class="section-description">A combination of visual creativity, technical skills and thoughtful digital experiences.</p>
       </div>
-
       <div class="cards">
         <article class="card reveal">
           <span class="card-number">01 / DESIGN</span>
@@ -623,7 +652,6 @@ footer {
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section class="section projects-section" id="projects">
     <div class="container">
       <div class="section-top reveal">
@@ -631,18 +659,10 @@ footer {
           <div class="section-label">Selected Work</div>
           <h2>Projects & Portfolio</h2>
         </div>
-        <p class="section-description">
-          Click a project card to open its details. Add your own preview
-          images to the paths shown in each card.
-        </p>
+        <p class="section-description">Move your cursor over any project box to cycle through the images. Clicking will not open a popup.</p>
       </div>
-
       <div class="project-grid">
-        <button class="project-card reveal" type="button"
-          data-title="Graphic Design"
-          data-category="01 / Graphic Design"
-          data-description="My graphic design collection includes brand visuals, promotional graphics, social media designs and marketing artwork."
-          data-image="image%201.jpeg">
+        <button class="project-card reveal" type="button" data-title="Graphic Design" data-category="01 / Graphic Design" data-description="My graphic design collection includes brand visuals, promotional graphics, social media designs and marketing artwork." data-image="image%201.jpeg">
           <div class="project-thumb">
             <img src="image%201.jpeg" alt="Graphic design preview" onerror="this.hidden=true">
             <div class="project-fallback">
@@ -656,17 +676,13 @@ footer {
             <div class="project-category">01 / DESIGN</div>
             <h3>Graphic Design</h3>
             <p>Brand visuals, promotional designs and social media creatives.</p>
-            <div class="project-cta">Click to view details ↗</div>
+            <div class="project-cta">Hover to preview images ↗</div>
           </div>
         </button>
 
-        <button class="project-card reveal" type="button"
-          data-title="Web Development"
-          data-category="02 / Web Development"
-          data-description="Responsive websites, landing pages and interactive interfaces built with HTML, CSS and JavaScript."
-          data-image="projects/web-development.jpg">
+        <button class="project-card reveal" type="button" data-title="Web Development" data-category="02 / Web Development" data-description="Responsive websites, landing pages and interactive interfaces built with HTML, CSS and JavaScript." data-image="image%203.jpeg">
           <div class="project-thumb">
-            <img src="projects/web-development.jpg" alt="Website preview" onerror="this.hidden=true">
+            <img src="image%203.jpeg" alt="Website preview" onerror="this.hidden=true">
             <div class="project-fallback">
               <span class="symbol">⌘</span>
               <h3>Web Development</h3>
@@ -678,17 +694,13 @@ footer {
             <div class="project-category">02 / DEVELOPMENT</div>
             <h3>Web Development</h3>
             <p>Responsive websites and interactive interfaces.</p>
-            <div class="project-cta">Click to view details ↗</div>
+            <div class="project-cta">Hover to preview images ↗</div>
           </div>
         </button>
 
-        <button class="project-card reveal" type="button"
-          data-title="Shopify Store Design"
-          data-category="03 / E-commerce"
-          data-description="Shopify storefronts, product pages and e-commerce layouts designed to present products clearly."
-          data-image="projects/shopify-store.jpg">
+        <button class="project-card reveal" type="button" data-title="Shopify Store Design" data-category="03 / E-commerce" data-description="Shopify storefronts, product pages and e-commerce layouts designed to present products clearly." data-image="image%206.jpeg">
           <div class="project-thumb">
-            <img src="projects/shopify-store.jpg" alt="Shopify store preview" onerror="this.hidden=true">
+            <img src="image%206.jpeg" alt="Shopify store preview" onerror="this.hidden=true">
             <div class="project-fallback">
               <span class="symbol">▧</span>
               <h3>Shopify Store</h3>
@@ -700,12 +712,13 @@ footer {
             <div class="project-category">03 / E-COMMERCE</div>
             <h3>Shopify Store Design</h3>
             <p>Online storefronts and attractive product layouts.</p>
-            <div class="project-cta">Click to view details ↗</div>
+            <div class="project-cta">Hover to preview images ↗</div>
           </div>
         </button>
 
         <div class="project-card coming-soon reveal" aria-label="Other projects coming soon">
           <div class="project-thumb">
+            <img src="image%204.jpeg" alt="Other creative project preview" onerror="this.hidden=true">
             <div class="project-fallback">
               <span class="symbol">✦</span>
               <h3>Coming Soon</h3>
@@ -716,14 +729,13 @@ footer {
             <div class="project-category">04 / OTHER WORK</div>
             <h3>Other Projects</h3>
             <p>More creative and technical projects will be added here soon.</p>
-            <div class="project-cta">Coming Soon ✦</div>
+            <div class="project-cta">Hover to preview images ✦</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
   <section class="section" id="skills">
     <div class="container">
       <div class="section-top reveal">
@@ -731,11 +743,8 @@ footer {
           <div class="section-label">My Toolkit</div>
           <h2>Skills & Expertise</h2>
         </div>
-        <p class="section-description">
-          A growing toolkit for creative work, web projects and online stores.
-        </p>
+        <p class="section-description">A growing toolkit for creative work, web projects and online stores.</p>
       </div>
-
       <div class="skill-layout">
         <div class="skill-tags reveal">
           <span>Graphic Designing</span>
@@ -749,7 +758,6 @@ footer {
           <span>UI Layouts</span>
           <span>Creative Direction</span>
         </div>
-
         <div class="skill-bars reveal">
           <div>
             <div class="skill-line-head"><span>Graphic Design</span><span>Creative skill</span></div>
@@ -772,7 +780,6 @@ footer {
     </div>
   </section>
 
-  <!-- WORK PROCESS -->
   <section class="section" id="process">
     <div class="container">
       <div class="section-top reveal">
@@ -780,37 +787,29 @@ footer {
           <div class="section-label">How I Work</div>
           <h2>From idea to final result.</h2>
         </div>
-        <p class="section-description">
-          A simple process keeps projects clear, organised and focused on the goal.
-        </p>
+        <p class="section-description">A simple process keeps projects clear, organised and focused on the goal.</p>
       </div>
-
       <div class="process-grid">
         <article class="process-step reveal">
-          <span class="step">STEP 01</span>
-          <h3>Understand</h3>
+          <span class="step">STEP 01</span><h3>Understand</h3>
           <p>Discuss the idea, audience, needs and expected result.</p>
         </article>
         <article class="process-step reveal">
-          <span class="step">STEP 02</span>
-          <h3>Plan</h3>
+          <span class="step">STEP 02</span><h3>Plan</h3>
           <p>Choose a visual direction, structure and practical approach.</p>
         </article>
         <article class="process-step reveal">
-          <span class="step">STEP 03</span>
-          <h3>Create</h3>
+          <span class="step">STEP 03</span><h3>Create</h3>
           <p>Build the design or website and refine important details.</p>
         </article>
         <article class="process-step reveal">
-          <span class="step">STEP 04</span>
-          <h3>Deliver</h3>
+          <span class="step">STEP 04</span><h3>Deliver</h3>
           <p>Review the result, make agreed improvements and share the final work.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="container">
       <div class="contact-area reveal">
@@ -838,29 +837,8 @@ footer {
   <span>© <span id="year"></span> All rights reserved.</span>
 </footer>
 
-<!-- PROJECT VIEWER -->
-<div class="project-modal" id="projectModal" role="dialog" aria-modal="true"
-     aria-hidden="true" aria-labelledby="modalTitle">
-  <button class="modal-close" id="modalClose" type="button" aria-label="Close project viewer">×</button>
-  <div class="modal-panel">
-    <div class="modal-visual" id="modalVisual">
-      <p class="modal-fallback">Project preview</p>
-    </div>
-    <div class="modal-content">
-      <div class="project-category" id="modalCategory">PROJECT</div>
-      <h2 id="modalTitle">Project title</h2>
-      <p id="modalDescription"></p>
-      <div class="buttons">
-        <a class="btn primary" id="modalVisit" href="#" target="_blank" rel="noopener noreferrer" hidden>Visit Project ↗</a>
-        <button class="btn" type="button" id="modalDone">Close Viewer</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- PORTFOLIO CHAT ASSISTANT -->
-<button class="ai-launcher" id="aiLauncher" type="button"
-        aria-label="Open Ahsan's portfolio assistant" aria-expanded="false">
+<button class="ai-launcher" id="aiLauncher" type="button" aria-label="Open Ahsan's portfolio assistant" aria-expanded="false">
   <span>✦</span><small>AI</small>
 </button>
 
@@ -873,22 +851,16 @@ footer {
     </div>
     <button class="chat-close" id="chatClose" type="button" aria-label="Close assistant">×</button>
   </div>
-
   <div class="chat-messages" id="chatMessages" aria-live="polite">
-    <div class="message bot">
-      Hi! 👋 I'm Ahsan's portfolio assistant. Ask me about his skills, projects, services or contact details.
-    </div>
+    <div class="message bot">Hi! 👋 I'm Ahsan's portfolio assistant. Ask me about his skills, projects, services or contact details.</div>
   </div>
-
   <div class="quick-prompts">
     <button type="button" data-question="What services does Ahsan offer?">Services</button>
     <button type="button" data-question="Tell me about Ahsan's projects">Projects</button>
     <button type="button" data-question="How can I contact Ahsan?">Contact</button>
   </div>
-
   <form class="chat-form" id="chatForm">
-    <input id="chatInput" type="text" maxlength="400" autocomplete="off"
-           placeholder="Ask me something..." aria-label="Type your question" required>
+    <input id="chatInput" type="text" maxlength="400" autocomplete="off" placeholder="Ask me something..." aria-label="Type your question" required>
     <button type="submit" aria-label="Send message">➤</button>
   </form>
   <div class="chat-note">Instant portfolio answers · No login required</div>
@@ -904,7 +876,6 @@ footer {
 
   window.addEventListener("load", hideLoader);
   setTimeout(hideLoader, 1800);
-
   document.getElementById("year").textContent = new Date().getFullYear();
 
   /* Scroll animations */
@@ -933,110 +904,65 @@ footer {
     });
   }
 
-  /* Project viewer */
-  const modal = document.getElementById("projectModal");
-  const modalVisual = document.getElementById("modalVisual");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalCategory = document.getElementById("modalCategory");
-  const modalDescription = document.getElementById("modalDescription");
-  const modalVisit = document.getElementById("modalVisit");
-  const closeButton = document.getElementById("modalClose");
-  let lastTrigger = null;
+  /* PROJECT IMAGE SLIDESHOW — ALL PROJECT BOXES */
+  const projectImageFiles = [
+    "image%201.jpeg",
+    "image%202.jpeg",
+    "image%203.jpeg",
+    "image%204.jpeg",
+    "image%205.jpeg",
+    "image%206.jpeg",
+    "image%207.jpeg",
+    "image%208.jpeg",
+    "image%209.jpeg",
+    "image%2010.jpeg",
+    "image%2012.jpeg",
+    "image%2013.jpeg"
+  ];
 
-  function openProject(card) {
-    lastTrigger = card;
-    modalTitle.textContent = card.dataset.title || "Project";
-    modalCategory.textContent = card.dataset.category || "PROJECT";
-    modalDescription.textContent = card.dataset.description || "";
-    modalVisual.replaceChildren();
+  document.querySelectorAll(".project-card").forEach(function (card, cardIndex) {
+    const image = card.querySelector(".project-thumb img");
+    if (!image) return;
 
-    const imagePath = card.dataset.image;
-    const thumbnail = card.querySelector(".project-thumb img");
+    const originalSrc = image.getAttribute("src");
+    let imageIndex = cardIndex % projectImageFiles.length;
+    let slideshowTimer = null;
+    let changeTimer = null;
 
-    if (card.dataset.title === "Graphic Design") {
-      const gallery = document.createElement("div");
-      gallery.className = "modal-gallery";
+    function showNextImage() {
+      image.classList.add("is-changing");
+      clearTimeout(changeTimer);
 
-      const imageFiles = [
-        "image%201.jpeg",
-        "image%202.jpeg",
-        "image%203.jpeg",
-        "image%204.jpeg",
-        "image%205.jpeg",
-        "image%206.jpeg",
-        "image%207.jpeg",
-        "image%208.jpeg",
-        "image%209.jpeg",
-        "image%2010.jpeg",
-        "image%2012.jpeg",
-        "image%2013.jpeg"
-      ];
-
-      imageFiles.forEach(function (src, index) {
-        const image = document.createElement("img");
-        image.src = src;
-        image.alt = "Graphic Design work " + (index + 1);
-        image.loading = "lazy";
-        gallery.appendChild(image);
-      });
-
-      modalVisual.appendChild(gallery);
-    } else if (
-      imagePath &&
-      thumbnail &&
-      !thumbnail.hidden &&
-      thumbnail.complete &&
-      thumbnail.naturalWidth > 0
-    ) {
-      const image = document.createElement("img");
-      image.src = imagePath;
-      image.alt = (card.dataset.title || "Project") + " preview";
-      modalVisual.appendChild(image);
-    } else {
-      const fallback = document.createElement("p");
-      fallback.className = "modal-fallback";
-      fallback.textContent =
-        "Add your project image at " +
-        (imagePath || "the configured image path") +
-        " to display it here.";
-      modalVisual.appendChild(fallback);
+      changeTimer = setTimeout(function () {
+        imageIndex = (imageIndex + 1) % projectImageFiles.length;
+        image.src = projectImageFiles[imageIndex];
+        image.classList.remove("is-changing");
+      }, 150);
     }
 
-    if (card.dataset.link) {
-      modalVisit.href = card.dataset.link;
-      modalVisit.hidden = false;
-    } else {
-      modalVisit.hidden = true;
-      modalVisit.removeAttribute("href");
-    }
+    card.addEventListener("mouseenter", function () {
+      if (slideshowTimer) return;
 
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("locked");
-    closeButton.focus();
-  }
+      showNextImage();
+      slideshowTimer = setInterval(showNextImage, 1200);
+    });
 
-  function closeProject() {
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("locked");
-    if (lastTrigger) lastTrigger.focus();
-  }
+    card.addEventListener("mouseleave", function () {
+      clearInterval(slideshowTimer);
+      clearTimeout(changeTimer);
+      slideshowTimer = null;
+      changeTimer = null;
+      image.classList.remove("is-changing");
+      image.src = originalSrc;
+    });
 
-  document.querySelectorAll("button.project-card").forEach(function (card) {
-    card.addEventListener("click", function () {
-      openProject(card);
+    /* Do not open a popup when a project card is clicked. */
+    card.addEventListener("click", function (event) {
+      event.preventDefault();
     });
   });
 
-  closeButton.addEventListener("click", closeProject);
-  document.getElementById("modalDone").addEventListener("click", closeProject);
-
-  modal.addEventListener("click", function (event) {
-    if (event.target === modal) closeProject();
-  });
-
-  /* Portfolio assistant */
+  /* PORTFOLIO ASSISTANT */
   const launcher = document.getElementById("aiLauncher");
   const chat = document.getElementById("chatPanel");
   const chatClose = document.getElementById("chatClose");
@@ -1088,7 +1014,7 @@ footer {
     }
 
     if (/project|portfolio|work|show|designs|website/.test(q)) {
-      return "The portfolio showcases Graphic Design, Web Development and Shopify Store Design. The Other Projects card says Coming Soon.";
+      return "The portfolio showcases Graphic Design, Web Development and Shopify Store Design. Move your cursor over a project card to preview its images.";
     }
 
     if (/skill|technology|tech|html|css|javascript|shopify|coding/.test(q)) {
@@ -1103,15 +1029,11 @@ footer {
       return "Pricing isn't listed on this portfolio. Please email mhdxahsan@gmail.com or message Ahsan on WhatsApp with your project requirements to discuss pricing.";
     }
 
-    if (/coming soon|other project|future/.test(q)) {
-      return "The Other Projects section is marked Coming Soon. More work can be added there in the future.";
-    }
-
     if (/thank/.test(q)) {
       return "You're welcome! 😊 To discuss a project, contact Ahsan at mhdxahsan@gmail.com.";
     }
 
-    return "I can answer questions about Ahsan's services, skills, projects and contact details. Try asking “What services does Ahsan offer?”, “Tell me about his projects”, or “How can I contact Ahsan?” For other questions, contact him directly at mhdxahsan@gmail.com.";
+    return "I can answer questions about Ahsan's services, skills, projects and contact details. Try asking “What services does Ahsan offer?”, “Tell me about his projects”, or “How can I contact Ahsan?”";
   }
 
   function sendQuestion(text) {
@@ -1138,9 +1060,8 @@ footer {
   });
 
   document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      if (modal.classList.contains("open")) closeProject();
-      if (chat.classList.contains("open")) toggleChat(false);
+    if (event.key === "Escape" && chat.classList.contains("open")) {
+      toggleChat(false);
     }
   });
 })();
