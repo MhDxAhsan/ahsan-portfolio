@@ -4,556 +4,243 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#08080b">
-<meta name="description" content="Muhammad Ahsan — Graphic Designer, Web Developer and Shopify Specialist.">
+<meta name="description" content="Muhammad Ahsan — Graphic Designer, Web Developer and Shopify Store Designer.">
 <title>Muhammad Ahsan | Creative Portfolio</title>
 <style>
-:root {
-  --red: #ff263f;
-  --bg: #08080b;
-  --panel: #121218;
-  --muted: #aaaab5;
-  --white: #f5f5f7;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 85px; }
-body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
-}
-body.locked { overflow: hidden; }
-a { color: inherit; text-decoration: none; }
-button, input { font: inherit; }
-button { cursor: pointer; }
-::selection { background: var(--red); color: white; }
-.container { width: 90%; max-width: 1180px; margin: auto; }
+:root{--red:#ff263f;--bg:#08080b;--panel:#121218;--muted:#aaaab5;--white:#f5f5f7;--line:#ffffff1c}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+body.locked{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
+::selection{background:var(--red);color:white}
+.container{width:min(90%,1180px);margin:auto}
+.red{color:var(--red)}
 
-/* LOADER */
-#loader {
-  position: fixed; inset: 0; z-index: 99999;
-  display: grid; place-items: center;
-  background: var(--bg);
-  transition: opacity .5s, visibility .5s;
-}
-#loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
-.loader-logo {
-  font-size: 48px; font-weight: 900; color: var(--red);
-  text-align: center; animation: glow 1s infinite alternate;
-}
-.loader-line {
-  width: 175px; height: 3px; background: #29292f;
-  margin: 18px auto; overflow: hidden;
-}
-.loader-line::after {
-  content: ""; display: block; height: 100%;
-  background: var(--red); animation: load 1.2s ease;
-}
-.loader-inner p {
-  text-align: center; color: #aaa;
-  font-size: 10px; letter-spacing: 4px;
-}
-
-/* ANIMATIONS */
-@keyframes load {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}
-@keyframes glow {
-  to { text-shadow: 0 0 30px #ff263f99; }
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotateY(-4deg); }
-  50% { transform: translateY(-13px) rotateY(4deg); }
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes ring {
-  0% { transform: scale(.9); opacity: .9; }
-  100% { transform: scale(1.4); opacity: 0; }
-}
-@keyframes popIn {
-  from { opacity: 0; transform: translateY(12px) scale(.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
+/* LOADER AND ANIMATIONS */
+#loader{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:var(--bg);transition:opacity .45s,visibility .45s}
+#loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{font-size:48px;font-weight:900;color:var(--red);animation:glow 1s infinite alternate}
+.loader-line{height:3px;width:175px;margin:16px auto;background:#29292f;overflow:hidden}
+.loader-line:after{content:"";display:block;height:100%;background:var(--red);animation:load 1.2s ease}
+.loader-inner p{text-align:center;color:#aaa;font-size:10px;letter-spacing:4px}
+@keyframes load{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+@keyframes glow{to{text-shadow:0 0 30px #ff263f99}}
+@keyframes float{0%,100%{transform:translateY(0) rotateY(-4deg)}50%{transform:translateY(-12px) rotateY(4deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes popIn{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 
 /* NAVIGATION */
-nav {
-  width: 90%; max-width: 1180px; height: 78px;
-  margin: auto; display: flex; align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #ffffff15;
-  position: relative; z-index: 10;
-}
-.logo { font-size: 28px; font-weight: 900; letter-spacing: -2px; }
-.logo span, footer b { color: var(--red); }
-.nav-links {
-  display: flex; align-items: center; gap: 24px;
-  font-size: 13px; color: #ccc;
-}
-.nav-links a { transition: color .25s; }
-.nav-links a:hover { color: var(--red); }
-.nav-contact {
-  border: 1px solid #ff263f88;
-  padding: 11px 15px; border-radius: 4px;
-}
+nav{width:90%;max-width:1180px;height:78px;margin:auto;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff15;position:relative;z-index:10}
+.logo{font-size:28px;font-weight:900;letter-spacing:-2px}
+.logo span,footer b{color:var(--red)}
+.nav-links{display:flex;align-items:center;gap:24px;font-size:13px;color:#ccc}
+.nav-links a{transition:color .25s}
+.nav-links a:hover{color:var(--red)}
+.nav-contact{border:1px solid #ff263f88;padding:11px 15px;border-radius:4px}
 
-/* BUTTONS */
-.buttons { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 28px; }
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 14px 21px; border: 1px solid #ffffff35;
-  border-radius: 4px; background: transparent; color: white;
-  font-size: 13px; font-weight: bold;
-  transition: transform .3s, box-shadow .3s, background .3s;
-}
-.btn.primary { background: var(--red); border-color: var(--red); }
-.btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px #ff263f30;
-}
+/* BUTTONS AND SHARED SECTIONS */
+.buttons{display:flex;flex-wrap:wrap;gap:13px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 21px;border:1px solid #ffffff35;border-radius:4px;background:transparent;color:white;font-size:13px;font-weight:bold;transition:transform .3s,box-shadow .3s,background .3s}
+.btn.primary{background:var(--red);border-color:var(--red)}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px #ff263f30}
+.section{padding:95px 0;border-top:1px solid #ffffff12}
+.section-top{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:40px}
+.eyebrow,.section-label{color:var(--red);font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+h1{font-size:clamp(43px,6vw,78px);line-height:1.04;letter-spacing:-4px}
+h2{font-size:clamp(30px,4vw,46px);line-height:1.15;letter-spacing:-2px}
+.section-description{max-width:440px;color:var(--muted);font-size:14px;line-height:1.9}
 
-/* HERO */
-.hero {
-  width: 90%; max-width: 1180px; min-height: 650px;
-  margin: auto; padding: 65px 0 80px;
-  display: grid; grid-template-columns: 1.05fr .95fr;
-  align-items: center; gap: 45px;
-}
-.eyebrow, .section-label {
-  color: var(--red); font-size: 11px;
-  letter-spacing: 3px; text-transform: uppercase;
-  margin-bottom: 18px;
-}
-h1 {
-  font-size: clamp(43px, 6vw, 78px);
-  line-height: 1.04; letter-spacing: -4px;
-}
-.name { display: block; color: var(--red); }
-.hero-text {
-  margin-top: 24px; max-width: 510px;
-  color: var(--muted); font-size: 15px; line-height: 1.9;
-}
-.hero-note {
-  margin-top: 30px; color: #777;
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-}
+/* HERO AND PORTRAIT */
+.hero{width:90%;max-width:1180px;min-height:640px;margin:auto;padding:65px 0 80px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:45px}
+.name{display:block;color:var(--red)}
+.hero-text{margin-top:24px;max-width:510px;color:var(--muted);font-size:15px;line-height:1.9}
+.hero-note{margin-top:30px;color:#777;font-size:11px;letter-spacing:2px;text-transform:uppercase}
+.visual{position:relative;max-width:450px;width:100%;justify-self:center;perspective:1000px}
+.photo-wrap{width:84%;aspect-ratio:4/5;margin:auto;position:relative;z-index:2;overflow:hidden;border-radius:48% 48% 8px 8px;border:1px solid #ff263f66;background:linear-gradient(145deg,#301018,#141419);box-shadow:0 25px 80px #ff263f25;animation:float 5s ease-in-out infinite}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.photo-wrap:hover img{transform:scale(1.05)}
+.orbit{position:absolute;width:105%;height:65%;left:-2.5%;top:17%;border:1px solid #ff263f80;border-radius:50%;animation:spin 16s linear infinite;pointer-events:none}
+.orbit.two{width:115%;height:75%;left:-7.5%;top:12%;border-color:#ffffff25;animation-duration:24s;animation-direction:reverse}
+.glow{position:absolute;width:75%;aspect-ratio:1;border-radius:50%;background:#ff263f30;filter:blur(65px);top:15%;left:13%}
+.photo-label{position:absolute;z-index:3;bottom:8%;left:0;padding:14px 18px;background:#111116ed;border:1px solid #ffffff20}
+.photo-label strong{display:block;font-size:13px}
+.photo-label small{display:block;margin-top:5px;color:#aaa;font-size:10px;letter-spacing:1px}
 
-/* PORTRAIT */
-.visual {
-  position: relative; max-width: 450px; width: 100%;
-  justify-self: center; perspective: 1000px;
-}
-.photo-wrap {
-  width: 84%; aspect-ratio: 4 / 5; margin: auto;
-  position: relative; z-index: 2; overflow: hidden;
-  border-radius: 48% 48% 8px 8px;
-  border: 1px solid #ff263f66;
-  background: linear-gradient(145deg, #301018, #141419);
-  box-shadow: 0 25px 80px #ff263f25;
-  animation: float 5s ease-in-out infinite;
-}
-.photo-wrap img {
-  width: 100%; height: 100%; object-fit: cover;
-  display: block; transition: transform .5s;
-}
-.photo-wrap:hover img { transform: scale(1.05); }
-.orbit {
-  position: absolute; width: 105%; height: 65%;
-  left: -2.5%; top: 17%; border: 1px solid #ff263f80;
-  border-radius: 50%; animation: spin 16s linear infinite;
-  pointer-events: none;
-}
-.orbit.two {
-  width: 115%; height: 75%; left: -7.5%; top: 12%;
-  border-color: #ffffff25; animation-duration: 24s;
-  animation-direction: reverse;
-}
-.glow {
-  position: absolute; width: 75%; aspect-ratio: 1;
-  border-radius: 50%; background: #ff263f30;
-  filter: blur(65px); top: 15%; left: 13%;
-}
-.photo-label {
-  position: absolute; z-index: 3; bottom: 8%; left: 0;
-  padding: 14px 18px; background: #111116ed;
-  border: 1px solid #ffffff20;
-}
-.photo-label strong { display: block; font-size: 13px; }
-.photo-label small {
-  display: block; margin-top: 5px; color: #aaa;
-  font-size: 10px; letter-spacing: 1px;
-}
+/* ABOUT AND SERVICES */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:45px}
+.about-copy p{margin-top:17px;color:var(--muted);font-size:15px;line-height:2}
+.about-panel{padding:28px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(145deg,#17171e,#0d0d12)}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{padding:20px;border:1px solid #ffffff16;background:#08080b88}
+.stat strong{display:block;color:var(--red);font-size:27px;margin-bottom:8px}
+.stat span{color:var(--muted);font-size:12px;line-height:1.7}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{position:relative;overflow:hidden;padding:29px;min-height:220px;border:1px solid var(--line);border-radius:6px;background:linear-gradient(145deg,#141419,#0d0d11);transition:transform .35s,border-color .35s}
+.card:after{content:"";position:absolute;width:140px;height:140px;right:-90px;top:-90px;border-radius:50%;background:#ff263f20;filter:blur(18px);transition:.4s}
+.card:hover{transform:translateY(-8px);border-color:#ff263f80}
+.card:hover:after{transform:scale(2)}
+.card-number{color:var(--red);font-size:11px;letter-spacing:2px}
+.card h3{margin:28px 0 12px;font-size:21px}
+.card p{color:var(--muted);font-size:13px;line-height:1.9}
 
-/* GENERAL SECTIONS */
-.section { padding: 95px 0; border-top: 1px solid #ffffff12; }
-.section-top {
-  display: flex; justify-content: space-between;
-  align-items: end; gap: 25px; margin-bottom: 40px;
-}
-h2 {
-  font-size: clamp(30px, 4vw, 46px);
-  line-height: 1.15; letter-spacing: -2px;
-}
-.section-description {
-  max-width: 440px; color: var(--muted);
-  font-size: 14px; line-height: 1.9;
-}
+/* PROJECT CARDS — EACH IMAGE STAYS WITH ITS OWN PROJECT */
+.projects-section{background:radial-gradient(ellipse at 50% 0%,#ff263f0a,transparent 60%)}
+.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.project-card{width:100%;min-width:0;display:block;text-align:left;color:white;background:#111116;border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:transform .35s,border-color .35s,box-shadow .35s}
+.project-card:hover,.project-card:focus-visible{transform:translateY(-8px);border-color:var(--red);box-shadow:0 18px 45px #0008;outline:none}
+.project-thumb{position:relative;aspect-ratio:4/3;overflow:hidden;background:#17171d}
+.project-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.project-card:hover .project-thumb img{transform:scale(1.04)}
+.project-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;background:radial-gradient(circle,#ff263f24,#111116 70%);pointer-events:none}
+.project-fallback .symbol{color:var(--red);font-size:42px}
+.project-fallback h3{font-size:19px}
+.project-fallback small{color:#aaa;font-size:11px}
+.project-thumb img:not([hidden])~.project-fallback{display:none}
+.project-open{position:absolute;top:13px;right:13px;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#08080bdd;border:1px solid #ffffff35;font-size:20px;transition:.3s}
+.project-card:hover .project-open{background:var(--red);transform:rotate(45deg)}
+.project-info{padding:20px}
+.project-category{color:var(--red);font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.project-info h3{margin:10px 0;font-size:19px}
+.project-info p{color:var(--muted);font-size:13px;line-height:1.8}
+.project-cta{margin-top:15px;font-size:11px;letter-spacing:1px;text-transform:uppercase}
+.coming-soon{cursor:default}
+.coming-soon:hover{transform:translateY(-3px);border-color:#ffffff35;box-shadow:none}
+.coming-soon .project-open{display:none}
 
-/* ABOUT */
-.about-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  align-items: center; gap: 45px;
-}
-.about-copy p {
-  margin-top: 17px; color: var(--muted);
-  font-size: 15px; line-height: 2;
-}
-.about-panel {
-  padding: 28px; border: 1px solid #ffffff18;
-  border-radius: 8px;
-  background: linear-gradient(145deg, #17171e, #0d0d12);
-}
-.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.stat {
-  padding: 20px; border: 1px solid #ffffff16;
-  background: #08080b88;
-}
-.stat strong {
-  display: block; color: var(--red);
-  font-size: 27px; margin-bottom: 8px;
-}
-.stat span { color: var(--muted); font-size: 12px; line-height: 1.7; }
-
-/* SERVICES */
-.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.card {
-  position: relative; overflow: hidden; padding: 29px;
-  min-height: 220px; border: 1px solid #ffffff18;
-  border-radius: 6px;
-  background: linear-gradient(145deg, #141419, #0d0d11);
-  transition: transform .35s, border-color .35s;
-}
-.card::after {
-  content: ""; position: absolute; width: 140px; height: 140px;
-  right: -90px; top: -90px; border-radius: 50%;
-  background: #ff263f20; filter: blur(18px); transition: .4s;
-}
-.card:hover { transform: translateY(-8px); border-color: #ff263f80; }
-.card:hover::after { transform: scale(2); }
-.card-number { color: var(--red); font-size: 11px; letter-spacing: 2px; }
-.card h3 { margin: 28px 0 12px; font-size: 21px; }
-.card p { color: var(--muted); font-size: 13px; line-height: 1.9; }
-
-/* PROJECTS */
-.projects-section {
-  background: radial-gradient(ellipse at 50% 0%, #ff263f0a, transparent 60%);
-}
-.project-grid {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-}
-.project-card {
-  width: 100%; min-width: 0; display: block;
-  text-align: left; color: white; background: #111116;
-  border: 1px solid #ffffff18; border-radius: 8px;
-  overflow: hidden;
-  transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease;
-}
-button.project-card { cursor: pointer; }
-.project-card:hover,
-.project-card:focus-visible {
-  transform: translateY(-9px);
-  border-color: var(--red);
-  box-shadow: 0 18px 45px #ff263f25;
-  outline: none;
-}
-.project-thumb {
-  position: relative; aspect-ratio: 4 / 3;
-  overflow: hidden; background: #17171d;
-}
-.project-thumb img {
-  width: 100%; height: 100%; object-fit: cover;
-  display: block; opacity: 1;
-  transition: transform .5s ease, opacity .22s ease;
-}
-.project-thumb img.is-changing { opacity: .2; }
-.project-card:hover .project-thumb img { transform: scale(1.06); }
-.project-fallback {
-  position: absolute; inset: 0; display: flex;
-  flex-direction: column; align-items: center; justify-content: center;
-  gap: 12px; padding: 20px; text-align: center;
-  background: radial-gradient(circle, #ff263f24, #111116 70%);
-  pointer-events: none;
-}
-.project-thumb img:not([hidden]) ~ .project-fallback { display: none; }
-.project-fallback .symbol { color: var(--red); font-size: 42px; }
-.project-fallback h3 { font-size: 19px; }
-.project-fallback small { color: #aaa; font-size: 11px; }
-.project-open {
-  position: absolute; top: 13px; right: 13px;
-  width: 38px; height: 38px; display: grid; place-items: center;
-  border-radius: 50%; background: #08080bdd;
-  border: 1px solid #ffffff35; font-size: 20px; transition: .3s;
-}
-.project-card:hover .project-open {
-  background: var(--red); transform: rotate(45deg);
-}
-.project-info { padding: 20px; }
-.project-category {
-  color: var(--red); font-size: 10px;
-  letter-spacing: 2px; text-transform: uppercase;
-}
-.project-info h3 { margin: 10px 0; font-size: 19px; }
-.project-info p { color: var(--muted); font-size: 13px; line-height: 1.8; }
-.project-cta { margin-top: 15px; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
-.coming-soon { cursor: default; }
-.coming-soon:hover {
-  transform: translateY(-5px); border-color: #ffffff35;
-}
-.coming-soon .project-open { display: none; }
+/* FULL IMAGE GALLERY */
+.modal-gallery{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;gap:12px;padding:14px}
+.modal-gallery img{display:block;width:100%;height:auto;max-height:70vh;object-fit:contain;border-radius:8px;background:#17171d}
 
 /* SKILLS */
-.skill-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 45px; }
-.skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-.skill-tags span {
-  padding: 11px 14px; border: 1px solid #ffffff25;
-  color: #ddd; font-size: 12px; border-radius: 3px;
-  transition: .25s;
-}
-.skill-tags span:hover { border-color: var(--red); transform: translateY(-3px); }
-.skill-bars { display: grid; gap: 22px; }
-.skill-line-head {
-  display: flex; justify-content: space-between;
-  margin-bottom: 9px; font-size: 13px;
-}
-.skill-line-head span:last-child { color: var(--muted); }
-.skill-track { height: 5px; background: #ffffff14; border-radius: 10px; overflow: hidden; }
-.skill-fill {
-  height: 100%; width: 0;
-  background: linear-gradient(90deg, #ff263f, #ff7787);
-  transition: width 1.4s ease;
-}
-.reveal.visible .skill-fill { width: var(--level); }
+.skill-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:10px}
+.skill-tags span{padding:11px 14px;border:1px solid #ffffff25;color:#ddd;font-size:12px;border-radius:3px;transition:.25s}
+.skill-tags span:hover{border-color:var(--red);transform:translateY(-3px)}
+.skill-bars{display:grid;gap:22px}
+.skill-line-head{display:flex;justify-content:space-between;margin-bottom:9px;font-size:13px}
+.skill-line-head span:last-child{color:var(--muted)}
+.skill-track{height:5px;background:#ffffff14;border-radius:10px;overflow:hidden}
+.skill-fill{height:100%;width:0;background:linear-gradient(90deg,#ff263f,#ff7787);transition:width 1.4s ease}
+.reveal.visible .skill-fill{width:var(--level)}
 
-/* WORK PROCESS */
-.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.process-step {
-  padding: 24px 20px; border: 1px solid #ffffff18;
-  background: linear-gradient(145deg, #141419, #0d0d11);
-  border-radius: 5px; transition: .3s;
-}
-.process-step:hover { transform: translateY(-6px); border-color: #ff263f80; }
-.process-step .step { color: var(--red); font-size: 12px; letter-spacing: 2px; }
-.process-step h3 { margin: 22px 0 10px; font-size: 18px; }
-.process-step p { color: var(--muted); font-size: 13px; line-height: 1.8; }
-
-/* CONTACT */
-.contact-area {
-  padding: clamp(28px, 6vw, 65px);
-  border: 1px solid #ffffff18; border-radius: 8px;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 30px;
-  background: radial-gradient(ellipse at 85% 50%, #ff263f12, transparent 50%), #101014;
-}
-.contact-area p { margin-top: 15px; color: var(--muted); line-height: 1.8; font-size: 14px; }
-.contact-details {
-  display: grid; gap: 12px; margin-top: 20px;
-  font-size: 14px; overflow-wrap: anywhere;
-}
-.contact-details a:hover { color: var(--red); }
-footer {
-  width: 90%; max-width: 1180px; min-height: 100px;
-  margin: auto; display: flex; align-items: center;
-  justify-content: space-between; gap: 20px; flex-wrap: wrap;
-  color: #888; font-size: 12px;
-}
-
-/* SCROLL REVEALS */
-.reveal { opacity: 1; transform: none; }
-.js-motion .reveal {
-  opacity: 0; transform: translateY(24px);
-  transition: opacity .75s ease, transform .75s ease;
-}
-.js-motion .reveal.visible { opacity: 1; transform: translateY(0); }
+/* WORK PROCESS AND CONTACT */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.process-step{padding:24px 20px;border:1px solid var(--line);background:linear-gradient(145deg,#141419,#0d0d11);border-radius:5px;transition:.3s}
+.process-step:hover{transform:translateY(-6px);border-color:#ff263f80}
+.process-step .step{color:var(--red);font-size:12px;letter-spacing:2px}
+.process-step h3{margin:22px 0 10px;font-size:18px}
+.process-step p{color:var(--muted);font-size:13px;line-height:1.8}
+.contact-area{padding:clamp(28px,6vw,65px);border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:30px;background:radial-gradient(ellipse at 85% 50%,#ff263f12,transparent 50%),#101014}
+.contact-area p{margin-top:15px;color:var(--muted);line-height:1.8;font-size:14px}
+.contact-links{display:grid;gap:12px;margin-top:24px;font-size:14px}
+.contact-links a:hover{color:var(--red)}
+footer{padding:28px 0;border-top:1px solid #ffffff12;color:#777;font-size:12px}
+footer .container{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
 /* PROJECT VIEWER */
-.project-modal {
-  position: fixed; inset: 0; z-index: 10000;
-  display: none; align-items: center; justify-content: center;
-  padding: 24px; background: #050507f5; backdrop-filter: blur(15px);
-}
-.project-modal.open { display: flex; animation: fadeUp .25s ease; }
-.modal-panel {
-  width: min(1100px, 100%); max-height: 92vh; overflow: auto;
-  background: #111116; border: 1px solid #ffffff25;
-  border-radius: 10px; display: grid;
-  grid-template-columns: 1.2fr .8fr;
-}
-.modal-visual {
-  min-height: 350px; display: grid; place-items: center;
-  background: #08080b; overflow: hidden;
-}
-.modal-visual img {
-  width: 100%; height: 100%; max-height: 80vh;
-  object-fit: contain;
-}
-.modal-fallback { padding: 35px; text-align: center; color: #aaa; line-height: 1.8; }
-.modal-content { align-self: center; padding: 35px; }
-.modal-content h2 { margin: 15px 0; }
-.modal-content p { color: var(--muted); line-height: 1.9; font-size: 14px; }
-.modal-close {
-  position: fixed; top: 18px; right: 20px; z-index: 2;
-  width: 45px; height: 45px; border-radius: 50%;
-  border: 1px solid #ffffff45; background: #17171d;
-  color: white; font-size: 27px;
-}
-.modal-close:hover { background: var(--red); }
+.project-modal{position:fixed;inset:0;z-index:1001;background:#000d;display:none;align-items:center;justify-content:center;padding:24px;overflow:auto}
+.project-modal.open{display:flex}
+.modal-panel{width:min(1050px,100%);max-height:90vh;overflow:auto;display:grid;grid-template-columns:1.2fr .8fr;background:#111116;border:1px solid #ffffff25;border-radius:10px;box-shadow:0 30px 100px #000b;animation:popIn .25s ease}
+.modal-visual{min-height:300px;display:flex;align-items:center;justify-content:center;background:#09090c;overflow:auto}
+.modal-visual>img{display:block;width:100%;height:auto;max-height:85vh;object-fit:contain}
+.modal-content{padding:clamp(24px,4vw,45px);align-self:center}
+.modal-content h2{margin-top:14px}
+.modal-content>p{margin-top:17px;color:var(--muted);font-size:14px;line-height:1.9}
+.modal-close{position:fixed;top:18px;right:22px;width:44px;height:44px;border:1px solid #ffffff55;border-radius:50%;background:#17171d;color:#fff;font-size:30px;z-index:1002}
+.modal-fallback{padding:28px;color:var(--muted);line-height:1.7;text-align:center}
 
-/* FLOATING ASSISTANT */
-.ai-launcher {
-  position: fixed; right: 24px; bottom: 24px; z-index: 12000;
-  width: 64px; height: 64px; border: 0; border-radius: 50%;
-  color: white; background: linear-gradient(145deg, #ff5265, #e90f2b);
-  box-shadow: 0 8px 32px #ff263f55;
-  display: grid; place-items: center; font-size: 27px;
-  transition: transform .25s, box-shadow .25s;
-}
-.ai-launcher:hover {
-  transform: translateY(-5px) scale(1.04);
-  box-shadow: 0 12px 40px #ff263f77;
-}
-.ai-launcher::before {
-  content: ""; position: absolute; inset: -6px;
-  border: 1px solid #ff263f88; border-radius: 50%;
-  animation: ring 2.2s infinite;
-}
-.ai-launcher small {
-  position: absolute; right: 0; top: -3px;
-  background: white; color: #e91c35; border-radius: 20px;
-  font-size: 9px; padding: 3px 5px; font-weight: 900;
-}
-.chat-panel {
-  position: fixed; right: 24px; bottom: 102px; z-index: 12001;
-  width: min(380px, calc(100vw - 28px));
-  height: min(550px, calc(100dvh - 135px));
-  background: #101015; border: 1px solid #ffffff24;
-  border-radius: 15px; box-shadow: 0 24px 80px #000b;
-  display: none; flex-direction: column; overflow: hidden;
-  transform-origin: bottom right;
-}
-.chat-panel.open { display: flex; animation: popIn .25s ease; }
-.chat-head {
-  display: flex; align-items: center; gap: 12px; padding: 17px;
-  background: linear-gradient(110deg, #241017, #15151c);
-  border-bottom: 1px solid #ffffff18;
-}
-.ai-avatar {
-  width: 39px; height: 39px; flex-shrink: 0;
-  border-radius: 50%; background: var(--red);
-  display: grid; place-items: center; font-weight: 900;
-}
-.chat-head-copy { flex: 1; }
-.chat-head-copy strong { display: block; font-size: 14px; }
-.chat-head-copy span { display: block; color: #a8dcb5; font-size: 11px; margin-top: 4px; }
-.chat-close {
-  width: 32px; height: 32px; border: 1px solid #ffffff25;
-  border-radius: 50%; background: #ffffff08; color: white; font-size: 20px;
-}
-.chat-messages {
-  flex: 1; overflow-y: auto; padding: 16px;
-  display: flex; flex-direction: column; gap: 12px;
-}
-.message {
-  max-width: 88%; padding: 11px 13px;
-  font-size: 13px; line-height: 1.65;
-  border-radius: 12px; white-space: pre-wrap; overflow-wrap: anywhere;
-}
-.message.bot { align-self: flex-start; background: #202027; border-bottom-left-radius: 4px; }
-.message.user { align-self: flex-end; background: #e91f39; border-bottom-right-radius: 4px; }
-.quick-prompts { display: flex; gap: 7px; flex-wrap: wrap; padding: 0 14px 12px; }
-.quick-prompts button {
-  border: 1px solid #ff263f65; color: #ff8593;
-  background: #ff263f0c; border-radius: 20px;
-  padding: 7px 10px; font-size: 11px;
-}
-.quick-prompts button:hover { background: #ff263f24; }
-.chat-form {
-  display: flex; gap: 8px; padding: 12px;
-  border-top: 1px solid #ffffff18; background: #0c0c10;
-}
-.chat-form input {
-  flex: 1; min-width: 0; color: white; background: #1a1a21;
-  border: 1px solid #ffffff1d; border-radius: 24px;
-  padding: 12px 14px; outline: none; font-size: 13px;
-}
-.chat-form input:focus { border-color: #ff263f88; }
-.chat-form button {
-  width: 43px; min-width: 43px; border: 0;
-  border-radius: 50%; background: var(--red); color: white; font-size: 19px;
-}
-.chat-note { padding: 0 14px 10px; color: #777; font-size: 10px; background: #0c0c10; }
+/* PORTFOLIO ASSISTANT */
+.ai-launcher{position:fixed;right:24px;bottom:24px;z-index:900;width:64px;height:64px;border:0;border-radius:50%;background:var(--red);color:white;box-shadow:0 10px 35px #ff263f55;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;transition:transform .25s}
+.ai-launcher:hover{transform:translateY(-4px) scale(1.04)}
+.ai-launcher span{font-size:25px}
+.ai-launcher small{font-size:9px;font-weight:bold;letter-spacing:2px}
+.chat-panel{position:fixed;right:24px;bottom:100px;z-index:901;width:min(370px,calc(100vw - 28px));height:min(540px,calc(100vh - 125px));display:none;flex-direction:column;overflow:hidden;background:#111116;border:1px solid #ffffff25;border-radius:12px;box-shadow:0 25px 80px #000b}
+.chat-panel.open{display:flex;animation:popIn .22s ease}
+.chat-head{display:flex;align-items:center;gap:12px;padding:16px;border-bottom:1px solid var(--line);background:#17171d}
+.ai-avatar{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--red);font-weight:900}
+.chat-head-copy{display:grid;gap:5px;flex:1}
+.chat-head-copy strong{font-size:14px}
+.chat-head-copy span{font-size:10px;color:#9b9ba5}
+.chat-close{border:0;background:transparent;color:#fff;font-size:27px}
+.chat-messages{flex:1;overflow:auto;padding:15px;display:flex;flex-direction:column;gap:10px}
+.message{max-width:92%;white-space:pre-line;padding:11px 13px;border-radius:10px;font-size:12px;line-height:1.7;overflow-wrap:anywhere}
+.message.bot{align-self:flex-start;background:#202027;color:#eee}
+.message.user{align-self:flex-end;background:#ff263f;color:white}
+.quick-prompts{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 12px}
+.quick-prompts button{padding:7px 10px;border-radius:20px;border:1px solid #ffffff30;background:transparent;color:#ddd;font-size:11px}
+.quick-prompts button:hover{border-color:var(--red)}
+.chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.chat-form input{min-width:0;flex:1;padding:12px;border:1px solid #ffffff25;border-radius:7px;background:#09090c;color:#fff;outline:none}
+.chat-form input:focus{border-color:var(--red)}
+.chat-form button{width:42px;border:0;border-radius:7px;background:var(--red);color:white;font-size:19px}
+.chat-note{text-align:center;color:#777;font-size:10px;padding:0 10px 12px}
 
-/* RESPONSIVE */
-@media (max-width: 850px) {
-  .hero { grid-template-columns: 1fr; gap: 40px; padding: 55px 0 70px; }
-  .hero-copy { order: 1; }
-  .visual { width: min(80%, 380px); }
-  .cards { grid-template-columns: 1fr; }
-  .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .section-top, .contact-area { align-items: flex-start; flex-direction: column; }
-  .about-grid, .skill-layout { grid-template-columns: 1fr; gap: 30px; }
-  .process-grid { grid-template-columns: repeat(2, 1fr); }
-  .modal-panel { grid-template-columns: 1fr; max-height: 90vh; }
-  .modal-visual { min-height: 230px; }
-  .modal-visual img { max-height: 45vh; }
-  .modal-content { padding: 25px; }
+/* REVEAL MOTION AND RESPONSIVE LAYOUT */
+.reveal{opacity:1;transform:none}
+.js-motion .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.js-motion .reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+.hero{min-height:auto;grid-template-columns:1fr;gap:50px;padding-top:55px}
+.hero-copy{text-align:center}
+.hero-text{margin-left:auto;margin-right:auto}
+.hero .buttons{justify-content:center}
+.visual{width:min(420px,90%)}
+.about-grid,.skill-layout{grid-template-columns:1fr}
+.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.modal-panel{grid-template-columns:1fr}
+.modal-visual{max-height:55vh}
+.modal-visual>img{max-height:55vh}
+.modal-content{padding:25px}
 }
-@media (max-width: 560px) {
-  nav { height: 70px; }
-  .nav-links { gap: 10px; }
-  .nav-links a:not(.nav-contact) { display: none; }
-  h1 { letter-spacing: -2px; }
-  .project-grid, .process-grid { grid-template-columns: 1fr; }
-  .section { padding: 68px 0; }
-  .project-modal { padding: 10px; }
-  .modal-content { padding: 22px; }
-  .modal-close { top: 8px; right: 8px; }
-  .ai-launcher { right: 15px; bottom: 15px; width: 58px; height: 58px; }
-  .chat-panel {
-    right: 10px; bottom: 84px;
-    width: calc(100vw - 20px);
-    height: min(560px, calc(100dvh - 105px));
-  }
-  footer { padding: 25px 0; }
+@media(max-width:600px){
+nav{height:68px}
+.logo{font-size:24px}
+.nav-links{gap:12px;font-size:11px}
+.nav-links a:not(.nav-contact){display:none}
+.nav-contact{padding:9px 11px}
+.hero{padding:48px 0 60px}
+.hero h1{font-size:clamp(42px,13vw,64px);letter-spacing:-2.5px}
+.hero-text{font-size:14px}
+.section{padding:70px 0}
+.section-top{display:block}
+.section-description{margin-top:16px}
+.cards,.project-grid,.process-grid{grid-template-columns:1fr}
+.card{min-height:190px}
+.project-grid{gap:16px}
+.project-info{padding:18px}
+.stat{padding:15px}
+.contact-area{align-items:flex-start;flex-direction:column}
+.modal-gallery{grid-template-columns:1fr;padding:10px}
+.project-modal{padding:10px}
+.modal-panel{max-height:94vh}
+.modal-close{top:12px;right:12px}
+.ai-launcher{right:15px;bottom:15px;width:58px;height:58px}
+.chat-panel{right:14px;bottom:84px;height:min(530px,calc(100vh - 105px))}
+footer .container{display:grid;gap:10px}
 }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .js-motion .reveal { opacity: 1; transform: none; }
+@media(prefers-reduced-motion:reduce){
+*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 </style>
 </head>
 <body>
-<div id="loader">
+
+<div id="loader" aria-label="Loading portfolio">
   <div class="loader-inner">
     <div class="loader-logo">MA.</div>
     <div class="loader-line"></div>
-    <p>LOADING MY WORLD</p>
+    <p>LOADING PORTFOLIO</p>
   </div>
 </div>
 
-<nav>
-  <a class="logo" href="#home">AH<span>.</span></a>
+<nav aria-label="Main navigation">
+  <a class="logo" href="#home">M<span>A.</span></a>
   <div class="nav-links">
-    <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#projects">Projects</a>
@@ -563,292 +250,232 @@ footer {
 </nav>
 
 <main>
-  <section class="hero" id="home">
-    <div class="hero-copy reveal">
-      <div class="eyebrow">Creative Designer & Developer</div>
-      <h1>Hi, I'm <span class="name">Muhammad<br>Ahsan.</span></h1>
-      <p class="hero-text">
-        I create bold graphic designs, modern websites and Shopify
-        e-commerce experiences that help brands stand out. I combine
-        creative thinking with practical web skills to turn ideas into
-        polished digital experiences.
-      </p>
-      <div class="buttons">
-        <a class="btn primary" href="#projects">Explore My Work ↗</a>
-        <a class="btn" href="#contact">Contact Me</a>
-      </div>
-      <div class="hero-note">Design · Code · E-commerce · Creativity</div>
+<section class="hero" id="home">
+  <div class="hero-copy reveal">
+    <div class="eyebrow">Creative Designer · Web Developer</div>
+    <h1>Hi, I'm <span class="name">Muhammad<br>Ahsan.</span></h1>
+    <p class="hero-text">I create bold graphic designs, modern responsive websites, and clean Shopify e-commerce experiences that help ideas stand out online.</p>
+    <div class="buttons">
+      <a class="btn primary" href="#projects">Explore My Work ↘</a>
+      <a class="btn" href="mailto:mhdxahsan@gmail.com">Contact Me ↗</a>
     </div>
-    <div class="visual">
-      <div class="glow"></div>
-      <div class="orbit"></div>
-      <div class="orbit two"></div>
-      <div class="photo-wrap">
-        <img src="Porfolio%20Picture.jpg" alt="Portrait of Muhammad Ahsan"
-             onerror="this.style.display='none'">
-      </div>
-      <div class="photo-label">
-        <strong>Muhammad Ahsan</strong>
-        <small>INDEPENDENT CREATIVE</small>
-      </div>
+    <div class="hero-note">Design · Develop · Build Online</div>
+  </div>
+  <div class="visual reveal">
+    <div class="glow"></div>
+    <div class="orbit"></div>
+    <div class="orbit two"></div>
+    <div class="photo-wrap">
+      <img src="Porfolio%20Picture.jpg" alt="Portrait of Muhammad Ahsan" onerror="this.style.display='none'">
     </div>
-  </section>
+    <div class="photo-label"><strong>Muhammad Ahsan</strong><small>DESIGNER & DEVELOPER</small></div>
+  </div>
+</section>
 
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-top reveal">
-        <div>
-          <div class="section-label">A Little About Me</div>
-          <h2>Creative mind.<br>Digital builder.</h2>
-        </div>
-        <p class="section-description">I enjoy making ideas look great and work smoothly across screens.</p>
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-top reveal">
+      <div><div class="section-label">A Little About Me</div><h2>Creative ideas.<br><span class="red">Real experiences.</span></h2></div>
+      <p class="section-description">A mix of visual creativity and practical development to make brands look professional and work smoothly online.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>I'm Muhammad Ahsan, a creative designer and web developer interested in building strong visual identities, responsive websites and useful e-commerce experiences.</p>
+        <p>From graphic design to front-end development and Shopify store design, I focus on clear layouts, thoughtful details and mobile-friendly results.</p>
+        <div class="buttons"><a class="btn" href="#contact">Let's Work Together ↗</a></div>
       </div>
-      <div class="about-grid">
-        <div class="about-copy reveal">
-          <p>I'm Muhammad Ahsan, a creative designer and web developer interested in graphic design, responsive websites and e-commerce experiences.</p>
-          <p>My goal is to create work that looks professional, feels easy to use and helps a business present itself clearly online. I keep learning, experimenting and improving with every project.</p>
-          <div class="buttons">
-            <a class="btn primary" href="#contact">Let's Work Together ↗</a>
-          </div>
-        </div>
-        <div class="about-panel reveal">
-          <div class="stat-grid">
-            <div class="stat"><strong>01</strong><span>Creative design approach</span></div>
-            <div class="stat"><strong>02</strong><span>Responsive web layouts</span></div>
-            <div class="stat"><strong>03</strong><span>E-commerce focus</span></div>
-            <div class="stat"><strong>24/7</strong><span>Portfolio available online</span></div>
-          </div>
+      <div class="about-panel reveal">
+        <div class="stat-grid">
+          <div class="stat"><strong>01</strong><span>Graphic design & visual content</span></div>
+          <div class="stat"><strong>02</strong><span>Responsive web development</span></div>
+          <div class="stat"><strong>03</strong><span>Shopify store design</span></div>
+          <div class="stat"><strong>04</strong><span>Creative problem solving</span></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" id="services">
-    <div class="container">
-      <div class="section-top reveal">
-        <div>
-          <div class="section-label">What I Do</div>
-          <h2>Creative work. Real impact.</h2>
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-top reveal">
+      <div><div class="section-label">What I Do</div><h2>Services & Expertise</h2></div>
+      <p class="section-description">Creative services for brands, businesses and online stores.</p>
+    </div>
+    <div class="cards">
+      <article class="card reveal"><div class="card-number">01 / VISUALS</div><h3>Graphic Designing</h3><p>Promotional artwork, social media creatives, brand visuals and clean marketing designs.</p></article>
+      <article class="card reveal"><div class="card-number">02 / DIGITAL</div><h3>Web Development</h3><p>Responsive websites and interactive interfaces built with a focus on clarity and usability.</p></article>
+      <article class="card reveal"><div class="card-number">03 / E-COMMERCE</div><h3>Shopify Store Design</h3><p>Online store layouts, product presentation and shopping experiences designed for customers.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section projects-section" id="projects">
+  <div class="container">
+    <div class="section-top reveal">
+      <div><div class="section-label">Selected Work</div><h2>Projects & Portfolio</h2></div>
+      <p class="section-description">Each project card keeps its own image. Click Graphic Design to view the gallery, or click Web Development and Shopify Store Design to open their preview.</p>
+    </div>
+
+    <div class="project-grid">
+
+      <!-- PROJECT 1: GRAPHIC DESIGN -->
+      <button class="project-card reveal" type="button"
+        data-title="Graphic Design"
+        data-category="01 / Graphic Design"
+        data-description="My graphic design collection includes brand visuals, promotional graphics, social media designs and marketing artwork."
+        data-image="image%201.jpeg"
+        aria-label="Open Graphic Design gallery">
+        <div class="project-thumb">
+          <img src="image%201.jpeg" alt="Graphic design preview" onerror="this.hidden=true">
+          <div class="project-fallback"><span class="symbol">✳</span><h3>Graphic Design</h3><small>Graphic design collection</small></div>
+          <span class="project-open">↗</span>
         </div>
-        <p class="section-description">A combination of visual creativity, technical skills and thoughtful digital experiences.</p>
-      </div>
-      <div class="cards">
-        <article class="card reveal">
-          <span class="card-number">01 / DESIGN</span>
+        <div class="project-info">
+          <div class="project-category">01 / DESIGN</div>
           <h3>Graphic Design</h3>
-          <p>Eye-catching visuals, promotional graphics and creative content designed to make a brand memorable.</p>
-        </article>
-        <article class="card reveal">
-          <span class="card-number">02 / DEVELOPMENT</span>
+          <p>Brand visuals, promotional designs and social media creatives.</p>
+          <div class="project-cta">Click to view gallery ↗</div>
+        </div>
+      </button>
+
+      <!-- PROJECT 2: WEB DEVELOPMENT -->
+      <button class="project-card reveal" type="button"
+        data-title="Web Development"
+        data-category="02 / Web Development"
+        data-description="Responsive websites, landing pages and interactive interfaces built with HTML, CSS and JavaScript."
+        data-image="image%203.jpeg"
+        aria-label="Open Web Development project">
+        <div class="project-thumb">
+          <img src="image%203.jpeg" alt="Web development project preview" onerror="this.hidden=true">
+          <div class="project-fallback"><span class="symbol">⌘</span><h3>Web Development</h3><small>Website project preview</small></div>
+          <span class="project-open">↗</span>
+        </div>
+        <div class="project-info">
+          <div class="project-category">02 / DEVELOPMENT</div>
           <h3>Web Development</h3>
-          <p>Modern responsive websites with smooth interactions, clear structure and mobile-friendly layouts.</p>
-        </article>
-        <article class="card reveal">
-          <span class="card-number">03 / E-COMMERCE</span>
+          <p>Responsive websites and interactive interfaces.</p>
+          <div class="project-cta">Click to view project ↗</div>
+        </div>
+      </button>
+
+      <!-- PROJECT 3: SHOPIFY -->
+      <button class="project-card reveal" type="button"
+        data-title="Shopify Store Design"
+        data-category="03 / E-commerce"
+        data-description="Shopify storefronts, product pages and e-commerce layouts designed to present products clearly."
+        data-image="image%206.jpeg"
+        aria-label="Open Shopify Store Design project">
+        <div class="project-thumb">
+          <img src="image%206.jpeg" alt="Shopify store design preview" onerror="this.hidden=true">
+          <div class="project-fallback"><span class="symbol">▧</span><h3>Shopify Store Design</h3><small>Store design preview</small></div>
+          <span class="project-open">↗</span>
+        </div>
+        <div class="project-info">
+          <div class="project-category">03 / E-COMMERCE</div>
           <h3>Shopify Store Design</h3>
-          <p>Clean online store designs and product layouts that help products look their best.</p>
-        </article>
+          <p>Online storefronts and attractive product layouts.</p>
+          <div class="project-cta">Click to view project ↗</div>
+        </div>
+      </button>
+
+      <!-- OTHER PROJECTS: COMING SOON, NOT CLICKABLE -->
+      <div class="project-card coming-soon reveal" aria-label="Other projects coming soon">
+        <div class="project-thumb">
+          <div class="project-fallback"><span class="symbol">✦</span><h3>Coming Soon</h3><small>New work is on the way</small></div>
+        </div>
+        <div class="project-info">
+          <div class="project-category">04 / OTHER WORK</div>
+          <h3>Other Projects</h3>
+          <p>More creative and technical projects will be added here soon.</p>
+          <div class="project-cta">Coming Soon ✦</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="container">
+    <div class="section-top reveal">
+      <div><div class="section-label">My Toolkit</div><h2>Skills & Expertise</h2></div>
+      <p class="section-description">A growing toolkit for creative work, web projects and online stores.</p>
+    </div>
+    <div class="skill-layout">
+      <div class="skill-tags reveal">
+        <span>Graphic Designing</span><span>Web Development</span><span>HTML & CSS</span><span>JavaScript</span><span>Shopify</span><span>E-commerce</span><span>Responsive Design</span><span>Creative Direction</span>
+      </div>
+      <div class="skill-bars">
+        <div class="reveal"><div class="skill-line-head"><span>Graphic Design</span><span>Creative</span></div><div class="skill-track"><div class="skill-fill" style="--level:90%"></div></div></div>
+        <div class="reveal"><div class="skill-line-head"><span>Web Development</span><span>Building</span></div><div class="skill-track"><div class="skill-fill" style="--level:82%"></div></div></div>
+        <div class="reveal"><div class="skill-line-head"><span>Shopify / E-commerce</span><span>Design</span></div><div class="skill-track"><div class="skill-fill" style="--level:85%"></div></div></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section projects-section" id="projects">
-    <div class="container">
-      <div class="section-top reveal">
-        <div>
-          <div class="section-label">Selected Work</div>
-          <h2>Projects & Portfolio</h2>
+<section class="section" id="process">
+  <div class="container">
+    <div class="section-top reveal">
+      <div><div class="section-label">How I Work</div><h2>Simple Process</h2></div>
+      <p class="section-description">A clear workflow helps turn an idea into a polished result.</p>
+    </div>
+    <div class="process-grid">
+      <article class="process-step reveal"><div class="step">STEP 01</div><h3>Discover</h3><p>Understand your idea, goals and requirements.</p></article>
+      <article class="process-step reveal"><div class="step">STEP 02</div><h3>Plan</h3><p>Choose a direction, layout and visual approach.</p></article>
+      <article class="process-step reveal"><div class="step">STEP 03</div><h3>Create</h3><p>Design, build and refine the work carefully.</p></article>
+      <article class="process-step reveal"><div class="step">STEP 04</div><h3>Deliver</h3><p>Review the final result and prepare it for use.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-area reveal">
+      <div>
+        <div class="section-label">Have a Project?</div>
+        <h2>Let's create something<br><span class="red">great together.</span></h2>
+        <p>Have a design, website or online store in mind? Get in touch and tell me about it.</p>
+        <div class="contact-links">
+          <a href="mailto:mhdxahsan@gmail.com">✉ &nbsp; mhdxahsan@gmail.com</a>
+          <a href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">☏ &nbsp; WhatsApp: +92 331 9333080</a>
         </div>
-        <p class="section-description">Move your cursor over any project box to cycle through the images. Clicking will not open a popup.</p>
       </div>
-      <div class="project-grid">
-        <button class="project-card reveal" type="button" data-title="Graphic Design" data-category="01 / Graphic Design" data-description="My graphic design collection includes brand visuals, promotional graphics, social media designs and marketing artwork." data-image="image%201.jpeg">
-          <div class="project-thumb">
-            <img src="image%201.jpeg" alt="Graphic design preview" onerror="this.hidden=true">
-            <div class="project-fallback">
-              <span class="symbol">✳</span>
-              <h3>Graphic Design</h3>
-              <small>Add your design image</small>
-            </div>
-            <span class="project-open">↗</span>
-          </div>
-          <div class="project-info">
-            <div class="project-category">01 / DESIGN</div>
-            <h3>Graphic Design</h3>
-            <p>Brand visuals, promotional designs and social media creatives.</p>
-            <div class="project-cta">Hover to preview images ↗</div>
-          </div>
-        </button>
-
-        <button class="project-card reveal" type="button" data-title="Web Development" data-category="02 / Web Development" data-description="Responsive websites, landing pages and interactive interfaces built with HTML, CSS and JavaScript." data-image="image%203.jpeg">
-          <div class="project-thumb">
-            <img src="image%203.jpeg" alt="Website preview" onerror="this.hidden=true">
-            <div class="project-fallback">
-              <span class="symbol">⌘</span>
-              <h3>Web Development</h3>
-              <small>Add your website screenshot</small>
-            </div>
-            <span class="project-open">↗</span>
-          </div>
-          <div class="project-info">
-            <div class="project-category">02 / DEVELOPMENT</div>
-            <h3>Web Development</h3>
-            <p>Responsive websites and interactive interfaces.</p>
-            <div class="project-cta">Hover to preview images ↗</div>
-          </div>
-        </button>
-
-        <button class="project-card reveal" type="button" data-title="Shopify Store Design" data-category="03 / E-commerce" data-description="Shopify storefronts, product pages and e-commerce layouts designed to present products clearly." data-image="image%206.jpeg">
-          <div class="project-thumb">
-            <img src="image%206.jpeg" alt="Shopify store preview" onerror="this.hidden=true">
-            <div class="project-fallback">
-              <span class="symbol">▧</span>
-              <h3>Shopify Store</h3>
-              <small>Add your store screenshot</small>
-            </div>
-            <span class="project-open">↗</span>
-          </div>
-          <div class="project-info">
-            <div class="project-category">03 / E-COMMERCE</div>
-            <h3>Shopify Store Design</h3>
-            <p>Online storefronts and attractive product layouts.</p>
-            <div class="project-cta">Hover to preview images ↗</div>
-          </div>
-        </button>
-
-        <div class="project-card coming-soon reveal" aria-label="Other projects coming soon">
-          <div class="project-thumb">
-            <img src="image%204.jpeg" alt="Other creative project preview" onerror="this.hidden=true">
-            <div class="project-fallback">
-              <span class="symbol">✦</span>
-              <h3>Coming Soon</h3>
-              <small>New work is on the way</small>
-            </div>
-          </div>
-          <div class="project-info">
-            <div class="project-category">04 / OTHER WORK</div>
-            <h3>Other Projects</h3>
-            <p>More creative and technical projects will be added here soon.</p>
-            <div class="project-cta">Hover to preview images ✦</div>
-          </div>
-        </div>
+      <div class="buttons">
+        <a class="btn primary" href="mailto:mhdxahsan@gmail.com">Email Me ↗</a>
+        <a class="btn" href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
       </div>
     </div>
-  </section>
-
-  <section class="section" id="skills">
-    <div class="container">
-      <div class="section-top reveal">
-        <div>
-          <div class="section-label">My Toolkit</div>
-          <h2>Skills & Expertise</h2>
-        </div>
-        <p class="section-description">A growing toolkit for creative work, web projects and online stores.</p>
-      </div>
-      <div class="skill-layout">
-        <div class="skill-tags reveal">
-          <span>Graphic Designing</span>
-          <span>Web Development</span>
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>JavaScript</span>
-          <span>Shopify</span>
-          <span>E-commerce</span>
-          <span>Responsive Design</span>
-          <span>UI Layouts</span>
-          <span>Creative Direction</span>
-        </div>
-        <div class="skill-bars reveal">
-          <div>
-            <div class="skill-line-head"><span>Graphic Design</span><span>Creative skill</span></div>
-            <div class="skill-track"><div class="skill-fill" style="--level:85%"></div></div>
-          </div>
-          <div>
-            <div class="skill-line-head"><span>HTML & CSS</span><span>Web foundations</span></div>
-            <div class="skill-track"><div class="skill-fill" style="--level:80%"></div></div>
-          </div>
-          <div>
-            <div class="skill-line-head"><span>JavaScript</span><span>Interactive web</span></div>
-            <div class="skill-track"><div class="skill-fill" style="--level:65%"></div></div>
-          </div>
-          <div>
-            <div class="skill-line-head"><span>Shopify & E-commerce</span><span>Store design</span></div>
-            <div class="skill-track"><div class="skill-fill" style="--level:75%"></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="process">
-    <div class="container">
-      <div class="section-top reveal">
-        <div>
-          <div class="section-label">How I Work</div>
-          <h2>From idea to final result.</h2>
-        </div>
-        <p class="section-description">A simple process keeps projects clear, organised and focused on the goal.</p>
-      </div>
-      <div class="process-grid">
-        <article class="process-step reveal">
-          <span class="step">STEP 01</span><h3>Understand</h3>
-          <p>Discuss the idea, audience, needs and expected result.</p>
-        </article>
-        <article class="process-step reveal">
-          <span class="step">STEP 02</span><h3>Plan</h3>
-          <p>Choose a visual direction, structure and practical approach.</p>
-        </article>
-        <article class="process-step reveal">
-          <span class="step">STEP 03</span><h3>Create</h3>
-          <p>Build the design or website and refine important details.</p>
-        </article>
-        <article class="process-step reveal">
-          <span class="step">STEP 04</span><h3>Deliver</h3>
-          <p>Review the result, make agreed improvements and share the final work.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="contact-area reveal">
-        <div>
-          <div class="section-label">Have a project in mind?</div>
-          <h2>Let's create something great.</h2>
-          <p>Have an idea, need a design, or want to build a website? Contact me and tell me what you're working on.</p>
-          <div class="contact-details">
-            <a href="mailto:mhdxahsan@gmail.com">✉ &nbsp; mhdxahsan@gmail.com</a>
-            <a href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">☏ &nbsp; WhatsApp: +92 331 9333080</a>
-          </div>
-        </div>
-        <div class="buttons">
-          <a class="btn primary" href="mailto:mhdxahsan@gmail.com">Email Me ↗</a>
-          <a class="btn" href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 </main>
 
-<footer>
-  <a class="logo" href="#home">AH<span>.</span></a>
-  <span>Designed by <b>Muhammad Ahsan</b></span>
-  <span>© <span id="year"></span> All rights reserved.</span>
-</footer>
+<footer><div class="container"><span>© <span id="year"></span> <b>Muhammad Ahsan</b>. All rights reserved.</span><span>Designed with creativity <b>✦</b></span><a href="#home">Back to top ↑</a></div></footer>
 
-<!-- PORTFOLIO CHAT ASSISTANT -->
-<button class="ai-launcher" id="aiLauncher" type="button" aria-label="Open Ahsan's portfolio assistant" aria-expanded="false">
-  <span>✦</span><small>AI</small>
-</button>
+<!-- PROJECT VIEWER -->
+<div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
+  <button class="modal-close" id="modalClose" type="button" aria-label="Close project viewer">×</button>
+  <div class="modal-panel">
+    <div class="modal-visual" id="modalVisual"><p class="modal-fallback">Project preview</p></div>
+    <div class="modal-content">
+      <div class="project-category" id="modalCategory">PROJECT</div>
+      <h2 id="modalTitle">Project title</h2>
+      <p id="modalDescription"></p>
+      <div class="buttons">
+        <a class="btn primary" id="modalVisit" href="#" target="_blank" rel="noopener noreferrer" hidden>Visit Project ↗</a>
+        <button class="btn" type="button" id="modalDone">Close Viewer</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- PORTFOLIO ASSISTANT -->
+<button class="ai-launcher" id="aiLauncher" type="button" aria-label="Open Ahsan's portfolio assistant" aria-expanded="false"><span>✦</span><small>AI</small></button>
 <section class="chat-panel" id="chatPanel" aria-label="Ahsan portfolio assistant" aria-hidden="true">
   <div class="chat-head">
     <div class="ai-avatar">A.</div>
-    <div class="chat-head-copy">
-      <strong>Ahsan's Assistant</strong>
-      <span>● Portfolio helper</span>
-    </div>
+    <div class="chat-head-copy"><strong>Ahsan's Assistant</strong><span>● Portfolio helper</span></div>
     <button class="chat-close" id="chatClose" type="button" aria-label="Close assistant">×</button>
   </div>
   <div class="chat-messages" id="chatMessages" aria-live="polite">
@@ -867,201 +494,247 @@ footer {
 </section>
 
 <script>
-(function () {
-  const loader = document.getElementById("loader");
+(function(){
+  const loader=document.getElementById('loader');
 
-  function hideLoader() {
-    if (loader) loader.classList.add("hide");
+  function hideLoader(){
+    if(loader)loader.classList.add('hide');
   }
 
-  window.addEventListener("load", hideLoader);
-  setTimeout(hideLoader, 1800);
-  document.getElementById("year").textContent = new Date().getFullYear();
+  window.addEventListener('load',hideLoader);
+  setTimeout(hideLoader,1800);
+  document.getElementById('year').textContent=new Date().getFullYear();
 
-  /* Scroll animations */
-  const revealItems = document.querySelectorAll(".reveal");
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* Scroll reveal animations */
+  const revealItems=document.querySelectorAll('.reveal');
+  const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if ("IntersectionObserver" in window && !reducedMotion) {
-    document.body.classList.add("js-motion");
-
-    const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+  if('IntersectionObserver' in window&&!reducedMotion){
+    document.body.classList.add('js-motion');
+    const observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: "0px 0px -20px 0px" });
+    },{threshold:.08,rootMargin:'0px 0px -20px 0px'});
 
-    revealItems.forEach(function (item, index) {
-      item.style.transitionDelay = (index % 3) * 70 + "ms";
+    revealItems.forEach(function(item,index){
+      item.style.transitionDelay=(index%3)*70+'ms';
       observer.observe(item);
     });
-  } else {
-    revealItems.forEach(function (item) {
-      item.classList.add("visible");
+  }else{
+    revealItems.forEach(function(item){
+      item.classList.add('visible');
     });
   }
 
-  /* PROJECT IMAGE SLIDESHOW — ALL PROJECT BOXES */
-  const projectImageFiles = [
-    "image%201.jpeg",
-    "image%202.jpeg",
-    "image%203.jpeg",
-    "image%204.jpeg",
-    "image%205.jpeg",
-    "image%206.jpeg",
-    "image%207.jpeg",
-    "image%208.jpeg",
-    "image%209.jpeg",
-    "image%2010.jpeg",
-    "image%2012.jpeg",
-    "image%2013.jpeg"
-  ];
+  /* PROJECT VIEWER
+     Each project has a fixed image.
+     Graphic Design opens the gallery.
+     Other Projects is deliberately not a button. */
+  const modal=document.getElementById('projectModal');
+  const modalVisual=document.getElementById('modalVisual');
+  const modalTitle=document.getElementById('modalTitle');
+  const modalCategory=document.getElementById('modalCategory');
+  const modalDescription=document.getElementById('modalDescription');
+  const modalVisit=document.getElementById('modalVisit');
+  const closeButton=document.getElementById('modalClose');
+  let lastTrigger=null;
 
-  document.querySelectorAll(".project-card").forEach(function (card, cardIndex) {
-    const image = card.querySelector(".project-thumb img");
-    if (!image) return;
+  function openProject(card){
+    lastTrigger=card;
+    modalTitle.textContent=card.dataset.title||'Project';
+    modalCategory.textContent=card.dataset.category||'PROJECT';
+    modalDescription.textContent=card.dataset.description||'';
+    modalVisual.replaceChildren();
 
-    const originalSrc = image.getAttribute("src");
-    let imageIndex = cardIndex % projectImageFiles.length;
-    let slideshowTimer = null;
-    let changeTimer = null;
+    const imagePath=card.dataset.image;
 
-    function showNextImage() {
-      image.classList.add("is-changing");
-      clearTimeout(changeTimer);
+    if(card.dataset.title==='Graphic Design'){
+      const gallery=document.createElement('div');
+      gallery.className='modal-gallery';
 
-      changeTimer = setTimeout(function () {
-        imageIndex = (imageIndex + 1) % projectImageFiles.length;
-        image.src = projectImageFiles[imageIndex];
-        image.classList.remove("is-changing");
-      }, 150);
+      const imageFiles=[
+        'image%201.jpeg',
+        'image%202.jpeg',
+        'image%203.jpeg',
+        'image%204.jpeg',
+        'image%205.jpeg',
+        'image%206.jpeg',
+        'image%207.jpeg',
+        'image%208.jpeg',
+        'image%209.jpeg',
+        'image%2010.jpeg',
+        'image%2012.jpeg',
+        'image%2013.jpeg'
+      ];
+
+      imageFiles.forEach(function(src,index){
+        const image=document.createElement('img');
+        image.src=src;
+        image.alt='Graphic Design work '+(index+1);
+        image.loading='lazy';
+        image.onerror=function(){
+          image.alt='Image could not be loaded: '+src;
+          image.style.display='none';
+        };
+        gallery.appendChild(image);
+      });
+
+      modalVisual.appendChild(gallery);
+    }else if(imagePath){
+      const image=document.createElement('img');
+      image.src=imagePath;
+      image.alt=(card.dataset.title||'Project')+' full preview';
+      image.loading='eager';
+
+      image.onerror=function(){
+        const fallback=document.createElement('p');
+        fallback.className='modal-fallback';
+        fallback.textContent='This image could not be loaded: '+imagePath;
+        modalVisual.replaceChildren(fallback);
+      };
+
+      modalVisual.appendChild(image);
     }
 
-    card.addEventListener("mouseenter", function () {
-      if (slideshowTimer) return;
-
-      showNextImage();
-      slideshowTimer = setInterval(showNextImage, 1200);
-    });
-
-    card.addEventListener("mouseleave", function () {
-      clearInterval(slideshowTimer);
-      clearTimeout(changeTimer);
-      slideshowTimer = null;
-      changeTimer = null;
-      image.classList.remove("is-changing");
-      image.src = originalSrc;
-    });
-
-    /* Do not open a popup when a project card is clicked. */
-    card.addEventListener("click", function (event) {
-      event.preventDefault();
-    });
-  });
-
-  /* PORTFOLIO ASSISTANT */
-  const launcher = document.getElementById("aiLauncher");
-  const chat = document.getElementById("chatPanel");
-  const chatClose = document.getElementById("chatClose");
-  const chatForm = document.getElementById("chatForm");
-  const chatInput = document.getElementById("chatInput");
-  const messages = document.getElementById("chatMessages");
-
-  function toggleChat(open) {
-    chat.classList.toggle("open", open);
-    chat.setAttribute("aria-hidden", String(!open));
-    launcher.setAttribute("aria-expanded", String(open));
-
-    if (open) {
-      setTimeout(function () {
-        chatInput.focus();
-      }, 50);
+    if(card.dataset.link){
+      modalVisit.href=card.dataset.link;
+      modalVisit.hidden=false;
+    }else{
+      modalVisit.hidden=true;
+      modalVisit.removeAttribute('href');
     }
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('locked');
+    closeButton.focus();
   }
 
-  launcher.addEventListener("click", function () {
-    toggleChat(!chat.classList.contains("open"));
+  function closeProject(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('locked');
+    if(lastTrigger)lastTrigger.focus();
+  }
+
+  document.querySelectorAll('button.project-card').forEach(function(card){
+    card.addEventListener('click',function(){
+      openProject(card);
+    });
   });
 
-  chatClose.addEventListener("click", function () {
+  closeButton.addEventListener('click',closeProject);
+  document.getElementById('modalDone').addEventListener('click',closeProject);
+
+  modal.addEventListener('click',function(event){
+    if(event.target===modal)closeProject();
+  });
+
+  /* PORTFOLIO ASSISTANT — LOCAL PRESET ANSWERS, NO API KEY REQUIRED */
+  const launcher=document.getElementById('aiLauncher');
+  const chat=document.getElementById('chatPanel');
+  const chatClose=document.getElementById('chatClose');
+  const chatForm=document.getElementById('chatForm');
+  const chatInput=document.getElementById('chatInput');
+  const messages=document.getElementById('chatMessages');
+
+  function toggleChat(open){
+    chat.classList.toggle('open',open);
+    chat.setAttribute('aria-hidden',String(!open));
+    launcher.setAttribute('aria-expanded',String(open));
+
+    if(open)setTimeout(function(){chatInput.focus()},50);
+  }
+
+  launcher.addEventListener('click',function(){
+    toggleChat(!chat.classList.contains('open'));
+  });
+
+  chatClose.addEventListener('click',function(){
     toggleChat(false);
   });
 
-  function addMessage(text, who) {
-    const node = document.createElement("div");
-    node.className = "message " + who;
-    node.textContent = text;
+  function addMessage(text,who){
+    const node=document.createElement('div');
+    node.className='message '+who;
+    node.textContent=text;
     messages.appendChild(node);
-    messages.scrollTop = messages.scrollHeight;
+    messages.scrollTop=messages.scrollHeight;
   }
 
-  function answerQuestion(raw) {
-    const q = raw.toLowerCase();
+  function answerQuestion(raw){
+    const q=raw.toLowerCase();
 
-    if (/hello|hi\b|hey|salam|assalam/.test(q)) {
+    if(/hello|hi\b|hey|salam|assalam/.test(q)){
       return "Hello! 👋 Welcome to Muhammad Ahsan's portfolio. Ask me about his services, skills, projects or contact details.";
     }
 
-    if (/contact|email|mail|whatsapp|phone|number|reach|hire|connect/.test(q)) {
+    if(/contact|email|mail|whatsapp|phone|number|reach|hire|connect/.test(q)){
       return "You can contact Muhammad Ahsan at mhdxahsan@gmail.com or on WhatsApp at +92 331 9333080.\nEmail: mailto:mhdxahsan@gmail.com\nWhatsApp: https://wa.me/923319333080";
     }
 
-    if (/service|offer|provide|what.*do/.test(q)) {
+    if(/service|offer|provide|what.*do/.test(q)){
       return "Ahsan's services include graphic design, responsive web development, and Shopify store/e-commerce design. Use the Contact section to discuss your requirements.";
     }
 
-    if (/project|portfolio|work|show|designs|website/.test(q)) {
-      return "The portfolio showcases Graphic Design, Web Development and Shopify Store Design. Move your cursor over a project card to preview its images.";
+    if(/project|portfolio|work|show|designs|website/.test(q)){
+      return "The portfolio showcases Graphic Design, Web Development and Shopify Store Design. The Other Projects card says Coming Soon.";
     }
 
-    if (/skill|technology|tech|html|css|javascript|shopify|coding/.test(q)) {
+    if(/skill|technology|tech|html|css|javascript|shopify|coding/.test(q)){
       return "Ahsan lists Graphic Designing, Web Development, HTML, CSS, JavaScript, Shopify, E-commerce and Responsive Design among his skills.";
     }
 
-    if (/about|who is|who's|ahsan/.test(q)) {
+    if(/about|who is|who's|ahsan/.test(q)){
       return "Muhammad Ahsan is a creative designer and web developer focused on graphic design, modern responsive websites and Shopify e-commerce experiences.";
     }
 
-    if (/price|cost|rate|budget|charge/.test(q)) {
+    if(/price|cost|rate|budget|charge/.test(q)){
       return "Pricing isn't listed on this portfolio. Please email mhdxahsan@gmail.com or message Ahsan on WhatsApp with your project requirements to discuss pricing.";
     }
 
-    if (/thank/.test(q)) {
+    if(/coming soon|other project|future/.test(q)){
+      return "The Other Projects section is marked Coming Soon. More work can be added there in the future.";
+    }
+
+    if(/thank/.test(q)){
       return "You're welcome! 😊 To discuss a project, contact Ahsan at mhdxahsan@gmail.com.";
     }
 
-    return "I can answer questions about Ahsan's services, skills, projects and contact details. Try asking “What services does Ahsan offer?”, “Tell me about his projects”, or “How can I contact Ahsan?”";
+    return "I can answer questions about Ahsan's services, skills, projects and contact details. Try asking “What services does Ahsan offer?”, “Tell me about his projects”, or “How can I contact Ahsan?” For other questions, contact him directly at mhdxahsan@gmail.com.";
   }
 
-  function sendQuestion(text) {
-    const clean = text.trim();
-    if (!clean) return;
+  function sendQuestion(text){
+    const clean=text.trim();
+    if(!clean)return;
 
-    addMessage(clean, "user");
-    chatInput.value = "";
+    addMessage(clean,'user');
+    chatInput.value='';
 
-    setTimeout(function () {
-      addMessage(answerQuestion(clean), "bot");
-    }, 250);
+    setTimeout(function(){
+      addMessage(answerQuestion(clean),'bot');
+    },250);
   }
 
-  chatForm.addEventListener("submit", function (event) {
+  chatForm.addEventListener('submit',function(event){
     event.preventDefault();
     sendQuestion(chatInput.value);
   });
 
-  document.querySelectorAll(".quick-prompts button").forEach(function (button) {
-    button.addEventListener("click", function () {
+  document.querySelectorAll('.quick-prompts button').forEach(function(button){
+    button.addEventListener('click',function(){
       sendQuestion(button.dataset.question);
     });
   });
 
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && chat.classList.contains("open")) {
-      toggleChat(false);
+  document.addEventListener('keydown',function(event){
+    if(event.key==='Escape'){
+      if(modal.classList.contains('open'))closeProject();
+      if(chat.classList.contains('open'))toggleChat(false);
     }
   });
 })();
