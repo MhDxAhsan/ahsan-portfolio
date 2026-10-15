@@ -220,6 +220,25 @@ h1 {
   letter-spacing: -3px;
 }
 
+/* HERO TYPEWRITER INTRO */
+
+.typing-target.typing-active::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: .88em;
+  margin-left: 4px;
+  vertical-align: -.04em;
+  border-radius: 2px;
+  background: var(--red);
+  box-shadow: 0 0 12px #ff263f88;
+  animation: typingCaret .8s steps(2, start) infinite;
+}
+
+@keyframes typingCaret {
+  to { opacity: 0; }
+}
+
 h2 {
   font-size: clamp(30px, 4vw, 46px);
   line-height: 1.15;
@@ -280,6 +299,7 @@ h2 {
 
 .hero-text {
   max-width: 510px;
+  min-height: 5.8em;
   margin-top: 23px;
   color: var(--muted);
   font-size: 15px;
@@ -1204,6 +1224,10 @@ footer .container {
 }
 
 @media (max-width: 600px) {
+  .hero-text {
+    min-height: 7.8em;
+  }
+
   nav {
     height: 68px;
   }
@@ -1305,6 +1329,240 @@ footer .container {
     gap: 10px;
   }
 }
+
+/* WEB DEVELOPMENT CARD: VISUAL PREVIEW */
+
+.website-preview-thumb {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 16px;
+  background: radial-gradient(ellipse at 65% 0%, #ff263f24, #0b0b10 72%);
+}
+
+.website-preview {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  border: 1px solid #ffffff26;
+  border-radius: 7px;
+  background: #08080b;
+  box-shadow: 0 12px 28px #0008;
+  transform: translateY(0);
+  transition: transform .35s ease, border-color .35s ease;
+}
+
+.project-card:hover .website-preview {
+  transform: translateY(-3px);
+  border-color: #ff263f99;
+}
+
+.browser-preview-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 27px;
+  padding: 0 9px;
+  border-bottom: 1px solid #ffffff16;
+  background: #17171d;
+}
+
+.browser-preview-bar > span {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: #ff263f;
+}
+
+.browser-preview-bar > span:nth-child(2) {
+  background: #f3bb52;
+}
+
+.browser-preview-bar > span:nth-child(3) {
+  background: #57c78c;
+}
+
+.browser-preview-bar small {
+  overflow: hidden;
+  margin-left: 7px;
+  color: #a7a7b1;
+  font-size: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.browser-preview-content {
+  display: flex;
+  min-height: 175px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(13px, 3vw, 25px);
+  background: radial-gradient(circle at 95% 10%, #ff263f20, transparent 55%);
+}
+
+.browser-preview-content > small {
+  margin-bottom: 12px;
+  color: #bbbbc5;
+  font-size: 7px;
+  letter-spacing: 1.2px;
+}
+
+.browser-preview-content strong {
+  color: #f5f5f7;
+  font-size: clamp(20px, 2.5vw, 29px);
+  line-height: 1.05;
+  letter-spacing: -1px;
+}
+
+.browser-preview-content em {
+  color: #ff263f;
+  font-style: normal;
+}
+
+.browser-preview-content p {
+  margin-top: 12px;
+  color: #aaaab5;
+  font-size: 9px;
+}
+
+.browser-preview-cta {
+  margin-top: 15px;
+  padding: 7px 9px;
+  border-radius: 3px;
+  background: #ff263f;
+  color: white;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+/* IMAGE LAYER FIX */
+
+.project-thumb {
+  isolation: isolate;
+}
+
+.project-thumb > .project-fallback {
+  z-index: 0;
+}
+
+.project-thumb > img:not([hidden]) {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-thumb > .project-open {
+  z-index: 5;
+}
+
+/* EXTRA CARD ANIMATIONS */
+
+.project-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: -120% -40%;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-55%) rotate(18deg);
+  background: linear-gradient(90deg, transparent, #ffffff0b, transparent);
+  transition: opacity .3s ease, transform .85s ease;
+}
+
+.project-card:hover::after {
+  opacity: 1;
+  transform: translateX(55%) rotate(18deg);
+}
+
+.project-card .project-info h3 {
+  transition: color .3s ease, transform .3s ease;
+}
+
+.project-card:hover .project-info h3 {
+  color: #fff;
+  transform: translateX(3px);
+}
+
+/* GRAPHIC DESIGN HOVER SLIDESHOW */
+
+.graphic-card .project-thumb > img:not([hidden]) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity .25s ease, transform .55s ease;
+}
+
+.graphic-card:hover .project-thumb > img:not([hidden]) {
+  transform: scale(1.045);
+}
+
+.graphic-card .project-thumb > img.slide-change {
+  animation: graphicSlideFade .45s ease;
+}
+
+@keyframes graphicSlideFade {
+  from {
+    opacity: .35;
+    transform: scale(1.035) translateX(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+/* SHOPIFY FULL-PAGE IMAGE PREVIEW */
+
+.shopify-card .project-thumb {
+  aspect-ratio: 16 / 10;
+  container-type: inline-size;
+}
+
+.shopify-card .project-thumb > img:not([hidden]) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: initial;
+  object-position: top center;
+  transform: translateY(0);
+  transition: transform 5s linear;
+}
+
+.shopify-card .project-thumb:hover > img:not([hidden]) {
+  transform: translateY(calc(-100% + 62.5cqw));
+}
+
+/* RESPECT REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card::after,
+  .graphic-card .project-thumb > img,
+  .shopify-card .project-thumb > img:not([hidden]) {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 </style>
 </head>
 
@@ -1342,16 +1600,16 @@ footer .container {
   <div class="hero-copy">
     <div class="eyebrow">Creative Designer · Web Developer</div>
 
-    <h1>
-      Hi, I'm
-      <span class="name">Muhammad<br>Ahsan.</span>
+    <h1 id="heroTitle" aria-label="Hi, I'm Muhammad Ahsan.">
+      <span class="typing-target" data-typewriter>Hi, I'm</span>
+      <span class="name"><span class="typing-target" data-typewriter>Muhammad</span><br><span class="typing-target" data-typewriter>Ahsan.</span></span>
     </h1>
 
-    <p class="hero-text">
-      I create bold graphic designs, modern responsive websites,
-      and clean Shopify e-commerce experiences that help ideas
-      stand out online.
-    </p>
+    <p
+      class="hero-text typing-target"
+      data-typewriter
+      aria-label="I create bold graphic designs, modern responsive websites, and clean Shopify e-commerce experiences that help ideas stand out online."
+    >I create bold graphic designs, modern responsive websites, and clean Shopify e-commerce experiences that help ideas stand out online.</p>
 
     <div class="buttons">
       <a class="btn primary" href="#projects">Explore My Work ↘</a>
@@ -1368,7 +1626,7 @@ footer .container {
 
     <div class="photo-wrap">
       <img
-        src="Porfolio%20Picture.jpg"
+        src="https://mhdxahsan.github.io/ahsan-portfolio/Porfolio%20Picture.jpg"
         alt="Portrait of Muhammad Ahsan"
         onerror="this.style.display='none'"
       >
@@ -1513,7 +1771,7 @@ footer .container {
       <!-- GRAPHIC DESIGN -->
 
       <button
-        class="project-card"
+        class="project-card graphic-card"
         type="button"
         data-title="Graphic Design"
         data-category="01 / Graphic Design"
@@ -1522,7 +1780,7 @@ footer .container {
       >
         <div class="project-thumb">
           <img
-            src="image%201.jpeg"
+            src="https://mhdxahsan.github.io/ahsan-portfolio/image%201.jpeg"
             alt="Graphic design preview"
             onerror="this.hidden=true"
           >
@@ -1553,13 +1811,22 @@ footer .container {
         type="button"
         data-title="Web Development"
         data-category="02 / Web Development"
-        data-description="Responsive websites and interactive web interfaces. More project previews will be added later."
+        data-description="A responsive portfolio website showcasing graphic design, web development and Shopify e-commerce work."
+        data-link="https://mhdxahsan.github.io/ahsan-portfolio/"
       >
-        <div class="project-thumb">
-          <div class="project-fallback">
-            <span class="symbol">⌘</span>
-            <h3>Web Development</h3>
-            <small>Website projects</small>
+        <div class="project-thumb website-preview-thumb">
+          <div class="website-preview" aria-label="Visual preview of the portfolio website">
+            <div class="browser-preview-bar" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <small>mhdxahsan.github.io</small>
+            </div>
+
+            <div class="browser-preview-content">
+              <small>CREATIVE DESIGNER · WEB DEVELOPER</small>
+              <strong>Hi, I'm <em>Muhammad<br>Ahsan.</em></strong>
+              <p>Design · Develop · Build Online</p>
+              <span class="browser-preview-cta">Explore My Work ↘</span>
+            </div>
           </div>
 
           <span class="project-open" aria-hidden="true">↗</span>
@@ -1573,20 +1840,20 @@ footer .container {
         </div>
       </button>
 
-      <!-- SHOPIFY: IMAGE IS shopify-store.jpg -->
+      <!-- SHOPIFY STORE -->
 
       <button
         class="project-card shopify-card"
         type="button"
         data-title="Shopify Store Design"
         data-category="03 / E-commerce"
-        data-description="Shopify storefront, product sections and e-commerce layout. Hover over the thumbnail to see the page move upward, or open the larger scrollable preview."
-        data-image="shopify-store.jpg"
+        data-description="Shopify storefront, product sections and e-commerce layout. Hover over the thumbnail to preview the page, or open the larger scrollable preview."
+        data-image="https://mhdxahsan.github.io/ahsan-portfolio/shopify-store.jpg"
         data-link="https://shopows.pk/"
       >
         <div class="project-thumb">
           <img
-            src="shopify-store.jpg"
+            src="https://mhdxahsan.github.io/ahsan-portfolio/shopify-store.jpg"
             alt="Shopify store full-page screenshot"
             loading="lazy"
             onerror="this.hidden=true"
@@ -1609,7 +1876,7 @@ footer .container {
         </div>
       </button>
 
-      <!-- OTHER PROJECTS: EMPTY ON PURPOSE -->
+      <!-- OTHER PROJECTS -->
 
       <div class="project-card">
         <div class="project-thumb">
@@ -1924,19 +2191,111 @@ footer .container {
 (function () {
   "use strict";
 
-  /* PAGE LOADER */
+  /* HERO TYPEWRITER INTRO */
+
+  let heroTypingStarted = false;
+
+  function startHeroTyping() {
+    if (heroTypingStarted) return;
+    heroTypingStarted = true;
+
+    const targets = Array.from(
+      document.querySelectorAll("[data-typewriter]")
+    );
+
+    if (!targets.length) return;
+
+    const fullTexts = targets.map(function (target) {
+      return target.textContent.replace(/\s+/g, " ").trim();
+    });
+
+    targets.forEach(function (target, index) {
+      target.textContent = "";
+      target.setAttribute("aria-label", fullTexts[index]);
+    });
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      targets.forEach(function (target, index) {
+        target.textContent = fullTexts[index];
+      });
+      return;
+    }
+
+    function typeTarget(index) {
+      if (index >= targets.length) return;
+
+      const target = targets[index];
+      const value = fullTexts[index];
+      const delay = target.classList.contains("hero-text") ? 17 : 42;
+      let position = 0;
+
+      targets.forEach(function (item) {
+        item.classList.remove("typing-active");
+      });
+
+      target.classList.add("typing-active");
+
+      function typeCharacter() {
+        target.textContent = value.slice(0, position + 1);
+        position += 1;
+
+        if (position < value.length) {
+          const characterDelay =
+            value.charAt(position - 1) === " "
+              ? Math.max(9, delay * 0.55)
+              : delay;
+
+          window.setTimeout(typeCharacter, characterDelay);
+        } else if (index < targets.length - 1) {
+          window.setTimeout(function () {
+            typeTarget(index + 1);
+          }, 180);
+        }
+      }
+
+      typeCharacter();
+    }
+
+    typeTarget(0);
+  }
+
+  /* LOADER */
 
   const loader = document.getElementById("loader");
 
   function hideLoader() {
     if (loader) loader.classList.add("hide");
+    startHeroTyping();
   }
 
   window.addEventListener("load", hideLoader);
-  setTimeout(hideLoader, 1800);
+  window.setTimeout(hideLoader, 1800);
+
+  /* FOOTER YEAR */
 
   document.getElementById("year").textContent =
     new Date().getFullYear();
+
+  /* IMAGE FALLBACKS */
+
+  document.querySelectorAll(".project-thumb > img").forEach(function (image) {
+    const fallback = image.parentElement.querySelector(".project-fallback");
+
+    image.addEventListener("load", function () {
+      image.hidden = false;
+      if (fallback) fallback.hidden = true;
+    });
+
+    image.addEventListener("error", function () {
+      image.hidden = true;
+      if (fallback) fallback.hidden = false;
+    });
+
+    if (image.complete && image.naturalWidth > 0) {
+      image.hidden = false;
+      if (fallback) fallback.hidden = true;
+    }
+  });
 
   /* PROJECT POPUP */
 
@@ -1974,18 +2333,18 @@ footer .container {
       card.dataset.title === "Graphic Design"
     ) {
       const imageFiles = [
-        "image%201.jpeg",
-        "image%202.jpeg",
-        "image%203.jpeg",
-        "image%204.jpeg",
-        "image%205.jpeg",
-        "image%206.jpeg",
-        "image%207.jpeg",
-        "image%208.jpeg",
-        "image%209.jpeg",
-        "image%2010.jpeg",
-        "image%2012.jpeg",
-        "image%2013.jpeg"
+        "https://mhdxahsan.github.io/ahsan-portfolio/image%201.jpeg",
+        "https://mhdxahsan.github.io/ahsan-portfolio/image%202.jpeg",
+        "https://mhdxahsan.github.io/ahsan-portfolio/image%203.jpeg",
+        "https://mhdxahsan.github.io/ahsan-portfolio/image%204.jpeg",
+        "https://mhdxahsan.github.io/ahsan-portfolio/image%205.jpeg",
+        "https://mhdxahsan.github.io/ahsan-portfolio/image%206.jpeg",
+        "https://mhdxahsan.github.io/ahsan-portfolio/image%207.jpeg",
+        "https://mhdxahsan.github.io/ahsan-portfolio/image%208.jpeg",
+        "https://mhdxahsan.github.io/ahsan-portfolio/image%209.jpeg",
+        "https://mhdxahsan.github.io/ahsan-portfolio/image%2010.jpeg",
+        "https://mhdxahsan.github.io/ahsan-portfolio/image%2012.jpeg",
+        "https://mhdxahsan.github.io/ahsan-portfolio/image%2013.jpeg"
       ];
 
       const viewer = document.createElement("div");
@@ -2073,7 +2432,7 @@ footer .container {
 
       showImage(0);
 
-    /* SHOPIFY OR ANOTHER SINGLE-IMAGE PROJECT */
+    /* SHOPIFY IMAGE PREVIEW */
 
     } else if (card.dataset.image) {
       const image = document.createElement("img");
@@ -2091,20 +2450,21 @@ footer .container {
         const fallback = document.createElement("p");
         fallback.className = "modal-fallback";
         fallback.textContent =
-          "Image not found. Check that shopify-store.jpg is in the same folder as index.html.";
+          "The Shopify preview image could not be loaded. Check the repository asset link.";
 
         modalVisual.replaceChildren(fallback);
       };
 
       modalVisual.appendChild(image);
 
-    /* WEB DEVELOPMENT PLACEHOLDER */
+    /* WEBSITE PREVIEW */
 
     } else {
       const fallback = document.createElement("div");
       fallback.className = "modal-fallback";
-      fallback.textContent =
-        "Project preview coming soon. Add a website screenshot when it is ready.";
+      fallback.textContent = card.dataset.link
+        ? "This project is available online. Use the Visit Project button to open the live website."
+        : "Project preview coming soon. Add a website screenshot when it is ready.";
 
       modalVisual.appendChild(fallback);
     }
@@ -2140,6 +2500,70 @@ footer .container {
         openProject(card);
       });
     });
+
+  /* GRAPHIC DESIGN HOVER SLIDESHOW */
+
+  const graphicCard = document.querySelector(".graphic-card");
+
+  if (graphicCard) {
+    const previewImage = graphicCard.querySelector(".project-thumb > img");
+
+    const galleryFiles = [
+      "https://mhdxahsan.github.io/ahsan-portfolio/image%201.jpeg",
+      "https://mhdxahsan.github.io/ahsan-portfolio/image%202.jpeg",
+      "https://mhdxahsan.github.io/ahsan-portfolio/image%203.jpeg",
+      "https://mhdxahsan.github.io/ahsan-portfolio/image%204.jpeg",
+      "https://mhdxahsan.github.io/ahsan-portfolio/image%205.jpeg",
+      "https://mhdxahsan.github.io/ahsan-portfolio/image%206.jpeg",
+      "https://mhdxahsan.github.io/ahsan-portfolio/image%207.jpeg",
+      "https://mhdxahsan.github.io/ahsan-portfolio/image%208.jpeg",
+      "https://mhdxahsan.github.io/ahsan-portfolio/image%209.jpeg",
+      "https://mhdxahsan.github.io/ahsan-portfolio/image%2010.jpeg",
+      "https://mhdxahsan.github.io/ahsan-portfolio/image%2012.jpeg",
+      "https://mhdxahsan.github.io/ahsan-portfolio/image%2013.jpeg"
+    ];
+
+    let previewIndex = 0;
+    let slideTimer = null;
+
+    function showPreviewSlide(index) {
+      if (!previewImage) return;
+
+      previewIndex =
+        (index + galleryFiles.length) % galleryFiles.length;
+
+      previewImage.hidden = false;
+      previewImage.classList.remove("slide-change");
+
+      void previewImage.offsetWidth;
+
+      previewImage.classList.add("slide-change");
+      previewImage.src = galleryFiles[previewIndex];
+    }
+
+    graphicCard.addEventListener("mouseenter", function () {
+      if (slideTimer) window.clearInterval(slideTimer);
+
+      showPreviewSlide(previewIndex + 1);
+
+      slideTimer = window.setInterval(function () {
+        showPreviewSlide(previewIndex + 1);
+      }, 1800);
+    });
+
+    graphicCard.addEventListener("mouseleave", function () {
+      if (slideTimer) {
+        window.clearInterval(slideTimer);
+        slideTimer = null;
+      }
+
+      if (previewImage) {
+        previewImage.classList.remove("slide-change");
+      }
+    });
+  }
+
+  /* CLOSE PROJECT POPUP */
 
   closeButton.addEventListener("click", closeProject);
   doneButton.addEventListener("click", closeProject);
@@ -2224,12 +2648,13 @@ footer .container {
 
   function sendQuestion(text) {
     const clean = text.trim();
+
     if (!clean) return;
 
     addMessage(clean, "user");
     chatInput.value = "";
 
-    setTimeout(function () {
+    window.setTimeout(function () {
       addMessage(answerQuestion(clean), "bot");
     }, 180);
   }
@@ -2247,7 +2672,7 @@ footer .container {
       });
     });
 
-  /* KEYBOARD SHORTCUT */
+  /* KEYBOARD SHORTCUTS */
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
