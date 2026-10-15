@@ -1330,7 +1330,7 @@ footer .container {
   }
 }
 
-/* WEB DEVELOPMENT CARD: VISUAL PREVIEW */
+/* WEB DEVELOPMENT CARD: stylized preview of the live portfolio */
 
 .website-preview-thumb {
   display: flex;
@@ -1437,7 +1437,7 @@ footer .container {
   font-weight: 700;
 }
 
-/* IMAGE LAYER FIX */
+/* IMAGE LAYER FIX: keep real images above placeholder stars and text */
 
 .project-thumb {
   isolation: isolate;
@@ -1563,6 +1563,72 @@ footer .container {
   }
 }
 
+/* GRILLI WEB-DEVELOPMENT PROJECT CARD */
+
+.grilli-thumb {
+  background: #17120f;
+}
+
+.grilli-thumb > img:not([hidden]) {
+  filter: saturate(.9);
+  transition: transform .6s ease, filter .6s ease;
+}
+
+.grilli-project-card:hover .grilli-thumb > img:not([hidden]) {
+  transform: scale(1.05);
+  filter: saturate(1.1);
+}
+
+.grilli-tech {
+  margin-top: 13px;
+  color: #b9b9c4;
+  font-size: 11px;
+  letter-spacing: .7px;
+}
+
+.grilli-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 16px;
+}
+
+.grilli-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 11px;
+  border: 1px solid #ffffff35;
+  border-radius: 4px;
+  color: #f5f5f7;
+  font-size: 11px;
+  font-weight: 700;
+  transition: background .25s, border-color .25s, transform .25s;
+}
+
+.grilli-link:hover {
+  border-color: var(--red);
+  background: var(--red);
+  transform: translateY(-2px);
+}
+
+.grilli-credit {
+  margin-top: 12px;
+  color: #858590;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .grilli-link-row {
+    gap: 7px;
+  }
+
+  .grilli-link {
+    flex: 1 1 auto;
+  }
+}
+
 </style>
 </head>
 
@@ -1605,11 +1671,7 @@ footer .container {
       <span class="name"><span class="typing-target" data-typewriter>Muhammad</span><br><span class="typing-target" data-typewriter>Ahsan.</span></span>
     </h1>
 
-    <p
-      class="hero-text typing-target"
-      data-typewriter
-      aria-label="I create bold graphic designs, modern responsive websites, and clean Shopify e-commerce experiences that help ideas stand out online."
-    >I create bold graphic designs, modern responsive websites, and clean Shopify e-commerce experiences that help ideas stand out online.</p>
+    <p class="hero-text typing-target" data-typewriter aria-label="I create bold graphic designs, modern responsive websites, and clean Shopify e-commerce experiences that help ideas stand out online.">I create bold graphic designs, modern responsive websites, and clean Shopify e-commerce experiences that help ideas stand out online.</p>
 
     <div class="buttons">
       <a class="btn primary" href="#projects">Explore My Work ↘</a>
@@ -1820,7 +1882,6 @@ footer .container {
               <span></span><span></span><span></span>
               <small>mhdxahsan.github.io</small>
             </div>
-
             <div class="browser-preview-content">
               <small>CREATIVE DESIGNER · WEB DEVELOPER</small>
               <strong>Hi, I'm <em>Muhammad<br>Ahsan.</em></strong>
@@ -1828,7 +1889,6 @@ footer .container {
               <span class="browser-preview-cta">Explore My Work ↘</span>
             </div>
           </div>
-
           <span class="project-open" aria-hidden="true">↗</span>
         </div>
 
@@ -1840,14 +1900,72 @@ footer .container {
         </div>
       </button>
 
+      <!-- GRILLI RESTAURANT WEBSITE: EXTERNAL DEMO + SOURCE -->
+
+      <article class="project-card grilli-project-card">
+        <div class="project-thumb grilli-thumb">
+          <img
+            src="https://raw.githubusercontent.com/codewithsadee/grilli/master/assets/images/hero-slider-1.jpg"
+            alt="Food photography preview from the Grilli restaurant website"
+            loading="lazy"
+            onerror="this.hidden=true"
+          >
+
+          <div class="project-fallback">
+            <span class="symbol">✦</span>
+            <h3>Grilli</h3>
+            <small>Responsive restaurant website</small>
+          </div>
+
+          <a
+            class="project-open"
+            href="https://codewithsadee.github.io/grilli/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Grilli live demo"
+          >↗</a>
+        </div>
+
+        <div class="project-info">
+          <div class="project-category">03 / WEB DEVELOPMENT</div>
+          <h3>Grilli — Restaurant Website</h3>
+          <p>
+            A responsive restaurant website template with food photography,
+            menu sections, an about section and a reservation layout.
+          </p>
+
+          <div class="grilli-tech">HTML · CSS · JavaScript</div>
+
+          <div class="grilli-link-row">
+            <a
+              class="grilli-link"
+              href="https://codewithsadee.github.io/grilli/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Live Demo ↗</a>
+
+            <a
+              class="grilli-link"
+              href="https://github.com/codewithsadee/grilli"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Source Code ↗</a>
+          </div>
+
+          <p class="grilli-credit">
+            Original template by CodeWithSadee · MIT License
+          </p>
+        </div>
+      </article>
+
       <!-- SHOPIFY STORE -->
 
       <button
         class="project-card shopify-card"
         type="button"
         data-title="Shopify Store Design"
-        data-category="03 / E-commerce"
-        data-description="Shopify storefront, product sections and e-commerce layout. Hover over the thumbnail to preview the page, or open the larger scrollable preview."
+        data-category="04 / E-commerce"
+        data-description="Shopify storefront, product sections and e-commerce layout. Hover over the thumbnail to see the page move upward, or open the larger scrollable preview."
         data-image="https://mhdxahsan.github.io/ahsan-portfolio/shopify-store.jpg"
         data-link="https://shopows.pk/"
       >
@@ -1869,7 +1987,7 @@ footer .container {
         </div>
 
         <div class="project-info">
-          <div class="project-category">03 / E-COMMERCE</div>
+          <div class="project-category">04 / E-COMMERCE</div>
           <h3>Shopify Store Design</h3>
           <p>Storefront, product sections and e-commerce layout.</p>
           <div class="project-cta">View Shopify Store ↗</div>
@@ -1888,7 +2006,7 @@ footer .container {
         </div>
 
         <div class="project-info">
-          <div class="project-category">04 / OTHER WORK</div>
+          <div class="project-category">05 / OTHER WORK</div>
           <h3>Other Projects</h3>
           <p>More projects will be added here later.</p>
           <div class="project-cta">Coming Soon ✦</div>
@@ -1933,6 +2051,7 @@ footer .container {
             <span>Graphic Design</span>
             <span>Creative</span>
           </div>
+
           <div class="skill-track">
             <div class="skill-fill" style="--level:90%"></div>
           </div>
@@ -1943,6 +2062,7 @@ footer .container {
             <span>Web Development</span>
             <span>Building</span>
           </div>
+
           <div class="skill-track">
             <div class="skill-fill" style="--level:82%"></div>
           </div>
@@ -1953,6 +2073,7 @@ footer .container {
             <span>Shopify / E-commerce</span>
             <span>Design</span>
           </div>
+
           <div class="skill-track">
             <div class="skill-fill" style="--level:85%"></div>
           </div>
@@ -2432,7 +2553,7 @@ footer .container {
 
       showImage(0);
 
-    /* SHOPIFY IMAGE PREVIEW */
+    /* SHOPIFY OR ANOTHER SINGLE-IMAGE PROJECT */
 
     } else if (card.dataset.image) {
       const image = document.createElement("img");
@@ -2457,7 +2578,7 @@ footer .container {
 
       modalVisual.appendChild(image);
 
-    /* WEBSITE PREVIEW */
+    /* WEB DEVELOPMENT PLACEHOLDER */
 
     } else {
       const fallback = document.createElement("div");
@@ -2561,6 +2682,8 @@ footer .container {
         previewImage.classList.remove("slide-change");
       }
     });
+
+    /* On touch screens, the click still opens the full gallery as usual. */
   }
 
   /* CLOSE PROJECT POPUP */
@@ -2624,7 +2747,7 @@ footer .container {
     }
 
     if (/project|portfolio|work|website/.test(q)) {
-      return "The portfolio includes Graphic Design, Web Development and Shopify Store Design. Other Projects is marked Coming Soon.";
+      return "The portfolio includes Graphic Design, Web Development, the Grilli restaurant website showcase and Shopify Store Design. Other Projects is marked Coming Soon.";
     }
 
     if (/skill|technology|html|css|javascript|shopify|coding/.test(q)) {
@@ -2648,7 +2771,6 @@ footer .container {
 
   function sendQuestion(text) {
     const clean = text.trim();
-
     if (!clean) return;
 
     addMessage(clean, "user");
