@@ -14,7 +14,8 @@
   --panel: #121218;
   --muted: #aaaab5;
   --white: #f5f5f7;
-  --line: #ffffff1c;
+  --line: #ffffff20;
+  --gold: #d6b579;
 }
 
 * {
@@ -25,7 +26,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 75px;
 }
 
 body {
@@ -59,17 +60,59 @@ img {
 
 ::selection {
   background: var(--red);
-  color: white;
+  color: #fff;
 }
 
 .container {
   width: min(90%, 1180px);
-  margin: auto;
+  margin-inline: auto;
 }
 
 .red,
 .name {
   color: var(--red);
+}
+
+/* ANIMATIONS */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes slideFade {
+  from {
+    opacity: .3;
+    transform: translateX(8px) scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loadline {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
 }
 
 /* LOADER */
@@ -90,59 +133,37 @@ img {
   pointer-events: none;
 }
 
-.loader-logo {
-  color: var(--red);
+.loader-inner {
   text-align: center;
+}
+
+.loader-logo {
   font-size: 46px;
   font-weight: 900;
-  animation: glow 1s infinite alternate;
+  color: var(--red);
+  text-shadow: 0 0 24px #ff263f66;
 }
 
 .loader-line {
   width: 170px;
   height: 3px;
   margin: 16px auto;
-  overflow: hidden;
   background: #29292f;
+  overflow: hidden;
 }
 
 .loader-line::after {
   content: "";
   display: block;
-  width: 100%;
   height: 100%;
   background: var(--red);
-  animation: loading 1s ease;
+  animation: loadline 1s ease both;
 }
 
 .loader-inner p {
-  text-align: center;
   font-size: 10px;
   letter-spacing: 4px;
   color: #aaa;
-}
-
-@keyframes loading {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}
-
-@keyframes glow {
-  to { text-shadow: 0 0 30px #ff263f99; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotateY(-3deg); }
-  50% { transform: translateY(-10px) rotateY(3deg); }
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes appear {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* NAVIGATION */
@@ -176,10 +197,6 @@ nav {
   font-size: 13px;
 }
 
-.nav-links a {
-  transition: color .25s;
-}
-
 .nav-links a:hover {
   color: var(--red);
 }
@@ -190,10 +207,10 @@ nav {
   border-radius: 4px;
 }
 
-/* GENERAL SECTIONS */
+/* SHARED SECTIONS */
 
 .section {
-  padding: 90px 0;
+  padding: 85px 0;
   border-top: 1px solid #ffffff12;
 }
 
@@ -202,7 +219,7 @@ nav {
   align-items: end;
   justify-content: space-between;
   gap: 25px;
-  margin-bottom: 38px;
+  margin-bottom: 36px;
 }
 
 .section-label,
@@ -211,32 +228,13 @@ nav {
   font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 17px;
+  margin-bottom: 16px;
 }
 
 h1 {
-  font-size: clamp(43px, 6vw, 78px);
+  font-size: clamp(42px, 6vw, 76px);
   line-height: 1.05;
   letter-spacing: -3px;
-}
-
-/* HERO TYPEWRITER INTRO */
-
-.typing-target.typing-active::after {
-  content: "";
-  display: inline-block;
-  width: 2px;
-  height: .88em;
-  margin-left: 4px;
-  vertical-align: -.04em;
-  border-radius: 2px;
-  background: var(--red);
-  box-shadow: 0 0 12px #ff263f88;
-  animation: typingCaret .8s steps(2, start) infinite;
-}
-
-@keyframes typingCaret {
-  to { opacity: 0; }
 }
 
 h2 {
@@ -261,13 +259,13 @@ h2 {
 
 .btn {
   display: inline-flex;
-  justify-content: center;
   align-items: center;
-  padding: 13px 20px;
+  justify-content: center;
+  padding: 13px 19px;
   border: 1px solid #ffffff35;
   border-radius: 4px;
   background: transparent;
-  color: white;
+  color: #fff;
   font-size: 13px;
   font-weight: bold;
   transition: transform .25s, box-shadow .25s;
@@ -283,12 +281,12 @@ h2 {
   box-shadow: 0 12px 30px #ff263f30;
 }
 
-/* HERO */
+/* HERO AND TYPING ANIMATION */
 
 .hero {
   width: 90%;
   max-width: 1180px;
-  min-height: 620px;
+  min-height: 610px;
   margin: auto;
   padding: 65px 0 75px;
   display: grid;
@@ -297,9 +295,13 @@ h2 {
   gap: 45px;
 }
 
+.hero-copy {
+  min-width: 0;
+}
+
 .hero-text {
   max-width: 510px;
-  min-height: 5.8em;
+  min-height: 6em;
   margin-top: 23px;
   color: var(--muted);
   font-size: 15px;
@@ -313,6 +315,19 @@ h2 {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
+.typing-active::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: .88em;
+  margin-left: 4px;
+  vertical-align: -.04em;
+  background: var(--red);
+  animation: blink .8s steps(2, start) infinite;
+}
+
+/* PROFILE PICTURE */
 
 .visual {
   position: relative;
@@ -456,7 +471,7 @@ h2 {
 
 .card {
   padding: 27px;
-  min-height: 210px;
+  min-height: 205px;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: linear-gradient(145deg, #141419, #0d0d11);
@@ -475,7 +490,7 @@ h2 {
 }
 
 .card h3 {
-  margin: 26px 0 12px;
+  margin: 25px 0 12px;
   font-size: 21px;
 }
 
@@ -485,7 +500,7 @@ h2 {
   line-height: 1.9;
 }
 
-/* PROJECT GRID */
+/* PROJECT CARDS */
 
 .projects-section {
   background: radial-gradient(ellipse at 50% 0%, #ff263f0a, transparent 60%);
@@ -495,26 +510,21 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
+  align-items: stretch;
 }
 
 .project-card {
   position: relative;
-  width: 100%;
   min-width: 0;
-  display: block;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   text-align: left;
-  color: white;
+  color: #fff;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #111116;
   transition: transform .3s, border-color .3s, box-shadow .3s;
-}
-
-button.project-card {
-  appearance: none;
-  padding: 0;
-  font: inherit;
 }
 
 .project-card:hover,
@@ -525,22 +535,32 @@ button.project-card {
   outline: none;
 }
 
+button.project-card {
+  width: 100%;
+  appearance: none;
+  padding: 0;
+}
+
 .project-thumb {
   position: relative;
+  isolation: isolate;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #17171d;
 }
 
-.project-thumb img {
+.project-thumb > img:not([hidden]) {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .4s;
+  transition: transform .45s, opacity .25s;
 }
 
-.project-thumb img[hidden] {
+.project-thumb > img[hidden] {
   display: none;
 }
 
@@ -575,7 +595,7 @@ button.project-card {
 
 .project-open {
   position: absolute;
-  z-index: 3;
+  z-index: 5;
   top: 13px;
   right: 13px;
   width: 38px;
@@ -595,6 +615,7 @@ button.project-card {
 }
 
 .project-info {
+  flex: 1;
   padding: 20px;
 }
 
@@ -608,6 +629,11 @@ button.project-card {
 .project-info h3 {
   margin: 10px 0;
   font-size: 19px;
+  transition: transform .3s;
+}
+
+.project-card:hover .project-info h3 {
+  transform: translateX(3px);
 }
 
 .project-info p {
@@ -623,100 +649,236 @@ button.project-card {
   text-transform: uppercase;
 }
 
-/* GRAPHIC DESIGN GALLERY */
-
-.gallery-viewer {
-  width: 100%;
-  min-width: 0;
-  padding: 14px;
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: -120% -40%;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-55%) rotate(18deg);
+  background: linear-gradient(90deg, transparent, #ffffff0b, transparent);
+  transition: opacity .3s, transform .85s;
 }
 
-.gallery-stage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: min(58vh, 560px);
-  min-height: 240px;
+.project-card:hover::after {
+  opacity: 1;
+  transform: translateX(55%) rotate(18deg);
+}
+
+/* GRAPHIC DESIGN SLIDESHOW */
+
+.graphic-card .project-thumb > img.slide-change {
+  animation: slideFade .42s ease;
+}
+
+/* RESTAURANT WEBSITE PROJECT PREVIEW */
+
+.grilli-thumb {
+  background: #100d09;
+}
+
+.grilli-showcase {
+  position: absolute;
+  inset: 0;
   overflow: hidden;
-  border-radius: 8px;
-  background: #09090c;
+  padding: 16px 18px;
+  color: #f7ead2;
+  background: linear-gradient(135deg, #19140f, #080809 68%, #21160d);
+  font-family: Georgia, "Times New Roman", serif;
 }
 
-.gallery-stage img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+.grilli-showcase::before {
+  content: "";
+  position: absolute;
+  width: 58%;
+  aspect-ratio: 1;
+  right: -9%;
+  top: 15%;
+  border: 1px solid #caa56a65;
+  border-radius: 50%;
+  box-shadow: 0 0 0 11px #caa56a0d, 0 0 0 24px #caa56a08;
 }
 
-.gallery-error {
-  padding: 20px;
-  color: var(--muted);
-  text-align: center;
-  font-size: 13px;
+.grilli-showcase::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 28%;
+  background: linear-gradient(0deg, #090909d9, transparent);
 }
 
-.gallery-controls {
+.grilli-topline {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  margin-top: 14px;
+  color: var(--gold);
+  border-bottom: 1px solid #d4b68142;
+  padding-bottom: 9px;
+  font-family: Arial, sans-serif;
 }
 
-.gallery-controls button {
-  padding: 10px 14px;
+.grilli-topline span:first-child {
+  font-size: 23px;
+  font-weight: 700;
+  font-family: Georgia, serif;
+}
+
+.grilli-topline span:last-child {
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+
+.grilli-hero-copy {
+  position: absolute;
+  z-index: 2;
+  top: 35%;
+  left: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.grilli-kicker {
+  color: var(--gold);
+  font: 7px/1.5 Arial, sans-serif;
+  letter-spacing: 1.5px;
+}
+
+.grilli-hero-copy strong {
+  color: #fff2db;
+  font-size: clamp(34px, 6vw, 56px);
+  line-height: 1;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 30px #000;
+}
+
+.grilli-rule {
+  width: 55px;
+  height: 2px;
+  background: var(--gold);
+}
+
+.grilli-subtitle {
+  color: #ddd0ba;
+  font: 7px Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.grilli-preview-button {
+  margin-top: 8px;
+  padding: 7px 10px;
+  border: 1px solid #d4b6819c;
+  color: #f6e4c4;
+  font: 7px Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.grilli-plate {
+  position: absolute;
+  z-index: 1;
+  width: 38%;
+  aspect-ratio: 1;
+  right: 7%;
+  top: 30%;
+  display: grid;
+  place-items: center;
+  border: 7px double #d7c7ac45;
+  border-radius: 50%;
+  background: radial-gradient(circle, #6e4a21 0 20%, #2d2117 21% 35%, #0d0d0e 36% 59%, #211a15 60%);
+  box-shadow: 0 12px 30px #000a;
+  transform: rotate(-14deg);
+  transition: transform .5s;
+}
+
+.grilli-plate span {
+  color: #d9b46f;
+  font-size: 31px;
+}
+
+.grilli-project-card:hover .grilli-plate {
+  transform: rotate(0) scale(1.04);
+}
+
+.grilli-deco {
+  position: absolute;
+  z-index: 2;
+  color: var(--gold);
+  opacity: .7;
+}
+
+.grilli-deco-one {
+  top: 22%;
+  right: 20%;
+  font-size: 17px;
+}
+
+.grilli-deco-two {
+  bottom: 12%;
+  right: 14%;
+  font-size: 23px;
+}
+
+.grilli-tech {
+  margin-top: 13px;
+  color: #b9b9c4;
+  font-size: 11px;
+  letter-spacing: .7px;
+}
+
+.grilli-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 16px;
+}
+
+.grilli-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
   border: 1px solid #ffffff35;
-  border-radius: 5px;
+  border-radius: 4px;
   background: #17171d;
-  color: white;
+  color: #f5f5f7;
   font-size: 12px;
+  font-weight: 700;
+  transition: background .25s, border-color .25s, transform .25s;
 }
 
-.gallery-controls button:hover {
+.grilli-link:hover {
   border-color: var(--red);
   background: var(--red);
+  transform: translateY(-2px);
 }
 
-.gallery-counter {
-  color: var(--muted);
-  font-size: 12px;
-  white-space: nowrap;
-}
-
-/* SHOPIFY IMAGE HOVER EFFECT */
+/* SHOPIFY PREVIEW */
 
 .shopify-card .project-thumb {
   aspect-ratio: 16 / 10;
-  container-type: inline-size;
 }
 
-.shopify-card .project-thumb img:not([hidden]) {
+.shopify-card .project-thumb > img:not([hidden]) {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
-  display: block;
   width: 100%;
   height: auto;
   min-height: 100%;
   object-fit: initial;
   object-position: top center;
   transform: translateY(0);
-  transition: transform 5s linear;
+  transition: transform 4s linear;
 }
 
-.shopify-card .project-thumb:hover img:not([hidden]) {
-  transform: translateY(calc(-100% + 62.5cqw));
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .shopify-card .project-thumb img:not([hidden]) {
-    transition: none;
-  }
+.shopify-card .project-thumb:hover > img:not([hidden]) {
+  transform: translateY(var(--scroll-distance, 0px));
 }
 
 /* SKILLS */
@@ -771,7 +933,7 @@ button.project-card {
   background: linear-gradient(90deg, #ff263f, #ff7787);
 }
 
-/* WORK PROCESS */
+/* PROCESS */
 
 .process-grid {
   display: grid;
@@ -819,1992 +981,4 @@ button.project-card {
   padding: clamp(28px, 6vw, 65px);
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: radial-gradient(ellipse at 85% 50%, #ff263f12, transparent 50%), #101014;
-}
-
-.contact-area p {
-  margin-top: 15px;
-  color: var(--muted);
-  line-height: 1.8;
-  font-size: 14px;
-}
-
-.contact-links {
-  display: grid;
-  gap: 12px;
-  margin-top: 24px;
-  font-size: 14px;
-}
-
-.contact-links a:hover {
-  color: var(--red);
-}
-
-/* FOOTER */
-
-footer {
-  padding: 28px 0;
-  border-top: 1px solid #ffffff12;
-  color: #777;
-  font-size: 12px;
-}
-
-footer b {
-  color: var(--red);
-}
-
-footer .container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-/* PROJECT POPUP */
-
-.project-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 1001;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  overflow: auto;
-  background: #000d;
-}
-
-.project-modal.open {
-  display: flex;
-}
-
-.modal-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
-  width: min(1050px, 100%);
-  max-height: 90vh;
-  overflow: auto;
-  border: 1px solid #ffffff25;
-  border-radius: 10px;
-  background: #111116;
-  box-shadow: 0 30px 100px #000b;
-  animation: appear .25s ease;
-}
-
-.modal-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-  min-height: 300px;
-  overflow: auto;
-  background: #09090c;
-}
-
-.modal-visual > img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 85vh;
-  object-fit: contain;
-}
-
-.modal-content {
-  align-self: center;
-  padding: clamp(24px, 4vw, 45px);
-}
-
-.modal-content h2 {
-  margin-top: 14px;
-}
-
-.modal-content > p {
-  margin-top: 17px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.9;
-}
-
-.modal-close {
-  position: fixed;
-  z-index: 1002;
-  top: 15px;
-  right: 18px;
-  width: 44px;
-  height: 44px;
-  border: 1px solid #ffffff55;
-  border-radius: 50%;
-  background: #17171d;
-  color: white;
-  font-size: 30px;
-}
-
-.modal-fallback {
-  padding: 28px;
-  color: var(--muted);
-  line-height: 1.7;
-  text-align: center;
-}
-
-/* LONG SHOPIFY IMAGE IN POPUP */
-
-.modal-panel.shopify-panel {
-  height: min(90vh, 900px);
-  max-height: 90vh;
-  grid-template-rows: minmax(0, 1fr);
-  overflow: hidden;
-}
-
-.modal-panel.shopify-panel .modal-content {
-  align-self: stretch;
-  overflow-y: auto;
-}
-
-.modal-visual.shopify-scroll-area {
-  display: block;
-  height: 100%;
-  min-height: 0;
-  max-height: none;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.modal-visual.shopify-scroll-area > img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: none;
-  object-fit: initial;
-}
-
-/* SIMPLE PORTFOLIO ASSISTANT */
-
-.ai-launcher {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  z-index: 900;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 62px;
-  height: 62px;
-  border: 0;
-  border-radius: 50%;
-  background: var(--red);
-  color: white;
-  box-shadow: 0 10px 35px #ff263f55;
-}
-
-.ai-launcher span {
-  font-size: 25px;
-}
-
-.ai-launcher small {
-  font-size: 9px;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-.chat-panel {
-  position: fixed;
-  right: 22px;
-  bottom: 95px;
-  z-index: 901;
-  display: none;
-  flex-direction: column;
-  width: min(370px, calc(100vw - 28px));
-  height: min(520px, calc(100vh - 120px));
-  overflow: hidden;
-  border: 1px solid #ffffff25;
-  border-radius: 12px;
-  background: #111116;
-  box-shadow: 0 25px 80px #000b;
-}
-
-.chat-panel.open {
-  display: flex;
-  animation: appear .22s ease;
-}
-
-.chat-head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 15px;
-  border-bottom: 1px solid var(--line);
-  background: #17171d;
-}
-
-.ai-avatar {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--red);
-  font-weight: 900;
-}
-
-.chat-head-copy {
-  display: grid;
-  flex: 1;
-  gap: 5px;
-}
-
-.chat-head-copy strong {
-  font-size: 14px;
-}
-
-.chat-head-copy span {
-  color: #9b9ba5;
-  font-size: 10px;
-}
-
-.chat-close {
-  border: 0;
-  background: transparent;
-  color: white;
-  font-size: 27px;
-}
-
-.chat-messages {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: 10px;
-  overflow: auto;
-  padding: 15px;
-}
-
-.message {
-  max-width: 92%;
-  padding: 11px 13px;
-  border-radius: 10px;
-  white-space: pre-line;
-  overflow-wrap: anywhere;
-  font-size: 12px;
-  line-height: 1.7;
-}
-
-.message.bot {
-  align-self: flex-start;
-  background: #202027;
-  color: #eee;
-}
-
-.message.user {
-  align-self: flex-end;
-  background: var(--red);
-  color: white;
-}
-
-.quick-prompts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding: 0 12px 12px;
-}
-
-.quick-prompts button {
-  padding: 7px 10px;
-  border: 1px solid #ffffff30;
-  border-radius: 20px;
-  background: transparent;
-  color: #ddd;
-  font-size: 11px;
-}
-
-.quick-prompts button:hover {
-  border-color: var(--red);
-}
-
-.chat-form {
-  display: flex;
-  gap: 8px;
-  padding: 12px;
-  border-top: 1px solid var(--line);
-}
-
-.chat-form input {
-  flex: 1;
-  min-width: 0;
-  padding: 12px;
-  border: 1px solid #ffffff25;
-  border-radius: 7px;
-  outline: none;
-  background: #09090c;
-  color: white;
-}
-
-.chat-form input:focus {
-  border-color: var(--red);
-}
-
-.chat-form button {
-  width: 42px;
-  border: 0;
-  border-radius: 7px;
-  background: var(--red);
-  color: white;
-  font-size: 19px;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 900px) {
-  .hero {
-    min-height: auto;
-    grid-template-columns: 1fr;
-    gap: 45px;
-    padding-top: 55px;
-  }
-
-  .hero-copy {
-    text-align: center;
-  }
-
-  .hero-text {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-copy .buttons {
-    justify-content: center;
-  }
-
-  .visual {
-    width: min(420px, 90%);
-  }
-
-  .about-grid,
-  .skill-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .cards,
-  .project-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .process-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .modal-panel {
-    grid-template-columns: 1fr;
-  }
-
-  .modal-visual {
-    max-height: 55vh;
-  }
-
-  .modal-visual > img {
-    max-height: 55vh;
-  }
-
-  .modal-panel.shopify-panel {
-    height: min(94vh, 1000px);
-    max-height: 94vh;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) auto;
-  }
-
-  .modal-panel.shopify-panel .modal-visual.shopify-scroll-area {
-    height: 55vh;
-    min-height: 200px;
-    max-height: 55vh;
-  }
-
-  .modal-panel.shopify-panel .modal-content {
-    max-height: 32vh;
-    padding: 20px;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-text {
-    min-height: 7.8em;
-  }
-
-  nav {
-    height: 68px;
-  }
-
-  .logo {
-    font-size: 24px;
-  }
-
-  .nav-links {
-    gap: 12px;
-    font-size: 11px;
-  }
-
-  .nav-links a:not(.nav-contact) {
-    display: none;
-  }
-
-  .nav-contact {
-    padding: 9px 11px;
-  }
-
-  .hero {
-    padding: 45px 0 60px;
-  }
-
-  .hero h1 {
-    font-size: clamp(42px, 13vw, 64px);
-    letter-spacing: -2px;
-  }
-
-  .hero-text {
-    font-size: 14px;
-  }
-
-  .section {
-    padding: 70px 0;
-  }
-
-  .section-top {
-    display: block;
-  }
-
-  .section-description {
-    margin-top: 16px;
-  }
-
-  .cards,
-  .project-grid,
-  .process-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .project-info {
-    padding: 18px;
-  }
-
-  .contact-area {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .gallery-stage {
-    height: 42vh;
-    min-height: 210px;
-  }
-
-  .gallery-controls button {
-    padding: 9px;
-  }
-
-  .project-modal {
-    padding: 10px;
-  }
-
-  .modal-panel {
-    max-height: 94vh;
-  }
-
-  .modal-close {
-    top: 12px;
-    right: 12px;
-  }
-
-  .ai-launcher {
-    right: 14px;
-    bottom: 14px;
-    width: 56px;
-    height: 56px;
-  }
-
-  .chat-panel {
-    right: 12px;
-    bottom: 80px;
-    height: min(520px, calc(100vh - 100px));
-  }
-
-  footer .container {
-    display: grid;
-    gap: 10px;
-  }
-}
-
-/* WEB DEVELOPMENT CARD: stylized preview of the live portfolio */
-
-.website-preview-thumb {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  padding: 16px;
-  background: radial-gradient(ellipse at 65% 0%, #ff263f24, #0b0b10 72%);
-}
-
-.website-preview {
-  width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  border: 1px solid #ffffff26;
-  border-radius: 7px;
-  background: #08080b;
-  box-shadow: 0 12px 28px #0008;
-  transform: translateY(0);
-  transition: transform .35s ease, border-color .35s ease;
-}
-
-.project-card:hover .website-preview {
-  transform: translateY(-3px);
-  border-color: #ff263f99;
-}
-
-.browser-preview-bar {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  min-height: 27px;
-  padding: 0 9px;
-  border-bottom: 1px solid #ffffff16;
-  background: #17171d;
-}
-
-.browser-preview-bar > span {
-  width: 6px;
-  height: 6px;
-  flex: 0 0 6px;
-  border-radius: 50%;
-  background: #ff263f;
-}
-
-.browser-preview-bar > span:nth-child(2) {
-  background: #f3bb52;
-}
-
-.browser-preview-bar > span:nth-child(3) {
-  background: #57c78c;
-}
-
-.browser-preview-bar small {
-  overflow: hidden;
-  margin-left: 7px;
-  color: #a7a7b1;
-  font-size: 8px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.browser-preview-content {
-  display: flex;
-  min-height: 175px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: clamp(13px, 3vw, 25px);
-  background: radial-gradient(circle at 95% 10%, #ff263f20, transparent 55%);
-}
-
-.browser-preview-content > small {
-  margin-bottom: 12px;
-  color: #bbbbc5;
-  font-size: 7px;
-  letter-spacing: 1.2px;
-}
-
-.browser-preview-content strong {
-  color: #f5f5f7;
-  font-size: clamp(20px, 2.5vw, 29px);
-  line-height: 1.05;
-  letter-spacing: -1px;
-}
-
-.browser-preview-content em {
-  color: #ff263f;
-  font-style: normal;
-}
-
-.browser-preview-content p {
-  margin-top: 12px;
-  color: #aaaab5;
-  font-size: 9px;
-}
-
-.browser-preview-cta {
-  margin-top: 15px;
-  padding: 7px 9px;
-  border-radius: 3px;
-  background: #ff263f;
-  color: white;
-  font-size: 8px;
-  font-weight: 700;
-}
-
-/* IMAGE LAYER FIX: keep real images above placeholder stars and text */
-
-.project-thumb {
-  isolation: isolate;
-}
-
-.project-thumb > .project-fallback {
-  z-index: 0;
-}
-
-.project-thumb > img:not([hidden]) {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.project-thumb > .project-open {
-  z-index: 5;
-}
-
-/* EXTRA CARD ANIMATIONS */
-
-.project-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.project-card::after {
-  content: "";
-  position: absolute;
-  inset: -120% -40%;
-  z-index: 4;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateX(-55%) rotate(18deg);
-  background: linear-gradient(90deg, transparent, #ffffff0b, transparent);
-  transition: opacity .3s ease, transform .85s ease;
-}
-
-.project-card:hover::after {
-  opacity: 1;
-  transform: translateX(55%) rotate(18deg);
-}
-
-.project-card .project-info h3 {
-  transition: color .3s ease, transform .3s ease;
-}
-
-.project-card:hover .project-info h3 {
-  color: #fff;
-  transform: translateX(3px);
-}
-
-/* GRAPHIC DESIGN HOVER SLIDESHOW */
-
-.graphic-card .project-thumb > img:not([hidden]) {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 1;
-  transition: opacity .25s ease, transform .55s ease;
-}
-
-.graphic-card:hover .project-thumb > img:not([hidden]) {
-  transform: scale(1.045);
-}
-
-.graphic-card .project-thumb > img.slide-change {
-  animation: graphicSlideFade .45s ease;
-}
-
-@keyframes graphicSlideFade {
-  from {
-    opacity: .35;
-    transform: scale(1.035) translateX(8px);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1) translateX(0);
-  }
-}
-
-/* SHOPIFY FULL-PAGE IMAGE PREVIEW */
-
-.shopify-card .project-thumb {
-  aspect-ratio: 16 / 10;
-  container-type: inline-size;
-}
-
-.shopify-card .project-thumb > img:not([hidden]) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: auto;
-  min-height: 100%;
-  object-fit: initial;
-  object-position: top center;
-  transform: translateY(0);
-  transition: transform 5s linear;
-}
-
-.shopify-card .project-thumb:hover > img:not([hidden]) {
-  transform: translateY(calc(-100% + 62.5cqw));
-}
-
-/* RESPECT REDUCED MOTION */
-
-@media (prefers-reduced-motion: reduce) {
-  .project-card,
-  .project-card::after,
-  .graphic-card .project-thumb > img,
-  .shopify-card .project-thumb > img:not([hidden]) {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-/* GRILLI WEB-DEVELOPMENT PROJECT CARD */
-
-.grilli-thumb {
-  background: #17120f;
-}
-
-.grilli-thumb > img:not([hidden]) {
-  filter: saturate(.9);
-  transition: transform .6s ease, filter .6s ease;
-}
-
-.grilli-project-card:hover .grilli-thumb > img:not([hidden]) {
-  transform: scale(1.05);
-  filter: saturate(1.1);
-}
-
-.grilli-tech {
-  margin-top: 13px;
-  color: #b9b9c4;
-  font-size: 11px;
-  letter-spacing: .7px;
-}
-
-.grilli-link-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 16px;
-}
-
-.grilli-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 11px;
-  border: 1px solid #ffffff35;
-  border-radius: 4px;
-  color: #f5f5f7;
-  font-size: 11px;
-  font-weight: 700;
-  transition: background .25s, border-color .25s, transform .25s;
-}
-
-.grilli-link:hover {
-  border-color: var(--red);
-  background: var(--red);
-  transform: translateY(-2px);
-}
-
-.grilli-credit {
-  margin-top: 12px;
-  color: #858590;
-  font-size: 10px;
-  line-height: 1.6;
-}
-
-@media (max-width: 600px) {
-  .grilli-link-row {
-    gap: 7px;
-  }
-
-  .grilli-link {
-    flex: 1 1 auto;
-  }
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- LOADER -->
-
-<div id="loader">
-  <div class="loader-inner">
-    <div class="loader-logo">MA.</div>
-    <div class="loader-line"></div>
-    <p>LOADING PORTFOLIO</p>
-  </div>
-</div>
-
-<!-- NAVIGATION -->
-
-<nav aria-label="Main navigation">
-  <a class="logo" href="#home">M<span>A.</span></a>
-
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a class="nav-contact" href="#contact">Let's Talk ↗</a>
-  </div>
-</nav>
-
-<main>
-
-<!-- HERO -->
-
-<section class="hero" id="home">
-  <div class="hero-copy">
-    <div class="eyebrow">Creative Designer · Web Developer</div>
-
-    <h1 id="heroTitle" aria-label="Hi, I'm Muhammad Ahsan.">
-      <span class="typing-target" data-typewriter>Hi, I'm</span>
-      <span class="name"><span class="typing-target" data-typewriter>Muhammad</span><br><span class="typing-target" data-typewriter>Ahsan.</span></span>
-    </h1>
-
-    <p class="hero-text typing-target" data-typewriter aria-label="I create bold graphic designs, modern responsive websites, and clean Shopify e-commerce experiences that help ideas stand out online.">I create bold graphic designs, modern responsive websites, and clean Shopify e-commerce experiences that help ideas stand out online.</p>
-
-    <div class="buttons">
-      <a class="btn primary" href="#projects">Explore My Work ↘</a>
-      <a class="btn" href="mailto:mhdxahsan@gmail.com">Contact Me ↗</a>
-    </div>
-
-    <div class="hero-note">Design · Develop · Build Online</div>
-  </div>
-
-  <div class="visual">
-    <div class="glow"></div>
-    <div class="orbit"></div>
-    <div class="orbit two"></div>
-
-    <div class="photo-wrap">
-      <img
-        src="https://mhdxahsan.github.io/ahsan-portfolio/Porfolio%20Picture.jpg"
-        alt="Portrait of Muhammad Ahsan"
-        onerror="this.style.display='none'"
-      >
-    </div>
-
-    <div class="photo-label">
-      <strong>Muhammad Ahsan</strong>
-      <small>DESIGNER & DEVELOPER</small>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-
-<section class="section" id="about">
-  <div class="container">
-
-    <div class="section-top">
-      <div>
-        <div class="section-label">A Little About Me</div>
-        <h2>Creative ideas.<br><span class="red">Real experiences.</span></h2>
-      </div>
-
-      <p class="section-description">
-        A mix of visual creativity and practical development
-        to make brands look professional and work smoothly online.
-      </p>
-    </div>
-
-    <div class="about-grid">
-      <div class="about-copy">
-        <p>
-          I'm Muhammad Ahsan, a creative designer and web developer
-          interested in building strong visual identities, responsive
-          websites and useful e-commerce experiences.
-        </p>
-
-        <p>
-          From graphic design to front-end development and Shopify
-          store design, I focus on clear layouts, thoughtful details
-          and mobile-friendly results.
-        </p>
-
-        <div class="buttons">
-          <a class="btn" href="#contact">Let's Work Together ↗</a>
-        </div>
-      </div>
-
-      <div class="about-panel">
-        <div class="stat-grid">
-          <div class="stat">
-            <strong>01</strong>
-            <span>Graphic design and visual content</span>
-          </div>
-
-          <div class="stat">
-            <strong>02</strong>
-            <span>Responsive web development</span>
-          </div>
-
-          <div class="stat">
-            <strong>03</strong>
-            <span>Shopify store design</span>
-          </div>
-
-          <div class="stat">
-            <strong>04</strong>
-            <span>Creative problem solving</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-
-<section class="section" id="services">
-  <div class="container">
-
-    <div class="section-top">
-      <div>
-        <div class="section-label">What I Do</div>
-        <h2>Services & Expertise</h2>
-      </div>
-
-      <p class="section-description">
-        Creative services for brands, businesses and online stores.
-      </p>
-    </div>
-
-    <div class="cards">
-      <article class="card">
-        <div class="card-number">01 / VISUALS</div>
-        <h3>Graphic Designing</h3>
-        <p>
-          Promotional artwork, social media creatives, brand visuals
-          and marketing designs.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-number">02 / DIGITAL</div>
-        <h3>Web Development</h3>
-        <p>
-          Responsive websites and interactive interfaces built
-          with a focus on clarity and usability.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-number">03 / E-COMMERCE</div>
-        <h3>Shopify Store Design</h3>
-        <p>
-          Online store layouts, product presentation and shopping
-          experiences designed for customers.
-        </p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-
-<section class="section projects-section" id="projects">
-  <div class="container">
-
-    <div class="section-top">
-      <div>
-        <div class="section-label">Selected Work</div>
-        <h2>Projects & Portfolio</h2>
-      </div>
-
-      <p class="section-description">
-        Explore my graphic design work, web development and
-        Shopify store design.
-      </p>
-    </div>
-
-    <div class="project-grid">
-
-      <!-- GRAPHIC DESIGN -->
-
-      <button
-        class="project-card graphic-card"
-        type="button"
-        data-title="Graphic Design"
-        data-category="01 / Graphic Design"
-        data-description="Graphic design advertisements, promotional graphics and social media creatives."
-        data-project-type="gallery"
-      >
-        <div class="project-thumb">
-          <img
-            src="https://mhdxahsan.github.io/ahsan-portfolio/image%201.jpeg"
-            alt="Graphic design preview"
-            onerror="this.hidden=true"
-          >
-
-          <div class="project-fallback">
-            <span class="symbol">✳</span>
-            <h3>Graphic Design</h3>
-            <small>Graphic design collection</small>
-          </div>
-
-          <span class="project-open" aria-hidden="true">↗</span>
-        </div>
-
-        <div class="project-info">
-          <div class="project-category">01 / DESIGN</div>
-          <h3>Graphic Design</h3>
-          <p>
-            Advertisements, promotional graphics and social media creatives.
-          </p>
-          <div class="project-cta">Click to view gallery ↗</div>
-        </div>
-      </button>
-
-      <!-- WEB DEVELOPMENT -->
-
-      <button
-        class="project-card"
-        type="button"
-        data-title="Web Development"
-        data-category="02 / Web Development"
-        data-description="A responsive portfolio website showcasing graphic design, web development and Shopify e-commerce work."
-        data-link="https://mhdxahsan.github.io/ahsan-portfolio/"
-      >
-        <div class="project-thumb website-preview-thumb">
-          <div class="website-preview" aria-label="Visual preview of the portfolio website">
-            <div class="browser-preview-bar" aria-hidden="true">
-              <span></span><span></span><span></span>
-              <small>mhdxahsan.github.io</small>
-            </div>
-            <div class="browser-preview-content">
-              <small>CREATIVE DESIGNER · WEB DEVELOPER</small>
-              <strong>Hi, I'm <em>Muhammad<br>Ahsan.</em></strong>
-              <p>Design · Develop · Build Online</p>
-              <span class="browser-preview-cta">Explore My Work ↘</span>
-            </div>
-          </div>
-          <span class="project-open" aria-hidden="true">↗</span>
-        </div>
-
-        <div class="project-info">
-          <div class="project-category">02 / DEVELOPMENT</div>
-          <h3>Web Development</h3>
-          <p>Responsive websites and interactive interfaces.</p>
-          <div class="project-cta">View project details ↗</div>
-        </div>
-      </button>
-
-      <!-- GRILLI RESTAURANT WEBSITE: EXTERNAL DEMO + SOURCE -->
-
-      <article class="project-card grilli-project-card">
-        <div class="project-thumb grilli-thumb">
-          <img
-            src="https://raw.githubusercontent.com/codewithsadee/grilli/master/assets/images/hero-slider-1.jpg"
-            alt="Food photography preview from the Grilli restaurant website"
-            loading="lazy"
-            onerror="this.hidden=true"
-          >
-
-          <div class="project-fallback">
-            <span class="symbol">✦</span>
-            <h3>Grilli</h3>
-            <small>Responsive restaurant website</small>
-          </div>
-
-          <a
-            class="project-open"
-            href="https://codewithsadee.github.io/grilli/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open Grilli live demo"
-          >↗</a>
-        </div>
-
-        <div class="project-info">
-          <div class="project-category">03 / WEB DEVELOPMENT</div>
-          <h3>Grilli — Restaurant Website</h3>
-          <p>
-            A responsive restaurant website template with food photography,
-            menu sections, an about section and a reservation layout.
-          </p>
-
-          <div class="grilli-tech">HTML · CSS · JavaScript</div>
-
-          <div class="grilli-link-row">
-            <a
-              class="grilli-link"
-              href="https://codewithsadee.github.io/grilli/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >Live Demo ↗</a>
-
-            <a
-              class="grilli-link"
-              href="https://github.com/codewithsadee/grilli"
-              target="_blank"
-              rel="noopener noreferrer"
-            >Source Code ↗</a>
-          </div>
-
-          <p class="grilli-credit">
-            Original template by CodeWithSadee · MIT License
-          </p>
-        </div>
-      </article>
-
-      <!-- SHOPIFY STORE -->
-
-      <button
-        class="project-card shopify-card"
-        type="button"
-        data-title="Shopify Store Design"
-        data-category="04 / E-commerce"
-        data-description="Shopify storefront, product sections and e-commerce layout. Hover over the thumbnail to see the page move upward, or open the larger scrollable preview."
-        data-image="https://mhdxahsan.github.io/ahsan-portfolio/shopify-store.jpg"
-        data-link="https://shopows.pk/"
-      >
-        <div class="project-thumb">
-          <img
-            src="https://mhdxahsan.github.io/ahsan-portfolio/shopify-store.jpg"
-            alt="Shopify store full-page screenshot"
-            loading="lazy"
-            onerror="this.hidden=true"
-          >
-
-          <div class="project-fallback">
-            <span class="symbol">▧</span>
-            <h3>Shopify Store</h3>
-            <small>Hover to preview the full page</small>
-          </div>
-
-          <span class="project-open" aria-hidden="true">↗</span>
-        </div>
-
-        <div class="project-info">
-          <div class="project-category">04 / E-COMMERCE</div>
-          <h3>Shopify Store Design</h3>
-          <p>Storefront, product sections and e-commerce layout.</p>
-          <div class="project-cta">View Shopify Store ↗</div>
-        </div>
-      </button>
-
-      <!-- OTHER PROJECTS -->
-
-      <div class="project-card">
-        <div class="project-thumb">
-          <div class="project-fallback">
-            <span class="symbol">✦</span>
-            <h3>Coming Soon</h3>
-            <small>New work is on the way</small>
-          </div>
-        </div>
-
-        <div class="project-info">
-          <div class="project-category">05 / OTHER WORK</div>
-          <h3>Other Projects</h3>
-          <p>More projects will be added here later.</p>
-          <div class="project-cta">Coming Soon ✦</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-
-<section class="section" id="skills">
-  <div class="container">
-
-    <div class="section-top">
-      <div>
-        <div class="section-label">My Toolkit</div>
-        <h2>Skills & Expertise</h2>
-      </div>
-
-      <p class="section-description">
-        Creative tools for design, web projects and online stores.
-      </p>
-    </div>
-
-    <div class="skill-layout">
-      <div class="skill-tags">
-        <span>Graphic Designing</span>
-        <span>Web Development</span>
-        <span>HTML & CSS</span>
-        <span>JavaScript</span>
-        <span>Shopify</span>
-        <span>E-commerce</span>
-        <span>Responsive Design</span>
-        <span>Creative Direction</span>
-      </div>
-
-      <div class="skill-bars">
-        <div>
-          <div class="skill-line-head">
-            <span>Graphic Design</span>
-            <span>Creative</span>
-          </div>
-
-          <div class="skill-track">
-            <div class="skill-fill" style="--level:90%"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="skill-line-head">
-            <span>Web Development</span>
-            <span>Building</span>
-          </div>
-
-          <div class="skill-track">
-            <div class="skill-fill" style="--level:82%"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="skill-line-head">
-            <span>Shopify / E-commerce</span>
-            <span>Design</span>
-          </div>
-
-          <div class="skill-track">
-            <div class="skill-fill" style="--level:85%"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-
-<section class="section" id="process">
-  <div class="container">
-
-    <div class="section-top">
-      <div>
-        <div class="section-label">How I Work</div>
-        <h2>Simple Process</h2>
-      </div>
-
-      <p class="section-description">
-        A clear workflow helps turn an idea into a polished result.
-      </p>
-    </div>
-
-    <div class="process-grid">
-      <article class="process-step">
-        <div class="step">STEP 01</div>
-        <h3>Discover</h3>
-        <p>Understand your idea, goals and requirements.</p>
-      </article>
-
-      <article class="process-step">
-        <div class="step">STEP 02</div>
-        <h3>Plan</h3>
-        <p>Choose the direction, layout and visual approach.</p>
-      </article>
-
-      <article class="process-step">
-        <div class="step">STEP 03</div>
-        <h3>Create</h3>
-        <p>Design, build and refine the work carefully.</p>
-      </article>
-
-      <article class="process-step">
-        <div class="step">STEP 04</div>
-        <h3>Deliver</h3>
-        <p>Review the final result and prepare it for use.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-
-<section class="section" id="contact">
-  <div class="container">
-    <div class="contact-area">
-      <div>
-        <div class="section-label">Have a Project?</div>
-
-        <h2>
-          Let's create something<br>
-          <span class="red">great together.</span>
-        </h2>
-
-        <p>
-          Have a design, website or online store in mind?
-          Get in touch and tell me about it.
-        </p>
-
-        <div class="contact-links">
-          <a href="mailto:mhdxahsan@gmail.com">
-            Email: mhdxahsan@gmail.com
-          </a>
-
-          <a
-            href="https://wa.me/923319333080"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            WhatsApp: +92 331 9333080
-          </a>
-        </div>
-      </div>
-
-      <div class="buttons">
-        <a class="btn primary" href="mailto:mhdxahsan@gmail.com">
-          Email Me ↗
-        </a>
-
-        <a
-          class="btn"
-          href="https://wa.me/923319333080"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          WhatsApp ↗
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- FOOTER -->
-
-<footer>
-  <div class="container">
-    <span>
-      © <span id="year"></span>
-      <b>Muhammad Ahsan</b>. All rights reserved.
-    </span>
-
-    <span>Designed with creativity <b>✦</b></span>
-    <a href="#home">Back to top ↑</a>
-  </div>
-</footer>
-
-<!-- PROJECT POPUP -->
-
-<div
-  class="project-modal"
-  id="projectModal"
-  role="dialog"
-  aria-modal="true"
-  aria-hidden="true"
-  aria-labelledby="modalTitle"
->
-  <button
-    class="modal-close"
-    id="modalClose"
-    type="button"
-    aria-label="Close project viewer"
-  >×</button>
-
-  <div class="modal-panel">
-    <div class="modal-visual" id="modalVisual"></div>
-
-    <div class="modal-content">
-      <div class="project-category" id="modalCategory">PROJECT</div>
-      <h2 id="modalTitle">Project title</h2>
-      <p id="modalDescription"></p>
-
-      <div class="buttons">
-        <a
-          class="btn primary"
-          id="modalVisit"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          hidden
-        >Visit Project ↗</a>
-
-        <button class="btn" type="button" id="modalDone">
-          Close Viewer
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PORTFOLIO ASSISTANT -->
-
-<button
-  class="ai-launcher"
-  id="aiLauncher"
-  type="button"
-  aria-label="Open portfolio assistant"
-  aria-expanded="false"
->
-  <span>✦</span>
-  <small>AI</small>
-</button>
-
-<section
-  class="chat-panel"
-  id="chatPanel"
-  aria-label="Portfolio assistant"
-  aria-hidden="true"
->
-  <div class="chat-head">
-    <div class="ai-avatar">A.</div>
-
-    <div class="chat-head-copy">
-      <strong>Ahsan's Assistant</strong>
-      <span>Portfolio helper</span>
-    </div>
-
-    <button
-      class="chat-close"
-      id="chatClose"
-      type="button"
-      aria-label="Close assistant"
-    >×</button>
-  </div>
-
-  <div class="chat-messages" id="chatMessages" aria-live="polite">
-    <div class="message bot">
-      Hi! Welcome to Ahsan's portfolio.
-      Ask me about his services, skills, projects or contact details.
-    </div>
-  </div>
-
-  <div class="quick-prompts">
-    <button type="button" data-question="What services does Ahsan offer?">
-      Services
-    </button>
-
-    <button type="button" data-question="Tell me about Ahsan's projects">
-      Projects
-    </button>
-
-    <button type="button" data-question="How can I contact Ahsan?">
-      Contact
-    </button>
-  </div>
-
-  <form class="chat-form" id="chatForm">
-    <input
-      id="chatInput"
-      type="text"
-      maxlength="400"
-      autocomplete="off"
-      placeholder="Ask me something..."
-      aria-label="Type your question"
-      required
-    >
-
-    <button type="submit" aria-label="Send message">➤</button>
-  </form>
-</section>
-
-<script>
-(function () {
-  "use strict";
-
-  /* HERO TYPEWRITER INTRO */
-
-  let heroTypingStarted = false;
-
-  function startHeroTyping() {
-    if (heroTypingStarted) return;
-    heroTypingStarted = true;
-
-    const targets = Array.from(
-      document.querySelectorAll("[data-typewriter]")
-    );
-
-    if (!targets.length) return;
-
-    const fullTexts = targets.map(function (target) {
-      return target.textContent.replace(/\s+/g, " ").trim();
-    });
-
-    targets.forEach(function (target, index) {
-      target.textContent = "";
-      target.setAttribute("aria-label", fullTexts[index]);
-    });
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      targets.forEach(function (target, index) {
-        target.textContent = fullTexts[index];
-      });
-      return;
-    }
-
-    function typeTarget(index) {
-      if (index >= targets.length) return;
-
-      const target = targets[index];
-      const value = fullTexts[index];
-      const delay = target.classList.contains("hero-text") ? 17 : 42;
-      let position = 0;
-
-      targets.forEach(function (item) {
-        item.classList.remove("typing-active");
-      });
-
-      target.classList.add("typing-active");
-
-      function typeCharacter() {
-        target.textContent = value.slice(0, position + 1);
-        position += 1;
-
-        if (position < value.length) {
-          const characterDelay =
-            value.charAt(position - 1) === " "
-              ? Math.max(9, delay * 0.55)
-              : delay;
-
-          window.setTimeout(typeCharacter, characterDelay);
-        } else if (index < targets.length - 1) {
-          window.setTimeout(function () {
-            typeTarget(index + 1);
-          }, 180);
-        }
-      }
-
-      typeCharacter();
-    }
-
-    typeTarget(0);
-  }
-
-  /* LOADER */
-
-  const loader = document.getElementById("loader");
-
-  function hideLoader() {
-    if (loader) loader.classList.add("hide");
-    startHeroTyping();
-  }
-
-  window.addEventListener("load", hideLoader);
-  window.setTimeout(hideLoader, 1800);
-
-  /* FOOTER YEAR */
-
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
-
-  /* IMAGE FALLBACKS */
-
-  document.querySelectorAll(".project-thumb > img").forEach(function (image) {
-    const fallback = image.parentElement.querySelector(".project-fallback");
-
-    image.addEventListener("load", function () {
-      image.hidden = false;
-      if (fallback) fallback.hidden = true;
-    });
-
-    image.addEventListener("error", function () {
-      image.hidden = true;
-      if (fallback) fallback.hidden = false;
-    });
-
-    if (image.complete && image.naturalWidth > 0) {
-      image.hidden = false;
-      if (fallback) fallback.hidden = true;
-    }
-  });
-
-  /* PROJECT POPUP */
-
-  const modal = document.getElementById("projectModal");
-  const modalPanel = modal.querySelector(".modal-panel");
-  const modalVisual = document.getElementById("modalVisual");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalCategory = document.getElementById("modalCategory");
-  const modalDescription = document.getElementById("modalDescription");
-  const modalVisit = document.getElementById("modalVisit");
-  const closeButton = document.getElementById("modalClose");
-  const doneButton = document.getElementById("modalDone");
-
-  let lastTrigger = null;
-
-  function openProject(card) {
-    lastTrigger = card;
-
-    modalTitle.textContent = card.dataset.title || "Project";
-    modalCategory.textContent = card.dataset.category || "PROJECT";
-    modalDescription.textContent = card.dataset.description || "";
-
-    modalVisual.replaceChildren();
-    modalVisual.classList.remove("shopify-scroll-area");
-
-    modalPanel.classList.toggle(
-      "shopify-panel",
-      card.dataset.title === "Shopify Store Design"
-    );
-
-    /* GRAPHIC DESIGN GALLERY */
-
-    if (
-      card.dataset.projectType === "gallery" ||
-      card.dataset.title === "Graphic Design"
-    ) {
-      const imageFiles = [
-        "https://mhdxahsan.github.io/ahsan-portfolio/image%201.jpeg",
-        "https://mhdxahsan.github.io/ahsan-portfolio/image%202.jpeg",
-        "https://mhdxahsan.github.io/ahsan-portfolio/image%203.jpeg",
-        "https://mhdxahsan.github.io/ahsan-portfolio/image%204.jpeg",
-        "https://mhdxahsan.github.io/ahsan-portfolio/image%205.jpeg",
-        "https://mhdxahsan.github.io/ahsan-portfolio/image%206.jpeg",
-        "https://mhdxahsan.github.io/ahsan-portfolio/image%207.jpeg",
-        "https://mhdxahsan.github.io/ahsan-portfolio/image%208.jpeg",
-        "https://mhdxahsan.github.io/ahsan-portfolio/image%209.jpeg",
-        "https://mhdxahsan.github.io/ahsan-portfolio/image%2010.jpeg",
-        "https://mhdxahsan.github.io/ahsan-portfolio/image%2012.jpeg",
-        "https://mhdxahsan.github.io/ahsan-portfolio/image%2013.jpeg"
-      ];
-
-      const viewer = document.createElement("div");
-      viewer.className = "gallery-viewer";
-
-      const stage = document.createElement("div");
-      stage.className = "gallery-stage";
-
-      const image = document.createElement("img");
-      image.alt = "Graphic design work";
-      image.loading = "eager";
-
-      const error = document.createElement("p");
-      error.className = "gallery-error";
-      error.hidden = true;
-
-      stage.append(image, error);
-
-      const controls = document.createElement("div");
-      controls.className = "gallery-controls";
-
-      const previous = document.createElement("button");
-      previous.type = "button";
-      previous.textContent = "← Previous";
-      previous.setAttribute(
-        "aria-label",
-        "Previous graphic design image"
-      );
-
-      const counter = document.createElement("span");
-      counter.className = "gallery-counter";
-      counter.setAttribute("aria-live", "polite");
-
-      const next = document.createElement("button");
-      next.type = "button";
-      next.textContent = "Next →";
-      next.setAttribute(
-        "aria-label",
-        "Next graphic design image"
-      );
-
-      controls.append(previous, counter, next);
-      viewer.append(stage, controls);
-      modalVisual.appendChild(viewer);
-
-      let currentIndex = 0;
-
-      image.onload = function () {
-        image.style.display = "block";
-        error.hidden = true;
-      };
-
-      image.onerror = function () {
-        image.style.display = "none";
-        error.hidden = false;
-        error.textContent =
-          "Image not found: " +
-          image.dataset.requestedSrc +
-          ". Check the filename in your GitHub repository.";
-      };
-
-      function showImage(newIndex) {
-        currentIndex =
-          (newIndex + imageFiles.length) % imageFiles.length;
-
-        const src = imageFiles[currentIndex];
-
-        error.hidden = true;
-        image.style.display = "block";
-        image.alt = "Graphic design work " + (currentIndex + 1);
-        image.dataset.requestedSrc = src;
-        image.src = src;
-
-        counter.textContent =
-          (currentIndex + 1) + " / " + imageFiles.length;
-      }
-
-      previous.addEventListener("click", function () {
-        showImage(currentIndex - 1);
-      });
-
-      next.addEventListener("click", function () {
-        showImage(currentIndex + 1);
-      });
-
-      showImage(0);
-
-    /* SHOPIFY OR ANOTHER SINGLE-IMAGE PROJECT */
-
-    } else if (card.dataset.image) {
-      const image = document.createElement("img");
-
-      image.src = card.dataset.image;
-      image.alt =
-        (card.dataset.title || "Project") + " full preview";
-      image.loading = "eager";
-
-      if (card.dataset.title === "Shopify Store Design") {
-        modalVisual.classList.add("shopify-scroll-area");
-      }
-
-      image.onerror = function () {
-        const fallback = document.createElement("p");
-        fallback.className = "modal-fallback";
-        fallback.textContent =
-          "The Shopify preview image could not be loaded. Check the repository asset link.";
-
-        modalVisual.replaceChildren(fallback);
-      };
-
-      modalVisual.appendChild(image);
-
-    /* WEB DEVELOPMENT PLACEHOLDER */
-
-    } else {
-      const fallback = document.createElement("div");
-      fallback.className = "modal-fallback";
-      fallback.textContent = card.dataset.link
-        ? "This project is available online. Use the Visit Project button to open the live website."
-        : "Project preview coming soon. Add a website screenshot when it is ready.";
-
-      modalVisual.appendChild(fallback);
-    }
-
-    /* VISIT PROJECT BUTTON */
-
-    if (card.dataset.link) {
-      modalVisit.href = card.dataset.link;
-      modalVisit.hidden = false;
-    } else {
-      modalVisit.hidden = true;
-      modalVisit.removeAttribute("href");
-    }
-
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("locked");
-    closeButton.focus();
-  }
-
-  function closeProject() {
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("locked");
-
-    if (lastTrigger) lastTrigger.focus();
-  }
-
-  document
-    .querySelectorAll("button.project-card")
-    .forEach(function (card) {
-      card.addEventListener("click", function () {
-        openProject(card);
-      });
-    });
-
-  /* GRAPHIC DESIGN HOVER SLIDESHOW */
-
-  const graphicCard = document.querySelector(".graphic-card");
-
-  if (graphicCard) {
-    const previewImage = graphicCard.querySelector(".project-thumb > img");
-
-    const galleryFiles = [
-      "https://mhdxahsan.github.io/ahsan-portfolio/image%201.jpeg",
-      "https://mhdxahsan.github.io/ahsan-portfolio/image%202.jpeg",
-      "https://mhdxahsan.github.io/ahsan-portfolio/image%203.jpeg",
-      "https://mhdxahsan.github.io/ahsan-portfolio/image%204.jpeg",
-      "https://mhdxahsan.github.io/ahsan-portfolio/image%205.jpeg",
-      "https://mhdxahsan.github.io/ahsan-portfolio/image%206.jpeg",
-      "https://mhdxahsan.github.io/ahsan-portfolio/image%207.jpeg",
-      "https://mhdxahsan.github.io/ahsan-portfolio/image%208.jpeg",
-      "https://mhdxahsan.github.io/ahsan-portfolio/image%209.jpeg",
-      "https://mhdxahsan.github.io/ahsan-portfolio/image%2010.jpeg",
-      "https://mhdxahsan.github.io/ahsan-portfolio/image%2012.jpeg",
-      "https://mhdxahsan.github.io/ahsan-portfolio/image%2013.jpeg"
-    ];
-
-    let previewIndex = 0;
-    let slideTimer = null;
-
-    function showPreviewSlide(index) {
-      if (!previewImage) return;
-
-      previewIndex =
-        (index + galleryFiles.length) % galleryFiles.length;
-
-      previewImage.hidden = false;
-      previewImage.classList.remove("slide-change");
-
-      void previewImage.offsetWidth;
-
-      previewImage.classList.add("slide-change");
-      previewImage.src = galleryFiles[previewIndex];
-    }
-
-    graphicCard.addEventListener("mouseenter", function () {
-      if (slideTimer) window.clearInterval(slideTimer);
-
-      showPreviewSlide(previewIndex + 1);
-
-      slideTimer = window.setInterval(function () {
-        showPreviewSlide(previewIndex + 1);
-      }, 1800);
-    });
-
-    graphicCard.addEventListener("mouseleave", function () {
-      if (slideTimer) {
-        window.clearInterval(slideTimer);
-        slideTimer = null;
-      }
-
-      if (previewImage) {
-        previewImage.classList.remove("slide-change");
-      }
-    });
-
-    /* On touch screens, the click still opens the full gallery as usual. */
-  }
-
-  /* CLOSE PROJECT POPUP */
-
-  closeButton.addEventListener("click", closeProject);
-  doneButton.addEventListener("click", closeProject);
-
-  modal.addEventListener("click", function (event) {
-    if (event.target === modal) closeProject();
-  });
-
-  /* PORTFOLIO ASSISTANT */
-
-  const launcher = document.getElementById("aiLauncher");
-  const chat = document.getElementById("chatPanel");
-  const chatClose = document.getElementById("chatClose");
-  const chatForm = document.getElementById("chatForm");
-  const chatInput = document.getElementById("chatInput");
-  const messages = document.getElementById("chatMessages");
-
-  function toggleChat(open) {
-    chat.classList.toggle("open", open);
-    chat.setAttribute("aria-hidden", String(!open));
-    launcher.setAttribute("aria-expanded", String(open));
-
-    if (open) {
-      chatInput.focus();
-    }
-  }
-
-  launcher.addEventListener("click", function () {
-    toggleChat(!chat.classList.contains("open"));
-  });
-
-  chatClose.addEventListener("click", function () {
-    toggleChat(false);
-  });
-
-  function addMessage(text, who) {
-    const node = document.createElement("div");
-    node.className = "message " + who;
-    node.textContent = text;
-
-    messages.appendChild(node);
-    messages.scrollTop = messages.scrollHeight;
-  }
-
-  function answerQuestion(raw) {
-    const q = raw.toLowerCase();
-
-    if (/hello|hi\b|hey|salam|assalam/.test(q)) {
-      return "Hello! Welcome to Muhammad Ahsan's portfolio. Ask me about his services, skills, projects or contact details.";
-    }
-
-    if (/contact|email|mail|whatsapp|phone|number|hire/.test(q)) {
-      return "Contact Ahsan at mhdxahsan@gmail.com or on WhatsApp at https://wa.me/923319333080.";
-    }
-
-    if (/service|offer|provide/.test(q)) {
-      return "Ahsan offers graphic design, responsive web development and Shopify store design.";
-    }
-
-    if (/project|portfolio|work|website/.test(q)) {
-      return "The portfolio includes Graphic Design, Web Development, the Grilli restaurant website showcase and Shopify Store Design. Other Projects is marked Coming Soon.";
-    }
-
-    if (/skill|technology|html|css|javascript|shopify|coding/.test(q)) {
-      return "Ahsan's skills include Graphic Designing, Web Development, HTML, CSS, JavaScript, Shopify, E-commerce and Responsive Design.";
-    }
-
-    if (/about|who is|ahsan/.test(q)) {
-      return "Muhammad Ahsan is a creative designer and web developer focused on graphic design, modern websites and Shopify e-commerce experiences.";
-    }
-
-    if (/price|cost|rate|budget/.test(q)) {
-      return "Pricing is not listed here. Please email mhdxahsan@gmail.com or message Ahsan on WhatsApp to discuss your project.";
-    }
-
-    if (/thank/.test(q)) {
-      return "You're welcome! Contact Ahsan at mhdxahsan@gmail.com for project enquiries.";
-    }
-
-    return "I can answer questions about Ahsan's services, skills, projects and contact details. Try asking: What services does Ahsan offer?";
-  }
-
-  function sendQuestion(text) {
-    const clean = text.trim();
-    if (!clean) return;
-
-    addMessage(clean, "user");
-    chatInput.value = "";
-
-    window.setTimeout(function () {
-      addMessage(answerQuestion(clean), "bot");
-    }, 180);
-  }
-
-  chatForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    sendQuestion(chatInput.value);
-  });
-
-  document
-    .querySelectorAll(".quick-prompts button")
-    .forEach(function (button) {
-      button.addEventListener("click", function () {
-        sendQuestion(button.dataset.question);
-      });
-    });
-
-  /* KEYBOARD SHORTCUTS */
-
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      if (modal.classList.contains("open")) closeProject();
-      if (chat.classList.contains("open")) toggleChat(false);
-    }
-  });
-
-})();
-</script>
-
-</body>
-</html>
+  background: radial-gradient(ellipse at 85% 50%, #ff263
