@@ -25,7 +25,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 84px;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -53,6 +53,10 @@ button {
   cursor: pointer;
 }
 
+img {
+  max-width: 100%;
+}
+
 ::selection {
   background: var(--red);
   color: white;
@@ -63,20 +67,21 @@ button {
   margin: auto;
 }
 
-.red {
+.red,
+.name {
   color: var(--red);
 }
 
-/* LOADER AND ANIMATIONS */
+/* LOADER */
 
 #loader {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: 2000;
   display: grid;
   place-items: center;
   background: var(--bg);
-  transition: opacity .45s, visibility .45s;
+  transition: opacity .4s, visibility .4s;
 }
 
 #loader.hide {
@@ -86,36 +91,38 @@ button {
 }
 
 .loader-logo {
-  font-size: 48px;
-  font-weight: 900;
   color: var(--red);
+  text-align: center;
+  font-size: 46px;
+  font-weight: 900;
   animation: glow 1s infinite alternate;
 }
 
 .loader-line {
+  width: 170px;
   height: 3px;
-  width: 175px;
   margin: 16px auto;
-  background: #29292f;
   overflow: hidden;
+  background: #29292f;
 }
 
-.loader-line:after {
+.loader-line::after {
   content: "";
   display: block;
+  width: 100%;
   height: 100%;
   background: var(--red);
-  animation: load 1.2s ease;
+  animation: loading 1s ease;
 }
 
 .loader-inner p {
   text-align: center;
-  color: #aaa;
   font-size: 10px;
   letter-spacing: 4px;
+  color: #aaa;
 }
 
-@keyframes load {
+@keyframes loading {
   from { transform: translateX(-100%); }
   to { transform: translateX(0); }
 }
@@ -125,17 +132,17 @@ button {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotateY(-4deg); }
-  50% { transform: translateY(-12px) rotateY(4deg); }
+  0%, 100% { transform: translateY(0) rotateY(-3deg); }
+  50% { transform: translateY(-10px) rotateY(3deg); }
 }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-@keyframes popIn {
-  from { opacity: 0; transform: translateY(10px) scale(.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* NAVIGATION */
@@ -143,14 +150,12 @@ button {
 nav {
   width: 90%;
   max-width: 1180px;
-  height: 78px;
+  height: 76px;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #ffffff15;
-  position: relative;
-  z-index: 10;
 }
 
 .logo {
@@ -159,17 +164,16 @@ nav {
   letter-spacing: -2px;
 }
 
-.logo span,
-footer b {
+.logo span {
   color: var(--red);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 24px;
-  font-size: 13px;
+  gap: 22px;
   color: #ccc;
+  font-size: 13px;
 }
 
 .nav-links a {
@@ -181,70 +185,39 @@ footer b {
 }
 
 .nav-contact {
+  padding: 10px 14px;
   border: 1px solid #ff263f88;
-  padding: 11px 15px;
   border-radius: 4px;
 }
 
-/* BUTTONS AND SECTIONS */
-
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 13px;
-  margin-top: 28px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 21px;
-  border: 1px solid #ffffff35;
-  border-radius: 4px;
-  background: transparent;
-  color: white;
-  font-size: 13px;
-  font-weight: bold;
-  transition: transform .3s, box-shadow .3s, background .3s;
-}
-
-.btn.primary {
-  background: var(--red);
-  border-color: var(--red);
-}
-
-.btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px #ff263f30;
-}
+/* GENERAL SECTIONS */
 
 .section {
-  padding: 95px 0;
+  padding: 90px 0;
   border-top: 1px solid #ffffff12;
 }
 
 .section-top {
   display: flex;
-  justify-content: space-between;
   align-items: end;
+  justify-content: space-between;
   gap: 25px;
-  margin-bottom: 40px;
+  margin-bottom: 38px;
 }
 
-.eyebrow,
-.section-label {
+.section-label,
+.eyebrow {
   color: var(--red);
   font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 18px;
+  margin-bottom: 17px;
 }
 
 h1 {
   font-size: clamp(43px, 6vw, 78px);
-  line-height: 1.04;
-  letter-spacing: -4px;
+  line-height: 1.05;
+  letter-spacing: -3px;
 }
 
 h2 {
@@ -260,35 +233,61 @@ h2 {
   line-height: 1.9;
 }
 
-/* HERO AND PORTRAIT */
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 20px;
+  border: 1px solid #ffffff35;
+  border-radius: 4px;
+  background: transparent;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.btn.primary {
+  border-color: var(--red);
+  background: var(--red);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px #ff263f30;
+}
+
+/* HERO */
 
 .hero {
   width: 90%;
   max-width: 1180px;
-  min-height: 640px;
+  min-height: 620px;
   margin: auto;
-  padding: 65px 0 80px;
+  padding: 65px 0 75px;
   display: grid;
   grid-template-columns: 1.05fr .95fr;
   align-items: center;
   gap: 45px;
 }
 
-.name {
-  display: block;
-  color: var(--red);
-}
-
 .hero-text {
-  margin-top: 24px;
   max-width: 510px;
+  margin-top: 23px;
   color: var(--muted);
   font-size: 15px;
   line-height: 1.9;
 }
 
 .hero-note {
-  margin-top: 30px;
+  margin-top: 28px;
   color: #777;
   font-size: 11px;
   letter-spacing: 2px;
@@ -297,55 +296,49 @@ h2 {
 
 .visual {
   position: relative;
-  max-width: 450px;
   width: 100%;
+  max-width: 440px;
   justify-self: center;
-  perspective: 1000px;
 }
 
 .photo-wrap {
-  width: 84%;
-  aspect-ratio: 4/5;
-  margin: auto;
   position: relative;
   z-index: 2;
+  width: 84%;
+  aspect-ratio: 4 / 5;
+  margin: auto;
   overflow: hidden;
-  border-radius: 48% 48% 8px 8px;
   border: 1px solid #ff263f66;
+  border-radius: 48% 48% 8px 8px;
   background: linear-gradient(145deg, #301018, #141419);
   box-shadow: 0 25px 80px #ff263f25;
   animation: float 5s ease-in-out infinite;
 }
 
 .photo-wrap img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform .5s;
-}
-
-.photo-wrap:hover img {
-  transform: scale(1.05);
 }
 
 .orbit {
   position: absolute;
   width: 105%;
   height: 65%;
-  left: -2.5%;
   top: 17%;
+  left: -2.5%;
   border: 1px solid #ff263f80;
   border-radius: 50%;
-  animation: spin 16s linear infinite;
   pointer-events: none;
+  animation: spin 16s linear infinite;
 }
 
 .orbit.two {
   width: 115%;
   height: 75%;
-  left: -7.5%;
   top: 12%;
+  left: -7.5%;
   border-color: #ffffff25;
   animation-duration: 24s;
   animation-direction: reverse;
@@ -353,13 +346,13 @@ h2 {
 
 .glow {
   position: absolute;
+  top: 15%;
+  left: 13%;
   width: 75%;
   aspect-ratio: 1;
   border-radius: 50%;
   background: #ff263f30;
   filter: blur(65px);
-  top: 15%;
-  left: 13%;
 }
 
 .photo-label {
@@ -368,8 +361,8 @@ h2 {
   bottom: 8%;
   left: 0;
   padding: 14px 18px;
-  background: #111116ed;
   border: 1px solid #ffffff20;
+  background: #111116ed;
 }
 
 .photo-label strong {
@@ -385,7 +378,7 @@ h2 {
   letter-spacing: 1px;
 }
 
-/* ABOUT AND SERVICES */
+/* ABOUT */
 
 .about-grid {
   display: grid;
@@ -402,7 +395,7 @@ h2 {
 }
 
 .about-panel {
-  padding: 28px;
+  padding: 25px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: linear-gradient(145deg, #17171e, #0d0d12);
@@ -423,7 +416,7 @@ h2 {
 .stat strong {
   display: block;
   color: var(--red);
-  font-size: 27px;
+  font-size: 26px;
   margin-bottom: 8px;
 }
 
@@ -433,6 +426,8 @@ h2 {
   line-height: 1.7;
 }
 
+/* SERVICES */
+
 .cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -440,36 +435,17 @@ h2 {
 }
 
 .card {
-  position: relative;
-  overflow: hidden;
-  padding: 29px;
-  min-height: 220px;
+  padding: 27px;
+  min-height: 210px;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: linear-gradient(145deg, #141419, #0d0d11);
-  transition: transform .35s, border-color .35s;
-}
-
-.card:after {
-  content: "";
-  position: absolute;
-  width: 140px;
-  height: 140px;
-  right: -90px;
-  top: -90px;
-  border-radius: 50%;
-  background: #ff263f20;
-  filter: blur(18px);
-  transition: .4s;
+  transition: transform .3s, border-color .3s;
 }
 
 .card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-7px);
   border-color: #ff263f80;
-}
-
-.card:hover:after {
-  transform: scale(2);
 }
 
 .card-number {
@@ -479,7 +455,7 @@ h2 {
 }
 
 .card h3 {
-  margin: 28px 0 12px;
+  margin: 26px 0 12px;
   font-size: 21px;
 }
 
@@ -489,7 +465,7 @@ h2 {
   line-height: 1.9;
 }
 
-/* PROJECTS */
+/* PROJECT GRID */
 
 .projects-section {
   background: radial-gradient(ellipse at 50% 0%, #ff263f0a, transparent 60%);
@@ -502,16 +478,17 @@ h2 {
 }
 
 .project-card {
+  position: relative;
   width: 100%;
   min-width: 0;
   display: block;
+  overflow: hidden;
   text-align: left;
   color: white;
-  background: #111116;
   border: 1px solid var(--line);
   border-radius: 8px;
-  overflow: hidden;
-  transition: transform .35s, border-color .35s, box-shadow .35s;
+  background: #111116;
+  transition: transform .3s, border-color .3s, box-shadow .3s;
 }
 
 button.project-card {
@@ -522,7 +499,7 @@ button.project-card {
 
 .project-card:hover,
 .project-card:focus-visible {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   border-color: var(--red);
   box-shadow: 0 18px 45px #0008;
   outline: none;
@@ -530,29 +507,26 @@ button.project-card {
 
 .project-thumb {
   position: relative;
-  aspect-ratio: 4/3;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #17171d;
 }
 
 .project-thumb img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform .6s;
+  transition: transform .4s;
 }
 
 .project-thumb img[hidden] {
   display: none;
 }
 
-.project-card:hover .project-thumb img {
-  transform: scale(1.04);
-}
-
 .project-fallback {
   position: absolute;
+  z-index: 0;
   inset: 0;
   display: flex;
   flex-direction: column;
@@ -579,26 +553,20 @@ button.project-card {
   font-size: 11px;
 }
 
-/* Hide placeholder only when a real image successfully loads */
-.project-thumb img:not([hidden]) {
-  position: relative;
-  z-index: 1;
-}
-
 .project-open {
   position: absolute;
+  z-index: 3;
   top: 13px;
   right: 13px;
   width: 38px;
   height: 38px;
   display: grid;
   place-items: center;
+  border: 1px solid #ffffff35;
   border-radius: 50%;
   background: #08080bdd;
-  border: 1px solid #ffffff35;
   font-size: 20px;
   transition: .3s;
-  z-index: 2;
 }
 
 .project-card:hover .project-open {
@@ -635,41 +603,24 @@ button.project-card {
   text-transform: uppercase;
 }
 
-.coming-soon {
-  cursor: default;
-}
-
-.coming-soon:hover {
-  transform: translateY(-3px);
-  border-color: #ffffff35;
-  box-shadow: none;
-}
-
-.coming-soon .project-open {
-  display: none;
-}
-
-/* GRAPHIC DESIGN GALLERY: ONE IMAGE AT A TIME */
+/* GRAPHIC DESIGN GALLERY */
 
 .gallery-viewer {
   width: 100%;
   min-width: 0;
   padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
 }
 
 .gallery-stage {
-  width: 100%;
-  height: min(58vh, 560px);
-  min-height: 260px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: min(58vh, 560px);
+  min-height: 240px;
   overflow: hidden;
-  background: #09090c;
   border-radius: 8px;
+  background: #09090c;
 }
 
 .gallery-stage img {
@@ -692,28 +643,60 @@ button.project-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
+  margin-top: 14px;
 }
 
 .gallery-controls button {
-  padding: 11px 15px;
+  padding: 10px 14px;
   border: 1px solid #ffffff35;
   border-radius: 5px;
   background: #17171d;
   color: white;
   font-size: 12px;
-  transition: background .25s, border-color .25s;
 }
 
 .gallery-controls button:hover {
-  background: var(--red);
   border-color: var(--red);
+  background: var(--red);
 }
 
 .gallery-counter {
   color: var(--muted);
   font-size: 12px;
   white-space: nowrap;
+}
+
+/* SHOPIFY IMAGE HOVER EFFECT */
+
+.shopify-card .project-thumb {
+  aspect-ratio: 16 / 10;
+  container-type: inline-size;
+}
+
+.shopify-card .project-thumb img:not([hidden]) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: initial;
+  object-position: top center;
+  transform: translateY(0);
+  transition: transform 5s linear;
+}
+
+.shopify-card .project-thumb:hover img:not([hidden]) {
+  transform: translateY(calc(-100% + 62.5cqw));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shopify-card .project-thumb img:not([hidden]) {
+    transition: none;
+  }
 }
 
 /* SKILLS */
@@ -733,15 +716,9 @@ button.project-card {
 .skill-tags span {
   padding: 11px 14px;
   border: 1px solid #ffffff25;
+  border-radius: 3px;
   color: #ddd;
   font-size: 12px;
-  border-radius: 3px;
-  transition: .25s;
-}
-
-.skill-tags span:hover {
-  border-color: var(--red);
-  transform: translateY(-3px);
 }
 
 .skill-bars {
@@ -762,40 +739,36 @@ button.project-card {
 
 .skill-track {
   height: 5px;
-  background: #ffffff14;
-  border-radius: 10px;
   overflow: hidden;
+  border-radius: 10px;
+  background: #ffffff14;
 }
 
 .skill-fill {
   height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, #ff263f, #ff7787);
-  transition: width 1.4s ease;
-}
-
-.reveal.visible .skill-fill {
   width: var(--level);
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff263f, #ff7787);
 }
 
-/* PROCESS AND CONTACT */
+/* WORK PROCESS */
 
 .process-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
 }
 
 .process-step {
   padding: 24px 20px;
   border: 1px solid var(--line);
-  background: linear-gradient(145deg, #141419, #0d0d11);
   border-radius: 5px;
-  transition: .3s;
+  background: linear-gradient(145deg, #141419, #0d0d11);
+  transition: transform .3s, border-color .3s;
 }
 
 .process-step:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: #ff263f80;
 }
 
@@ -816,14 +789,16 @@ button.project-card {
   line-height: 1.8;
 }
 
+/* CONTACT */
+
 .contact-area {
-  padding: clamp(28px, 6vw, 65px);
-  border: 1px solid var(--line);
-  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 30px;
+  padding: clamp(28px, 6vw, 65px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
   background: radial-gradient(ellipse at 85% 50%, #ff263f12, transparent 50%), #101014;
 }
 
@@ -845,11 +820,17 @@ button.project-card {
   color: var(--red);
 }
 
+/* FOOTER */
+
 footer {
   padding: 28px 0;
   border-top: 1px solid #ffffff12;
   color: #777;
   font-size: 12px;
+}
+
+footer b {
+  color: var(--red);
 }
 
 footer .container {
@@ -859,18 +840,18 @@ footer .container {
   flex-wrap: wrap;
 }
 
-/* PROJECT VIEWER */
+/* PROJECT POPUP */
 
 .project-modal {
   position: fixed;
   inset: 0;
   z-index: 1001;
-  background: #000d;
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 20px;
   overflow: auto;
+  background: #000d;
 }
 
 .project-modal.open {
@@ -878,25 +859,26 @@ footer .container {
 }
 
 .modal-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
   width: min(1050px, 100%);
   max-height: 90vh;
   overflow: auto;
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  background: #111116;
   border: 1px solid #ffffff25;
   border-radius: 10px;
+  background: #111116;
   box-shadow: 0 30px 100px #000b;
-  animation: popIn .25s ease;
+  animation: appear .25s ease;
 }
 
 .modal-visual {
-  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #09090c;
+  min-width: 0;
+  min-height: 300px;
   overflow: auto;
+  background: #09090c;
 }
 
 .modal-visual > img {
@@ -908,8 +890,8 @@ footer .container {
 }
 
 .modal-content {
-  padding: clamp(24px, 4vw, 45px);
   align-self: center;
+  padding: clamp(24px, 4vw, 45px);
 }
 
 .modal-content h2 {
@@ -925,16 +907,16 @@ footer .container {
 
 .modal-close {
   position: fixed;
-  top: 18px;
-  right: 22px;
+  z-index: 1002;
+  top: 15px;
+  right: 18px;
   width: 44px;
   height: 44px;
   border: 1px solid #ffffff55;
   border-radius: 50%;
   background: #17171d;
-  color: #fff;
+  color: white;
   font-size: 30px;
-  z-index: 1002;
 }
 
 .modal-fallback {
@@ -944,29 +926,55 @@ footer .container {
   text-align: center;
 }
 
-/* PORTFOLIO ASSISTANT */
+/* LONG SHOPIFY IMAGE IN POPUP */
+
+.modal-panel.shopify-panel {
+  height: min(90vh, 900px);
+  max-height: 90vh;
+  grid-template-rows: minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.modal-panel.shopify-panel .modal-content {
+  align-self: stretch;
+  overflow-y: auto;
+}
+
+.modal-visual.shopify-scroll-area {
+  display: block;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.modal-visual.shopify-scroll-area > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: initial;
+}
+
+/* SIMPLE PORTFOLIO ASSISTANT */
 
 .ai-launcher {
   position: fixed;
-  right: 24px;
-  bottom: 24px;
+  right: 22px;
+  bottom: 22px;
   z-index: 900;
-  width: 64px;
-  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
   border: 0;
   border-radius: 50%;
   background: var(--red);
   color: white;
   box-shadow: 0 10px 35px #ff263f55;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: transform .25s;
-}
-
-.ai-launcher:hover {
-  transform: translateY(-4px) scale(1.04);
 }
 
 .ai-launcher span {
@@ -981,48 +989,48 @@ footer .container {
 
 .chat-panel {
   position: fixed;
-  right: 24px;
-  bottom: 100px;
+  right: 22px;
+  bottom: 95px;
   z-index: 901;
-  width: min(370px, calc(100vw - 28px));
-  height: min(540px, calc(100vh - 125px));
   display: none;
   flex-direction: column;
+  width: min(370px, calc(100vw - 28px));
+  height: min(520px, calc(100vh - 120px));
   overflow: hidden;
-  background: #111116;
   border: 1px solid #ffffff25;
   border-radius: 12px;
+  background: #111116;
   box-shadow: 0 25px 80px #000b;
 }
 
 .chat-panel.open {
   display: flex;
-  animation: popIn .22s ease;
+  animation: appear .22s ease;
 }
 
 .chat-head {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 16px;
+  padding: 15px;
   border-bottom: 1px solid var(--line);
   background: #17171d;
 }
 
 .ai-avatar {
+  display: grid;
+  place-items: center;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
   background: var(--red);
   font-weight: 900;
 }
 
 .chat-head-copy {
   display: grid;
-  gap: 5px;
   flex: 1;
+  gap: 5px;
 }
 
 .chat-head-copy strong {
@@ -1030,34 +1038,34 @@ footer .container {
 }
 
 .chat-head-copy span {
-  font-size: 10px;
   color: #9b9ba5;
+  font-size: 10px;
 }
 
 .chat-close {
   border: 0;
   background: transparent;
-  color: #fff;
+  color: white;
   font-size: 27px;
 }
 
 .chat-messages {
-  flex: 1;
-  overflow: auto;
-  padding: 15px;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 10px;
+  overflow: auto;
+  padding: 15px;
 }
 
 .message {
   max-width: 92%;
-  white-space: pre-line;
   padding: 11px 13px;
   border-radius: 10px;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
   font-size: 12px;
   line-height: 1.7;
-  overflow-wrap: anywhere;
 }
 
 .message.bot {
@@ -1081,8 +1089,8 @@ footer .container {
 
 .quick-prompts button {
   padding: 7px 10px;
-  border-radius: 20px;
   border: 1px solid #ffffff30;
+  border-radius: 20px;
   background: transparent;
   color: #ddd;
   font-size: 11px;
@@ -1100,6 +1108,1156 @@ footer .container {
 }
 
 .chat-form input {
-  min-width: 0;
   flex: 1;
+  min-width: 0;
   padding: 12px;
+  border: 1px solid #ffffff25;
+  border-radius: 7px;
+  outline: none;
+  background: #09090c;
+  color: white;
+}
+
+.chat-form input:focus {
+  border-color: var(--red);
+}
+
+.chat-form button {
+  width: 42px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--red);
+  color: white;
+  font-size: 19px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 45px;
+    padding-top: 55px;
+  }
+
+  .hero-copy {
+    text-align: center;
+  }
+
+  .hero-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-copy .buttons {
+    justify-content: center;
+  }
+
+  .visual {
+    width: min(420px, 90%);
+  }
+
+  .about-grid,
+  .skill-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cards,
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .modal-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-visual {
+    max-height: 55vh;
+  }
+
+  .modal-visual > img {
+    max-height: 55vh;
+  }
+
+  .modal-panel.shopify-panel {
+    height: min(94vh, 1000px);
+    max-height: 94vh;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  .modal-panel.shopify-panel .modal-visual.shopify-scroll-area {
+    height: 55vh;
+    min-height: 200px;
+    max-height: 55vh;
+  }
+
+  .modal-panel.shopify-panel .modal-content {
+    max-height: 32vh;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    height: 68px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .nav-links {
+    gap: 12px;
+    font-size: 11px;
+  }
+
+  .nav-links a:not(.nav-contact) {
+    display: none;
+  }
+
+  .nav-contact {
+    padding: 9px 11px;
+  }
+
+  .hero {
+    padding: 45px 0 60px;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 13vw, 64px);
+    letter-spacing: -2px;
+  }
+
+  .hero-text {
+    font-size: 14px;
+  }
+
+  .section {
+    padding: 70px 0;
+  }
+
+  .section-top {
+    display: block;
+  }
+
+  .section-description {
+    margin-top: 16px;
+  }
+
+  .cards,
+  .project-grid,
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-info {
+    padding: 18px;
+  }
+
+  .contact-area {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .gallery-stage {
+    height: 42vh;
+    min-height: 210px;
+  }
+
+  .gallery-controls button {
+    padding: 9px;
+  }
+
+  .project-modal {
+    padding: 10px;
+  }
+
+  .modal-panel {
+    max-height: 94vh;
+  }
+
+  .modal-close {
+    top: 12px;
+    right: 12px;
+  }
+
+  .ai-launcher {
+    right: 14px;
+    bottom: 14px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .chat-panel {
+    right: 12px;
+    bottom: 80px;
+    height: min(520px, calc(100vh - 100px));
+  }
+
+  footer .container {
+    display: grid;
+    gap: 10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">MA.</div>
+    <div class="loader-line"></div>
+    <p>LOADING PORTFOLIO</p>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+
+<nav aria-label="Main navigation">
+  <a class="logo" href="#home">M<span>A.</span></a>
+
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a class="nav-contact" href="#contact">Let's Talk ↗</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <div class="eyebrow">Creative Designer · Web Developer</div>
+
+    <h1>
+      Hi, I'm
+      <span class="name">Muhammad<br>Ahsan.</span>
+    </h1>
+
+    <p class="hero-text">
+      I create bold graphic designs, modern responsive websites,
+      and clean Shopify e-commerce experiences that help ideas
+      stand out online.
+    </p>
+
+    <div class="buttons">
+      <a class="btn primary" href="#projects">Explore My Work ↘</a>
+      <a class="btn" href="mailto:mhdxahsan@gmail.com">Contact Me ↗</a>
+    </div>
+
+    <div class="hero-note">Design · Develop · Build Online</div>
+  </div>
+
+  <div class="visual">
+    <div class="glow"></div>
+    <div class="orbit"></div>
+    <div class="orbit two"></div>
+
+    <div class="photo-wrap">
+      <img
+        src="Porfolio%20Picture.jpg"
+        alt="Portrait of Muhammad Ahsan"
+        onerror="this.style.display='none'"
+      >
+    </div>
+
+    <div class="photo-label">
+      <strong>Muhammad Ahsan</strong>
+      <small>DESIGNER & DEVELOPER</small>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section class="section" id="about">
+  <div class="container">
+
+    <div class="section-top">
+      <div>
+        <div class="section-label">A Little About Me</div>
+        <h2>Creative ideas.<br><span class="red">Real experiences.</span></h2>
+      </div>
+
+      <p class="section-description">
+        A mix of visual creativity and practical development
+        to make brands look professional and work smoothly online.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>
+          I'm Muhammad Ahsan, a creative designer and web developer
+          interested in building strong visual identities, responsive
+          websites and useful e-commerce experiences.
+        </p>
+
+        <p>
+          From graphic design to front-end development and Shopify
+          store design, I focus on clear layouts, thoughtful details
+          and mobile-friendly results.
+        </p>
+
+        <div class="buttons">
+          <a class="btn" href="#contact">Let's Work Together ↗</a>
+        </div>
+      </div>
+
+      <div class="about-panel">
+        <div class="stat-grid">
+          <div class="stat">
+            <strong>01</strong>
+            <span>Graphic design and visual content</span>
+          </div>
+
+          <div class="stat">
+            <strong>02</strong>
+            <span>Responsive web development</span>
+          </div>
+
+          <div class="stat">
+            <strong>03</strong>
+            <span>Shopify store design</span>
+          </div>
+
+          <div class="stat">
+            <strong>04</strong>
+            <span>Creative problem solving</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+
+<section class="section" id="services">
+  <div class="container">
+
+    <div class="section-top">
+      <div>
+        <div class="section-label">What I Do</div>
+        <h2>Services & Expertise</h2>
+      </div>
+
+      <p class="section-description">
+        Creative services for brands, businesses and online stores.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="card-number">01 / VISUALS</div>
+        <h3>Graphic Designing</h3>
+        <p>
+          Promotional artwork, social media creatives, brand visuals
+          and marketing designs.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-number">02 / DIGITAL</div>
+        <h3>Web Development</h3>
+        <p>
+          Responsive websites and interactive interfaces built
+          with a focus on clarity and usability.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-number">03 / E-COMMERCE</div>
+        <h3>Shopify Store Design</h3>
+        <p>
+          Online store layouts, product presentation and shopping
+          experiences designed for customers.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section class="section projects-section" id="projects">
+  <div class="container">
+
+    <div class="section-top">
+      <div>
+        <div class="section-label">Selected Work</div>
+        <h2>Projects & Portfolio</h2>
+      </div>
+
+      <p class="section-description">
+        Explore my graphic design work, web development and
+        Shopify store design.
+      </p>
+    </div>
+
+    <div class="project-grid">
+
+      <!-- GRAPHIC DESIGN -->
+
+      <button
+        class="project-card"
+        type="button"
+        data-title="Graphic Design"
+        data-category="01 / Graphic Design"
+        data-description="Graphic design advertisements, promotional graphics and social media creatives."
+        data-project-type="gallery"
+      >
+        <div class="project-thumb">
+          <img
+            src="image%201.jpeg"
+            alt="Graphic design preview"
+            onerror="this.hidden=true"
+          >
+
+          <div class="project-fallback">
+            <span class="symbol">✳</span>
+            <h3>Graphic Design</h3>
+            <small>Graphic design collection</small>
+          </div>
+
+          <span class="project-open" aria-hidden="true">↗</span>
+        </div>
+
+        <div class="project-info">
+          <div class="project-category">01 / DESIGN</div>
+          <h3>Graphic Design</h3>
+          <p>
+            Advertisements, promotional graphics and social media creatives.
+          </p>
+          <div class="project-cta">Click to view gallery ↗</div>
+        </div>
+      </button>
+
+      <!-- WEB DEVELOPMENT -->
+
+      <button
+        class="project-card"
+        type="button"
+        data-title="Web Development"
+        data-category="02 / Web Development"
+        data-description="Responsive websites and interactive web interfaces. More project previews will be added later."
+      >
+        <div class="project-thumb">
+          <div class="project-fallback">
+            <span class="symbol">⌘</span>
+            <h3>Web Development</h3>
+            <small>Website projects</small>
+          </div>
+
+          <span class="project-open" aria-hidden="true">↗</span>
+        </div>
+
+        <div class="project-info">
+          <div class="project-category">02 / DEVELOPMENT</div>
+          <h3>Web Development</h3>
+          <p>Responsive websites and interactive interfaces.</p>
+          <div class="project-cta">View project details ↗</div>
+        </div>
+      </button>
+
+      <!-- SHOPIFY: IMAGE IS shopify-store.jpg -->
+
+      <button
+        class="project-card shopify-card"
+        type="button"
+        data-title="Shopify Store Design"
+        data-category="03 / E-commerce"
+        data-description="Shopify storefront, product sections and e-commerce layout. Hover over the thumbnail to see the page move upward, or open the larger scrollable preview."
+        data-image="shopify-store.jpg"
+        data-link="https://shopows.pk/"
+      >
+        <div class="project-thumb">
+          <img
+            src="shopify-store.jpg"
+            alt="Shopify store full-page screenshot"
+            loading="lazy"
+            onerror="this.hidden=true"
+          >
+
+          <div class="project-fallback">
+            <span class="symbol">▧</span>
+            <h3>Shopify Store</h3>
+            <small>Hover to preview the full page</small>
+          </div>
+
+          <span class="project-open" aria-hidden="true">↗</span>
+        </div>
+
+        <div class="project-info">
+          <div class="project-category">03 / E-COMMERCE</div>
+          <h3>Shopify Store Design</h3>
+          <p>Storefront, product sections and e-commerce layout.</p>
+          <div class="project-cta">View Shopify Store ↗</div>
+        </div>
+      </button>
+
+      <!-- OTHER PROJECTS: EMPTY ON PURPOSE -->
+
+      <div class="project-card">
+        <div class="project-thumb">
+          <div class="project-fallback">
+            <span class="symbol">✦</span>
+            <h3>Coming Soon</h3>
+            <small>New work is on the way</small>
+          </div>
+        </div>
+
+        <div class="project-info">
+          <div class="project-category">04 / OTHER WORK</div>
+          <h3>Other Projects</h3>
+          <p>More projects will be added here later.</p>
+          <div class="project-cta">Coming Soon ✦</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+
+<section class="section" id="skills">
+  <div class="container">
+
+    <div class="section-top">
+      <div>
+        <div class="section-label">My Toolkit</div>
+        <h2>Skills & Expertise</h2>
+      </div>
+
+      <p class="section-description">
+        Creative tools for design, web projects and online stores.
+      </p>
+    </div>
+
+    <div class="skill-layout">
+      <div class="skill-tags">
+        <span>Graphic Designing</span>
+        <span>Web Development</span>
+        <span>HTML & CSS</span>
+        <span>JavaScript</span>
+        <span>Shopify</span>
+        <span>E-commerce</span>
+        <span>Responsive Design</span>
+        <span>Creative Direction</span>
+      </div>
+
+      <div class="skill-bars">
+        <div>
+          <div class="skill-line-head">
+            <span>Graphic Design</span>
+            <span>Creative</span>
+          </div>
+          <div class="skill-track">
+            <div class="skill-fill" style="--level:90%"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="skill-line-head">
+            <span>Web Development</span>
+            <span>Building</span>
+          </div>
+          <div class="skill-track">
+            <div class="skill-fill" style="--level:82%"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="skill-line-head">
+            <span>Shopify / E-commerce</span>
+            <span>Design</span>
+          </div>
+          <div class="skill-track">
+            <div class="skill-fill" style="--level:85%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+
+<section class="section" id="process">
+  <div class="container">
+
+    <div class="section-top">
+      <div>
+        <div class="section-label">How I Work</div>
+        <h2>Simple Process</h2>
+      </div>
+
+      <p class="section-description">
+        A clear workflow helps turn an idea into a polished result.
+      </p>
+    </div>
+
+    <div class="process-grid">
+      <article class="process-step">
+        <div class="step">STEP 01</div>
+        <h3>Discover</h3>
+        <p>Understand your idea, goals and requirements.</p>
+      </article>
+
+      <article class="process-step">
+        <div class="step">STEP 02</div>
+        <h3>Plan</h3>
+        <p>Choose the direction, layout and visual approach.</p>
+      </article>
+
+      <article class="process-step">
+        <div class="step">STEP 03</div>
+        <h3>Create</h3>
+        <p>Design, build and refine the work carefully.</p>
+      </article>
+
+      <article class="process-step">
+        <div class="step">STEP 04</div>
+        <h3>Deliver</h3>
+        <p>Review the final result and prepare it for use.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-area">
+      <div>
+        <div class="section-label">Have a Project?</div>
+
+        <h2>
+          Let's create something<br>
+          <span class="red">great together.</span>
+        </h2>
+
+        <p>
+          Have a design, website or online store in mind?
+          Get in touch and tell me about it.
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:mhdxahsan@gmail.com">
+            Email: mhdxahsan@gmail.com
+          </a>
+
+          <a
+            href="https://wa.me/923319333080"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp: +92 331 9333080
+          </a>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <a class="btn primary" href="mailto:mhdxahsan@gmail.com">
+          Email Me ↗
+        </a>
+
+        <a
+          class="btn"
+          href="https://wa.me/923319333080"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="container">
+    <span>
+      © <span id="year"></span>
+      <b>Muhammad Ahsan</b>. All rights reserved.
+    </span>
+
+    <span>Designed with creativity <b>✦</b></span>
+    <a href="#home">Back to top ↑</a>
+  </div>
+</footer>
+
+<!-- PROJECT POPUP -->
+
+<div
+  class="project-modal"
+  id="projectModal"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+  aria-labelledby="modalTitle"
+>
+  <button
+    class="modal-close"
+    id="modalClose"
+    type="button"
+    aria-label="Close project viewer"
+  >×</button>
+
+  <div class="modal-panel">
+    <div class="modal-visual" id="modalVisual"></div>
+
+    <div class="modal-content">
+      <div class="project-category" id="modalCategory">PROJECT</div>
+      <h2 id="modalTitle">Project title</h2>
+      <p id="modalDescription"></p>
+
+      <div class="buttons">
+        <a
+          class="btn primary"
+          id="modalVisit"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          hidden
+        >Visit Project ↗</a>
+
+        <button class="btn" type="button" id="modalDone">
+          Close Viewer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO ASSISTANT -->
+
+<button
+  class="ai-launcher"
+  id="aiLauncher"
+  type="button"
+  aria-label="Open portfolio assistant"
+  aria-expanded="false"
+>
+  <span>✦</span>
+  <small>AI</small>
+</button>
+
+<section
+  class="chat-panel"
+  id="chatPanel"
+  aria-label="Portfolio assistant"
+  aria-hidden="true"
+>
+  <div class="chat-head">
+    <div class="ai-avatar">A.</div>
+
+    <div class="chat-head-copy">
+      <strong>Ahsan's Assistant</strong>
+      <span>Portfolio helper</span>
+    </div>
+
+    <button
+      class="chat-close"
+      id="chatClose"
+      type="button"
+      aria-label="Close assistant"
+    >×</button>
+  </div>
+
+  <div class="chat-messages" id="chatMessages" aria-live="polite">
+    <div class="message bot">
+      Hi! Welcome to Ahsan's portfolio.
+      Ask me about his services, skills, projects or contact details.
+    </div>
+  </div>
+
+  <div class="quick-prompts">
+    <button type="button" data-question="What services does Ahsan offer?">
+      Services
+    </button>
+
+    <button type="button" data-question="Tell me about Ahsan's projects">
+      Projects
+    </button>
+
+    <button type="button" data-question="How can I contact Ahsan?">
+      Contact
+    </button>
+  </div>
+
+  <form class="chat-form" id="chatForm">
+    <input
+      id="chatInput"
+      type="text"
+      maxlength="400"
+      autocomplete="off"
+      placeholder="Ask me something..."
+      aria-label="Type your question"
+      required
+    >
+
+    <button type="submit" aria-label="Send message">➤</button>
+  </form>
+</section>
+
+<script>
+(function () {
+  "use strict";
+
+  /* PAGE LOADER */
+
+  const loader = document.getElementById("loader");
+
+  function hideLoader() {
+    if (loader) loader.classList.add("hide");
+  }
+
+  window.addEventListener("load", hideLoader);
+  setTimeout(hideLoader, 1800);
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+  /* PROJECT POPUP */
+
+  const modal = document.getElementById("projectModal");
+  const modalPanel = modal.querySelector(".modal-panel");
+  const modalVisual = document.getElementById("modalVisual");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalCategory = document.getElementById("modalCategory");
+  const modalDescription = document.getElementById("modalDescription");
+  const modalVisit = document.getElementById("modalVisit");
+  const closeButton = document.getElementById("modalClose");
+  const doneButton = document.getElementById("modalDone");
+
+  let lastTrigger = null;
+
+  function openProject(card) {
+    lastTrigger = card;
+
+    modalTitle.textContent = card.dataset.title || "Project";
+    modalCategory.textContent = card.dataset.category || "PROJECT";
+    modalDescription.textContent = card.dataset.description || "";
+
+    modalVisual.replaceChildren();
+    modalVisual.classList.remove("shopify-scroll-area");
+
+    modalPanel.classList.toggle(
+      "shopify-panel",
+      card.dataset.title === "Shopify Store Design"
+    );
+
+    /* GRAPHIC DESIGN GALLERY */
+
+    if (
+      card.dataset.projectType === "gallery" ||
+      card.dataset.title === "Graphic Design"
+    ) {
+      const imageFiles = [
+        "image%201.jpeg",
+        "image%202.jpeg",
+        "image%203.jpeg",
+        "image%204.jpeg",
+        "image%205.jpeg",
+        "image%206.jpeg",
+        "image%207.jpeg",
+        "image%208.jpeg",
+        "image%209.jpeg",
+        "image%2010.jpeg",
+        "image%2012.jpeg",
+        "image%2013.jpeg"
+      ];
+
+      const viewer = document.createElement("div");
+      viewer.className = "gallery-viewer";
+
+      const stage = document.createElement("div");
+      stage.className = "gallery-stage";
+
+      const image = document.createElement("img");
+      image.alt = "Graphic design work";
+      image.loading = "eager";
+
+      const error = document.createElement("p");
+      error.className = "gallery-error";
+      error.hidden = true;
+
+      stage.append(image, error);
+
+      const controls = document.createElement("div");
+      controls.className = "gallery-controls";
+
+      const previous = document.createElement("button");
+      previous.type = "button";
+      previous.textContent = "← Previous";
+      previous.setAttribute(
+        "aria-label",
+        "Previous graphic design image"
+      );
+
+      const counter = document.createElement("span");
+      counter.className = "gallery-counter";
+      counter.setAttribute("aria-live", "polite");
+
+      const next = document.createElement("button");
+      next.type = "button";
+      next.textContent = "Next →";
+      next.setAttribute(
+        "aria-label",
+        "Next graphic design image"
+      );
+
+      controls.append(previous, counter, next);
+      viewer.append(stage, controls);
+      modalVisual.appendChild(viewer);
+
+      let currentIndex = 0;
+
+      image.onload = function () {
+        image.style.display = "block";
+        error.hidden = true;
+      };
+
+      image.onerror = function () {
+        image.style.display = "none";
+        error.hidden = false;
+        error.textContent =
+          "Image not found: " +
+          image.dataset.requestedSrc +
+          ". Check the filename in your GitHub repository.";
+      };
+
+      function showImage(newIndex) {
+        currentIndex =
+          (newIndex + imageFiles.length) % imageFiles.length;
+
+        const src = imageFiles[currentIndex];
+
+        error.hidden = true;
+        image.style.display = "block";
+        image.alt = "Graphic design work " + (currentIndex + 1);
+        image.dataset.requestedSrc = src;
+        image.src = src;
+
+        counter.textContent =
+          (currentIndex + 1) + " / " + imageFiles.length;
+      }
+
+      previous.addEventListener("click", function () {
+        showImage(currentIndex - 1);
+      });
+
+      next.addEventListener("click", function () {
+        showImage(currentIndex + 1);
+      });
+
+      showImage(0);
+
+    /* SHOPIFY OR ANOTHER SINGLE-IMAGE PROJECT */
+
+    } else if (card.dataset.image) {
+      const image = document.createElement("img");
+
+      image.src = card.dataset.image;
+      image.alt =
+        (card.dataset.title || "Project") + " full preview";
+      image.loading = "eager";
+
+      if (card.dataset.title === "Shopify Store Design") {
+        modalVisual.classList.add("shopify-scroll-area");
+      }
+
+      image.onerror = function () {
+        const fallback = document.createElement("p");
+        fallback.className = "modal-fallback";
+        fallback.textContent =
+          "Image not found. Check that shopify-store.jpg is in the same folder as index.html.";
+
+        modalVisual.replaceChildren(fallback);
+      };
+
+      modalVisual.appendChild(image);
+
+    /* WEB DEVELOPMENT PLACEHOLDER */
+
+    } else {
+      const fallback = document.createElement("div");
+      fallback.className = "modal-fallback";
+      fallback.textContent =
+        "Project preview coming soon. Add a website screenshot when it is ready.";
+
+      modalVisual.appendChild(fallback);
+    }
+
+    /* VISIT PROJECT BUTTON */
+
+    if (card.dataset.link) {
+      modalVisit.href = card.dataset.link;
+      modalVisit.hidden = false;
+    } else {
+      modalVisit.hidden = true;
+      modalVisit.removeAttribute("href");
+    }
+
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("locked");
+    closeButton.focus();
+  }
+
+  function closeProject() {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("locked");
+
+    if (lastTrigger) lastTrigger.focus();
+  }
+
+  document
+    .querySelectorAll("button.project-card")
+    .forEach(function (card) {
+      card.addEventListener("click", function () {
+        openProject(card);
+      });
+    });
+
+  closeButton.addEventListener("click", closeProject);
+  doneButton.addEventListener("click", closeProject);
+
+  modal.addEventListener("click", function (event) {
+    if (event.target === modal) closeProject();
+  });
+
+  /* PORTFOLIO ASSISTANT */
+
+  const launcher = document.getElementById("aiLauncher");
+  const chat = document.getElementById("chatPanel");
+  const chatClose = document.getElementById("chatClose");
+  const chatForm = document.getElementById("chatForm");
+  const chatInput = document.getElementById("chatInput");
+  const messages = document.getElementById("chatMessages");
+
+  function toggleChat(open) {
+    chat.classList.toggle("open", open);
+    chat.setAttribute("aria-hidden", String(!open));
+    launcher.setAttribute("aria-expanded", String(open));
+
+    if (open) {
+      chatInput.focus();
+    }
+  }
+
+  launcher.addEventListener("click", function () {
+    toggleChat(!chat.classList.contains("open"));
+  });
+
+  chatClose.addEventListener("click", function () {
+    toggleChat(false);
+  });
+
+  function addMessage(text, who) {
+    const node = document.createElement("div");
+    node.className = "message " + who;
+    node.textContent = text;
+
+    messages.appendChild(node);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function answerQuestion(raw) {
+    const q = raw.toLowerCase();
+
+    if (/hello|hi\b|hey|salam|assalam/.test(q)) {
+      return "Hello! Welcome to Muhammad Ahsan's portfolio. Ask me about his services, skills, projects or contact details.";
+    }
+
+    if (/contact|email|mail|whatsapp|phone|number|hire/.test(q)) {
+      return "Contact Ahsan at mhdxahsan@gmail.com or on WhatsApp at https://wa.me/923319333080.";
+    }
+
+    if (/service|offer|provide/.test(q)) {
+      return "Ahsan offers graphic design, responsive web development and Shopify store design.";
+    }
+
+    if (/project|portfolio|work|website/.test(q)) {
+      return "The portfolio includes Graphic Design, Web Development and Shopify Store Design. Other Projects is marked Coming Soon.";
+    }
+
+    if (/skill|technology|html|css|javascript|shopify|coding/.test(q)) {
+      return "Ahsan's skills include Graphic Designing, Web Development, HTML, CSS, JavaScript, Shopify, E-commerce and Responsive Design.";
+    }
+
+    if (/about|who is|ahsan/.test(q)) {
+      return "Muhammad Ahsan is a creative designer and web developer focused on graphic design, modern websites and Shopify e-commerce experiences.";
+    }
+
+    if (/price|cost|rate|budget/.test(q)) {
+      return "Pricing is not listed here. Please email mhdxahsan@gmail.com or message Ahsan on WhatsApp to discuss your project.";
+    }
+
+    if (/thank/.test(q)) {
+      return "You're welcome! Contact Ahsan at mhdxahsan@gmail.com for project enquiries.";
+    }
+
+    return "I can answer questions about Ahsan's services, skills, projects and contact details. Try asking: What services does Ahsan offer?";
+  }
+
+  function sendQuestion(text) {
+    const clean = text.trim();
+    if (!clean) return;
+
+    addMessage(clean, "user");
+    chatInput.value = "";
+
+    setTimeout(function () {
+      addMessage(answerQuestion(clean), "bot");
+    }, 180);
+  }
+
+  chatForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    sendQuestion(chatInput.value);
+  });
+
+  document
+    .querySelectorAll(".quick-prompts button")
+    .forEach(function (button) {
+      button.addEventListener("click", function () {
+        sendQuestion(button.dataset.question);
+      });
+    });
+
+  /* KEYBOARD SHORTCUT */
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      if (modal.classList.contains("open")) closeProject();
+      if (chat.classList.contains("open")) toggleChat(false);
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
