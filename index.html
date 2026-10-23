@@ -3,23 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080b12">
+  <meta name="theme-color" content="#f7f8fc">
   <meta name="description" content="Muhammad Ahsan — Graphic Designer, Web Developer and Shopify Store Designer.">
   <title>Muhammad Ahsan | Creative Portfolio</title>
 
   <style>
-    /* ========== GLOBAL DESIGN ========== */
+    /* =========================
+       1. COLORS AND RESET
+    ========================= */
     :root {
-      --bg: #080b12;
-      --card: #101520;
-      --card-light: #151d2a;
-      --text: #f5f7fb;
-      --muted: #a0a9ba;
-      --line: #273142;
-      --lime: #d5ff57;
-      --purple: #a78bfa;
+      --bg: #f7f8fc;
+      --white: #ffffff;
+      --text: #171a2c;
+      --muted: #657087;
+      --line: #e3e7f0;
+      --accent: #7057e8;
+      --accent-light: #eeeaff;
+      --blue: #dceaff;
       --radius: 22px;
-      --width: 1180px;
+      --width: 1160px;
     }
 
     * {
@@ -34,22 +36,13 @@
     }
 
     body {
+      position: relative;
+      isolation: isolate;
+      overflow-x: hidden;
       background: var(--bg);
       color: var(--text);
-      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
       line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse at 80% 5%, #6951c329, transparent 34%),
-        radial-gradient(ellipse at 5% 45%, #71973812, transparent 30%);
     }
 
     a {
@@ -68,8 +61,8 @@
     }
 
     ::selection {
-      background: var(--lime);
-      color: #080b12;
+      background: #dcd3ff;
+      color: #171a2c;
     }
 
     .container {
@@ -77,14 +70,92 @@
       margin-inline: auto;
     }
 
-    /* ========== NAVIGATION ========== */
+    /* =========================
+       2. STATIC COLORS,
+          GENTLY MOVING BACKGROUND
+    ========================= */
+    .ambient-background {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .ambient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+      will-change: transform;
+    }
+
+    .orb-one {
+      width: 400px;
+      height: 400px;
+      top: 40px;
+      right: -180px;
+      background: radial-gradient(
+        circle,
+        rgba(173, 155, 255, 0.30),
+        rgba(173, 155, 255, 0.08) 55%,
+        transparent 72%
+      );
+      animation: drift-one 22s ease-in-out infinite alternate;
+    }
+
+    .orb-two {
+      width: 440px;
+      height: 440px;
+      top: 650px;
+      left: -260px;
+      background: radial-gradient(
+        circle,
+        rgba(153, 203, 255, 0.30),
+        rgba(153, 203, 255, 0.08) 55%,
+        transparent 72%
+      );
+      animation: drift-two 27s ease-in-out infinite alternate;
+    }
+
+    .orb-three {
+      width: 350px;
+      height: 350px;
+      top: 1550px;
+      right: -190px;
+      background: radial-gradient(
+        circle,
+        rgba(255, 202, 218, 0.22),
+        rgba(255, 202, 218, 0.06) 55%,
+        transparent 72%
+      );
+      animation: drift-three 24s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift-one {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-75px, 85px); }
+    }
+
+    @keyframes drift-two {
+      from { transform: translate(0, 0); }
+      to { transform: translate(85px, -65px); }
+    }
+
+    @keyframes drift-three {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100px); }
+    }
+
+    /* =========================
+       3. NAVIGATION
+    ========================= */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(8, 11, 18, 0.88);
+      background: rgba(247, 248, 252, 0.88);
       backdrop-filter: blur(18px);
-      border-bottom: 1px solid #ffffff12;
+      border-bottom: 1px solid rgba(227, 231, 240, 0.9);
     }
 
     .nav-inner {
@@ -99,27 +170,28 @@
       display: flex;
       align-items: center;
       gap: 11px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 900;
     }
 
     .brand-icon {
+      width: 43px;
+      height: 43px;
       display: grid;
       place-items: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      background: var(--lime);
-      color: #080b12;
-      font-size: 17px;
+      border-radius: 14px;
+      background: var(--accent);
+      color: white;
+      font-weight: 950;
       letter-spacing: -2px;
+      box-shadow: 0 7px 20px rgba(112, 87, 232, 0.2);
     }
 
     .brand small {
       display: block;
       color: var(--muted);
       font-size: 9px;
-      letter-spacing: 2px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
     }
 
@@ -127,53 +199,62 @@
       display: flex;
       align-items: center;
       gap: 27px;
-      color: #c6ccda;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 750;
+      color: #424b60;
+    }
+
+    .nav-links a {
+      transition: color 0.2s;
     }
 
     .nav-links a:hover {
-      color: var(--lime);
+      color: var(--accent);
     }
 
     .nav-contact {
-      border: 1px solid #465535;
-      color: var(--lime);
-      border-radius: 30px;
       padding: 10px 16px;
+      border: 1px solid #d6cef9;
+      border-radius: 30px;
+      color: var(--accent);
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 850;
+      background: white;
+      transition: 0.2s;
     }
 
     .nav-contact:hover {
-      background: var(--lime);
-      color: #080b12;
+      background: var(--accent);
+      color: white;
     }
 
     .menu-toggle {
       display: none;
-      width: 44px;
-      height: 44px;
+      width: 43px;
+      height: 43px;
       border: 1px solid var(--line);
       border-radius: 12px;
-      background: transparent;
-      color: white;
-      font-size: 21px;
+      background: white;
+      color: var(--text);
+      font-size: 20px;
     }
 
-    /* ========== BUTTONS ========== */
+    /* =========================
+       4. BUTTONS
+    ========================= */
     .button {
+      min-height: 49px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      min-height: 49px;
       padding: 13px 19px;
       border: 1px solid var(--line);
       border-radius: 12px;
       font-size: 12px;
       font-weight: 850;
-      transition: 0.25s ease;
+      transition: transform 0.25s, box-shadow 0.25s,
+                  background 0.25s, color 0.25s;
     }
 
     .button:hover {
@@ -181,31 +262,36 @@
     }
 
     .button-primary {
-      background: var(--lime);
-      border-color: var(--lime);
-      color: #080b12;
+      border-color: var(--accent);
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 7px 20px rgba(112, 87, 232, 0.17);
     }
 
     .button-primary:hover {
-      background: #e5ff9b;
+      background: #5d44d1;
+      box-shadow: 0 10px 28px rgba(112, 87, 232, 0.22);
     }
 
     .button-secondary {
-      background: var(--card);
+      background: white;
       color: var(--text);
     }
 
     .button-secondary:hover {
-      border-color: var(--purple);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
-    /* ========== HERO SECTION ========== */
+    /* =========================
+       5. HERO
+    ========================= */
     .hero {
-      min-height: 680px;
+      min-height: 670px;
       display: grid;
-      grid-template-columns: 1.08fr 0.82fr;
+      grid-template-columns: 1.1fr 0.8fr;
       align-items: center;
-      gap: 65px;
+      gap: 70px;
       padding-top: 80px;
       padding-bottom: 90px;
     }
@@ -215,52 +301,44 @@
       align-items: center;
       gap: 10px;
       padding: 8px 13px;
-      border: 1px solid #35442c;
+      border: 1px solid #d8e6da;
       border-radius: 50px;
-      background: #10180f;
-      color: #d7e9c5;
+      background: rgba(255, 255, 255, 0.85);
+      color: #326344;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .status-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--lime);
-      box-shadow: 0 0 14px var(--lime);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      50% {
-        opacity: 0.4;
-        box-shadow: 0 0 4px var(--lime);
-      }
+      background: #40a96b;
+      box-shadow: 0 0 0 4px #40a96b20;
     }
 
     .hero h1 {
       margin-top: 26px;
-      font-size: clamp(49px, 6.5vw, 86px);
-      line-height: 1.02;
+      font-size: clamp(49px, 6.4vw, 83px);
+      line-height: 1.03;
       letter-spacing: -5px;
       font-weight: 950;
     }
 
     .hero h1 .muted-word {
-      color: #838da1;
+      color: #79849b;
     }
 
     .hero h1 .highlight {
-      color: var(--lime);
+      color: var(--accent);
       font-family: Georgia, serif;
-      font-weight: 500;
       font-style: italic;
+      font-weight: 500;
       letter-spacing: -4px;
     }
 
     .hero-description {
-      max-width: 550px;
+      max-width: 540px;
       margin-top: 24px;
       color: var(--muted);
       font-size: 14px;
@@ -277,129 +355,124 @@
     .hero-skills {
       display: flex;
       flex-wrap: wrap;
-      gap: 13px;
+      gap: 12px;
       margin-top: 32px;
-      color: #8792a5;
+      color: #667189;
       font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1.3px;
+      font-weight: 850;
+      letter-spacing: 1px;
       text-transform: uppercase;
     }
 
     .hero-skills span + span::before {
       content: "/";
-      color: var(--lime);
-      margin-right: 13px;
+      color: var(--accent);
+      margin-right: 12px;
     }
 
-    /* Hero portrait */
+    /* Portrait and decorative shapes */
     .hero-visual {
       position: relative;
-      width: min(100%, 410px);
+      width: min(100%, 390px);
       justify-self: end;
     }
 
-    .portrait {
+    .portrait-frame {
       position: relative;
-      aspect-ratio: 4 / 5;
       overflow: hidden;
-      border: 1px solid #46506a;
-      border-radius: 190px 190px 30px 30px;
-      background: linear-gradient(145deg, #29283d, #111722, #29311e);
-      box-shadow: 0 25px 100px #0007;
+      aspect-ratio: 4 / 5;
+      border: 1px solid #e1dff3;
+      border-radius: 190px 190px 28px 28px;
+      background: linear-gradient(145deg, #e8e5fa, #e1edfb);
+      box-shadow: 18px 18px 0 #e7e1fb;
     }
 
-    .portrait::after {
-      content: "";
-      position: absolute;
-      inset: 13px;
-      border: 1px solid #ffffff25;
-      border-radius: 180px 180px 22px 22px;
-      pointer-events: none;
-    }
-
-    .portrait img {
+    .portrait-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 25%;
-      transition: transform 0.7s;
+      transition: transform 0.6s;
     }
 
-    .hero-visual:hover .portrait img {
-      transform: scale(1.04);
+    .hero-visual:hover .portrait-frame img {
+      transform: scale(1.035);
     }
 
     .orbit {
       position: absolute;
-      z-index: -1;
       top: 20%;
-      left: -12%;
-      width: 120%;
-      height: 62%;
-      border: 1px solid #d5ff5770;
+      left: -13%;
+      z-index: -1;
+      width: 125%;
+      height: 60%;
+      border: 1px solid #b5a9f0;
       border-radius: 50%;
-      transform: rotate(-30deg);
-      animation: orbit 22s linear infinite;
+      transform: rotate(-29deg);
+      animation: orbit 26s linear infinite;
     }
 
-    .orbit::after {
-      content: "";
+    .orbit-dot {
       position: absolute;
-      top: 10%;
+      top: 11%;
       right: 12%;
-      width: 12px;
-      height: 12px;
+      width: 13px;
+      height: 13px;
       border-radius: 50%;
-      background: var(--lime);
-      box-shadow: 0 0 20px var(--lime);
+      background: var(--accent);
+      box-shadow: 0 0 0 6px #7057e819;
     }
 
     @keyframes orbit {
-      to {
-        transform: rotate(330deg);
-      }
+      to { transform: rotate(331deg); }
     }
 
-    .floating-tag {
+    .floating-card {
       position: absolute;
       z-index: 5;
       display: flex;
       align-items: center;
       gap: 10px;
       padding: 13px;
-      border: 1px solid #354053;
+      border: 1px solid #e4e6ef;
       border-radius: 13px;
-      background: rgba(16, 21, 32, 0.94);
-      box-shadow: 0 15px 40px #0005;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 15px 40px rgba(29, 34, 62, 0.10);
+      animation: float-card 5s ease-in-out infinite;
     }
 
     .tag-left {
       top: 18%;
-      left: -43px;
+      left: -42px;
     }
 
     .tag-right {
       right: -25px;
       bottom: 12%;
+      animation-delay: -2.5s;
+    }
+
+    @keyframes float-card {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
     }
 
     .tag-icon {
+      width: 33px;
+      height: 33px;
       display: grid;
       place-items: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 9px;
-      background: #202a18;
-      color: var(--lime);
+      border-radius: 10px;
+      background: var(--accent-light);
+      color: var(--accent);
     }
 
-    .floating-tag strong {
+    .floating-card strong {
       display: block;
       font-size: 10px;
     }
 
-    .floating-tag small {
+    .floating-card small {
       display: block;
       color: var(--muted);
       font-size: 9px;
@@ -407,42 +480,44 @@
 
     .sticker {
       position: absolute;
-      top: -22px;
+      top: -21px;
       right: -5px;
       z-index: 5;
+      width: 74px;
+      height: 74px;
       display: grid;
       place-items: center;
-      width: 76px;
-      height: 76px;
       border-radius: 50%;
-      background: var(--purple);
-      color: #171126;
+      background: #e7e0ff;
+      color: #4e3eae;
       font-size: 10px;
       font-weight: 950;
       line-height: 1.3;
       text-align: center;
-      transform: rotate(12deg);
+      transform: rotate(10deg);
     }
 
-    /* ========== MOVING SKILLS STRIP ========== */
+    /* =========================
+       6. MOVING TEXT STRIP
+    ========================= */
     .ticker {
       overflow: hidden;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      background: #0d121b;
+      background: rgba(255, 255, 255, 0.7);
     }
 
     .ticker-track {
       display: flex;
       width: max-content;
       align-items: center;
-      gap: 26px;
+      gap: 25px;
       padding: 18px 0;
-      animation: ticker 30s linear infinite;
+      animation: ticker 32s linear infinite;
     }
 
     .ticker-track span {
-      color: #a4adc0;
+      color: #606b83;
       white-space: nowrap;
       font-size: 11px;
       font-weight: 900;
@@ -451,65 +526,68 @@
     }
 
     .ticker-track b {
-      color: var(--lime);
+      color: var(--accent);
     }
 
     @keyframes ticker {
-      to {
-        transform: translateX(-50%);
-      }
+      to { transform: translateX(-50%); }
     }
 
-    /* ========== SHARED SECTION STYLES ========== */
+    /* =========================
+       7. SHARED SECTION STYLES
+    ========================= */
     .section {
-      padding: 100px 0;
-      border-bottom: 1px solid #ffffff10;
+      padding: 98px 0;
+      border-bottom: 1px solid rgba(221, 226, 238, 0.8);
     }
 
     .section-label {
       display: flex;
       align-items: center;
-      gap: 11px;
+      gap: 10px;
       margin-bottom: 18px;
-      color: var(--lime);
+      color: var(--accent);
       font-size: 10px;
       font-weight: 900;
-      letter-spacing: 2.5px;
+      letter-spacing: 2.3px;
       text-transform: uppercase;
     }
 
     .section-label::before {
       content: "";
       width: 25px;
-      height: 1px;
-      background: var(--lime);
+      height: 2px;
+      border-radius: 4px;
+      background: var(--accent);
     }
 
     .section-title {
-      font-size: clamp(36px, 5vw, 61px);
-      line-height: 1.06;
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.07;
       letter-spacing: -3px;
       font-weight: 900;
     }
 
     .outline-text {
       color: transparent;
-      -webkit-text-stroke: 1px #9ba5b6;
+      -webkit-text-stroke: 1px #9ca5ba;
     }
 
     .section-description {
-      max-width: 480px;
+      max-width: 470px;
       color: var(--muted);
       font-size: 13px;
       line-height: 2;
     }
 
-    /* ========== ABOUT SECTION ========== */
+    /* =========================
+       8. ABOUT
+    ========================= */
     .about-grid {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
-      gap: 75px;
       align-items: start;
+      gap: 75px;
     }
 
     .about-heading {
@@ -522,7 +600,7 @@
     }
 
     .about-copy p {
-      color: #c0c7d4;
+      color: #525e75;
       font-size: 14px;
       line-height: 2.1;
     }
@@ -533,21 +611,22 @@
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
       margin-top: 32px;
     }
 
     .stat {
       padding: 18px 14px;
-      border: 1px solid var(--line);
+      border: 1px solid #e3e7f0;
       border-radius: 15px;
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 5px 20px rgba(35, 43, 70, 0.025);
     }
 
     .stat strong {
       display: block;
-      color: var(--lime);
+      color: var(--accent);
       font-size: 22px;
     }
 
@@ -556,10 +635,12 @@
       margin-top: 5px;
       color: var(--muted);
       font-size: 10px;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
-    /* ========== SERVICES ========== */
+    /* =========================
+       9. SERVICES
+    ========================= */
     .section-heading {
       display: flex;
       align-items: end;
@@ -576,30 +657,34 @@
 
     .service-card {
       position: relative;
-      min-height: 250px;
       overflow: hidden;
+      min-height: 245px;
       padding: 27px;
-      border: 1px solid var(--line);
+      border: 1px solid #e1e5f0;
       border-radius: var(--radius);
-      background: linear-gradient(145deg, #141b28, #0b1018);
-      transition: transform 0.3s, border-color 0.3s;
+      background: rgba(255, 255, 255, 0.91);
+      box-shadow: 0 10px 35px rgba(35, 43, 70, 0.035);
+      transition: transform 0.3s, border-color 0.3s,
+                  box-shadow 0.3s;
     }
 
     .service-card::after {
       content: "";
       position: absolute;
-      top: -65px;
+      top: -55px;
       right: -50px;
-      width: 140px;
-      height: 140px;
-      border: 1px solid #a78bfa25;
+      width: 135px;
+      height: 135px;
+      border: 1px solid #cfc5fb;
       border-radius: 50%;
-      box-shadow: 0 0 0 20px #a78bfa09;
+      box-shadow: 0 0 0 18px #eeeaff70;
+      pointer-events: none;
     }
 
     .service-card:hover {
-      transform: translateY(-7px);
-      border-color: #65714c;
+      transform: translateY(-6px);
+      border-color: #b9abfa;
+      box-shadow: 0 18px 45px rgba(76, 61, 150, 0.09);
     }
 
     .service-top {
@@ -609,25 +694,25 @@
     }
 
     .service-icon {
-      display: grid;
-      place-items: center;
       width: 48px;
       height: 48px;
-      border: 1px solid #3e4933;
-      border-radius: 13px;
-      background: #1b2518;
-      color: var(--lime);
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--accent-light);
+      color: var(--accent);
       font-size: 22px;
     }
 
     .service-number {
-      color: #68748a;
+      color: #7c879d;
       font-size: 10px;
       font-weight: 900;
+      letter-spacing: 1px;
     }
 
     .service-card h3 {
-      margin-top: 30px;
+      margin-top: 29px;
       font-size: 20px;
       letter-spacing: -0.5px;
     }
@@ -639,9 +724,11 @@
       line-height: 1.9;
     }
 
-    /* ========== PROJECTS ========== */
+    /* =========================
+       10. PROJECTS
+    ========================= */
     .projects-section {
-      background: linear-gradient(180deg, transparent, #141b280b, transparent);
+      background: rgba(239, 242, 250, 0.52);
     }
 
     .project-grid {
@@ -653,33 +740,36 @@
     .project-card {
       min-width: 0;
       overflow: hidden;
-      border: 1px solid var(--line);
+      border: 1px solid #e0e5ef;
       border-radius: 21px;
-      background: var(--card);
-      transition: transform 0.3s, border-color 0.3s;
+      background: #ffffff;
+      box-shadow: 0 12px 35px rgba(35, 43, 70, 0.045);
+      transition: transform 0.3s, border-color 0.3s,
+                  box-shadow 0.3s;
     }
 
     .project-card:hover {
-      transform: translateY(-6px);
-      border-color: #65714c;
+      transform: translateY(-5px);
+      border-color: #c5baf5;
+      box-shadow: 0 20px 45px rgba(54, 51, 103, 0.08);
     }
 
     .project-visual {
       position: relative;
       aspect-ratio: 16 / 10;
       overflow: hidden;
-      background: #192230;
+      background: #e9edf7;
     }
 
-    .project-visual img {
+    .project-visual > img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.6s;
     }
 
-    .project-card:hover .project-visual img {
-      transform: scale(1.04);
+    .project-card:hover .project-visual > img {
+      transform: scale(1.035);
     }
 
     .project-badge {
@@ -688,76 +778,14 @@
       left: 15px;
       z-index: 3;
       padding: 7px 10px;
-      border: 1px solid #ffffff25;
+      border: 1px solid #ffffffa8;
       border-radius: 30px;
-      background: #080b12dd;
-      color: white;
+      background: rgba(255, 255, 255, 0.94);
+      color: #34364b;
       font-size: 9px;
       font-weight: 900;
       letter-spacing: 1px;
       text-transform: uppercase;
-    }
-
-    /* Restaurant website visual */
-    .restaurant-visual {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px;
-      background: radial-gradient(ellipse, #59422f, #211d1b 50%, #10131a);
-      color: #f2e3c6;
-    }
-
-    .restaurant-design {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 92%;
-      height: 86%;
-      border: 1px solid #c9a87880;
-      outline: 1px solid #c9a87830;
-      outline-offset: 6px;
-      text-align: center;
-    }
-
-    .restaurant-nav {
-      position: absolute;
-      top: 9px;
-      right: 8px;
-      left: 8px;
-      display: flex;
-      justify-content: space-around;
-      font-size: 6px;
-      letter-spacing: 1px;
-    }
-
-    .restaurant-design small {
-      color: #d9b784;
-      font-size: 8px;
-      letter-spacing: 3px;
-    }
-
-    .restaurant-design h3 {
-      margin-top: 15px;
-      font-family: Georgia, serif;
-      font-size: clamp(30px, 4vw, 45px);
-      font-weight: 500;
-      letter-spacing: 5px;
-    }
-
-    .restaurant-design em {
-      margin-top: 8px;
-      font-family: Georgia, serif;
-      font-size: 12px;
-    }
-
-    .restaurant-line {
-      width: 40px;
-      height: 1px;
-      margin: 15px;
-      background: #c9a878;
     }
 
     .project-info {
@@ -765,7 +793,7 @@
     }
 
     .project-type {
-      color: var(--lime);
+      color: var(--accent);
       font-size: 9px;
       font-weight: 900;
       letter-spacing: 2px;
@@ -794,64 +822,120 @@
 
     .project-tags span {
       padding: 5px 8px;
-      border: 1px solid #2d3748;
+      border: 1px solid #e5e8f0;
       border-radius: 6px;
-      background: #111722;
-      color: #b5bece;
+      background: #f7f8fc;
+      color: #58637a;
       font-size: 9px;
     }
 
     .project-bottom {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       flex-wrap: wrap;
       gap: 12px;
       margin-top: 22px;
     }
 
-    .visit-project {
+    .visit-project,
+    .gallery-button {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       padding: 10px 14px;
-      border: 1px solid #465139;
+      border: 1px solid #d9d0fb;
       border-radius: 10px;
-      color: var(--lime);
+      background: white;
+      color: var(--accent);
       font-size: 11px;
       font-weight: 850;
-      transition: 0.2s;
+      transition: background 0.2s, color 0.2s;
     }
 
-    .visit-project:hover {
-      background: var(--lime);
-      color: #080b12;
+    .visit-project:hover,
+    .gallery-button:hover {
+      background: var(--accent);
+      color: white;
     }
 
     .gallery-button {
-      border: 0;
-      background: transparent;
-      color: var(--lime);
-      font-size: 11px;
-      font-weight: 850;
+      cursor: pointer;
     }
 
-    .gallery-button:hover {
-      text-decoration: underline;
+    /* Restaurant website preview */
+    .restaurant-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background:
+        radial-gradient(ellipse at center, #f1e3d3, #d3bd9f 60%, #c4b095);
+      color: #503b29;
     }
 
-    /* Wide Shopify project */
+    .restaurant-design {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 92%;
+      height: 86%;
+      border: 1px solid #98744d;
+      outline: 1px solid #98744d60;
+      outline-offset: 6px;
+      text-align: center;
+    }
+
+    .restaurant-nav {
+      position: absolute;
+      top: 9px;
+      right: 8px;
+      left: 8px;
+      display: flex;
+      justify-content: space-around;
+      font-size: 6px;
+      letter-spacing: 1px;
+    }
+
+    .restaurant-design small {
+      font-size: 8px;
+      letter-spacing: 3px;
+    }
+
+    .restaurant-design h3 {
+      margin-top: 14px;
+      font-family: Georgia, serif;
+      font-size: clamp(29px, 4vw, 44px);
+      font-weight: 500;
+      letter-spacing: 5px;
+    }
+
+    .restaurant-design em {
+      margin-top: 8px;
+      font-family: Georgia, serif;
+      font-size: 12px;
+    }
+
+    .restaurant-line {
+      width: 40px;
+      height: 1px;
+      margin: 15px;
+      background: #98744d;
+    }
+
+    /* Shopify project */
     .shopify-card {
       grid-column: 1 / -1;
       display: grid;
-      grid-template-columns: 1.03fr 0.97fr;
+      grid-template-columns: 1fr 1fr;
     }
 
     .shopify-visual {
-      min-height: 320px;
       height: 100%;
+      min-height: 320px;
       aspect-ratio: auto;
-      background: #f1ede4;
+      background: #eeeae3;
     }
 
     .shopify-visual img {
@@ -863,14 +947,16 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: clamp(24px, 4vw, 48px);
+      padding: clamp(25px, 4vw, 47px);
     }
 
     .shopify-card .project-info h3 {
       font-size: clamp(26px, 3vw, 38px);
     }
 
-    /* ========== SKILLS ========== */
+    /* =========================
+       11. SKILLS
+    ========================= */
     .skills-grid {
       display: grid;
       grid-template-columns: 0.8fr 1.2fr;
@@ -890,49 +976,51 @@
 
     .skill-cloud span {
       padding: 12px 15px;
-      border: 1px solid #30394a;
+      border: 1px solid #e1e5ef;
       border-radius: 10px;
-      background: var(--card);
-      color: #e3e8f1;
+      background: rgba(255, 255, 255, 0.92);
+      color: #343e55;
       font-size: 11px;
       font-weight: 750;
+      box-shadow: 0 5px 15px rgba(35, 43, 70, 0.025);
       transition: transform 0.2s, border-color 0.2s;
     }
 
     .skill-cloud span::before {
       content: "✦ ";
-      color: var(--lime);
+      color: var(--accent);
     }
 
     .skill-cloud span:hover {
       transform: translateY(-3px);
-      border-color: var(--lime);
+      border-color: #b9abfa;
     }
 
-    /* ========== CONTACT ========== */
+    /* =========================
+       12. CONTACT
+    ========================= */
     .contact-box {
-      position: relative;
       display: grid;
       grid-template-columns: 1fr 0.7fr;
       align-items: center;
       gap: 35px;
-      overflow: hidden;
-      padding: clamp(30px, 6vw, 65px);
-      border: 1px solid #3c4730;
+      padding: clamp(30px, 6vw, 62px);
+      border: 1px solid #ded8f8;
       border-radius: 27px;
       background:
-        radial-gradient(ellipse at 95% 10%, #a78bfa25, transparent 36%),
-        linear-gradient(120deg, #141d17, #101520 75%);
+        radial-gradient(ellipse at 100% 0%, #ded6ff 0%, transparent 38%),
+        linear-gradient(120deg, #ffffff, #f2f2ff);
+      box-shadow: 0 20px 55px rgba(76, 61, 150, 0.06);
     }
 
     .contact-box h2 {
-      font-size: clamp(38px, 5.4vw, 65px);
+      font-size: clamp(38px, 5.3vw, 64px);
       line-height: 1.05;
       letter-spacing: -3px;
     }
 
     .contact-box h2 em {
-      color: var(--lime);
+      color: var(--accent);
       font-family: Georgia, serif;
       font-weight: 500;
     }
@@ -959,10 +1047,12 @@
       justify-content: space-between;
     }
 
-    /* ========== FOOTER ========== */
+    /* =========================
+       13. FOOTER
+    ========================= */
     .footer {
       padding: 28px 0 35px;
-      color: #7e899c;
+      color: #7c879c;
       font-size: 10px;
     }
 
@@ -970,11 +1060,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
       gap: 20px;
     }
 
     .footer-brand {
-      color: #dce2ed;
+      color: var(--text);
       font-size: 12px;
       font-weight: 850;
     }
@@ -986,14 +1077,16 @@
     }
 
     .footer-links a:hover {
-      color: var(--lime);
+      color: var(--accent);
     }
 
-    /* ========== SCROLL ANIMATIONS ========== */
+    /* =========================
+       14. SCROLL REVEAL
+    ========================= */
     .reveal {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
     }
 
     .reveal.visible {
@@ -1001,7 +1094,9 @@
       transform: translateY(0);
     }
 
-    /* ========== IMAGE GALLERY MODAL ========== */
+    /* =========================
+       15. IMAGE GALLERY
+    ========================= */
     .gallery-modal {
       position: fixed;
       inset: 0;
@@ -1010,8 +1105,8 @@
       align-items: center;
       justify-content: center;
       padding: 24px;
-      background: rgba(3, 5, 9, 0.94);
-      backdrop-filter: blur(15px);
+      background: rgba(20, 22, 35, 0.92);
+      backdrop-filter: blur(12px);
     }
 
     .gallery-modal.open {
@@ -1040,11 +1135,11 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      border-radius: 12px;
+      border-radius: 10px;
     }
 
     .gallery-caption {
-      color: #d6dbe5;
+      color: white;
       font-size: 12px;
     }
 
@@ -1056,21 +1151,21 @@
 
     .gallery-controls button,
     .gallery-close {
-      display: grid;
-      place-items: center;
       width: 43px;
       height: 43px;
-      border: 1px solid #414b5e;
+      display: grid;
+      place-items: center;
+      border: 1px solid #ffffff55;
       border-radius: 50%;
-      background: #141b28;
+      background: #ffffff15;
       color: white;
       font-size: 19px;
     }
 
     .gallery-controls button:hover,
     .gallery-close:hover {
-      background: var(--lime);
-      color: #080b12;
+      background: var(--accent);
+      border-color: var(--accent);
     }
 
     .gallery-close {
@@ -1081,25 +1176,27 @@
 
     .gallery-count {
       min-width: 55px;
-      color: #a4adbd;
+      color: #e0e3ec;
       font-size: 11px;
       text-align: center;
     }
 
     a:focus-visible,
     button:focus-visible {
-      outline: 2px solid var(--lime);
+      outline: 2px solid var(--accent);
       outline-offset: 4px;
     }
 
-    /* ========== TABLET ========== */
+    /* =========================
+       16. TABLET RESPONSIVE
+    ========================= */
     @media (max-width: 900px) {
       .hero {
-        gap: 38px;
+        gap: 40px;
       }
 
       .hero h1 {
-        font-size: clamp(47px, 7vw, 70px);
+        font-size: clamp(46px, 7vw, 70px);
       }
 
       .about-grid,
@@ -1133,7 +1230,9 @@
       }
     }
 
-    /* ========== MOBILE ========== */
+    /* =========================
+       17. MOBILE RESPONSIVE
+    ========================= */
     @media (max-width: 700px) {
       .container {
         width: calc(100% - 32px);
@@ -1160,9 +1259,9 @@
         align-items: flex-start;
         flex-direction: column;
         gap: 19px;
-        padding: 23px 25px;
+        padding: 22px 25px;
         border-bottom: 1px solid var(--line);
-        background: #080b12;
+        background: #fffffffa;
       }
 
       .nav-links.open {
@@ -1171,13 +1270,13 @@
 
       .hero {
         grid-template-columns: 1fr;
-        gap: 53px;
+        gap: 54px;
         min-height: auto;
         padding: 60px 0 70px;
       }
 
       .hero h1 {
-        font-size: clamp(52px, 12vw, 78px);
+        font-size: clamp(49px, 11.5vw, 74px);
         letter-spacing: -3px;
       }
 
@@ -1191,7 +1290,7 @@
       }
 
       .section {
-        padding: 76px 0;
+        padding: 75px 0;
       }
 
       .section-title {
@@ -1217,7 +1316,11 @@
       }
 
       .stat strong {
-        font-size: 20px;
+        font-size: 19px;
+      }
+
+      .stat span {
+        font-size: 9px;
       }
 
       .section-heading {
@@ -1231,7 +1334,7 @@
       }
 
       .service-card {
-        min-height: 220px;
+        min-height: 215px;
       }
 
       .project-grid {
@@ -1265,42 +1368,54 @@
       .hero-skills {
         gap: 8px;
         font-size: 9px;
-        letter-spacing: 0.6px;
+        letter-spacing: 0.5px;
       }
 
       .hero-skills span + span::before {
         margin-right: 8px;
       }
+
+      .orb-one {
+        width: 290px;
+        height: 290px;
+        right: -165px;
+      }
+
+      .orb-two {
+        width: 300px;
+        height: 300px;
+        left: -180px;
+      }
     }
 
     @media (max-width: 420px) {
       .hero h1 {
-        font-size: 48px;
+        font-size: 47px;
       }
 
       .brand {
-        font-size: 14px;
+        font-size: 13px;
       }
 
       .hero-visual {
-        width: 83%;
+        width: 82%;
       }
 
       .tag-left {
-        left: -20px;
+        left: -19px;
       }
 
       .tag-right {
         right: -18px;
       }
 
-      .floating-tag {
-        padding: 10px;
+      .floating-card {
+        padding: 9px;
       }
 
       .sticker {
-        width: 63px;
-        height: 63px;
+        width: 62px;
+        height: 62px;
         font-size: 9px;
       }
 
@@ -1308,11 +1423,16 @@
         padding: 20px;
       }
 
+      .project-info h3 {
+        font-size: 21px;
+      }
+
       .project-bottom {
         align-items: flex-start;
       }
     }
 
+    /* Respect reduced-motion accessibility settings */
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -1333,7 +1453,14 @@
 
 <body>
 
-  <!-- ========== NAVIGATION ========== -->
+  <!-- FIXED ABSTRACT BACKGROUND VISUALS -->
+  <div class="ambient-background" aria-hidden="true">
+    <div class="ambient-orb orb-one"></div>
+    <div class="ambient-orb orb-two"></div>
+    <div class="ambient-orb orb-three"></div>
+  </div>
+
+  <!-- NAVIGATION -->
   <header class="navbar">
     <nav class="nav-inner container">
       <a class="brand" href="#home">
@@ -1365,7 +1492,7 @@
 
   <main>
 
-    <!-- ========== HERO ========== -->
+    <!-- HERO -->
     <section class="hero container" id="home">
       <div class="hero-copy">
         <div class="availability">
@@ -1387,11 +1514,11 @@
 
         <div class="hero-actions">
           <a class="button button-primary" href="#projects">
-            Explore my work <span>↘</span>
+            Explore my work ↘
           </a>
 
           <a class="button button-secondary" href="mailto:mhdxahsan@gmail.com">
-            Email me <span>↗</span>
+            Email me ↗
           </a>
         </div>
 
@@ -1403,10 +1530,13 @@
       </div>
 
       <div class="hero-visual">
-        <div class="orbit"></div>
+        <div class="orbit">
+          <span class="orbit-dot"></span>
+        </div>
+
         <div class="sticker">IDEAS<br>INTO<br>REALITY ✳</div>
 
-        <div class="portrait">
+        <div class="portrait-frame">
           <img
             src="Porfolio%20Picture.jpg"
             alt="Muhammad Ahsan"
@@ -1414,7 +1544,7 @@
           >
         </div>
 
-        <div class="floating-tag tag-left">
+        <div class="floating-card tag-left">
           <span class="tag-icon">✳</span>
           <span>
             <strong>Visual design</strong>
@@ -1422,34 +1552,34 @@
           </span>
         </div>
 
-        <div class="floating-tag tag-right">
+        <div class="floating-card tag-right">
           <span class="tag-icon">↗</span>
           <span>
             <strong>Digital experiences</strong>
-            <small>Design with purpose</small>
+            <small>Designed with purpose</small>
           </span>
         </div>
       </div>
     </section>
 
-    <!-- ========== SKILLS TICKER ========== -->
+    <!-- MOVING TEXT STRIP -->
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track">
-        <span>Graphic design</span><b>✳</b>
-        <span>Web development</span><b>✳</b>
-        <span>Shopify stores</span><b>✳</b>
-        <span>E-commerce design</span><b>✳</b>
-        <span>Creative solutions</span><b>✳</b>
+        <span>Graphic design</span><b>✦</b>
+        <span>Web development</span><b>✦</b>
+        <span>Shopify stores</span><b>✦</b>
+        <span>E-commerce design</span><b>✦</b>
+        <span>Creative solutions</span><b>✦</b>
 
-        <span>Graphic design</span><b>✳</b>
-        <span>Web development</span><b>✳</b>
-        <span>Shopify stores</span><b>✳</b>
-        <span>E-commerce design</span><b>✳</b>
-        <span>Creative solutions</span><b>✳</b>
+        <span>Graphic design</span><b>✦</b>
+        <span>Web development</span><b>✦</b>
+        <span>Shopify stores</span><b>✦</b>
+        <span>E-commerce design</span><b>✦</b>
+        <span>Creative solutions</span><b>✦</b>
       </div>
     </div>
 
-    <!-- ========== ABOUT ========== -->
+    <!-- ABOUT -->
     <section class="section" id="about">
       <div class="container about-grid">
 
@@ -1463,7 +1593,7 @@
 
           <p class="section-description">
             Creative thinking meets practical execution — from the
-            first visual idea to a polished digital experience.
+            first visual idea to a polished online experience.
           </p>
         </div>
 
@@ -1471,15 +1601,15 @@
           <p>
             I'm Muhammad Ahsan, a creative professional focused on
             graphic design, web development, and e-commerce. I enjoy
-            turning ideas into attractive visuals and useful online
+            turning ideas into attractive visuals and useful digital
             experiences.
           </p>
 
           <p>
             Whether it's a social media design, a responsive website,
-            or a Shopify storefront, my goal is to create work that
-            looks polished, feels easy to use, and represents the
-            brand clearly.
+            or a Shopify storefront, my goal is to make the result
+            look polished, feel easy to use, and represent the brand
+            clearly.
           </p>
 
           <div class="stats">
@@ -1503,7 +1633,7 @@
       </div>
     </section>
 
-    <!-- ========== SERVICES ========== -->
+    <!-- SERVICES -->
     <section class="section" id="services">
       <div class="container">
 
@@ -1518,8 +1648,8 @@
           </div>
 
           <p class="section-description">
-            Creative and technical support for brands that want to
-            show up online with confidence.
+            Creative and technical support for brands that want
+            to look professional online.
           </p>
         </div>
 
@@ -1535,8 +1665,8 @@
 
             <p>
               Social media posts, promotional designs, and visual
-              content created to attract attention and keep your
-              brand looking consistent.
+              content created to attract attention and keep a brand
+              looking consistent.
             </p>
           </article>
 
@@ -1549,9 +1679,9 @@
             <h3>Web Development</h3>
 
             <p>
-              Modern, responsive websites with clear layouts,
-              thoughtful interactions, and experiences designed
-              for desktop and mobile.
+              Modern responsive websites with clear layouts,
+              useful interactions, and experiences for desktop
+              and mobile devices.
             </p>
           </article>
 
@@ -1564,9 +1694,8 @@
             <h3>Shopify & E-commerce</h3>
 
             <p>
-              Storefront designs and e-commerce experiences that
-              present products clearly and make online shopping
-              easier for customers.
+              Storefront designs that present products clearly
+              and make online shopping simple and intuitive.
             </p>
           </article>
 
@@ -1574,7 +1703,7 @@
       </div>
     </section>
 
-    <!-- ========== PROJECTS ========== -->
+    <!-- PROJECTS -->
     <section class="section projects-section" id="projects">
       <div class="container">
 
@@ -1596,9 +1725,8 @@
 
         <div class="project-grid">
 
-          <!-- PROJECT 1: GRAPHIC DESIGN -->
+          <!-- GRAPHIC DESIGN PROJECT -->
           <article class="project-card reveal">
-
             <div class="project-visual" id="graphicThumb">
               <span class="project-badge">01 · Graphic design</span>
 
@@ -1629,17 +1757,15 @@
                 <button class="gallery-button" id="openGallery">
                   Explore gallery ↗
                 </button>
-
-                <span style="font-size:10px;color:#7e899c">
+                <span style="font-size:10px;color:#7c879c">
                   Multiple designs
                 </span>
               </div>
             </div>
           </article>
 
-          <!-- PROJECT 2: RESTAURANT WEBSITE -->
+          <!-- RESTAURANT WEBSITE PROJECT -->
           <article class="project-card reveal">
-
             <div class="project-visual restaurant-visual">
               <span class="project-badge">02 · Web concept</span>
 
@@ -1689,9 +1815,8 @@
             </div>
           </article>
 
-          <!-- PROJECT 3: SHOPIFY STORE -->
+          <!-- SHOPIFY PROJECT -->
           <article class="project-card shopify-card reveal">
-
             <div class="project-visual shopify-visual">
               <span class="project-badge">03 · E-commerce</span>
 
@@ -1709,9 +1834,9 @@
               <h3>Shopows — Shopify Store</h3>
 
               <p>
-                An e-commerce storefront designed around product
-                presentation, shopping flow, and a clean online
-                shopping experience.
+                An e-commerce storefront focused on product
+                presentation, the shopping flow, and a clean
+                online shopping experience.
               </p>
 
               <div class="project-tags">
@@ -1730,7 +1855,7 @@
                   Visit Project ↗
                 </a>
 
-                <span style="font-size:10px;color:#7e899c">
+                <span style="font-size:10px;color:#7c879c">
                   Live storefront
                 </span>
               </div>
@@ -1741,7 +1866,7 @@
       </div>
     </section>
 
-    <!-- ========== SKILLS ========== -->
+    <!-- SKILLS -->
     <section class="section" id="skills">
       <div class="container skills-grid">
 
@@ -1754,8 +1879,8 @@
           </h2>
 
           <p class="section-description">
-            The tools and areas I use to bring digital ideas from
-            concept to launch.
+            The tools and skills I use to bring digital ideas
+            from concept to launch.
           </p>
         </div>
 
@@ -1775,7 +1900,7 @@
       </div>
     </section>
 
-    <!-- ========== CONTACT ========== -->
+    <!-- CONTACT -->
     <section class="section" id="contact">
       <div class="container">
 
@@ -1801,14 +1926,14 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              Chat on WhatsApp <span>↗</span>
+              Chat on WhatsApp ↗
             </a>
 
             <a
               class="button button-secondary"
               href="mailto:mhdxahsan@gmail.com"
             >
-              mhdxahsan@gmail.com <span>↗</span>
+              mhdxahsan@gmail.com ↗
             </a>
           </div>
         </div>
@@ -1818,15 +1943,13 @@
 
   </main>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-inner">
-
       <div>
         <div class="footer-brand">
-          Muhammad Ahsan <span style="color:var(--lime)">✳</span>
+          Muhammad Ahsan <span style="color:var(--accent)">✳</span>
         </div>
-
         <div style="margin-top:4px">
           Designing ideas into digital experiences.
         </div>
@@ -1843,11 +1966,10 @@
       </div>
 
       <div>© <span id="year"></span> Muhammad Ahsan</div>
-
     </div>
   </footer>
 
-  <!-- ========== GRAPHIC DESIGN GALLERY ========== -->
+  <!-- GRAPHIC DESIGN GALLERY -->
   <div
     class="gallery-modal"
     id="galleryModal"
@@ -1856,7 +1978,6 @@
     aria-label="Graphic design gallery"
   >
     <div class="gallery-content">
-
       <button
         class="gallery-close"
         id="closeGallery"
@@ -1864,11 +1985,7 @@
       >×</button>
 
       <div class="gallery-image-wrap">
-        <img
-          id="galleryImage"
-          src="image%201.jpeg"
-          alt="Graphic design image"
-        >
+        <img id="galleryImage" src="image%201.jpeg" alt="Graphic design image">
       </div>
 
       <div class="gallery-caption" id="galleryCaption">
@@ -1880,13 +1997,11 @@
         <span class="gallery-count" id="galleryCount">1 / 12</span>
         <button id="nextImage" aria-label="Next image">→</button>
       </div>
-
     </div>
   </div>
 
-  <!-- ========== JAVASCRIPT ========== -->
   <script>
-    // Mobile navigation
+    // MOBILE NAVIGATION
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
@@ -1906,15 +2021,14 @@
         navLinks.classList.remove("open");
         menuToggle.textContent = "☰";
         menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Open navigation");
       });
     });
 
-    // Automatic footer year
+    // FOOTER YEAR
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
-    // Existing graphic design images in your repository
+    // YOUR GRAPHIC DESIGN IMAGE FILES
     const imageFiles = [
       "image%201.jpeg",
       "image%202.jpeg",
@@ -1930,7 +2044,6 @@
       "image%2013.jpeg"
     ];
 
-    // Gallery elements
     const galleryModal = document.getElementById("galleryModal");
     const galleryImage = document.getElementById("galleryImage");
     const galleryCount = document.getElementById("galleryCount");
@@ -1940,14 +2053,13 @@
     let currentImage = 0;
     let previewTimer = null;
 
-    // Change gallery image
+    // DISPLAY SELECTED GALLERY IMAGE
     function setGalleryImage(index) {
       currentImage =
         (index + imageFiles.length) % imageFiles.length;
 
       galleryImage.src = imageFiles[currentImage];
-      galleryImage.alt =
-        "Graphic design image " + (currentImage + 1);
+      galleryImage.alt = "Graphic design image " + (currentImage + 1);
 
       galleryCount.textContent =
         (currentImage + 1) + " / " + imageFiles.length;
@@ -1959,7 +2071,7 @@
         imageFiles.length;
     }
 
-    // Open gallery
+    // OPEN GALLERY
     function openGallery() {
       setGalleryImage(currentImage);
       galleryModal.classList.add("open");
@@ -1967,7 +2079,7 @@
       document.getElementById("closeGallery").focus();
     }
 
-    // Close gallery
+    // CLOSE GALLERY
     function closeGallery() {
       galleryModal.classList.remove("open");
       document.body.style.overflow = "";
@@ -1993,14 +2105,13 @@
         setGalleryImage(currentImage + 1);
       });
 
-    // Close gallery when clicking its dark background
     galleryModal.addEventListener("click", function (event) {
       if (event.target === galleryModal) {
         closeGallery();
       }
     });
 
-    // Keyboard controls
+    // KEYBOARD GALLERY CONTROLS
     document.addEventListener("keydown", function (event) {
       if (
         event.key === "Escape" &&
@@ -2022,16 +2133,20 @@
       }
     });
 
-    // Cycle through graphic designs while hovering over the preview
+    // GRAPHIC THUMBNAIL SLIDESHOW ON HOVER
     const graphicThumb = document.getElementById("graphicThumb");
 
     graphicThumb.addEventListener("mouseenter", function () {
+      if (window.matchMedia("(hover: none)").matches) {
+        return;
+      }
+
       let index = 0;
 
       previewTimer = setInterval(function () {
         index = (index + 1) % imageFiles.length;
         graphicPreview.src = imageFiles[index];
-      }, 1250);
+      }, 1600);
     });
 
     graphicThumb.addEventListener("mouseleave", function () {
@@ -2043,7 +2158,7 @@
       graphicPreview.src = imageFiles[0];
     });
 
-    // Reveal sections smoothly while scrolling
+    // SCROLL REVEAL ANIMATIONS
     if (
       "IntersectionObserver" in window &&
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches
