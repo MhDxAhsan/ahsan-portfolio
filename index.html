@@ -2791,3 +2791,150 @@
 
 </body>
 </html>
+/* ===== ACTUAL BACKGROUND COLOUR CHANGE ===== */
+
+html,
+body {
+  background: #09091b !important;
+  color: #f7f5ff !important;
+}
+
+/* Animated purple-blue background */
+.ambient-background {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: -1 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+
+  background: linear-gradient(
+    130deg,
+    #09091b,
+    #261044,
+    #102d50,
+    #25103e,
+    #09091b
+  ) !important;
+
+  background-size: 300% 300% !important;
+  animation: actualBackgroundMove 18s ease-in-out infinite alternate !important;
+}
+
+@keyframes actualBackgroundMove {
+  0%   { background-position: 0% 20%; }
+  100% { background-position: 100% 80%; }
+}
+
+/* Make the services and project cards dark too */
+.service-card,
+.project-card,
+.stat,
+.skill-cloud span,
+.floating-card {
+  background-color: #17152f !important;
+  color: #f7f5ff !important;
+  border-color: rgba(177, 157, 255, 0.3) !important;
+}
+
+.service-card p,
+.project-info p,
+.about-copy p,
+.section-description {
+  color: #c3c0df !important;
+}
+
+.navbar {
+  background: rgba(9, 9, 27, 0.92) !important;
+}
+
+.ticker {
+  background: rgba(20, 15, 49, 0.95) !important;
+}
+
+.nav-links,
+.brand,
+.brand small {
+  color: #f0edff;
+}
+
+/* Animated glow colours */
+.ambient-orb {
+  position: absolute !important;
+  filter: blur(35px) !important;
+  opacity: 1 !important;
+}
+
+.orb-one {
+  top: -100px !important;
+  right: -100px !important;
+
+  background: radial-gradient(
+    circle,
+    rgba(155, 87, 255, 0.85),
+    rgba(115, 65, 240, 0.25) 45%,
+    transparent 72%
+  ) !important;
+}
+
+.orb-two {
+  top: 20vh !important;
+  left: -180px !important;
+
+  background: radial-gradient(
+    circle,
+    rgba(40, 125, 255, 0.75),
+    rgba(35, 105, 230, 0.2) 48%,
+    transparent 72%
+  ) !important;
+}
+
+.orb-three {
+  top: 48vh !important;
+  right: -150px !important;
+
+  background: radial-gradient(
+    circle,
+    rgba(40, 220, 245, 0.55),
+    rgba(35, 170, 240, 0.18) 45%,
+    transparent 72%
+  ) !important;
+}
+
+.orb-four {
+  top: 60vh !important;
+  left: 25% !important;
+
+  background: radial-gradient(
+    circle,
+    rgba(155, 85, 255, 0.4),
+    transparent 72%
+  ) !important;
+}
+
+/* Make the contact area match */
+.contact-box {
+  background: linear-gradient(
+    125deg,
+    #251648,
+    #122847,
+    #21133c
+  ) !important;
+  border-color: rgba(177, 157, 255, 0.4) !important;
+}
+
+.contact-box h2,
+.project-info h3,
+.service-card h3 {
+  color: #f7f5ff !important;
+}
+
+.project-tags span {
+  background: #211d43 !important;
+  color: #e6e0ff !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-background {
+    animation: none !important;
+  }
+}
