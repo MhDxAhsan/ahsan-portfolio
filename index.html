@@ -3,25 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f7f8fc">
+  <meta name="theme-color" content="#e2e4fa">
   <meta name="description" content="Muhammad Ahsan — Graphic Designer, Web Developer and Shopify Store Designer.">
   <title>Muhammad Ahsan | Creative Portfolio</title>
 
   <style>
-    /* =========================
-       1. COLORS AND RESET
-    ========================= */
+    /* ==================================
+       1. THEME
+    ================================== */
     :root {
-      --bg: #f7f8fc;
-      --white: #ffffff;
-      --text: #171a2c;
-      --muted: #657087;
-      --line: #e3e7f0;
-      --accent: #7057e8;
-      --accent-light: #eeeaff;
-      --blue: #dceaff;
-      --radius: 22px;
-      --width: 1160px;
+      --background: #e2e4fa;
+      --text: #201d38;
+      --muted: #616783;
+      --accent: #7056df;
+      --accent-dark: #5941c4;
+      --purple-light: #eeebff;
+      --border: rgba(89, 92, 145, 0.17);
+      --card: rgba(248, 248, 255, 0.82);
+      --max-width: 1160px;
     }
 
     * {
@@ -36,13 +35,11 @@
     }
 
     body {
-      position: relative;
-      isolation: isolate;
-      overflow-x: hidden;
-      background: var(--bg);
+      background: var(--background);
       color: var(--text);
       font-family: Inter, "Segoe UI", Arial, sans-serif;
       line-height: 1.7;
+      overflow-x: hidden;
     }
 
     a {
@@ -61,101 +58,185 @@
     }
 
     ::selection {
-      background: #dcd3ff;
-      color: #171a2c;
+      color: #fff;
+      background: var(--accent);
     }
 
     .container {
-      width: min(var(--width), calc(100% - 44px));
+      width: min(var(--max-width), calc(100% - 44px));
       margin-inline: auto;
     }
 
-    /* =========================
-       2. STATIC COLORS,
-          GENTLY MOVING BACKGROUND
-    ========================= */
+    /* ==================================
+       2. ANIMATED COLOURED BACKGROUND
+       Fixed palette; no rainbow effects
+    ================================== */
     .ambient-background {
       position: fixed;
       inset: 0;
-      z-index: -1;
+      z-index: -2;
       overflow: hidden;
       pointer-events: none;
+
+      background:
+        linear-gradient(
+          125deg,
+          #e5e4ff 0%,
+          #dce9ff 32%,
+          #e9e1ff 67%,
+          #dceefb 100%
+        );
+
+      background-size: 200% 200%;
+      animation: backgroundDrift 28s ease-in-out infinite alternate;
+    }
+
+    @keyframes backgroundDrift {
+      0% {
+        background-position: 0% 0%;
+      }
+
+      100% {
+        background-position: 100% 100%;
+      }
     }
 
     .ambient-orb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(2px);
+      pointer-events: none;
       will-change: transform;
     }
 
     .orb-one {
-      width: 400px;
-      height: 400px;
-      top: 40px;
-      right: -180px;
+      width: 520px;
+      height: 520px;
+      top: -220px;
+      right: -140px;
+
       background: radial-gradient(
         circle,
-        rgba(173, 155, 255, 0.30),
-        rgba(173, 155, 255, 0.08) 55%,
-        transparent 72%
+        rgba(139, 113, 255, 0.40) 0%,
+        rgba(155, 137, 255, 0.20) 40%,
+        rgba(155, 137, 255, 0) 72%
       );
-      animation: drift-one 22s ease-in-out infinite alternate;
+
+      filter: blur(8px);
+      animation: floatOne 19s ease-in-out infinite alternate;
     }
 
     .orb-two {
-      width: 440px;
-      height: 440px;
+      width: 560px;
+      height: 560px;
       top: 650px;
-      left: -260px;
+      left: -320px;
+
       background: radial-gradient(
         circle,
-        rgba(153, 203, 255, 0.30),
-        rgba(153, 203, 255, 0.08) 55%,
-        transparent 72%
+        rgba(83, 164, 255, 0.31) 0%,
+        rgba(126, 191, 255, 0.15) 42%,
+        rgba(126, 191, 255, 0) 73%
       );
-      animation: drift-two 27s ease-in-out infinite alternate;
+
+      filter: blur(12px);
+      animation: floatTwo 24s ease-in-out infinite alternate;
     }
 
     .orb-three {
-      width: 350px;
-      height: 350px;
-      top: 1550px;
-      right: -190px;
+      width: 460px;
+      height: 460px;
+      top: 1250px;
+      right: -230px;
+
       background: radial-gradient(
         circle,
-        rgba(255, 202, 218, 0.22),
-        rgba(255, 202, 218, 0.06) 55%,
-        transparent 72%
+        rgba(191, 138, 255, 0.29) 0%,
+        rgba(191, 138, 255, 0.12) 44%,
+        rgba(191, 138, 255, 0) 73%
       );
-      animation: drift-three 24s ease-in-out infinite alternate;
+
+      filter: blur(10px);
+      animation: floatThree 22s ease-in-out infinite alternate;
     }
 
-    @keyframes drift-one {
-      from { transform: translate(0, 0); }
-      to { transform: translate(-75px, 85px); }
+    .orb-four {
+      width: 400px;
+      height: 400px;
+      top: 2350px;
+      left: 30%;
+
+      background: radial-gradient(
+        circle,
+        rgba(119, 190, 242, 0.21) 0%,
+        rgba(119, 190, 242, 0) 70%
+      );
+
+      filter: blur(10px);
+      animation: floatOne 26s ease-in-out infinite alternate-reverse;
     }
 
-    @keyframes drift-two {
-      from { transform: translate(0, 0); }
-      to { transform: translate(85px, -65px); }
+    @keyframes floatOne {
+      from {
+        transform: translate(0, 0) scale(1);
+      }
+
+      to {
+        transform: translate(-80px, 100px) scale(1.12);
+      }
     }
 
-    @keyframes drift-three {
-      from { transform: translateY(0); }
-      to { transform: translateY(-100px); }
+    @keyframes floatTwo {
+      from {
+        transform: translate(0, 0) scale(1);
+      }
+
+      to {
+        transform: translate(100px, -90px) scale(1.08);
+      }
     }
 
-    /* =========================
+    @keyframes floatThree {
+      from {
+        transform: translateY(0) scale(1);
+      }
+
+      to {
+        transform: translateY(-100px) scale(1.14);
+      }
+    }
+
+    /* Subtle decorative grid */
+    .background-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.15;
+
+      background-image:
+        linear-gradient(rgba(88, 83, 160, 0.14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(88, 83, 160, 0.14) 1px, transparent 1px);
+
+      background-size: 62px 62px;
+
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 75%
+      );
+    }
+
+    /* ==================================
        3. NAVIGATION
-    ========================= */
+    ================================== */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(247, 248, 252, 0.88);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(227, 231, 240, 0.9);
+
+      background: rgba(231, 233, 250, 0.79);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+
+      border-bottom: 1px solid rgba(89, 92, 145, 0.15);
     }
 
     .nav-inner {
@@ -184,24 +265,24 @@
       color: white;
       font-weight: 950;
       letter-spacing: -2px;
-      box-shadow: 0 7px 20px rgba(112, 87, 232, 0.2);
+      box-shadow: 0 8px 22px rgba(94, 70, 202, 0.25);
     }
 
     .brand small {
       display: block;
       color: var(--muted);
       font-size: 9px;
-      letter-spacing: 1.8px;
+      letter-spacing: 1.6px;
       text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 27px;
+      gap: 26px;
+      color: #41445f;
       font-size: 12px;
       font-weight: 750;
-      color: #424b60;
     }
 
     .nav-links a {
@@ -214,47 +295,54 @@
 
     .nav-contact {
       padding: 10px 16px;
-      border: 1px solid #d6cef9;
+      border: 1px solid #c7bdf8;
       border-radius: 30px;
-      color: var(--accent);
+      background: rgba(255, 255, 255, 0.65);
+      color: var(--accent-dark);
       font-size: 12px;
       font-weight: 850;
-      background: white;
       transition: 0.2s;
     }
 
     .nav-contact:hover {
       background: var(--accent);
       color: white;
+      border-color: var(--accent);
     }
 
     .menu-toggle {
       display: none;
       width: 43px;
       height: 43px;
-      border: 1px solid var(--line);
+      border: 1px solid var(--border);
       border-radius: 12px;
-      background: white;
+      background: rgba(255, 255, 255, 0.8);
       color: var(--text);
       font-size: 20px;
     }
 
-    /* =========================
+    /* ==================================
        4. BUTTONS
-    ========================= */
+    ================================== */
     .button {
       min-height: 49px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
+
       padding: 13px 19px;
-      border: 1px solid var(--line);
+      border: 1px solid var(--border);
       border-radius: 12px;
+
       font-size: 12px;
       font-weight: 850;
-      transition: transform 0.25s, box-shadow 0.25s,
-                  background 0.25s, color 0.25s;
+
+      transition:
+        transform 0.25s,
+        box-shadow 0.25s,
+        background 0.25s,
+        color 0.25s;
     }
 
     .button:hover {
@@ -262,36 +350,40 @@
     }
 
     .button-primary {
-      border-color: var(--accent);
-      background: var(--accent);
       color: white;
-      box-shadow: 0 7px 20px rgba(112, 87, 232, 0.17);
+      background: linear-gradient(120deg, #7056df, #8064e9);
+      border-color: transparent;
+      box-shadow: 0 9px 26px rgba(100, 77, 208, 0.24);
     }
 
     .button-primary:hover {
-      background: #5d44d1;
-      box-shadow: 0 10px 28px rgba(112, 87, 232, 0.22);
+      background: var(--accent-dark);
+      box-shadow: 0 12px 30px rgba(100, 77, 208, 0.3);
     }
 
     .button-secondary {
-      background: white;
       color: var(--text);
+      background: rgba(250, 250, 255, 0.72);
+      border-color: #d5d9ed;
     }
 
     .button-secondary:hover {
-      border-color: var(--accent);
       color: var(--accent);
+      border-color: #a99aee;
+      background: #f5f2ff;
     }
 
-    /* =========================
+    /* ==================================
        5. HERO
-    ========================= */
+    ================================== */
     .hero {
-      min-height: 670px;
+      min-height: 680px;
+
       display: grid;
       grid-template-columns: 1.1fr 0.8fr;
       align-items: center;
-      gap: 70px;
+      gap: 65px;
+
       padding-top: 80px;
       padding-bottom: 90px;
     }
@@ -300,11 +392,15 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
+
       padding: 8px 13px;
-      border: 1px solid #d8e6da;
+
+      border: 1px solid rgba(76, 143, 103, 0.24);
       border-radius: 50px;
-      background: rgba(255, 255, 255, 0.85);
+
+      background: rgba(239, 255, 242, 0.72);
       color: #326344;
+
       font-size: 11px;
       font-weight: 800;
     }
@@ -314,19 +410,20 @@
       height: 8px;
       border-radius: 50%;
       background: #40a96b;
-      box-shadow: 0 0 0 4px #40a96b20;
+      box-shadow: 0 0 0 4px rgba(64, 169, 107, 0.15);
     }
 
     .hero h1 {
       margin-top: 26px;
-      font-size: clamp(49px, 6.4vw, 83px);
-      line-height: 1.03;
-      letter-spacing: -5px;
+
+      font-size: clamp(49px, 6.4vw, 82px);
+      line-height: 1.12;
+      letter-spacing: -4.5px;
       font-weight: 950;
     }
 
     .hero h1 .muted-word {
-      color: #79849b;
+      color: #777f9d;
     }
 
     .hero h1 .highlight {
@@ -334,12 +431,40 @@
       font-family: Georgia, serif;
       font-style: italic;
       font-weight: 500;
-      letter-spacing: -4px;
+      letter-spacing: -3px;
+    }
+
+    /* Typing-animation line sizing */
+    .typed-line {
+      display: inline;
+      min-height: 1.12em;
+    }
+
+    .typed-line.typing-active::after,
+    .hero-description.typing-active::after {
+      content: "";
+      display: inline-block;
+      width: 2px;
+      height: 0.83em;
+      margin-left: 4px;
+
+      background: var(--accent);
+      vertical-align: -0.03em;
+
+      animation: cursorBlink 0.8s step-end infinite;
+    }
+
+    @keyframes cursorBlink {
+      50% {
+        opacity: 0;
+      }
     }
 
     .hero-description {
       max-width: 540px;
+      min-height: 6.2em;
       margin-top: 24px;
+
       color: var(--muted);
       font-size: 14px;
       line-height: 2;
@@ -357,7 +482,8 @@
       flex-wrap: wrap;
       gap: 12px;
       margin-top: 32px;
-      color: #667189;
+
+      color: #626a86;
       font-size: 10px;
       font-weight: 850;
       letter-spacing: 1px;
@@ -370,7 +496,9 @@
       margin-right: 12px;
     }
 
-    /* Portrait and decorative shapes */
+    /* ==================================
+       6. HERO IMAGE AND DECORATIONS
+    ================================== */
     .hero-visual {
       position: relative;
       width: min(100%, 390px);
@@ -380,11 +508,20 @@
     .portrait-frame {
       position: relative;
       overflow: hidden;
+
       aspect-ratio: 4 / 5;
-      border: 1px solid #e1dff3;
+
+      border: 1px solid #d8d2f7;
       border-radius: 190px 190px 28px 28px;
-      background: linear-gradient(145deg, #e8e5fa, #e1edfb);
-      box-shadow: 18px 18px 0 #e7e1fb;
+
+      background: linear-gradient(
+        145deg,
+        #dcd5ff,
+        #d9e9ff,
+        #e8dfff
+      );
+
+      box-shadow: 18px 18px 0 rgba(166, 149, 235, 0.3);
     }
 
     .portrait-frame img {
@@ -396,7 +533,7 @@
     }
 
     .hero-visual:hover .portrait-frame img {
-      transform: scale(1.035);
+      transform: scale(1.04);
     }
 
     .orbit {
@@ -404,41 +541,55 @@
       top: 20%;
       left: -13%;
       z-index: -1;
+
       width: 125%;
       height: 60%;
-      border: 1px solid #b5a9f0;
+
+      border: 1px solid rgba(112, 86, 223, 0.53);
       border-radius: 50%;
+
       transform: rotate(-29deg);
-      animation: orbit 26s linear infinite;
+      animation: orbit 28s linear infinite;
     }
 
     .orbit-dot {
       position: absolute;
       top: 11%;
       right: 12%;
-      width: 13px;
-      height: 13px;
+
+      width: 12px;
+      height: 12px;
+
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 0 6px #7057e819;
+      box-shadow:
+        0 0 0 6px rgba(112, 86, 223, 0.10),
+        0 0 18px rgba(112, 86, 223, 0.22);
     }
 
     @keyframes orbit {
-      to { transform: rotate(331deg); }
+      to {
+        transform: rotate(331deg);
+      }
     }
 
     .floating-card {
       position: absolute;
       z-index: 5;
+
       display: flex;
       align-items: center;
       gap: 10px;
+
       padding: 13px;
-      border: 1px solid #e4e6ef;
+
+      border: 1px solid rgba(216, 220, 240, 0.95);
       border-radius: 13px;
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 15px 40px rgba(29, 34, 62, 0.10);
-      animation: float-card 5s ease-in-out infinite;
+
+      background: rgba(248, 249, 255, 0.94);
+      box-shadow: 0 15px 40px rgba(45, 46, 91, 0.12);
+
+      animation: floatCard 5s ease-in-out infinite;
     }
 
     .tag-left {
@@ -452,18 +603,25 @@
       animation-delay: -2.5s;
     }
 
-    @keyframes float-card {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
+    @keyframes floatCard {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-7px);
+      }
     }
 
     .tag-icon {
       width: 33px;
       height: 33px;
+
       display: grid;
       place-items: center;
+
       border-radius: 10px;
-      background: var(--accent-light);
+      background: #ebe6ff;
       color: var(--accent);
     }
 
@@ -483,28 +641,37 @@
       top: -21px;
       right: -5px;
       z-index: 5;
+
       width: 74px;
       height: 74px;
+
       display: grid;
       place-items: center;
+
       border-radius: 50%;
-      background: #e7e0ff;
+      background: linear-gradient(145deg, #cbbcff, #ede6ff);
       color: #4e3eae;
+
       font-size: 10px;
       font-weight: 950;
       line-height: 1.3;
       text-align: center;
+
       transform: rotate(10deg);
+      box-shadow: 0 8px 25px rgba(103, 80, 194, 0.14);
     }
 
-    /* =========================
-       6. MOVING TEXT STRIP
-    ========================= */
+    /* ==================================
+       7. MOVING TEXT STRIP
+    ================================== */
     .ticker {
       overflow: hidden;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.7);
+
+      border-top: 1px solid rgba(89, 92, 145, 0.17);
+      border-bottom: 1px solid rgba(89, 92, 145, 0.17);
+
+      background: rgba(239, 240, 255, 0.65);
+      backdrop-filter: blur(8px);
     }
 
     .ticker-track {
@@ -513,11 +680,12 @@
       align-items: center;
       gap: 25px;
       padding: 18px 0;
+
       animation: ticker 32s linear infinite;
     }
 
     .ticker-track span {
-      color: #606b83;
+      color: #565c79;
       white-space: nowrap;
       font-size: 11px;
       font-weight: 900;
@@ -530,23 +698,27 @@
     }
 
     @keyframes ticker {
-      to { transform: translateX(-50%); }
+      to {
+        transform: translateX(-50%);
+      }
     }
 
-    /* =========================
-       7. SHARED SECTION STYLES
-    ========================= */
+    /* ==================================
+       8. SHARED SECTION STYLES
+    ================================== */
     .section {
       padding: 98px 0;
-      border-bottom: 1px solid rgba(221, 226, 238, 0.8);
+      border-bottom: 1px solid rgba(89, 92, 145, 0.13);
     }
 
     .section-label {
       display: flex;
       align-items: center;
       gap: 10px;
+
       margin-bottom: 18px;
       color: var(--accent);
+
       font-size: 10px;
       font-weight: 900;
       letter-spacing: 2.3px;
@@ -570,7 +742,7 @@
 
     .outline-text {
       color: transparent;
-      -webkit-text-stroke: 1px #9ca5ba;
+      -webkit-text-stroke: 1px #8e94af;
     }
 
     .section-description {
@@ -580,9 +752,9 @@
       line-height: 2;
     }
 
-    /* =========================
-       8. ABOUT
-    ========================= */
+    /* ==================================
+       9. ABOUT
+    ================================== */
     .about-grid {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
@@ -600,7 +772,7 @@
     }
 
     .about-copy p {
-      color: #525e75;
+      color: #515a75;
       font-size: 14px;
       line-height: 2.1;
     }
@@ -618,10 +790,12 @@
 
     .stat {
       padding: 18px 14px;
-      border: 1px solid #e3e7f0;
+
+      border: 1px solid rgba(221, 224, 241, 0.9);
       border-radius: 15px;
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 5px 20px rgba(35, 43, 70, 0.025);
+
+      background: rgba(249, 249, 255, 0.73);
+      box-shadow: 0 6px 22px rgba(42, 44, 91, 0.035);
     }
 
     .stat strong {
@@ -638,9 +812,9 @@
       line-height: 1.6;
     }
 
-    /* =========================
-       9. SERVICES
-    ========================= */
+    /* ==================================
+       10. SERVICES
+    ================================== */
     .section-heading {
       display: flex;
       align-items: end;
@@ -660,12 +834,17 @@
       overflow: hidden;
       min-height: 245px;
       padding: 27px;
-      border: 1px solid #e1e5f0;
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.91);
-      box-shadow: 0 10px 35px rgba(35, 43, 70, 0.035);
-      transition: transform 0.3s, border-color 0.3s,
-                  box-shadow 0.3s;
+
+      border: 1px solid rgba(219, 222, 241, 0.95);
+      border-radius: 22px;
+
+      background: rgba(247, 248, 255, 0.73);
+      box-shadow: 0 10px 35px rgba(45, 46, 91, 0.04);
+
+      transition:
+        transform 0.3s,
+        border-color 0.3s,
+        box-shadow 0.3s;
     }
 
     .service-card::after {
@@ -673,18 +852,21 @@
       position: absolute;
       top: -55px;
       right: -50px;
+
       width: 135px;
       height: 135px;
-      border: 1px solid #cfc5fb;
+
+      border: 1px solid rgba(164, 147, 239, 0.48);
       border-radius: 50%;
-      box-shadow: 0 0 0 18px #eeeaff70;
+      box-shadow: 0 0 0 18px rgba(207, 198, 251, 0.19);
+
       pointer-events: none;
     }
 
     .service-card:hover {
       transform: translateY(-6px);
-      border-color: #b9abfa;
-      box-shadow: 0 18px 45px rgba(76, 61, 150, 0.09);
+      border-color: #b9abed;
+      box-shadow: 0 18px 45px rgba(76, 61, 150, 0.10);
     }
 
     .service-top {
@@ -696,16 +878,18 @@
     .service-icon {
       width: 48px;
       height: 48px;
+
       display: grid;
       place-items: center;
+
       border-radius: 14px;
-      background: var(--accent-light);
+      background: linear-gradient(145deg, #e1dbff, #f0edff);
       color: var(--accent);
       font-size: 22px;
     }
 
     .service-number {
-      color: #7c879d;
+      color: #78809b;
       font-size: 10px;
       font-weight: 900;
       letter-spacing: 1px;
@@ -724,11 +908,11 @@
       line-height: 1.9;
     }
 
-    /* =========================
-       10. PROJECTS
-    ========================= */
+    /* ==================================
+       11. PROJECTS
+    ================================== */
     .projects-section {
-      background: rgba(239, 242, 250, 0.52);
+      background: rgba(206, 211, 248, 0.18);
     }
 
     .project-grid {
@@ -740,25 +924,30 @@
     .project-card {
       min-width: 0;
       overflow: hidden;
-      border: 1px solid #e0e5ef;
+
+      border: 1px solid rgba(219, 222, 241, 0.95);
       border-radius: 21px;
-      background: #ffffff;
-      box-shadow: 0 12px 35px rgba(35, 43, 70, 0.045);
-      transition: transform 0.3s, border-color 0.3s,
-                  box-shadow 0.3s;
+
+      background: rgba(249, 249, 255, 0.85);
+      box-shadow: 0 12px 35px rgba(35, 43, 70, 0.055);
+
+      transition:
+        transform 0.3s,
+        border-color 0.3s,
+        box-shadow 0.3s;
     }
 
     .project-card:hover {
       transform: translateY(-5px);
-      border-color: #c5baf5;
-      box-shadow: 0 20px 45px rgba(54, 51, 103, 0.08);
+      border-color: #c1b4f0;
+      box-shadow: 0 20px 45px rgba(54, 51, 103, 0.10);
     }
 
     .project-visual {
       position: relative;
-      aspect-ratio: 16 / 10;
       overflow: hidden;
-      background: #e9edf7;
+      aspect-ratio: 16 / 10;
+      background: #dadff4;
     }
 
     .project-visual > img {
@@ -777,11 +966,15 @@
       top: 15px;
       left: 15px;
       z-index: 3;
+
       padding: 7px 10px;
-      border: 1px solid #ffffffa8;
+
+      border: 1px solid rgba(255, 255, 255, 0.8);
       border-radius: 30px;
-      background: rgba(255, 255, 255, 0.94);
+
+      background: rgba(247, 247, 255, 0.92);
       color: #34364b;
+
       font-size: 9px;
       font-weight: 900;
       letter-spacing: 1px;
@@ -822,10 +1015,13 @@
 
     .project-tags span {
       padding: 5px 8px;
-      border: 1px solid #e5e8f0;
+
+      border: 1px solid #dfe2f0;
       border-radius: 6px;
-      background: #f7f8fc;
-      color: #58637a;
+
+      background: rgba(235, 236, 251, 0.7);
+      color: #58617a;
+
       font-size: 9px;
     }
 
@@ -842,13 +1038,18 @@
       display: inline-flex;
       align-items: center;
       gap: 9px;
+
       padding: 10px 14px;
-      border: 1px solid #d9d0fb;
+
+      border: 1px solid #cfc5f7;
       border-radius: 10px;
-      background: white;
-      color: var(--accent);
+
+      background: rgba(250, 249, 255, 0.85);
+      color: var(--accent-dark);
+
       font-size: 11px;
       font-weight: 850;
+
       transition: background 0.2s, color 0.2s;
     }
 
@@ -862,28 +1063,38 @@
       cursor: pointer;
     }
 
-    /* Restaurant website preview */
+    /* Restaurant project preview */
     .restaurant-visual {
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 28px;
-      background:
-        radial-gradient(ellipse at center, #f1e3d3, #d3bd9f 60%, #c4b095);
+
+      background: radial-gradient(
+        ellipse at center,
+        #f4e6d4,
+        #ddc7a9 60%,
+        #c7b193
+      );
+
       color: #503b29;
     }
 
     .restaurant-design {
       position: relative;
+
+      width: 92%;
+      height: 86%;
+
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      width: 92%;
-      height: 86%;
+
       border: 1px solid #98744d;
       outline: 1px solid #98744d60;
       outline-offset: 6px;
+
       text-align: center;
     }
 
@@ -892,8 +1103,10 @@
       top: 9px;
       right: 8px;
       left: 8px;
+
       display: flex;
       justify-content: space-around;
+
       font-size: 6px;
       letter-spacing: 1px;
     }
@@ -935,7 +1148,7 @@
       height: 100%;
       min-height: 320px;
       aspect-ratio: auto;
-      background: #eeeae3;
+      background: #e9e4dd;
     }
 
     .shopify-visual img {
@@ -954,9 +1167,9 @@
       font-size: clamp(26px, 3vw, 38px);
     }
 
-    /* =========================
-       11. SKILLS
-    ========================= */
+    /* ==================================
+       12. SKILLS
+    ================================== */
     .skills-grid {
       display: grid;
       grid-template-columns: 0.8fr 1.2fr;
@@ -976,13 +1189,17 @@
 
     .skill-cloud span {
       padding: 12px 15px;
-      border: 1px solid #e1e5ef;
+
+      border: 1px solid rgba(218, 222, 241, 0.95);
       border-radius: 10px;
-      background: rgba(255, 255, 255, 0.92);
+
+      background: rgba(249, 249, 255, 0.75);
       color: #343e55;
+
       font-size: 11px;
       font-weight: 750;
-      box-shadow: 0 5px 15px rgba(35, 43, 70, 0.025);
+
+      box-shadow: 0 5px 15px rgba(35, 43, 70, 0.035);
       transition: transform 0.2s, border-color 0.2s;
     }
 
@@ -996,21 +1213,29 @@
       border-color: #b9abfa;
     }
 
-    /* =========================
-       12. CONTACT
-    ========================= */
+    /* ==================================
+       13. CONTACT
+    ================================== */
     .contact-box {
       display: grid;
       grid-template-columns: 1fr 0.7fr;
       align-items: center;
       gap: 35px;
+
       padding: clamp(30px, 6vw, 62px);
-      border: 1px solid #ded8f8;
+
+      border: 1px solid rgba(195, 186, 242, 0.95);
       border-radius: 27px;
+
       background:
-        radial-gradient(ellipse at 100% 0%, #ded6ff 0%, transparent 38%),
-        linear-gradient(120deg, #ffffff, #f2f2ff);
-      box-shadow: 0 20px 55px rgba(76, 61, 150, 0.06);
+        radial-gradient(
+          ellipse at 100% 0%,
+          rgba(174, 156, 255, 0.47),
+          transparent 42%
+        ),
+        linear-gradient(125deg, #eae7ff, #e3edff 55%, #eee8ff);
+
+      box-shadow: 0 20px 55px rgba(76, 61, 150, 0.08);
     }
 
     .contact-box h2 {
@@ -1047,12 +1272,12 @@
       justify-content: space-between;
     }
 
-    /* =========================
-       13. FOOTER
-    ========================= */
+    /* ==================================
+       14. FOOTER
+    ================================== */
     .footer {
       padding: 28px 0 35px;
-      color: #7c879c;
+      color: #69728e;
       font-size: 10px;
     }
 
@@ -1080,13 +1305,15 @@
       color: var(--accent);
     }
 
-    /* =========================
-       14. SCROLL REVEAL
-    ========================= */
+    /* ==================================
+       15. SCROLL REVEAL
+    ================================== */
     .reveal {
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+      transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
     }
 
     .reveal.visible {
@@ -1094,18 +1321,20 @@
       transform: translateY(0);
     }
 
-    /* =========================
-       15. IMAGE GALLERY
-    ========================= */
+    /* ==================================
+       16. GRAPHIC DESIGN GALLERY
+    ================================== */
     .gallery-modal {
       position: fixed;
       inset: 0;
       z-index: 300;
+
       display: none;
       align-items: center;
       justify-content: center;
+
       padding: 24px;
-      background: rgba(20, 22, 35, 0.92);
+      background: rgba(30, 28, 57, 0.93);
       backdrop-filter: blur(12px);
     }
 
@@ -1115,20 +1344,23 @@
 
     .gallery-content {
       position: relative;
+
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 16px;
+
       width: min(900px, 100%);
       max-height: 90vh;
     }
 
     .gallery-image-wrap {
+      width: 100%;
+      height: min(70vh, 720px);
+
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      height: min(70vh, 720px);
     }
 
     .gallery-image-wrap img {
@@ -1153,10 +1385,13 @@
     .gallery-close {
       width: 43px;
       height: 43px;
+
       display: grid;
       place-items: center;
+
       border: 1px solid #ffffff55;
       border-radius: 50%;
+
       background: #ffffff15;
       color: white;
       font-size: 19px;
@@ -1187,9 +1422,9 @@
       outline-offset: 4px;
     }
 
-    /* =========================
-       16. TABLET RESPONSIVE
-    ========================= */
+    /* ==================================
+       17. TABLET
+    ================================== */
     @media (max-width: 900px) {
       .hero {
         gap: 40px;
@@ -1230,9 +1465,9 @@
       }
     }
 
-    /* =========================
-       17. MOBILE RESPONSIVE
-    ========================= */
+    /* ==================================
+       18. MOBILE
+    ================================== */
     @media (max-width: 700px) {
       .container {
         width: calc(100% - 32px);
@@ -1255,13 +1490,17 @@
         top: 68px;
         left: 0;
         right: 0;
+
         display: none;
         align-items: flex-start;
         flex-direction: column;
         gap: 19px;
+
         padding: 22px 25px;
-        border-bottom: 1px solid var(--line);
-        background: #fffffffa;
+
+        border-bottom: 1px solid var(--border);
+        background: rgba(237, 238, 255, 0.98);
+        backdrop-filter: blur(18px);
       }
 
       .nav-links.open {
@@ -1276,12 +1515,17 @@
       }
 
       .hero h1 {
-        font-size: clamp(49px, 11.5vw, 74px);
+        font-size: clamp(46px, 10.8vw, 73px);
         letter-spacing: -3px;
+      }
+
+      .hero h1 .highlight {
+        letter-spacing: -2px;
       }
 
       .hero-description {
         font-size: 13px;
+        min-height: 7em;
       }
 
       .hero-visual {
@@ -1376,21 +1620,21 @@
       }
 
       .orb-one {
-        width: 290px;
-        height: 290px;
-        right: -165px;
+        width: 310px;
+        height: 310px;
+        right: -180px;
       }
 
       .orb-two {
-        width: 300px;
-        height: 300px;
-        left: -180px;
+        width: 330px;
+        height: 330px;
+        left: -200px;
       }
     }
 
     @media (max-width: 420px) {
       .hero h1 {
-        font-size: 47px;
+        font-size: 44px;
       }
 
       .brand {
@@ -1426,13 +1670,9 @@
       .project-info h3 {
         font-size: 21px;
       }
-
-      .project-bottom {
-        align-items: flex-start;
-      }
     }
 
-    /* Respect reduced-motion accessibility settings */
+    /* Respect reduced-motion settings */
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -1453,16 +1693,19 @@
 
 <body>
 
-  <!-- FIXED ABSTRACT BACKGROUND VISUALS -->
+  <!-- ANIMATED BACKGROUND -->
   <div class="ambient-background" aria-hidden="true">
+    <div class="background-grid"></div>
     <div class="ambient-orb orb-one"></div>
     <div class="ambient-orb orb-two"></div>
     <div class="ambient-orb orb-three"></div>
+    <div class="ambient-orb orb-four"></div>
   </div>
 
   <!-- NAVIGATION -->
   <header class="navbar">
     <nav class="nav-inner container">
+
       <a class="brand" href="#home">
         <span class="brand-icon">MA.</span>
         <span>
@@ -1487,38 +1730,53 @@
       </div>
 
       <a class="nav-contact" href="#contact">Let's talk ↗</a>
+
     </nav>
   </header>
 
   <main>
 
-    <!-- HERO -->
+    <!-- HERO / TYPING ANIMATION -->
     <section class="hero container" id="home">
+
       <div class="hero-copy">
+
         <div class="availability">
           <span class="status-dot"></span>
           Available for freelance projects
         </div>
 
-        <h1>
-          Creative ideas.<br>
-          <span class="muted-word">Digital</span>
-          <span class="highlight">impact.</span>
+        <h1 aria-label="Creative ideas. Digital impact.">
+          <span
+            class="typed-line typing-active"
+            id="typedLineOne"
+          ></span><br>
+
+          <span
+            class="muted-word typed-line"
+            id="typedDigital"
+          ></span><span
+            class="highlight typed-line"
+            id="typedImpact"
+          ></span>
         </h1>
 
-        <p class="hero-description">
-          I'm Muhammad Ahsan — a graphic designer and web developer
-          creating striking visuals, modern websites, and Shopify
-          stores that help brands stand out online.
-        </p>
+        <p
+          class="hero-description typing-active"
+          id="typedDescription"
+          aria-label="I'm Muhammad Ahsan — a graphic designer and web developer creating striking visuals, modern websites, and Shopify stores that help brands stand out online."
+        ></p>
 
         <div class="hero-actions">
           <a class="button button-primary" href="#projects">
-            Explore my work ↘
+            Explore my work <span>↘</span>
           </a>
 
-          <a class="button button-secondary" href="mailto:mhdxahsan@gmail.com">
-            Email me ↗
+          <a
+            class="button button-secondary"
+            href="mailto:mhdxahsan@gmail.com"
+          >
+            Email me <span>↗</span>
           </a>
         </div>
 
@@ -1527,14 +1785,19 @@
           <span>Web development</span>
           <span>E-commerce</span>
         </div>
+
       </div>
 
+      <!-- PORTRAIT AND FLOATING VISUALS -->
       <div class="hero-visual">
+
         <div class="orbit">
           <span class="orbit-dot"></span>
         </div>
 
-        <div class="sticker">IDEAS<br>INTO<br>REALITY ✳</div>
+        <div class="sticker">
+          IDEAS<br>INTO<br>REALITY ✳
+        </div>
 
         <div class="portrait-frame">
           <img
@@ -1559,10 +1822,11 @@
             <small>Designed with purpose</small>
           </span>
         </div>
+
       </div>
     </section>
 
-    <!-- MOVING TEXT STRIP -->
+    <!-- MOVING SKILLS STRIP -->
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track">
         <span>Graphic design</span><b>✦</b>
@@ -1725,8 +1989,9 @@
 
         <div class="project-grid">
 
-          <!-- GRAPHIC DESIGN PROJECT -->
+          <!-- GRAPHIC DESIGN -->
           <article class="project-card reveal">
+
             <div class="project-visual" id="graphicThumb">
               <span class="project-badge">01 · Graphic design</span>
 
@@ -1757,15 +2022,17 @@
                 <button class="gallery-button" id="openGallery">
                   Explore gallery ↗
                 </button>
-                <span style="font-size:10px;color:#7c879c">
+
+                <span style="font-size:10px;color:#69728e">
                   Multiple designs
                 </span>
               </div>
             </div>
           </article>
 
-          <!-- RESTAURANT WEBSITE PROJECT -->
+          <!-- RESTAURANT WEBSITE -->
           <article class="project-card reveal">
+
             <div class="project-visual restaurant-visual">
               <span class="project-badge">02 · Web concept</span>
 
@@ -1815,8 +2082,9 @@
             </div>
           </article>
 
-          <!-- SHOPIFY PROJECT -->
+          <!-- SHOPIFY STORE -->
           <article class="project-card shopify-card reveal">
+
             <div class="project-visual shopify-visual">
               <span class="project-badge">03 · E-commerce</span>
 
@@ -1855,7 +2123,7 @@
                   Visit Project ↗
                 </a>
 
-                <span style="font-size:10px;color:#7c879c">
+                <span style="font-size:10px;color:#69728e">
                   Live storefront
                 </span>
               </div>
@@ -1905,6 +2173,7 @@
       <div class="container">
 
         <div class="contact-box reveal">
+
           <div>
             <div class="section-label">Have a project in mind?</div>
 
@@ -1926,18 +2195,18 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              Chat on WhatsApp ↗
+              Chat on WhatsApp <span>↗</span>
             </a>
 
             <a
               class="button button-secondary"
               href="mailto:mhdxahsan@gmail.com"
             >
-              mhdxahsan@gmail.com ↗
+              mhdxahsan@gmail.com <span>↗</span>
             </a>
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
 
@@ -1946,10 +2215,12 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-inner">
+
       <div>
         <div class="footer-brand">
           Muhammad Ahsan <span style="color:var(--accent)">✳</span>
         </div>
+
         <div style="margin-top:4px">
           Designing ideas into digital experiences.
         </div>
@@ -1958,6 +2229,7 @@
       <div class="footer-links">
         <a href="#home">Back to top ↑</a>
         <a href="mailto:mhdxahsan@gmail.com">Email</a>
+
         <a
           href="https://wa.me/923319333080"
           target="_blank"
@@ -1966,6 +2238,7 @@
       </div>
 
       <div>© <span id="year"></span> Muhammad Ahsan</div>
+
     </div>
   </footer>
 
@@ -1978,6 +2251,7 @@
     aria-label="Graphic design gallery"
   >
     <div class="gallery-content">
+
       <button
         class="gallery-close"
         id="closeGallery"
@@ -1985,7 +2259,11 @@
       >×</button>
 
       <div class="gallery-image-wrap">
-        <img id="galleryImage" src="image%201.jpeg" alt="Graphic design image">
+        <img
+          id="galleryImage"
+          src="image%201.jpeg"
+          alt="Graphic design image"
+        >
       </div>
 
       <div class="gallery-caption" id="galleryCaption">
@@ -1997,11 +2275,96 @@
         <span class="gallery-count" id="galleryCount">1 / 12</span>
         <button id="nextImage" aria-label="Next image">→</button>
       </div>
+
     </div>
   </div>
 
+  <!-- ==================================
+       JAVASCRIPT
+  ================================== -->
   <script>
-    // MOBILE NAVIGATION
+    /* ==================================
+       1. TYPING ANIMATION
+    ================================== */
+    const lineOne = document.getElementById("typedLineOne");
+    const digitalWord = document.getElementById("typedDigital");
+    const impactWord = document.getElementById("typedImpact");
+    const description = document.getElementById("typedDescription");
+
+    const headlineOne = "Creative ideas.";
+    const headlineDigital = "Digital ";
+    const headlineImpact = "impact.";
+
+    const introText =
+      "I'm Muhammad Ahsan — a graphic designer and web developer creating striking visuals, modern websites, and Shopify stores that help brands stand out online.";
+
+    function wait(milliseconds) {
+      return new Promise(function (resolve) {
+        setTimeout(resolve, milliseconds);
+      });
+    }
+
+    async function typeText(element, text, speed) {
+      element.textContent = "";
+
+      for (let i = 0; i < text.length; i++) {
+        element.textContent += text.charAt(i);
+        await wait(speed);
+      }
+    }
+
+    function setTypingCursor(activeElement) {
+      [
+        lineOne,
+        digitalWord,
+        impactWord,
+        description
+      ].forEach(function (element) {
+        element.classList.remove("typing-active");
+      });
+
+      activeElement.classList.add("typing-active");
+    }
+
+    async function runTypingAnimation() {
+      await wait(500);
+
+      // Type the first headline line
+      setTypingCursor(lineOne);
+      await typeText(lineOne, headlineOne, 65);
+
+      await wait(180);
+
+      // Type the muted word on the second line
+      setTypingCursor(digitalWord);
+      await typeText(digitalWord, headlineDigital, 85);
+
+      // Continue typing the highlighted word
+      setTypingCursor(impactWord);
+      await typeText(impactWord, headlineImpact, 95);
+
+      await wait(250);
+
+      // Type the complete introduction paragraph
+      setTypingCursor(description);
+      await typeText(description, introText, 17);
+
+      // Stop the cursor when typing is finished
+      [
+        lineOne,
+        digitalWord,
+        impactWord,
+        description
+      ].forEach(function (element) {
+        element.classList.remove("typing-active");
+      });
+    }
+
+    runTypingAnimation();
+
+    /* ==================================
+       2. MOBILE NAVIGATION
+    ================================== */
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
@@ -2009,7 +2372,12 @@
       const isOpen = navLinks.classList.toggle("open");
 
       menuToggle.textContent = isOpen ? "×" : "☰";
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
       menuToggle.setAttribute(
         "aria-label",
         isOpen ? "Close navigation" : "Open navigation"
@@ -2021,14 +2389,19 @@
         navLinks.classList.remove("open");
         menuToggle.textContent = "☰";
         menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
       });
     });
 
-    // FOOTER YEAR
+    /* ==================================
+       3. AUTOMATIC FOOTER YEAR
+    ================================== */
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
-    // YOUR GRAPHIC DESIGN IMAGE FILES
+    /* ==================================
+       4. GRAPHIC DESIGN IMAGE GALLERY
+    ================================== */
     const imageFiles = [
       "image%201.jpeg",
       "image%202.jpeg",
@@ -2053,13 +2426,14 @@
     let currentImage = 0;
     let previewTimer = null;
 
-    // DISPLAY SELECTED GALLERY IMAGE
     function setGalleryImage(index) {
       currentImage =
         (index + imageFiles.length) % imageFiles.length;
 
       galleryImage.src = imageFiles[currentImage];
-      galleryImage.alt = "Graphic design image " + (currentImage + 1);
+
+      galleryImage.alt =
+        "Graphic design image " + (currentImage + 1);
 
       galleryCount.textContent =
         (currentImage + 1) + " / " + imageFiles.length;
@@ -2071,15 +2445,15 @@
         imageFiles.length;
     }
 
-    // OPEN GALLERY
     function openGallery() {
       setGalleryImage(currentImage);
+
       galleryModal.classList.add("open");
       document.body.style.overflow = "hidden";
+
       document.getElementById("closeGallery").focus();
     }
 
-    // CLOSE GALLERY
     function closeGallery() {
       galleryModal.classList.remove("open");
       document.body.style.overflow = "";
@@ -2111,7 +2485,6 @@
       }
     });
 
-    // KEYBOARD GALLERY CONTROLS
     document.addEventListener("keydown", function (event) {
       if (
         event.key === "Escape" &&
@@ -2133,7 +2506,9 @@
       }
     });
 
-    // GRAPHIC THUMBNAIL SLIDESHOW ON HOVER
+    /* ==================================
+       5. GRAPHIC THUMBNAIL SLIDESHOW
+    ================================== */
     const graphicThumb = document.getElementById("graphicThumb");
 
     graphicThumb.addEventListener("mouseenter", function () {
@@ -2158,7 +2533,9 @@
       graphicPreview.src = imageFiles[0];
     });
 
-    // SCROLL REVEAL ANIMATIONS
+    /* ==================================
+       6. SCROLL REVEAL ANIMATIONS
+    ================================== */
     if (
       "IntersectionObserver" in window &&
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches
