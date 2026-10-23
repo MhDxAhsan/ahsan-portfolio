@@ -3,23 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#e2e4fa">
+  <meta name="theme-color" content="#09091b">
   <meta name="description" content="Muhammad Ahsan — Graphic Designer, Web Developer and Shopify Store Designer.">
   <title>Muhammad Ahsan | Creative Portfolio</title>
 
   <style>
-    /* ==================================
-       1. THEME
-    ================================== */
+    /* =========================================
+       1. GLOBAL SETTINGS
+    ========================================= */
     :root {
-      --background: #e2e4fa;
-      --text: #201d38;
-      --muted: #616783;
-      --accent: #7056df;
-      --accent-dark: #5941c4;
-      --purple-light: #eeebff;
-      --border: rgba(89, 92, 145, 0.17);
-      --card: rgba(248, 248, 255, 0.82);
+      --bg: #09091b;
+      --bg-secondary: #11112b;
+      --card: rgba(24, 23, 54, 0.88);
+      --text: #f7f5ff;
+      --muted: #b8b7d5;
+      --accent: #b7a0ff;
+      --accent-strong: #9675ff;
+      --blue: #66a6ff;
+      --cyan: #62e4f5;
+      --line: rgba(177, 157, 255, 0.20);
       --max-width: 1160px;
     }
 
@@ -35,11 +37,13 @@
     }
 
     body {
-      background: var(--background);
+      position: relative;
+      isolation: isolate;
+      overflow-x: hidden;
+      background: var(--bg);
       color: var(--text);
       font-family: Inter, "Segoe UI", Arial, sans-serif;
       line-height: 1.7;
-      overflow-x: hidden;
     }
 
     a {
@@ -58,8 +62,8 @@
     }
 
     ::selection {
-      color: #fff;
-      background: var(--accent);
+      color: #09091b;
+      background: #c6b3ff;
     }
 
     .container {
@@ -67,31 +71,30 @@
       margin-inline: auto;
     }
 
-    /* ==================================
-       2. ANIMATED COLOURED BACKGROUND
-       Fixed palette; no rainbow effects
-    ================================== */
+    /* =========================================
+       2. SHINY ANIMATED BACKGROUND
+    ========================================= */
     .ambient-background {
       position: fixed;
       inset: 0;
-      z-index: -2;
+      z-index: -1;
       overflow: hidden;
       pointer-events: none;
 
-      background:
-        linear-gradient(
-          125deg,
-          #e5e4ff 0%,
-          #dce9ff 32%,
-          #e9e1ff 67%,
-          #dceefb 100%
-        );
+      background: linear-gradient(
+        125deg,
+        #09091b 0%,
+        #191039 27%,
+        #0c1c3d 52%,
+        #201038 76%,
+        #09091b 100%
+      );
 
-      background-size: 200% 200%;
-      animation: backgroundDrift 28s ease-in-out infinite alternate;
+      background-size: 250% 250%;
+      animation: backgroundShift 24s ease-in-out infinite alternate;
     }
 
-    @keyframes backgroundDrift {
+    @keyframes backgroundShift {
       0% {
         background-position: 0% 0%;
       }
@@ -101,146 +104,186 @@
       }
     }
 
-    .ambient-orb {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      will-change: transform;
-    }
-
-    .orb-one {
-      width: 520px;
-      height: 520px;
-      top: -220px;
-      right: -140px;
-
-      background: radial-gradient(
-        circle,
-        rgba(139, 113, 255, 0.40) 0%,
-        rgba(155, 137, 255, 0.20) 40%,
-        rgba(155, 137, 255, 0) 72%
-      );
-
-      filter: blur(8px);
-      animation: floatOne 19s ease-in-out infinite alternate;
-    }
-
-    .orb-two {
-      width: 560px;
-      height: 560px;
-      top: 650px;
-      left: -320px;
-
-      background: radial-gradient(
-        circle,
-        rgba(83, 164, 255, 0.31) 0%,
-        rgba(126, 191, 255, 0.15) 42%,
-        rgba(126, 191, 255, 0) 73%
-      );
-
-      filter: blur(12px);
-      animation: floatTwo 24s ease-in-out infinite alternate;
-    }
-
-    .orb-three {
-      width: 460px;
-      height: 460px;
-      top: 1250px;
-      right: -230px;
-
-      background: radial-gradient(
-        circle,
-        rgba(191, 138, 255, 0.29) 0%,
-        rgba(191, 138, 255, 0.12) 44%,
-        rgba(191, 138, 255, 0) 73%
-      );
-
-      filter: blur(10px);
-      animation: floatThree 22s ease-in-out infinite alternate;
-    }
-
-    .orb-four {
-      width: 400px;
-      height: 400px;
-      top: 2350px;
-      left: 30%;
-
-      background: radial-gradient(
-        circle,
-        rgba(119, 190, 242, 0.21) 0%,
-        rgba(119, 190, 242, 0) 70%
-      );
-
-      filter: blur(10px);
-      animation: floatOne 26s ease-in-out infinite alternate-reverse;
-    }
-
-    @keyframes floatOne {
-      from {
-        transform: translate(0, 0) scale(1);
-      }
-
-      to {
-        transform: translate(-80px, 100px) scale(1.12);
-      }
-    }
-
-    @keyframes floatTwo {
-      from {
-        transform: translate(0, 0) scale(1);
-      }
-
-      to {
-        transform: translate(100px, -90px) scale(1.08);
-      }
-    }
-
-    @keyframes floatThree {
-      from {
-        transform: translateY(0) scale(1);
-      }
-
-      to {
-        transform: translateY(-100px) scale(1.14);
-      }
-    }
-
-    /* Subtle decorative grid */
     .background-grid {
       position: absolute;
       inset: 0;
-      opacity: 0.15;
+      opacity: 0.12;
 
       background-image:
-        linear-gradient(rgba(88, 83, 160, 0.14) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(88, 83, 160, 0.14) 1px, transparent 1px);
+        linear-gradient(
+          rgba(173, 158, 255, 0.18) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(173, 158, 255, 0.18) 1px,
+          transparent 1px
+        );
 
-      background-size: 62px 62px;
+      background-size: 65px 65px;
 
       mask-image: linear-gradient(
         to bottom,
         black,
-        transparent 75%
+        transparent 80%
       );
     }
 
-    /* ==================================
+    .ambient-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(35px);
+      will-change: transform;
+    }
+
+    /* Purple glow */
+    .orb-one {
+      width: 620px;
+      height: 620px;
+      top: -250px;
+      right: -150px;
+
+      background: radial-gradient(
+        circle,
+        rgba(137, 85, 255, 0.53) 0%,
+        rgba(108, 64, 231, 0.25) 38%,
+        rgba(108, 64, 231, 0.06) 62%,
+        transparent 74%
+      );
+
+      animation: violetGlow 17s ease-in-out infinite alternate;
+    }
+
+    /* Electric blue glow */
+    .orb-two {
+      width: 650px;
+      height: 650px;
+      top: 500px;
+      left: -330px;
+
+      background: radial-gradient(
+        circle,
+        rgba(43, 123, 255, 0.45) 0%,
+        rgba(35, 104, 229, 0.22) 40%,
+        transparent 73%
+      );
+
+      animation: blueGlow 23s ease-in-out infinite alternate;
+    }
+
+    /* Cyan glow */
+    .orb-three {
+      width: 560px;
+      height: 560px;
+      top: 1350px;
+      right: -260px;
+
+      background: radial-gradient(
+        circle,
+        rgba(35, 205, 235, 0.29) 0%,
+        rgba(35, 171, 220, 0.13) 42%,
+        transparent 73%
+      );
+
+      animation: cyanGlow 21s ease-in-out infinite alternate;
+    }
+
+    /* Additional purple light */
+    .orb-four {
+      width: 520px;
+      height: 520px;
+      top: 2350px;
+      left: 18%;
+
+      background: radial-gradient(
+        circle,
+        rgba(140, 94, 255, 0.25) 0%,
+        rgba(91, 91, 245, 0.10) 44%,
+        transparent 73%
+      );
+
+      animation: violetGlow 25s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes violetGlow {
+      from {
+        transform: translate3d(0, 0, 0) scale(0.92);
+      }
+
+      to {
+        transform: translate3d(-55px, 85px, 0) scale(1.12);
+      }
+    }
+
+    @keyframes blueGlow {
+      from {
+        transform: translate3d(0, 0, 0) scale(0.96);
+      }
+
+      to {
+        transform: translate3d(100px, -75px, 0) scale(1.12);
+      }
+    }
+
+    @keyframes cyanGlow {
+      from {
+        transform: translate3d(0, 0, 0) scale(0.95);
+      }
+
+      to {
+        transform: translate3d(-65px, -100px, 0) scale(1.12);
+      }
+    }
+
+    /* Gentle shining light across the background */
+    .ambient-background::after {
+      content: "";
+      position: absolute;
+      inset: -45%;
+      pointer-events: none;
+
+      background: linear-gradient(
+        115deg,
+        transparent 36%,
+        rgba(176, 160, 255, 0.025) 43%,
+        rgba(126, 177, 255, 0.085) 49%,
+        rgba(176, 160, 255, 0.025) 55%,
+        transparent 64%
+      );
+
+      transform: translateX(-35%) rotate(-8deg);
+      animation: lightSweep 19s ease-in-out infinite alternate;
+    }
+
+    @keyframes lightSweep {
+      from {
+        transform: translateX(-35%) rotate(-8deg);
+      }
+
+      to {
+        transform: translateX(35%) rotate(-8deg);
+      }
+    }
+
+    /* =========================================
        3. NAVIGATION
-    ================================== */
+    ========================================= */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 100;
 
-      background: rgba(231, 233, 250, 0.79);
+      background: rgba(9, 9, 27, 0.82);
+      border-bottom: 1px solid rgba(177, 157, 255, 0.15);
+
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-
-      border-bottom: 1px solid rgba(89, 92, 145, 0.15);
     }
 
     .nav-inner {
       min-height: 76px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -258,19 +301,25 @@
     .brand-icon {
       width: 43px;
       height: 43px;
+
       display: grid;
       place-items: center;
+
       border-radius: 14px;
-      background: var(--accent);
-      color: white;
+      background: linear-gradient(135deg, #9275ff, #b8a1ff);
+      color: #100a27;
+
+      font-size: 16px;
       font-weight: 950;
       letter-spacing: -2px;
-      box-shadow: 0 8px 22px rgba(94, 70, 202, 0.25);
+
+      box-shadow: 0 0 25px rgba(140, 107, 255, 0.25);
     }
 
     .brand small {
       display: block;
-      color: var(--muted);
+      margin-top: 1px;
+      color: #aaa8cd;
       font-size: 9px;
       letter-spacing: 1.6px;
       text-transform: uppercase;
@@ -280,7 +329,8 @@
       display: flex;
       align-items: center;
       gap: 26px;
-      color: #41445f;
+
+      color: #d4d1ee;
       font-size: 12px;
       font-weight: 750;
     }
@@ -290,49 +340,56 @@
     }
 
     .nav-links a:hover {
-      color: var(--accent);
+      color: #c4afff;
     }
 
     .nav-contact {
       padding: 10px 16px;
-      border: 1px solid #c7bdf8;
+
+      border: 1px solid rgba(177, 157, 255, 0.4);
       border-radius: 30px;
-      background: rgba(255, 255, 255, 0.65);
-      color: var(--accent-dark);
+
+      background: rgba(126, 98, 255, 0.10);
+      color: #d3c5ff;
+
       font-size: 12px;
       font-weight: 850;
-      transition: 0.2s;
+
+      transition: 0.25s;
     }
 
     .nav-contact:hover {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
+      background: #c5b2ff;
+      color: #100a27;
     }
 
     .menu-toggle {
       display: none;
       width: 43px;
       height: 43px;
-      border: 1px solid var(--border);
+
+      border: 1px solid var(--line);
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.8);
-      color: var(--text);
+
+      background: rgba(27, 24, 62, 0.9);
+      color: white;
       font-size: 20px;
     }
 
-    /* ==================================
+    /* =========================================
        4. BUTTONS
-    ================================== */
+    ========================================= */
     .button {
       min-height: 49px;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
 
       padding: 13px 19px;
-      border: 1px solid var(--border);
+
+      border: 1px solid var(--line);
       border-radius: 12px;
 
       font-size: 12px;
@@ -350,32 +407,38 @@
     }
 
     .button-primary {
-      color: white;
-      background: linear-gradient(120deg, #7056df, #8064e9);
       border-color: transparent;
-      box-shadow: 0 9px 26px rgba(100, 77, 208, 0.24);
+
+      background: linear-gradient(
+        120deg,
+        #8667f5,
+        #b09aff
+      );
+
+      color: #100a27;
+
+      box-shadow: 0 8px 28px rgba(126, 95, 240, 0.27);
     }
 
     .button-primary:hover {
-      background: var(--accent-dark);
-      box-shadow: 0 12px 30px rgba(100, 77, 208, 0.3);
+      background: #d0c0ff;
+      box-shadow: 0 12px 32px rgba(126, 95, 240, 0.35);
     }
 
     .button-secondary {
-      color: var(--text);
-      background: rgba(250, 250, 255, 0.72);
-      border-color: #d5d9ed;
+      border-color: rgba(177, 157, 255, 0.25);
+      background: rgba(23, 22, 51, 0.8);
+      color: #f2efff;
     }
 
     .button-secondary:hover {
-      color: var(--accent);
-      border-color: #a99aee;
-      background: #f5f2ff;
+      border-color: #b09aff;
+      background: rgba(95, 72, 173, 0.28);
     }
 
-    /* ==================================
-       5. HERO
-    ================================== */
+    /* =========================================
+       5. HERO SECTION
+    ========================================= */
     .hero {
       min-height: 680px;
 
@@ -395,11 +458,11 @@
 
       padding: 8px 13px;
 
-      border: 1px solid rgba(76, 143, 103, 0.24);
+      border: 1px solid rgba(130, 221, 165, 0.25);
       border-radius: 50px;
 
-      background: rgba(239, 255, 242, 0.72);
-      color: #326344;
+      background: rgba(28, 84, 56, 0.19);
+      color: #c0f3d0;
 
       font-size: 11px;
       font-weight: 800;
@@ -409,13 +472,23 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #40a96b;
-      box-shadow: 0 0 0 4px rgba(64, 169, 107, 0.15);
+
+      background: #66e69b;
+      box-shadow: 0 0 12px rgba(102, 230, 155, 0.7);
+
+      animation: statusPulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+      50% {
+        box-shadow: 0 0 0 6px rgba(102, 230, 155, 0.05);
+      }
     }
 
     .hero h1 {
       margin-top: 26px;
 
+      color: #f8f6ff;
       font-size: clamp(49px, 6.4vw, 82px);
       line-height: 1.12;
       letter-spacing: -4.5px;
@@ -423,34 +496,37 @@
     }
 
     .hero h1 .muted-word {
-      color: #777f9d;
+      color: #b6b9d5;
     }
 
     .hero h1 .highlight {
-      color: var(--accent);
+      color: #c5adff;
       font-family: Georgia, serif;
       font-style: italic;
       font-weight: 500;
       letter-spacing: -3px;
+
+      text-shadow: 0 0 30px rgba(155, 117, 255, 0.20);
     }
 
-    /* Typing-animation line sizing */
+    /* Typing text and cursor */
     .typed-line {
       display: inline;
-      min-height: 1.12em;
     }
 
     .typed-line.typing-active::after,
     .hero-description.typing-active::after {
       content: "";
       display: inline-block;
+
       width: 2px;
       height: 0.83em;
       margin-left: 4px;
 
-      background: var(--accent);
-      vertical-align: -0.03em;
+      background: #c4afff;
+      box-shadow: 0 0 10px rgba(170, 145, 255, 0.8);
 
+      vertical-align: -0.03em;
       animation: cursorBlink 0.8s step-end infinite;
     }
 
@@ -462,10 +538,10 @@
 
     .hero-description {
       max-width: 540px;
-      min-height: 6.2em;
+      min-height: 6.4em;
       margin-top: 24px;
 
-      color: var(--muted);
+      color: #c2c2dd;
       font-size: 14px;
       line-height: 2;
     }
@@ -483,7 +559,7 @@
       gap: 12px;
       margin-top: 32px;
 
-      color: #626a86;
+      color: #b5b3d4;
       font-size: 10px;
       font-weight: 850;
       letter-spacing: 1px;
@@ -492,13 +568,13 @@
 
     .hero-skills span + span::before {
       content: "/";
-      color: var(--accent);
+      color: #c4afff;
       margin-right: 12px;
     }
 
-    /* ==================================
-       6. HERO IMAGE AND DECORATIONS
-    ================================== */
+    /* =========================================
+       6. HERO PORTRAIT AND FLOATING ELEMENTS
+    ========================================= */
     .hero-visual {
       position: relative;
       width: min(100%, 390px);
@@ -508,20 +584,21 @@
     .portrait-frame {
       position: relative;
       overflow: hidden;
-
       aspect-ratio: 4 / 5;
 
-      border: 1px solid #d8d2f7;
+      border: 1px solid rgba(192, 174, 255, 0.45);
       border-radius: 190px 190px 28px 28px;
 
       background: linear-gradient(
         145deg,
-        #dcd5ff,
-        #d9e9ff,
-        #e8dfff
+        #322858,
+        #171c43,
+        #17304a
       );
 
-      box-shadow: 18px 18px 0 rgba(166, 149, 235, 0.3);
+      box-shadow:
+        0 20px 90px rgba(0, 0, 0, 0.24),
+        0 0 40px rgba(126, 95, 240, 0.10);
     }
 
     .portrait-frame img {
@@ -529,13 +606,15 @@
       height: 100%;
       object-fit: cover;
       object-position: center 25%;
-      transition: transform 0.6s;
+
+      transition: transform 0.65s;
     }
 
     .hero-visual:hover .portrait-frame img {
       transform: scale(1.04);
     }
 
+    /* Orbit */
     .orbit {
       position: absolute;
       top: 20%;
@@ -545,7 +624,7 @@
       width: 125%;
       height: 60%;
 
-      border: 1px solid rgba(112, 86, 223, 0.53);
+      border: 1px solid rgba(173, 151, 255, 0.65);
       border-radius: 50%;
 
       transform: rotate(-29deg);
@@ -561,10 +640,11 @@
       height: 12px;
 
       border-radius: 50%;
-      background: var(--accent);
+      background: #c3aeff;
+
       box-shadow:
-        0 0 0 6px rgba(112, 86, 223, 0.10),
-        0 0 18px rgba(112, 86, 223, 0.22);
+        0 0 0 6px rgba(170, 145, 255, 0.10),
+        0 0 24px rgba(170, 145, 255, 0.9);
     }
 
     @keyframes orbit {
@@ -583,11 +663,16 @@
 
       padding: 13px;
 
-      border: 1px solid rgba(216, 220, 240, 0.95);
+      border: 1px solid rgba(179, 159, 255, 0.30);
       border-radius: 13px;
 
-      background: rgba(248, 249, 255, 0.94);
-      box-shadow: 0 15px 40px rgba(45, 46, 91, 0.12);
+      background: rgba(23, 21, 53, 0.91);
+      color: #f6f2ff;
+
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.25);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
 
       animation: floatCard 5s ease-in-out infinite;
     }
@@ -621,8 +706,8 @@
       place-items: center;
 
       border-radius: 10px;
-      background: #ebe6ff;
-      color: var(--accent);
+      background: rgba(143, 111, 255, 0.20);
+      color: #d3c4ff;
     }
 
     .floating-card strong {
@@ -632,7 +717,7 @@
 
     .floating-card small {
       display: block;
-      color: var(--muted);
+      color: #bebbdc;
       font-size: 9px;
     }
 
@@ -648,9 +733,11 @@
       display: grid;
       place-items: center;
 
+      border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
-      background: linear-gradient(145deg, #cbbcff, #ede6ff);
-      color: #4e3eae;
+
+      background: linear-gradient(145deg, #c9b8ff, #9274ef);
+      color: #160e35;
 
       font-size: 10px;
       font-weight: 950;
@@ -658,20 +745,20 @@
       text-align: center;
 
       transform: rotate(10deg);
-      box-shadow: 0 8px 25px rgba(103, 80, 194, 0.14);
+      box-shadow: 0 0 28px rgba(145, 110, 240, 0.22);
     }
 
-    /* ==================================
+    /* =========================================
        7. MOVING TEXT STRIP
-    ================================== */
+    ========================================= */
     .ticker {
       overflow: hidden;
 
-      border-top: 1px solid rgba(89, 92, 145, 0.17);
-      border-bottom: 1px solid rgba(89, 92, 145, 0.17);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
 
-      background: rgba(239, 240, 255, 0.65);
-      backdrop-filter: blur(8px);
+      background: rgba(18, 17, 45, 0.73);
+      backdrop-filter: blur(10px);
     }
 
     .ticker-track {
@@ -685,8 +772,9 @@
     }
 
     .ticker-track span {
-      color: #565c79;
+      color: #d4d2ee;
       white-space: nowrap;
+
       font-size: 11px;
       font-weight: 900;
       letter-spacing: 2px;
@@ -694,7 +782,7 @@
     }
 
     .ticker-track b {
-      color: var(--accent);
+      color: #bda9ff;
     }
 
     @keyframes ticker {
@@ -703,12 +791,12 @@
       }
     }
 
-    /* ==================================
-       8. SHARED SECTION STYLES
-    ================================== */
+    /* =========================================
+       8. SHARED SECTIONS
+    ========================================= */
     .section {
       padding: 98px 0;
-      border-bottom: 1px solid rgba(89, 92, 145, 0.13);
+      border-bottom: 1px solid rgba(177, 157, 255, 0.14);
     }
 
     .section-label {
@@ -717,7 +805,7 @@
       gap: 10px;
 
       margin-bottom: 18px;
-      color: var(--accent);
+      color: #c0aaff;
 
       font-size: 10px;
       font-weight: 900;
@@ -730,10 +818,11 @@
       width: 25px;
       height: 2px;
       border-radius: 4px;
-      background: var(--accent);
+      background: #ad92ff;
     }
 
     .section-title {
+      color: #f7f5ff;
       font-size: clamp(36px, 5vw, 60px);
       line-height: 1.07;
       letter-spacing: -3px;
@@ -742,19 +831,19 @@
 
     .outline-text {
       color: transparent;
-      -webkit-text-stroke: 1px #8e94af;
+      -webkit-text-stroke: 1px #a8a0d2;
     }
 
     .section-description {
       max-width: 470px;
-      color: var(--muted);
+      color: #b8b8d3;
       font-size: 13px;
       line-height: 2;
     }
 
-    /* ==================================
+    /* =========================================
        9. ABOUT
-    ================================== */
+    ========================================= */
     .about-grid {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
@@ -772,7 +861,7 @@
     }
 
     .about-copy p {
-      color: #515a75;
+      color: #c4c4df;
       font-size: 14px;
       line-height: 2.1;
     }
@@ -791,30 +880,30 @@
     .stat {
       padding: 18px 14px;
 
-      border: 1px solid rgba(221, 224, 241, 0.9);
+      border: 1px solid rgba(177, 157, 255, 0.20);
       border-radius: 15px;
 
-      background: rgba(249, 249, 255, 0.73);
-      box-shadow: 0 6px 22px rgba(42, 44, 91, 0.035);
+      background: rgba(26, 24, 59, 0.80);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
     }
 
     .stat strong {
       display: block;
-      color: var(--accent);
+      color: #c3afff;
       font-size: 22px;
     }
 
     .stat span {
       display: block;
       margin-top: 5px;
-      color: var(--muted);
+      color: #b8b6d7;
       font-size: 10px;
       line-height: 1.6;
     }
 
-    /* ==================================
+    /* =========================================
        10. SERVICES
-    ================================== */
+    ========================================= */
     .section-heading {
       display: flex;
       align-items: end;
@@ -835,11 +924,18 @@
       min-height: 245px;
       padding: 27px;
 
-      border: 1px solid rgba(219, 222, 241, 0.95);
+      border: 1px solid rgba(174, 155, 255, 0.22);
       border-radius: 22px;
 
-      background: rgba(247, 248, 255, 0.73);
-      box-shadow: 0 10px 35px rgba(45, 46, 91, 0.04);
+      background: linear-gradient(
+        145deg,
+        rgba(30, 27, 67, 0.88),
+        rgba(14, 19, 49, 0.88)
+      );
+
+      box-shadow: 0 12px 38px rgba(0, 0, 0, 0.13);
+
+      backdrop-filter: blur(16px);
 
       transition:
         transform 0.3s,
@@ -856,17 +952,17 @@
       width: 135px;
       height: 135px;
 
-      border: 1px solid rgba(164, 147, 239, 0.48);
+      border: 1px solid rgba(174, 155, 255, 0.30);
       border-radius: 50%;
-      box-shadow: 0 0 0 18px rgba(207, 198, 251, 0.19);
+      box-shadow: 0 0 0 18px rgba(207, 198, 251, 0.04);
 
       pointer-events: none;
     }
 
     .service-card:hover {
       transform: translateY(-6px);
-      border-color: #b9abed;
-      box-shadow: 0 18px 45px rgba(76, 61, 150, 0.10);
+      border-color: rgba(185, 158, 255, 0.65);
+      box-shadow: 0 18px 48px rgba(77, 52, 164, 0.20);
     }
 
     .service-top {
@@ -882,14 +978,17 @@
       display: grid;
       place-items: center;
 
+      border: 1px solid rgba(181, 156, 255, 0.25);
       border-radius: 14px;
-      background: linear-gradient(145deg, #e1dbff, #f0edff);
-      color: var(--accent);
+
+      background: rgba(144, 109, 255, 0.20);
+      color: #d1c0ff;
+
       font-size: 22px;
     }
 
     .service-number {
-      color: #78809b;
+      color: #a8a6cb;
       font-size: 10px;
       font-weight: 900;
       letter-spacing: 1px;
@@ -897,22 +996,23 @@
 
     .service-card h3 {
       margin-top: 29px;
+      color: #f7f4ff;
       font-size: 20px;
       letter-spacing: -0.5px;
     }
 
     .service-card p {
       margin-top: 10px;
-      color: var(--muted);
+      color: #b9bad8;
       font-size: 12px;
       line-height: 1.9;
     }
 
-    /* ==================================
+    /* =========================================
        11. PROJECTS
-    ================================== */
+    ========================================= */
     .projects-section {
-      background: rgba(206, 211, 248, 0.18);
+      background: rgba(13, 13, 38, 0.26);
     }
 
     .project-grid {
@@ -925,11 +1025,12 @@
       min-width: 0;
       overflow: hidden;
 
-      border: 1px solid rgba(219, 222, 241, 0.95);
+      border: 1px solid rgba(174, 157, 255, 0.22);
       border-radius: 21px;
 
-      background: rgba(249, 249, 255, 0.85);
-      box-shadow: 0 12px 35px rgba(35, 43, 70, 0.055);
+      background: rgba(20, 19, 48, 0.91);
+
+      box-shadow: 0 15px 44px rgba(0, 0, 0, 0.18);
 
       transition:
         transform 0.3s,
@@ -939,15 +1040,15 @@
 
     .project-card:hover {
       transform: translateY(-5px);
-      border-color: #c1b4f0;
-      box-shadow: 0 20px 45px rgba(54, 51, 103, 0.10);
+      border-color: rgba(190, 169, 255, 0.58);
+      box-shadow: 0 24px 55px rgba(49, 32, 110, 0.23);
     }
 
     .project-visual {
       position: relative;
       overflow: hidden;
       aspect-ratio: 16 / 10;
-      background: #dadff4;
+      background: #20203f;
     }
 
     .project-visual > img {
@@ -968,12 +1069,11 @@
       z-index: 3;
 
       padding: 7px 10px;
-
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 30px;
 
-      background: rgba(247, 247, 255, 0.92);
-      color: #34364b;
+      background: rgba(18, 16, 40, 0.86);
+      color: #f6f3ff;
 
       font-size: 9px;
       font-weight: 900;
@@ -986,7 +1086,7 @@
     }
 
     .project-type {
-      color: var(--accent);
+      color: #c2acff;
       font-size: 9px;
       font-weight: 900;
       letter-spacing: 2px;
@@ -995,13 +1095,14 @@
 
     .project-info h3 {
       margin-top: 11px;
+      color: #f6f3ff;
       font-size: 23px;
       letter-spacing: -0.7px;
     }
 
     .project-info p {
       margin-top: 10px;
-      color: var(--muted);
+      color: #b7b8d6;
       font-size: 12px;
       line-height: 1.9;
     }
@@ -1016,12 +1117,11 @@
     .project-tags span {
       padding: 5px 8px;
 
-      border: 1px solid #dfe2f0;
+      border: 1px solid rgba(173, 154, 255, 0.23);
       border-radius: 6px;
 
-      background: rgba(235, 236, 251, 0.7);
-      color: #58617a;
-
+      background: rgba(117, 97, 190, 0.15);
+      color: #ded9f7;
       font-size: 9px;
     }
 
@@ -1041,11 +1141,11 @@
 
       padding: 10px 14px;
 
-      border: 1px solid #cfc5f7;
+      border: 1px solid rgba(181, 157, 255, 0.42);
       border-radius: 10px;
 
-      background: rgba(250, 249, 255, 0.85);
-      color: var(--accent-dark);
+      background: rgba(127, 95, 234, 0.13);
+      color: #d2c3ff;
 
       font-size: 11px;
       font-weight: 850;
@@ -1055,15 +1155,15 @@
 
     .visit-project:hover,
     .gallery-button:hover {
-      background: var(--accent);
-      color: white;
+      background: #c4afff;
+      color: #100b24;
     }
 
     .gallery-button {
       cursor: pointer;
     }
 
-    /* Restaurant project preview */
+    /* Restaurant project visual */
     .restaurant-visual {
       display: flex;
       align-items: center;
@@ -1072,12 +1172,12 @@
 
       background: radial-gradient(
         ellipse at center,
-        #f4e6d4,
-        #ddc7a9 60%,
-        #c7b193
+        #51402f 0%,
+        #272136 55%,
+        #16172c 100%
       );
 
-      color: #503b29;
+      color: #f2e3c6;
     }
 
     .restaurant-design {
@@ -1091,8 +1191,8 @@
       align-items: center;
       justify-content: center;
 
-      border: 1px solid #98744d;
-      outline: 1px solid #98744d60;
+      border: 1px solid #c9a87880;
+      outline: 1px solid #c9a87830;
       outline-offset: 6px;
 
       text-align: center;
@@ -1107,11 +1207,13 @@
       display: flex;
       justify-content: space-around;
 
+      color: #e3d4bb;
       font-size: 6px;
       letter-spacing: 1px;
     }
 
     .restaurant-design small {
+      color: #d9b784;
       font-size: 8px;
       letter-spacing: 3px;
     }
@@ -1126,6 +1228,7 @@
 
     .restaurant-design em {
       margin-top: 8px;
+      color: #e5ccaa;
       font-family: Georgia, serif;
       font-size: 12px;
     }
@@ -1134,7 +1237,7 @@
       width: 40px;
       height: 1px;
       margin: 15px;
-      background: #98744d;
+      background: #c9a878;
     }
 
     /* Shopify project */
@@ -1148,7 +1251,7 @@
       height: 100%;
       min-height: 320px;
       aspect-ratio: auto;
-      background: #e9e4dd;
+      background: #eee9df;
     }
 
     .shopify-visual img {
@@ -1167,9 +1270,9 @@
       font-size: clamp(26px, 3vw, 38px);
     }
 
-    /* ==================================
+    /* =========================================
        12. SKILLS
-    ================================== */
+    ========================================= */
     .skills-grid {
       display: grid;
       grid-template-columns: 0.8fr 1.2fr;
@@ -1190,33 +1293,37 @@
     .skill-cloud span {
       padding: 12px 15px;
 
-      border: 1px solid rgba(218, 222, 241, 0.95);
+      border: 1px solid rgba(174, 157, 255, 0.24);
       border-radius: 10px;
 
-      background: rgba(249, 249, 255, 0.75);
-      color: #343e55;
+      background: rgba(27, 24, 62, 0.82);
+      color: #ece8ff;
 
       font-size: 11px;
       font-weight: 750;
 
-      box-shadow: 0 5px 15px rgba(35, 43, 70, 0.035);
+      box-shadow: 0 7px 22px rgba(0, 0, 0, 0.10);
+
       transition: transform 0.2s, border-color 0.2s;
     }
 
     .skill-cloud span::before {
       content: "✦ ";
-      color: var(--accent);
+      color: #c9b5ff;
     }
 
     .skill-cloud span:hover {
       transform: translateY(-3px);
-      border-color: #b9abfa;
+      border-color: #bfaaff;
     }
 
-    /* ==================================
+    /* =========================================
        13. CONTACT
-    ================================== */
+    ========================================= */
     .contact-box {
+      position: relative;
+      overflow: hidden;
+
       display: grid;
       grid-template-columns: 1fr 0.7fr;
       align-items: center;
@@ -1224,28 +1331,34 @@
 
       padding: clamp(30px, 6vw, 62px);
 
-      border: 1px solid rgba(195, 186, 242, 0.95);
+      border: 1px solid rgba(176, 152, 255, 0.34);
       border-radius: 27px;
 
       background:
         radial-gradient(
           ellipse at 100% 0%,
-          rgba(174, 156, 255, 0.47),
-          transparent 42%
+          rgba(131, 91, 245, 0.35),
+          transparent 45%
         ),
-        linear-gradient(125deg, #eae7ff, #e3edff 55%, #eee8ff);
+        linear-gradient(
+          125deg,
+          rgba(35, 27, 78, 0.97),
+          rgba(17, 29, 67, 0.96),
+          rgba(28, 21, 62, 0.97)
+        );
 
-      box-shadow: 0 20px 55px rgba(76, 61, 150, 0.08);
+      box-shadow: 0 22px 65px rgba(0, 0, 0, 0.20);
     }
 
     .contact-box h2 {
+      color: #faf8ff;
       font-size: clamp(38px, 5.3vw, 64px);
       line-height: 1.05;
       letter-spacing: -3px;
     }
 
     .contact-box h2 em {
-      color: var(--accent);
+      color: #c8b3ff;
       font-family: Georgia, serif;
       font-weight: 500;
     }
@@ -1253,7 +1366,7 @@
     .contact-box p {
       max-width: 470px;
       margin-top: 18px;
-      color: var(--muted);
+      color: #c8c6e3;
       font-size: 13px;
       line-height: 1.9;
     }
@@ -1262,6 +1375,7 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+
       width: 100%;
       max-width: 280px;
       justify-self: end;
@@ -1272,12 +1386,12 @@
       justify-content: space-between;
     }
 
-    /* ==================================
+    /* =========================================
        14. FOOTER
-    ================================== */
+    ========================================= */
     .footer {
       padding: 28px 0 35px;
-      color: #69728e;
+      color: #b1afcf;
       font-size: 10px;
     }
 
@@ -1290,7 +1404,7 @@
     }
 
     .footer-brand {
-      color: var(--text);
+      color: #f4f0ff;
       font-size: 12px;
       font-weight: 850;
     }
@@ -1302,18 +1416,19 @@
     }
 
     .footer-links a:hover {
-      color: var(--accent);
+      color: #c5afff;
     }
 
-    /* ==================================
-       15. SCROLL REVEAL
-    ================================== */
+    /* =========================================
+       15. SCROLL REVEAL ANIMATIONS
+    ========================================= */
     .reveal {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(22px);
+
       transition:
-        opacity 0.65s ease,
-        transform 0.65s ease;
+        opacity 0.7s ease,
+        transform 0.7s ease;
     }
 
     .reveal.visible {
@@ -1321,9 +1436,9 @@
       transform: translateY(0);
     }
 
-    /* ==================================
+    /* =========================================
        16. GRAPHIC DESIGN GALLERY
-    ================================== */
+    ========================================= */
     .gallery-modal {
       position: fixed;
       inset: 0;
@@ -1334,8 +1449,10 @@
       justify-content: center;
 
       padding: 24px;
-      background: rgba(30, 28, 57, 0.93);
-      backdrop-filter: blur(12px);
+
+      background: rgba(8, 7, 25, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
 
     .gallery-modal.open {
@@ -1389,18 +1506,19 @@
       display: grid;
       place-items: center;
 
-      border: 1px solid #ffffff55;
+      border: 1px solid #ffffff40;
       border-radius: 50%;
 
-      background: #ffffff15;
+      background: #ffffff12;
       color: white;
       font-size: 19px;
+
+      transition: background 0.2s;
     }
 
     .gallery-controls button:hover,
     .gallery-close:hover {
-      background: var(--accent);
-      border-color: var(--accent);
+      background: #8060ed;
     }
 
     .gallery-close {
@@ -1418,13 +1536,13 @@
 
     a:focus-visible,
     button:focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 2px solid #c7b5ff;
       outline-offset: 4px;
     }
 
-    /* ==================================
-       17. TABLET
-    ================================== */
+    /* =========================================
+       17. TABLET RESPONSIVENESS
+    ========================================= */
     @media (max-width: 900px) {
       .hero {
         gap: 40px;
@@ -1456,8 +1574,8 @@
       }
 
       .shopify-visual {
-        aspect-ratio: 16 / 9;
         min-height: 0;
+        aspect-ratio: 16 / 9;
       }
 
       .shopify-card .project-info {
@@ -1465,9 +1583,9 @@
       }
     }
 
-    /* ==================================
-       18. MOBILE
-    ================================== */
+    /* =========================================
+       18. MOBILE RESPONSIVENESS
+    ========================================= */
     @media (max-width: 700px) {
       .container {
         width: calc(100% - 32px);
@@ -1498,9 +1616,11 @@
 
         padding: 22px 25px;
 
-        border-bottom: 1px solid var(--border);
-        background: rgba(237, 238, 255, 0.98);
-        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(13, 12, 36, 0.97);
+
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
       }
 
       .nav-links.open {
@@ -1524,8 +1644,8 @@
       }
 
       .hero-description {
-        font-size: 13px;
         min-height: 7em;
+        font-size: 13px;
       }
 
       .hero-visual {
@@ -1620,15 +1740,21 @@
       }
 
       .orb-one {
-        width: 310px;
-        height: 310px;
+        width: 330px;
+        height: 330px;
         right: -180px;
       }
 
       .orb-two {
+        width: 350px;
+        height: 350px;
+        left: -210px;
+      }
+
+      .orb-three {
         width: 330px;
         height: 330px;
-        left: -200px;
+        right: -200px;
       }
     }
 
@@ -1672,7 +1798,7 @@
       }
     }
 
-    /* Respect reduced-motion settings */
+    /* Accessibility: respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -1693,7 +1819,9 @@
 
 <body>
 
-  <!-- ANIMATED BACKGROUND -->
+  <!-- =========================================
+       ANIMATED BACKGROUND
+  ========================================= -->
   <div class="ambient-background" aria-hidden="true">
     <div class="background-grid"></div>
     <div class="ambient-orb orb-one"></div>
@@ -1702,7 +1830,9 @@
     <div class="ambient-orb orb-four"></div>
   </div>
 
-  <!-- NAVIGATION -->
+  <!-- =========================================
+       NAVIGATION
+  ========================================= -->
   <header class="navbar">
     <nav class="nav-inner container">
 
@@ -1736,7 +1866,9 @@
 
   <main>
 
-    <!-- HERO / TYPING ANIMATION -->
+    <!-- =========================================
+         HERO WITH TYPING ANIMATION
+    ========================================= -->
     <section class="hero container" id="home">
 
       <div class="hero-copy">
@@ -1788,7 +1920,7 @@
 
       </div>
 
-      <!-- PORTRAIT AND FLOATING VISUALS -->
+      <!-- Portrait and animated decorations -->
       <div class="hero-visual">
 
         <div class="orbit">
@@ -1826,9 +1958,12 @@
       </div>
     </section>
 
-    <!-- MOVING SKILLS STRIP -->
+    <!-- =========================================
+         MOVING SKILLS STRIP
+    ========================================= -->
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track">
+
         <span>Graphic design</span><b>✦</b>
         <span>Web development</span><b>✦</b>
         <span>Shopify stores</span><b>✦</b>
@@ -1840,10 +1975,13 @@
         <span>Shopify stores</span><b>✦</b>
         <span>E-commerce design</span><b>✦</b>
         <span>Creative solutions</span><b>✦</b>
+
       </div>
     </div>
 
-    <!-- ABOUT -->
+    <!-- =========================================
+         ABOUT
+    ========================================= -->
     <section class="section" id="about">
       <div class="container about-grid">
 
@@ -1857,11 +1995,12 @@
 
           <p class="section-description">
             Creative thinking meets practical execution — from the
-            first visual idea to a polished online experience.
+            first visual idea to a polished digital experience.
           </p>
         </div>
 
         <div class="about-copy reveal">
+
           <p>
             I'm Muhammad Ahsan, a creative professional focused on
             graphic design, web development, and e-commerce. I enjoy
@@ -1877,6 +2016,7 @@
           </p>
 
           <div class="stats">
+
             <div class="stat">
               <strong>03</strong>
               <span>Core creative services</span>
@@ -1891,17 +2031,21 @@
               <strong>Shopify</strong>
               <span>Store design focus</span>
             </div>
+
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- SERVICES -->
+    <!-- =========================================
+         SERVICES
+    ========================================= -->
     <section class="section" id="services">
       <div class="container">
 
         <div class="section-heading reveal">
+
           <div>
             <div class="section-label">What I do</div>
 
@@ -1915,11 +2059,13 @@
             Creative and technical support for brands that want
             to look professional online.
           </p>
+
         </div>
 
         <div class="service-grid">
 
           <article class="service-card reveal">
+
             <div class="service-top">
               <span class="service-icon">✳</span>
               <span class="service-number">01 / VISUALS</span>
@@ -1932,9 +2078,11 @@
               content created to attract attention and keep a brand
               looking consistent.
             </p>
+
           </article>
 
           <article class="service-card reveal">
+
             <div class="service-top">
               <span class="service-icon">⌘</span>
               <span class="service-number">02 / WEB</span>
@@ -1947,9 +2095,11 @@
               useful interactions, and experiences for desktop
               and mobile devices.
             </p>
+
           </article>
 
           <article class="service-card reveal">
+
             <div class="service-top">
               <span class="service-icon">↗</span>
               <span class="service-number">03 / COMMERCE</span>
@@ -1961,17 +2111,21 @@
               Storefront designs that present products clearly
               and make online shopping simple and intuitive.
             </p>
+
           </article>
 
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- =========================================
+         PROJECTS
+    ========================================= -->
     <section class="section projects-section" id="projects">
       <div class="container">
 
         <div class="section-heading reveal">
+
           <div>
             <div class="section-label">Selected work</div>
 
@@ -1985,25 +2139,33 @@
             Explore my graphic design collection, restaurant website
             concept, and Shopify e-commerce storefront.
           </p>
+
         </div>
 
         <div class="project-grid">
 
-          <!-- GRAPHIC DESIGN -->
+          <!-- PROJECT 1: GRAPHIC DESIGN -->
           <article class="project-card reveal">
 
             <div class="project-visual" id="graphicThumb">
-              <span class="project-badge">01 · Graphic design</span>
+
+              <span class="project-badge">
+                01 · Graphic design
+              </span>
 
               <img
                 id="graphicPreview"
                 src="image%201.jpeg"
                 alt="Graphic design project preview"
               >
+
             </div>
 
             <div class="project-info">
-              <div class="project-type">Visual communication</div>
+
+              <div class="project-type">
+                Visual communication
+              </div>
 
               <h3>Graphic Design Collection</h3>
 
@@ -2019,24 +2181,31 @@
               </div>
 
               <div class="project-bottom">
+
                 <button class="gallery-button" id="openGallery">
                   Explore gallery ↗
                 </button>
 
-                <span style="font-size:10px;color:#69728e">
+                <span style="font-size:10px;color:#aaa7cf">
                   Multiple designs
                 </span>
+
               </div>
             </div>
+
           </article>
 
-          <!-- RESTAURANT WEBSITE -->
+          <!-- PROJECT 2: RESTAURANT WEBSITE -->
           <article class="project-card reveal">
 
             <div class="project-visual restaurant-visual">
-              <span class="project-badge">02 · Web concept</span>
+
+              <span class="project-badge">
+                02 · Web concept
+              </span>
 
               <div class="restaurant-design">
+
                 <div class="restaurant-nav">
                   <span>HOME</span>
                   <span>MENU</span>
@@ -2047,13 +2216,19 @@
                 <small>WELCOME TO</small>
                 <h3>GRILLI</h3>
                 <em>Flavors made memorable</em>
+
                 <div class="restaurant-line"></div>
+
                 <small>EXPLORE OUR MENU</small>
+
               </div>
             </div>
 
             <div class="project-info">
-              <div class="project-type">Restaurant experience</div>
+
+              <div class="project-type">
+                Restaurant experience
+              </div>
 
               <h3>Restaurant Website</h3>
 
@@ -2070,6 +2245,7 @@
               </div>
 
               <div class="project-bottom">
+
                 <a
                   class="visit-project"
                   href="https://codewithsadee.github.io/grilli/"
@@ -2078,15 +2254,20 @@
                 >
                   Visit Project ↗
                 </a>
+
               </div>
             </div>
+
           </article>
 
-          <!-- SHOPIFY STORE -->
+          <!-- PROJECT 3: SHOPIFY STORE -->
           <article class="project-card shopify-card reveal">
 
             <div class="project-visual shopify-visual">
-              <span class="project-badge">03 · E-commerce</span>
+
+              <span class="project-badge">
+                03 · E-commerce
+              </span>
 
               <img
                 src="shopify-store.jpg"
@@ -2094,10 +2275,14 @@
                 loading="lazy"
                 onerror="this.style.display='none'"
               >
+
             </div>
 
             <div class="project-info">
-              <div class="project-type">Online storefront</div>
+
+              <div class="project-type">
+                Online storefront
+              </div>
 
               <h3>Shopows — Shopify Store</h3>
 
@@ -2114,6 +2299,7 @@
               </div>
 
               <div class="project-bottom">
+
                 <a
                   class="visit-project"
                   href="https://shopows.pk/"
@@ -2123,22 +2309,27 @@
                   Visit Project ↗
                 </a>
 
-                <span style="font-size:10px;color:#69728e">
-                  Live storefront
+                <span style="font-size:10px;color:#aaa7cf">
+                  Storefront
                 </span>
+
               </div>
             </div>
+
           </article>
 
         </div>
       </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- =========================================
+         SKILLS
+    ========================================= -->
     <section class="section" id="skills">
       <div class="container skills-grid">
 
         <div class="reveal">
+
           <div class="section-label">My toolkit</div>
 
           <h2 class="section-title">
@@ -2150,6 +2341,7 @@
             The tools and skills I use to bring digital ideas
             from concept to launch.
           </p>
+
         </div>
 
         <div class="skill-cloud reveal">
@@ -2168,14 +2360,19 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- =========================================
+         CONTACT
+    ========================================= -->
     <section class="section" id="contact">
       <div class="container">
 
         <div class="contact-box reveal">
 
           <div>
-            <div class="section-label">Have a project in mind?</div>
+
+            <div class="section-label">
+              Have a project in mind?
+            </div>
 
             <h2>
               Let's make<br>
@@ -2186,9 +2383,11 @@
               Need a graphic design, a website, or help with a Shopify
               store? Send me a message and tell me what you're planning.
             </p>
+
           </div>
 
           <div class="contact-actions">
+
             <a
               class="button button-primary"
               href="https://wa.me/923319333080"
@@ -2204,6 +2403,7 @@
             >
               mhdxahsan@gmail.com <span>↗</span>
             </a>
+
           </div>
 
         </div>
@@ -2212,37 +2412,52 @@
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- =========================================
+       FOOTER
+  ========================================= -->
   <footer class="footer">
     <div class="container footer-inner">
 
       <div>
+
         <div class="footer-brand">
-          Muhammad Ahsan <span style="color:var(--accent)">✳</span>
+          Muhammad Ahsan <span style="color:#c5afff">✳</span>
         </div>
 
         <div style="margin-top:4px">
           Designing ideas into digital experiences.
         </div>
+
       </div>
 
       <div class="footer-links">
+
         <a href="#home">Back to top ↑</a>
-        <a href="mailto:mhdxahsan@gmail.com">Email</a>
+
+        <a href="mailto:mhdxahsan@gmail.com">
+          Email
+        </a>
 
         <a
           href="https://wa.me/923319333080"
           target="_blank"
           rel="noopener noreferrer"
-        >WhatsApp</a>
+        >
+          WhatsApp
+        </a>
+
       </div>
 
-      <div>© <span id="year"></span> Muhammad Ahsan</div>
+      <div>
+        © <span id="year"></span> Muhammad Ahsan
+      </div>
 
     </div>
   </footer>
 
-  <!-- GRAPHIC DESIGN GALLERY -->
+  <!-- =========================================
+       GRAPHIC DESIGN GALLERY
+  ========================================= -->
   <div
     class="gallery-modal"
     id="galleryModal"
@@ -2250,6 +2465,7 @@
     aria-modal="true"
     aria-label="Graphic design gallery"
   >
+
     <div class="gallery-content">
 
       <button
@@ -2259,11 +2475,13 @@
       >×</button>
 
       <div class="gallery-image-wrap">
+
         <img
           id="galleryImage"
           src="image%201.jpeg"
           alt="Graphic design image"
         >
+
       </div>
 
       <div class="gallery-caption" id="galleryCaption">
@@ -2271,21 +2489,30 @@
       </div>
 
       <div class="gallery-controls">
-        <button id="prevImage" aria-label="Previous image">←</button>
-        <span class="gallery-count" id="galleryCount">1 / 12</span>
-        <button id="nextImage" aria-label="Next image">→</button>
-      </div>
 
+        <button id="prevImage" aria-label="Previous image">
+          ←
+        </button>
+
+        <span class="gallery-count" id="galleryCount">
+          1 / 12
+        </span>
+
+        <button id="nextImage" aria-label="Next image">
+          →
+        </button>
+
+      </div>
     </div>
   </div>
 
-  <!-- ==================================
+  <!-- =========================================
        JAVASCRIPT
-  ================================== -->
+  ========================================= -->
   <script>
-    /* ==================================
-       1. TYPING ANIMATION
-    ================================== */
+    /* =========================================
+       1. HEADLINE AND INTRO TYPING ANIMATION
+    ========================================= */
     const lineOne = document.getElementById("typedLineOne");
     const digitalWord = document.getElementById("typedDigital");
     const impactWord = document.getElementById("typedImpact");
@@ -2327,29 +2554,29 @@
     }
 
     async function runTypingAnimation() {
-      await wait(500);
+      await wait(450);
 
-      // Type the first headline line
+      // Type "Creative ideas."
       setTypingCursor(lineOne);
       await typeText(lineOne, headlineOne, 65);
 
       await wait(180);
 
-      // Type the muted word on the second line
+      // Type "Digital "
       setTypingCursor(digitalWord);
       await typeText(digitalWord, headlineDigital, 85);
 
-      // Continue typing the highlighted word
+      // Type "impact."
       setTypingCursor(impactWord);
       await typeText(impactWord, headlineImpact, 95);
 
       await wait(250);
 
-      // Type the complete introduction paragraph
+      // Type the complete introduction
       setTypingCursor(description);
       await typeText(description, introText, 17);
 
-      // Stop the cursor when typing is finished
+      // Hide the typing cursor when finished
       [
         lineOne,
         digitalWord,
@@ -2362,9 +2589,9 @@
 
     runTypingAnimation();
 
-    /* ==================================
+    /* =========================================
        2. MOBILE NAVIGATION
-    ================================== */
+    ========================================= */
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
@@ -2393,15 +2620,15 @@
       });
     });
 
-    /* ==================================
+    /* =========================================
        3. AUTOMATIC FOOTER YEAR
-    ================================== */
+    ========================================= */
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
-    /* ==================================
-       4. GRAPHIC DESIGN IMAGE GALLERY
-    ================================== */
+    /* =========================================
+       4. GRAPHIC DESIGN GALLERY
+    ========================================= */
     const imageFiles = [
       "image%201.jpeg",
       "image%202.jpeg",
@@ -2506,9 +2733,9 @@
       }
     });
 
-    /* ==================================
-       5. GRAPHIC THUMBNAIL SLIDESHOW
-    ================================== */
+    /* =========================================
+       5. GRAPHIC IMAGE HOVER SLIDESHOW
+    ========================================= */
     const graphicThumb = document.getElementById("graphicThumb");
 
     graphicThumb.addEventListener("mouseenter", function () {
@@ -2533,9 +2760,9 @@
       graphicPreview.src = imageFiles[0];
     });
 
-    /* ==================================
-       6. SCROLL REVEAL ANIMATIONS
-    ================================== */
+    /* =========================================
+       6. SCROLL REVEAL
+    ========================================= */
     if (
       "IntersectionObserver" in window &&
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches
