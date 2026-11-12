@@ -1,1522 +1,1586 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#edf3ff">
-  <meta name="description" content="Muhammad Ahsan — Graphic Designer and Web Developer.">
-  <title>Muhammad Ahsan | Portfolio</title>
-
-  <style>
-    :root {
-      --bg: #edf3ff;
-      --surface: #ffffff;
-      --ink: #111827;
-      --muted: #667085;
-      --line: #dce5f3;
-      --blue: #315cf5;
-      --blue-dark: #2446c7;
-      --navy: #101a32;
-      --soft-blue: #e3ebff;
-      --radius: 22px;
-      --max: 1160px;
-      --shadow: 0 18px 55px rgba(18, 31, 66, .08);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 86px;
-    }
-
-    body {
-      background: radial-gradient(ellipse at 85% 0%, rgba(205,220,255,.42), transparent 38%), var(--bg);
-      color: var(--ink);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-      line-height: 1.65;
-    }
-
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-
-    .container {
-      width: min(var(--max), calc(100% - 44px));
-      margin: 0 auto;
-    }
-
-    /* NAVIGATION */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(246,249,255,.92);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(214,225,244,.9);
-    }
-
-    .nav-inner {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      font-weight: 850;
-      letter-spacing: -.4px;
-    }
-
-    .brand-mark {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      background: var(--navy);
-      color: white;
-      border-radius: 12px;
-      font-size: 15px;
-      letter-spacing: -1px;
-    }
-
-    .brand small {
-      display: block;
-      color: var(--muted);
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      color: #475467;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .nav-links a:hover { color: var(--blue); }
-
-    .nav-cta, .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 800;
-      transition: .2s ease;
-    }
-
-    .nav-cta {
-      padding: 11px 16px;
-      color: white;
-      background: var(--blue);
-    }
-
-    .nav-cta:hover, .btn-primary:hover {
-      background: var(--blue-dark);
-      transform: translateY(-2px);
-    }
-
-    .menu-toggle {
-      display: none;
-      border: 1px solid var(--line);
-      background: white;
-      color: var(--ink);
-      border-radius: 10px;
-      width: 42px;
-      height: 42px;
-      font-size: 20px;
-    }
-
-    /* HERO */
-    .hero {
-      display: grid;
-      grid-template-columns: 1.15fr .75fr;
-      align-items: center;
-      gap: 75px;
-      min-height: 650px;
-      padding: 88px 0 92px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--blue);
-      font-size: 10px;
-      font-weight: 850;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .eyebrow:before {
-      content: "";
-      width: 22px;
-      height: 2px;
-      border-radius: 2px;
-      background: var(--blue);
-    }
-
-    .availability {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 11px;
-      border: 1px solid #dce4ff;
-      border-radius: 30px;
-      background: #fff;
-      color: #3450a7;
-      font-size: 10px;
-      font-weight: 800;
-    }
-
-    .availability i {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #20b77a;
-    }
-
-    h1 {
-      margin-top: 25px;
-      max-width: 700px;
-      font-size: clamp(46px, 6.5vw, 78px);
-      line-height: 1.04;
-      letter-spacing: -4.6px;
-      font-weight: 900;
-    }
-
-    h1 span { color: var(--blue); }
-
-    .hero-copy {
-      max-width: 570px;
-      margin-top: 24px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.95;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      min-height: 46px;
-      padding: 12px 17px;
-    }
-
-    .btn-primary {
-      background: var(--blue);
-      color: white;
-    }
-
-    .btn-secondary {
-      background: white;
-      border: 1px solid var(--line);
-      color: var(--ink);
-    }
-
-    .btn-secondary:hover {
-      border-color: #bdc9ff;
-      color: var(--blue);
-      transform: translateY(-2px);
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-      color: #7a8496;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .hero-meta span + span:before {
-      content: "·";
-      color: var(--blue);
-      margin-right: 12px;
-    }
-
-    .portrait-wrap {
-      position: relative;
-      width: min(100%, 370px);
-      justify-self: end;
-      padding: 14px;
-      border: 1px solid #e4e8f2;
-      border-radius: 28px;
-      background: white;
-      box-shadow: var(--shadow);
-    }
-
-    .portrait-wrap:before {
-      content: "";
-      position: absolute;
-      width: 125px;
-      height: 125px;
-      right: -23px;
-      top: -23px;
-      border: 2px solid #cbd5ff;
-      border-radius: 25px;
-      z-index: -1;
-    }
-
-    .portrait {
-      aspect-ratio: 4 / 5;
-      border-radius: 18px;
-      overflow: hidden;
-      background: linear-gradient(145deg,#e5eafe,#d7e2f3);
-    }
-
-    .portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 25%;
-    }
-
-    .portrait-note {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 15px 5px 2px;
-    }
-
-    .portrait-note strong {
-      display: block;
-      font-size: 12px;
-    }
-
-    .portrait-note span {
-      display: block;
-      color: var(--muted);
-      font-size: 10px;
-    }
-
-    .portrait-note b {
-      color: var(--blue);
-      font-size: 11px;
-    }
-
-    /* GENERAL SECTIONS */
-    section.content-section { padding: 82px 0; }
-
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 25px;
-      margin-bottom: 32px;
-    }
-
-    .section-heading h2 {
-      margin-top: 12px;
-      font-size: clamp(32px, 4.5vw, 49px);
-      line-height: 1.12;
-      letter-spacing: -2px;
-    }
-
-    .section-heading h2 span { color: var(--blue); }
-
-    .section-heading p {
-      max-width: 435px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.9;
-    }
-
-    /* ABOUT */
-    .about-grid {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 22px;
-    }
-
-    .about-lead, .about-panel, .service-card,
-    .project-card, .contact-panel {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-    }
-
-    .about-lead {
-      padding: 30px;
-      background: var(--navy);
-      color: white;
-    }
-
-    .about-lead h3 {
-      font-size: 23px;
-      line-height: 1.25;
-      letter-spacing: -.8px;
-    }
-
-    .about-lead p {
-      margin-top: 15px;
-      color: #c0cadf;
-      font-size: 12px;
-      line-height: 1.95;
-    }
-
-    .about-panel {
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .about-panel p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 2;
-    }
-
-    .facts {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 10px;
-      margin-top: 23px;
-    }
-
-    .fact {
-      padding: 14px;
-      background: #f1f5fc;
-      border: 1px solid #e2eaf6;
-      border-radius: 13px;
-    }
-
-    .fact strong {
-      display: block;
-      color: var(--blue);
-      font-size: 13px;
-    }
-
-    .fact span {
-      color: var(--muted);
-      font-size: 9px;
-    }
-
-    /* SERVICES */
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 14px;
-    }
-
-    .service-card {
-      padding: 23px;
-      transition: transform .2s, box-shadow .2s, border-color .2s;
-    }
-
-    .service-card:hover, .project-card:hover {
-      transform: translateY(-4px);
-      border-color: #cbd5ff;
-      box-shadow: var(--shadow);
-    }
-
-    .service-icon {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: var(--soft-blue);
-      color: var(--blue);
-      font-size: 19px;
-      font-weight: 800;
-    }
-
-    .service-card h3 {
-      margin-top: 18px;
-      font-size: 14px;
-    }
-
-    .service-card p {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.85;
-    }
-
-    /* PROJECTS */
-    .projects-wrap {
-      display: grid;
-      gap: 18px;
-    }
-
-    .project-card {
-      overflow: hidden;
-      transition: .2s ease;
-    }
-
-    .design-project {
-      display: grid;
-      grid-template-columns: .92fr 1.08fr;
-    }
-
-    .design-info {
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .project-type {
-      color: var(--blue);
-      font-size: 9px;
-      font-weight: 900;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-    }
-
-    .design-info h3, .project-info h3 {
-      margin-top: 10px;
-      font-size: 24px;
-      letter-spacing: -.8px;
-      line-height: 1.2;
-    }
-
-    .design-info p, .project-info p {
-      margin-top: 11px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.9;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 17px;
-    }
-
-    .tags span {
-      padding: 6px 9px;
-      border-radius: 7px;
-      background: #f0f3ff;
-      color: #455bb1;
-      font-size: 9px;
-      font-weight: 750;
-    }
-
-    /* GRAPHIC DESIGN COLLECTION */
-    .design-mosaic {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      grid-auto-rows: 105px;
-      gap: 8px;
-      padding: 15px;
-      background: #e8eef8;
-    }
-
-    .mosaic-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 11px;
-      border: 1px solid #e3e7ef;
-      background: #e1e9f5;
-      cursor: zoom-in;
-    }
-
-    .mosaic-item:nth-child(1),
-    .mosaic-item:nth-child(6) {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
-    .mosaic-item:nth-child(4),
-    .mosaic-item:nth-child(9) {
-      grid-column: span 2;
-    }
-
-    .mosaic-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .35s;
-    }
-
-    .mosaic-item:hover img {
-      transform: scale(1.045);
-    }
-
-    .mosaic-item:focus-visible {
-      outline: 3px solid var(--blue);
-      outline-offset: 2px;
-    }
-
-    /* WEBSITE PROJECTS */
-    .web-projects {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .web-preview {
-      min-height: 215px;
-      display: grid;
-      place-items: center;
-      padding: 25px;
-      background: linear-gradient(135deg,#e3ebff,#f2f6ff);
-    }
-
-    /* SPICE COURTYARD RESTAURANT PREVIEW */
-    .restaurant-preview {
-      min-height: 245px;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      background: radial-gradient(
-        ellipse at center,
-        #765638 0%,
-        #3e3028 58%,
-        #202b43 100%
-      );
-    }
-
-    .restaurant-sheet {
-      width: min(100%,390px);
-      min-height: 195px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 22px 16px;
-      border: 1px solid rgba(226,194,145,.78);
-      outline: 1px solid rgba(226,194,145,.25);
-      outline-offset: 6px;
-      color: #f8eddb;
-      text-align: center;
-    }
-
-    .restaurant-sheet small {
-      color: #e5c18f;
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 3px;
-    }
-
-    .restaurant-sheet h4 {
-      margin-top: 10px;
-      font-family: Georgia,serif;
-      font-size: clamp(25px,4vw,39px);
-      font-weight: 500;
-      letter-spacing: 3px;
-      line-height: 1.08;
-    }
-
-    .restaurant-sheet p {
-      margin-top: 10px;
-      color: #ead5b7;
-      font-family: Georgia,serif;
-      font-size: 11px;
-      font-style: italic;
-      letter-spacing: 1px;
-    }
-
-    .restaurant-sheet .restaurant-cta {
-      margin-top: 17px;
-      padding: 7px 12px;
-      border: 1px solid #d8b27e;
-      color: #f4d9b1;
-      font-size: 8px;
-      font-weight: 850;
-      letter-spacing: 1.8px;
-    }
-
-    /* SHOPIFY PROJECT */
-    .shop-preview { background: #eaf0fa; }
-
-    .shop-preview img {
-      width: 100%;
-      height: 215px;
-      object-fit: cover;
-      object-position: top;
-      border-radius: 10px;
-      box-shadow: 0 12px 35px #26365d18;
-    }
-
-    .project-info {
-      padding: 23px 26px 26px;
-    }
-
-    .project-link {
-      display: inline-flex;
-      margin-top: 16px;
-      color: var(--blue);
-      font-size: 11px;
-      font-weight: 850;
-    }
-
-    .project-link:hover { color: var(--blue-dark); }
-
-    /* SKILLS */
-    .skills-panel {
-      padding: 27px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: white;
-    }
-
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill-list span {
-      padding: 10px 14px;
-      background: #f1f5fc;
-      border: 1px solid #e2eaf6;
-      border-radius: 10px;
-      color: #344054;
-      font-size: 11px;
-      font-weight: 750;
-    }
-
-    /* CONTACT */
-    .contact-panel {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 28px;
-      padding: 42px;
-      background: var(--navy);
-      color: white;
-    }
-
-    .contact-panel h2 {
-      margin-top: 11px;
-      max-width: 570px;
-      font-size: clamp(32px,4.6vw,51px);
-      line-height: 1.12;
-      letter-spacing: -2px;
-    }
-
-    .contact-panel p {
-      max-width: 540px;
-      margin-top: 14px;
-      color: #c2cbe0;
-      font-size: 12px;
-      line-height: 1.9;
-    }
-
-    .contact-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      min-width: 175px;
-    }
-
-    .contact-buttons .btn-secondary {
-      border-color: #34415e;
-      background: #182541;
-      color: white;
-    }
-
-    .contact-buttons .btn-secondary:hover {
-      border-color: #8098ff;
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 27px 0 35px;
-      color: #7b8496;
-      font-size: 10px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .footer-inner strong { color: var(--ink); }
-
-    .footer-links {
-      display: flex;
-      gap: 17px;
-    }
-
-    .footer-links a:hover { color: var(--blue); }
-
-    /* IMAGE PREVIEW */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 25px;
-      background: rgba(9,15,30,.92);
-    }
-
-    .lightbox.open { display: flex; }
-
-    .lightbox img {
-      max-width: min(100%,1100px);
-      max-height: 86vh;
-      object-fit: contain;
-      border-radius: 10px;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 18px;
-      right: 20px;
-      width: 44px;
-      height: 44px;
-      border: 1px solid #ffffff55;
-      border-radius: 50%;
-      background: #ffffff15;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero { gap: 38px; }
-
-      .service-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
-
-      .design-project {
-        grid-template-columns: 1fr;
-      }
-
-      .design-info { padding-bottom: 22px; }
-
-      .design-mosaic { grid-auto-rows: 115px; }
-    }
-
-    @media (max-width: 700px) {
-      .container { width: calc(100% - 32px); }
-
-      .nav-inner { min-height: 68px; }
-
-      .menu-toggle { display: block; }
-      .nav-cta { display: none; }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 68px;
-        left: 0;
-        right: 0;
-        padding: 20px 24px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 17px;
-        background: #f7f9ff;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .nav-links.open { display: flex; }
-
-      .hero {
-        grid-template-columns: 1fr;
-        min-height: 0;
-        padding: 62px 0 70px;
-        gap: 42px;
-      }
-
-      h1 {
-        font-size: clamp(45px,12vw,68px);
-        letter-spacing: -3px;
-      }
-
-      .portrait-wrap {
-        width: min(84%,350px);
-        justify-self: center;
-      }
-
-      section.content-section { padding: 65px 0; }
-
-      .section-heading { display: block; }
-      .section-heading p { margin-top: 15px; }
-
-      .about-grid, .web-projects {
-        grid-template-columns: 1fr;
-      }
-
-      .facts { grid-template-columns: repeat(3,1fr); }
-
-      .design-mosaic {
-        grid-template-columns: repeat(3,1fr);
-        grid-auto-rows: 95px;
-        gap: 6px;
-        padding: 10px;
-      }
-
-      .mosaic-item:nth-child(1),
-      .mosaic-item:nth-child(6) {
-        grid-column: span 2;
-        grid-row: span 2;
-      }
-
-      .mosaic-item:nth-child(4),
-      .mosaic-item:nth-child(9) {
-        grid-column: span 1;
-      }
-
-      .contact-panel {
-        grid-template-columns: 1fr;
-        padding: 29px;
-      }
-
-      .contact-buttons {
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-
-      .contact-buttons .btn {
-        flex: 1 1 145px;
-      }
-
-      .footer-inner {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .service-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 9px;
-      }
-
-      .service-card { padding: 17px; }
-      .facts { gap: 6px; }
-      .fact { padding: 10px; }
-      .design-mosaic { grid-auto-rows: 80px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#edf3ff">
+<meta name="description" content="Muhammad Ahsan — Graphic Designer and Web Developer.">
+<title>Muhammad Ahsan | Portfolio</title>
+
+<style>
+:root {
+  --bg:#edf3ff;
+  --surface:#fff;
+  --ink:#111827;
+  --muted:#667085;
+  --line:#dce5f3;
+  --blue:#315cf5;
+  --blue-dark:#2446c7;
+  --navy:#101a32;
+  --soft-blue:#e3ebff;
+  --radius:22px;
+  --max:1160px;
+  --shadow:0 18px 55px rgba(18,31,66,.08);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+
+body{
+  background:radial-gradient(ellipse at 85% 0%,rgba(205,220,255,.42),transparent 38%),var(--bg);
+  color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  line-height:1.65;
+  position:relative;
+  isolation:isolate;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none;cursor:none}
+button{font:inherit;cursor:none}
+
+.container{width:min(var(--max),calc(100% - 44px));margin:auto}
+
+/* BLUE BACKGROUND EFFECTS */
+.background-effects{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 12% 8%,rgba(113,145,255,.18),transparent 34%),
+    radial-gradient(ellipse at 88% 27%,rgba(76,181,255,.15),transparent 36%),
+    radial-gradient(ellipse at 48% 88%,rgba(124,154,255,.12),transparent 42%);
+}
+
+.background-effects:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.18;
+  background-image:
+    linear-gradient(rgba(85,112,170,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(85,112,170,.08) 1px,transparent 1px);
+  background-size:58px 58px;
+  mask-image:linear-gradient(#000,transparent 82%);
+}
+
+.light-orb{
+  position:absolute;
+  width:340px;
+  height:340px;
+  border-radius:50%;
+  filter:blur(78px);
+  opacity:.24;
+  animation:blueOrbFloat 14s ease-in-out infinite alternate;
+}
+
+.light-orb.orb-one{background:#6685ff;top:-110px;left:8%}
+.light-orb.orb-two{background:#55c8ff;top:32%;right:-150px;animation-delay:-5s}
+.light-orb.orb-three{background:#8e9fff;top:1150px;left:-150px;animation-delay:-8s}
+
+@keyframes blueOrbFloat{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(48px,58px,0) scale(1.16)}
+}
+
+/* LOADING SCREEN */
+.page-loader{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:grid;
+  place-items:center;
+  background:#f3f6ff;
+  transition:opacity .55s ease,visibility .55s ease;
+}
+
+.page-loader.done{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.loader-content{width:min(280px,82%);text-align:center}
+.loader-logo{color:#142142;font-size:38px;font-weight:950;letter-spacing:-3px}
+.loader-logo span{color:var(--blue)}
+.loader-caption{
+  margin-top:2px;
+  color:#77839d;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.loader-track{
+  height:3px;
+  margin-top:24px;
+  overflow:hidden;
+  border-radius:10px;
+  background:#dce5f7;
+}
+
+.loader-bar{
+  width:0;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,#6582ff,#48c8f4,#315cf5);
+  animation:loaderProgress 1.25s ease forwards;
+}
+
+@keyframes loaderProgress{to{width:100%}}
+
+/* CUSTOM CURSOR */
+.cursor-dot,.cursor-ring,.cursor-glow{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:9500;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+}
+
+.cursor-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#315cf5;
+}
+
+.cursor-ring{
+  width:32px;
+  height:32px;
+  border:1.5px solid rgba(49,92,245,.62);
+  border-radius:50%;
+  transition:width .2s,height .2s,border-color .2s,background .2s;
+}
+
+.cursor-glow{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(76,111,255,.12),transparent 70%);
+  transition:opacity .2s;
+}
+
+body.cursor-hover .cursor-ring{
+  width:49px;
+  height:49px;
+  border-color:rgba(49,92,245,.9);
+  background:rgba(49,92,245,.045);
+}
+
+/* NAVIGATION */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(246,249,255,.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(214,225,244,.9);
+}
+
+.nav-inner{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-weight:850;
+  letter-spacing:-.4px;
+}
+
+.brand-mark{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  background:var(--navy);
+  color:white;
+  border-radius:12px;
+  font-size:15px;
+  letter-spacing:-1px;
+}
+
+.brand small{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1.5px;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:26px;
+  color:#475467;
+  font-size:12px;
+  font-weight:700;
+}
+
+.nav-links a:hover,.footer-links a:hover{color:var(--blue)}
+
+.nav-cta,.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  border-radius:12px;
+  font-size:12px;
+  font-weight:800;
+  transition:.2s ease;
+}
+
+.nav-cta{
+  padding:11px 16px;
+  color:white;
+  background:var(--blue);
+}
+
+.nav-cta:hover,.btn-primary:hover{
+  background:var(--blue-dark);
+  transform:translateY(-2px);
+}
+
+.menu-toggle{
+  display:none;
+  border:1px solid var(--line);
+  background:white;
+  color:var(--ink);
+  border-radius:10px;
+  width:42px;
+  height:42px;
+  font-size:20px;
+}
+
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1.15fr .75fr;
+  align-items:center;
+  gap:75px;
+  min-height:650px;
+  padding:88px 0 92px;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:var(--blue);
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.eyebrow:before{
+  content:"";
+  width:22px;
+  height:2px;
+  border-radius:2px;
+  background:var(--blue);
+}
+
+.availability{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 11px;
+  border:1px solid #dce4ff;
+  border-radius:30px;
+  background:#fff;
+  color:#3450a7;
+  font-size:10px;
+  font-weight:800;
+}
+
+.availability i{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#20b77a;
+}
+
+h1{
+  margin-top:25px;
+  max-width:700px;
+  font-size:clamp(46px,6.5vw,78px);
+  line-height:1.04;
+  letter-spacing:-4.6px;
+  font-weight:900;
+}
+
+h1 span{color:var(--blue)}
+
+.hero-copy{
+  max-width:570px;
+  margin-top:24px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.95;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:30px;
+}
+
+.btn{min-height:46px;padding:12px 17px}
+.btn-primary{background:var(--blue);color:white}
+
+.btn-secondary{
+  background:white;
+  border:1px solid var(--line);
+  color:var(--ink);
+}
+
+.btn-secondary:hover{
+  border-color:#bdc9ff;
+  color:var(--blue);
+  transform:translateY(-2px);
+}
+
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:30px;
+  color:#7a8496;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.hero-meta span+span:before{
+  content:"·";
+  color:var(--blue);
+  margin-right:12px;
+}
+
+/* PORTRAIT */
+.portrait-wrap{
+  position:relative;
+  width:min(100%,370px);
+  justify-self:end;
+  padding:14px;
+  border:1px solid #e4e8f2;
+  border-radius:28px;
+  background:white;
+  box-shadow:var(--shadow);
+  animation:portraitFloat 5.5s ease-in-out infinite;
+}
+
+.portrait-wrap:before{
+  content:"";
+  position:absolute;
+  width:125px;
+  height:125px;
+  right:-23px;
+  top:-23px;
+  border:2px solid #cbd5ff;
+  border-radius:25px;
+  z-index:-1;
+}
+
+.portrait{
+  aspect-ratio:4/5;
+  border-radius:18px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#e5eafe,#d7e2f3);
+}
+
+.portrait img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 25%;
+}
+
+.portrait-note{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:15px 5px 2px;
+}
+
+.portrait-note strong{display:block;font-size:12px}
+.portrait-note span{display:block;color:var(--muted);font-size:10px}
+.portrait-note b{color:var(--blue);font-size:11px}
+
+@keyframes portraitFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-9px)}
+}
+
+/* GENERAL SECTIONS */
+section.content-section{padding:82px 0}
+
+.section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:25px;
+  margin-bottom:32px;
+}
+
+.section-heading h2{
+  margin-top:12px;
+  font-size:clamp(32px,4.5vw,49px);
+  line-height:1.12;
+  letter-spacing:-2px;
+}
+
+.section-heading h2 span{color:var(--blue)}
+
+.section-heading p{
+  max-width:435px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.9;
+}
+
+/* ABOUT */
+.about-grid{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:22px;
+}
+
+.about-lead,.about-panel,.service-card,.project-card,.contact-panel{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+}
+
+.about-lead{
+  padding:30px;
+  background:var(--navy);
+  color:white;
+}
+
+.about-lead h3{
+  font-size:23px;
+  line-height:1.25;
+  letter-spacing:-.8px;
+}
+
+.about-lead p{
+  margin-top:15px;
+  color:#c0cadf;
+  font-size:12px;
+  line-height:1.95;
+}
+
+.about-panel{
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.about-panel p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:2;
+}
+
+.facts{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:23px;
+}
+
+.fact{
+  padding:14px;
+  background:#f1f5fc;
+  border:1px solid #e2eaf6;
+  border-radius:13px;
+}
+
+.fact strong{
+  display:block;
+  color:var(--blue);
+  font-size:13px;
+}
+
+.fact span{color:var(--muted);font-size:9px}
+
+/* SERVICES */
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.service-card{
+  padding:23px;
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+
+.service-card:hover,.project-card:hover{
+  transform:translateY(-4px);
+  border-color:#cbd5ff;
+  box-shadow:var(--shadow);
+}
+
+.service-icon{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:var(--soft-blue);
+  color:var(--blue);
+  font-size:19px;
+  font-weight:800;
+}
+
+.service-card h3{margin-top:18px;font-size:14px}
+
+.service-card p{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.85;
+}
+
+/* PROJECTS */
+.projects-wrap{display:grid;gap:18px}
+.project-card{overflow:hidden;transition:.2s ease}
+.design-project{display:grid;grid-template-columns:.92fr 1.08fr}
+
+.design-info{
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.project-type{
+  color:var(--blue);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+}
+
+.design-info h3,.project-info h3{
+  margin-top:10px;
+  font-size:24px;
+  letter-spacing:-.8px;
+  line-height:1.2;
+}
+
+.design-info p,.project-info p{
+  margin-top:11px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.9;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:17px;
+}
+
+.tags span{
+  padding:6px 9px;
+  border-radius:7px;
+  background:#f0f3ff;
+  color:#455bb1;
+  font-size:9px;
+  font-weight:750;
+}
+
+/* ALL GRAPHIC DESIGN IMAGES TOGETHER */
+.design-mosaic{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:105px;
+  gap:8px;
+  padding:15px;
+  background:#e8eef8;
+}
+
+.mosaic-item{
+  position:relative;
+  overflow:hidden;
+  border-radius:11px;
+  border:1px solid #e3e7ef;
+  background:#e1e9f5;
+  cursor:zoom-in;
+}
+
+.mosaic-item:nth-child(1),
+.mosaic-item:nth-child(6){
+  grid-column:span 2;
+  grid-row:span 2;
+}
+
+.mosaic-item:nth-child(4),
+.mosaic-item:nth-child(9){grid-column:span 2}
+
+.mosaic-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .35s;
+}
+
+.mosaic-item:hover img{transform:scale(1.045)}
+
+.mosaic-item:focus-visible{
+  outline:3px solid var(--blue);
+  outline-offset:2px;
+}
+
+/* WEBSITE PROJECTS */
+.web-projects{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.web-preview{
+  min-height:215px;
+  display:grid;
+  place-items:center;
+  padding:25px;
+  background:linear-gradient(135deg,#e3ebff,#f2f6ff);
+}
+
+/* RESTAURANT WEBSITE PREVIEW */
+.restaurant-preview{
+  min-height:245px;
+  display:grid;
+  place-items:center;
+  padding:24px;
+  background:radial-gradient(ellipse at center,#765638 0%,#3e3028 58%,#202b43 100%);
+}
+
+.restaurant-sheet{
+  width:min(100%,390px);
+  min-height:195px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:22px 16px;
+  border:1px solid rgba(226,194,145,.78);
+  outline:1px solid rgba(226,194,145,.25);
+  outline-offset:6px;
+  color:#f8eddb;
+  text-align:center;
+}
+
+.restaurant-sheet small{
+  color:#e5c18f;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:3px;
+}
+
+.restaurant-sheet h4{
+  margin-top:10px;
+  font-family:Georgia,serif;
+  font-size:clamp(25px,4vw,39px);
+  font-weight:500;
+  letter-spacing:3px;
+  line-height:1.08;
+}
+
+.restaurant-sheet p{
+  margin-top:10px;
+  color:#ead5b7;
+  font-family:Georgia,serif;
+  font-size:11px;
+  font-style:italic;
+  letter-spacing:1px;
+}
+
+.restaurant-sheet .restaurant-cta{
+  margin-top:17px;
+  padding:7px 12px;
+  border:1px solid #d8b27e;
+  color:#f4d9b1;
+  font-size:8px;
+  font-weight:850;
+  letter-spacing:1.8px;
+}
+
+/* SHOPIFY PROJECT */
+.shop-preview{background:#eaf0fa}
+
+.shop-preview img{
+  width:100%;
+  height:215px;
+  object-fit:cover;
+  object-position:top;
+  border-radius:10px;
+  box-shadow:0 12px 35px #26365d18;
+}
+
+.project-info{padding:23px 26px 26px}
+
+.project-link{
+  display:inline-flex;
+  margin-top:16px;
+  color:var(--blue);
+  font-size:11px;
+  font-weight:850;
+}
+
+.project-link:hover{color:var(--blue-dark)}
+
+/* SKILLS */
+.skills-panel{
+  padding:27px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:white;
+}
+
+.skill-list{display:flex;flex-wrap:wrap;gap:10px}
+
+.skill-list span{
+  padding:10px 14px;
+  background:#f1f5fc;
+  border:1px solid #e2eaf6;
+  border-radius:10px;
+  color:#344054;
+  font-size:11px;
+  font-weight:750;
+}
+
+/* CONTACT */
+.contact-panel{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:28px;
+  padding:42px;
+  background:var(--navy);
+  color:white;
+}
+
+.contact-panel h2{
+  margin-top:11px;
+  max-width:570px;
+  font-size:clamp(32px,4.6vw,51px);
+  line-height:1.12;
+  letter-spacing:-2px;
+}
+
+.contact-panel p{
+  max-width:540px;
+  margin-top:14px;
+  color:#c2cbe0;
+  font-size:12px;
+  line-height:1.9;
+}
+
+.contact-buttons{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-width:175px;
+}
+
+.contact-buttons .btn-secondary{
+  border-color:#34415e;
+  background:#182541;
+  color:white;
+}
+
+.contact-buttons .btn-secondary:hover{border-color:#8098ff}
+
+/* FOOTER */
+footer{
+  padding:27px 0 35px;
+  color:#7b8496;
+  font-size:10px;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.footer-inner strong{color:var(--ink)}
+.footer-links{display:flex;gap:17px}
+
+/* IMAGE LIGHTBOX */
+.lightbox{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+  background:rgba(9,15,30,.92);
+}
+
+.lightbox.open{display:flex}
+
+.lightbox img{
+  max-width:min(100%,1100px);
+  max-height:86vh;
+  object-fit:contain;
+  border-radius:10px;
+}
+
+.lightbox-close{
+  position:absolute;
+  top:18px;
+  right:20px;
+  width:44px;
+  height:44px;
+  border:1px solid #ffffff55;
+  border-radius:50%;
+  background:#ffffff15;
+  color:white;
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* SCROLL ANIMATIONS */
+.reveal{
+  opacity:0;
+  transform:translateY(23px);
+  transition:opacity .72s ease,transform .72s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{gap:38px}
+  .service-grid{grid-template-columns:repeat(2,1fr)}
+  .design-project{grid-template-columns:1fr}
+  .design-info{padding-bottom:22px}
+  .design-mosaic{grid-auto-rows:115px}
+}
+
+@media(max-width:700px){
+  body,button,a{cursor:auto}
+
+  .cursor-dot,.cursor-ring,.cursor-glow{display:none!important}
+
+  .portrait-wrap{animation:none}
+
+  .container{width:calc(100% - 32px)}
+  .nav-inner{min-height:68px}
+  .menu-toggle{display:block}
+  .nav-cta{display:none}
+
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:68px;
+    left:0;
+    right:0;
+    padding:20px 24px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:17px;
+    background:#f7f9ff;
+    border-bottom:1px solid var(--line);
+  }
+
+  .nav-links.open{display:flex}
+
+  .hero{
+    grid-template-columns:1fr;
+    min-height:0;
+    padding:62px 0 70px;
+    gap:42px;
+  }
+
+  h1{
+    font-size:clamp(45px,12vw,68px);
+    letter-spacing:-3px;
+  }
+
+  .portrait-wrap{
+    width:min(84%,350px);
+    justify-self:center;
+  }
+
+  section.content-section{padding:65px 0}
+  .section-heading{display:block}
+  .section-heading p{margin-top:15px}
+  .about-grid,.web-projects{grid-template-columns:1fr}
+  .facts{grid-template-columns:repeat(3,1fr)}
+
+  .design-mosaic{
+    grid-template-columns:repeat(3,1fr);
+    grid-auto-rows:95px;
+    gap:6px;
+    padding:10px;
+  }
+
+  .mosaic-item:nth-child(1),
+  .mosaic-item:nth-child(6){
+    grid-column:span 2;
+    grid-row:span 2;
+  }
+
+  .mosaic-item:nth-child(4),
+  .mosaic-item:nth-child(9){grid-column:span 1}
+
+  .contact-panel{
+    grid-template-columns:1fr;
+    padding:29px;
+  }
+
+  .contact-buttons{
+    flex-direction:row;
+    flex-wrap:wrap;
+  }
+
+  .contact-buttons .btn{flex:1 1 145px}
+
+  .footer-inner{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}
+
+@media(max-width:420px){
+  .service-grid{grid-template-columns:1fr 1fr;gap:9px}
+  .service-card{padding:17px}
+  .facts{gap:6px}
+  .fact{padding:10px}
+  .design-mosaic{grid-auto-rows:80px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+
+  .light-orb,.portrait-wrap,.loader-bar{animation:none!important}
+  .reveal{opacity:1;transform:none;transition:none}
+  .cursor-dot,.cursor-ring,.cursor-glow{display:none!important}
+  body,button,a{cursor:auto}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
-  <header class="nav">
-    <div class="container nav-inner">
+<!-- BLUE BACKGROUND -->
+<div class="background-effects" aria-hidden="true">
+  <div class="light-orb orb-one"></div>
+  <div class="light-orb orb-two"></div>
+  <div class="light-orb orb-three"></div>
+</div>
 
-      <a class="brand" href="#home" aria-label="Muhammad Ahsan home">
-        <span class="brand-mark">MA.</span>
-        <span>
-          Muhammad Ahsan
-          <small>DESIGNER · DEVELOPER</small>
-        </span>
-      </a>
-
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <a class="nav-cta" href="#contact">Let's talk ↗</a>
-
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="Open menu"
-        aria-expanded="false"
-      >☰</button>
-
+<!-- LOADER -->
+<div class="page-loader" id="pageLoader" aria-label="Loading portfolio">
+  <div class="loader-content">
+    <div class="loader-logo">MA<span>.</span></div>
+    <div class="loader-caption">Creative Portfolio</div>
+    <div class="loader-track">
+      <div class="loader-bar"></div>
     </div>
-  </header>
+  </div>
+</div>
 
-  <main>
+<!-- CUSTOM CURSOR -->
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
-    <!-- HERO -->
-    <section class="container hero" id="home">
+<!-- NAVIGATION -->
+<header class="nav">
+  <div class="container nav-inner">
 
+    <a class="brand" href="#home">
+      <span class="brand-mark">MA.</span>
+      <span>Muhammad Ahsan<small>DESIGNER · DEVELOPER</small></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="nav-cta" href="#contact">Let's talk ↗</a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="container hero" id="home">
+  <div>
+    <div class="availability"><i></i> Available for opportunities</div>
+
+    <h1>Creative ideas.<br>Thoughtful <span>design.</span></h1>
+
+    <p class="hero-copy">
+      I'm Muhammad Ahsan, a graphic designer and web developer interested
+      in creating clean visuals, modern websites and useful online
+      experiences for businesses.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">Explore my work ↗</a>
+      <a class="btn btn-secondary" href="#contact">Get in touch</a>
+    </div>
+
+    <div class="hero-meta">
+      <span>Graphic Design</span>
+      <span>Web Development</span>
+      <span>E-commerce</span>
+    </div>
+  </div>
+
+  <div class="portrait-wrap">
+    <div class="portrait">
+      <img src="Porfolio%20Picture.jpg" alt="Muhammad Ahsan" fetchpriority="high">
+    </div>
+
+    <div class="portrait-note">
       <div>
-        <div class="availability">
-          <i></i>
-          Available for opportunities
-        </div>
+        <strong>Muhammad Ahsan</strong>
+        <span>Creative Designer & Web Developer</span>
+      </div>
+      <b>Portfolio 2026</b>
+    </div>
+  </div>
+</section>
 
-        <h1>
-          Creative ideas.<br>
-          Thoughtful <span>design.</span>
-        </h1>
+<!-- ABOUT -->
+<section class="content-section" id="about">
+  <div class="container">
 
-        <p class="hero-copy">
-          I'm Muhammad Ahsan, a graphic designer and web developer interested
-          in creating clean visuals, modern websites and useful online
-          experiences for businesses.
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">A little about me</div>
+        <h2>Design meets<br><span>digital thinking.</span></h2>
+      </div>
+
+      <p>
+        I enjoy combining creativity and technology to make clear,
+        useful and attractive digital experiences.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-lead">
+        <h3>Hi, I'm Ahsan.<br>Good to have you here.</h3>
+        <p>
+          I'm building my skills in graphic design and web development
+          through practical projects. I enjoy learning, experimenting
+          with ideas and turning concepts into real work.
+        </p>
+      </div>
+
+      <div class="about-panel">
+        <p>
+          My interests include social media graphics, brand visuals,
+          responsive websites and e-commerce storefronts. I focus on
+          clean layouts, consistency and making each project easy to use.
         </p>
 
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#projects">Explore my work ↗</a>
-          <a class="btn btn-secondary" href="#contact">Get in touch</a>
-        </div>
+        <div class="facts">
+          <div class="fact">
+            <strong>Visuals</strong>
+            <span>Graphic design</span>
+          </div>
 
-        <div class="hero-meta">
-          <span>Graphic Design</span>
-          <span>Web Development</span>
-          <span>E-commerce</span>
+          <div class="fact">
+            <strong>Web</strong>
+            <span>Website layouts</span>
+          </div>
+
+          <div class="fact">
+            <strong>Stores</strong>
+            <span>E-commerce design</span>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="portrait-wrap">
+<!-- SERVICES -->
+<section class="content-section" id="services">
+  <div class="container">
 
-        <div class="portrait">
-          <img
-            src="Porfolio%20Picture.jpg"
-            alt="Muhammad Ahsan"
-            fetchpriority="high"
-          >
-        </div>
-
-        <div class="portrait-note">
-          <div>
-            <strong>Muhammad Ahsan</strong>
-            <span>Creative Designer & Web Developer</span>
-          </div>
-          <b>Portfolio 2026</b>
-        </div>
-
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">What I work on</div>
+        <h2>Creative and digital<br><span>services.</span></h2>
       </div>
-    </section>
 
-    <!-- ABOUT -->
-    <section class="content-section" id="about">
-      <div class="container">
+      <p>
+        A practical mix of design and web skills for brands,
+        small businesses and online stores.
+      </p>
+    </div>
 
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow">A little about me</div>
-            <h2>
-              Design meets<br>
-              <span>digital thinking.</span>
-            </h2>
-          </div>
+    <div class="service-grid">
+      <article class="service-card">
+        <div class="service-icon">✳</div>
+        <h3>Graphic Design</h3>
+        <p>Social media posts, promotional graphics and visual content.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">⌘</div>
+        <h3>Web Development</h3>
+        <p>Responsive websites with clear layouts and useful interactions.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">▤</div>
+        <h3>Shopify Design</h3>
+        <p>Storefront presentation, product layouts and shopping experiences.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">↗</div>
+        <h3>E-commerce</h3>
+        <p>Digital storefronts that help businesses present products online.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="content-section" id="projects">
+  <div class="container">
+
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">Selected work</div>
+        <h2>Projects &<br><span>creative work.</span></h2>
+      </div>
+
+      <p>
+        A look at selected graphic design work, website concepts
+        and e-commerce projects.
+      </p>
+    </div>
+
+    <div class="projects-wrap">
+
+      <!-- GRAPHIC DESIGN COLLECTION -->
+      <article class="project-card design-project">
+
+        <div class="design-info">
+          <span class="project-type">Graphic design collection</span>
+          <h3>Visual Design Showcase</h3>
 
           <p>
-            I enjoy combining creativity and technology to make clear,
-            useful and attractive digital experiences.
+            A collection of social media creatives, promotional designs
+            and visual experiments. All design images are grouped
+            together here as one project instead of being displayed
+            in a separate gallery.
           </p>
-        </div>
 
-        <div class="about-grid">
-
-          <div class="about-lead">
-            <h3>
-              Hi, I'm Ahsan.<br>
-              Good to have you here.
-            </h3>
-
-            <p>
-              I'm building my skills in graphic design and web development
-              through practical projects. I enjoy learning, experimenting
-              with ideas and turning concepts into real work.
-            </p>
-          </div>
-
-          <div class="about-panel">
-
-            <p>
-              My interests include social media graphics, brand visuals,
-              responsive websites and e-commerce storefronts. I focus on
-              clean layouts, consistency and making each project easy to use.
-            </p>
-
-            <div class="facts">
-              <div class="fact">
-                <strong>Visuals</strong>
-                <span>Graphic design</span>
-              </div>
-
-              <div class="fact">
-                <strong>Web</strong>
-                <span>Website layouts</span>
-              </div>
-
-              <div class="fact">
-                <strong>Stores</strong>
-                <span>E-commerce design</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="content-section" id="services">
-      <div class="container">
-
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow">What I work on</div>
-            <h2>
-              Creative and digital<br>
-              <span>services.</span>
-            </h2>
-          </div>
-
-          <p>
-            A practical mix of design and web skills for brands,
-            small businesses and online stores.
-          </p>
-        </div>
-
-        <div class="service-grid">
-
-          <article class="service-card">
-            <div class="service-icon">✳</div>
-            <h3>Graphic Design</h3>
-            <p>Social media posts, promotional graphics and visual content.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">⌘</div>
-            <h3>Web Development</h3>
-            <p>Responsive websites with clear layouts and useful interactions.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">▤</div>
-            <h3>Shopify Design</h3>
-            <p>Storefront presentation, product layouts and shopping experiences.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">↗</div>
-            <h3>E-commerce</h3>
-            <p>Digital storefronts that help businesses present products online.</p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="content-section" id="projects">
-      <div class="container">
-
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow">Selected work</div>
-            <h2>
-              Projects &<br>
-              <span>creative work.</span>
-            </h2>
-          </div>
-
-          <p>
-            A look at selected graphic design work, website concepts
-            and e-commerce projects.
-          </p>
-        </div>
-
-        <div class="projects-wrap">
-
-          <!-- GRAPHIC DESIGN COLLECTION -->
-          <article class="project-card design-project">
-
-            <div class="design-info">
-
-              <span class="project-type">
-                Graphic design collection
-              </span>
-
-              <h3>Visual Design Showcase</h3>
-
-              <p>
-                A collection of social media creatives, promotional designs
-                and visual experiments. All design images are grouped
-                together here as one project instead of being displayed
-                in a separate gallery.
-              </p>
-
-              <div class="tags">
-                <span>Canva</span>
-                <span>Social Media</span>
-                <span>Visual Design</span>
-                <span>Creative Content</span>
-              </div>
-
-            </div>
-
-            <!-- ALL DESIGN IMAGES TOGETHER -->
-            <div class="design-mosaic" aria-label="Graphic design project previews">
-
-              <button class="mosaic-item" data-image="image 1.jpeg" aria-label="Open design preview 1">
-                <img src="image%201.jpeg" alt="Graphic design preview 1" loading="lazy">
-              </button>
-
-              <button class="mosaic-item" data-image="image 2.jpeg" aria-label="Open design preview 2">
-                <img src="image%202.jpeg" alt="Graphic design preview 2" loading="lazy">
-              </button>
-
-              <button class="mosaic-item" data-image="image 3.jpeg" aria-label="Open design preview 3">
-                <img src="image%203.jpeg" alt="Graphic design preview 3" loading="lazy">
-              </button>
-
-              <button class="mosaic-item" data-image="image 4.jpeg" aria-label="Open design preview 4">
-                <img src="image%204.jpeg" alt="Graphic design preview 4" loading="lazy">
-              </button>
-
-              <button class="mosaic-item" data-image="image 5.jpeg" aria-label="Open design preview 5">
-                <img src="image%205.jpeg" alt="Graphic design preview 5" loading="lazy">
-              </button>
-
-              <button class="mosaic-item" data-image="image 6.jpeg" aria-label="Open design preview 6">
-                <img src="image%206.jpeg" alt="Graphic design preview 6" loading="lazy">
-              </button>
-
-              <button class="mosaic-item" data-image="image 7.jpeg" aria-label="Open design preview 7">
-                <img src="image%207.jpeg" alt="Graphic design preview 7" loading="lazy">
-              </button>
-
-              <button class="mosaic-item" data-image="image 8.jpeg" aria-label="Open design preview 8">
-                <img src="image%208.jpeg" alt="Graphic design preview 8" loading="lazy">
-              </button>
-
-              <button class="mosaic-item" data-image="image 9.jpeg" aria-label="Open design preview 9">
-                <img src="image%209.jpeg" alt="Graphic design preview 9" loading="lazy">
-              </button>
-
-              <button class="mosaic-item" data-image="image 10.jpeg" aria-label="Open design preview 10">
-                <img src="image%2010.jpeg" alt="Graphic design preview 10" loading="lazy">
-              </button>
-
-              <button class="mosaic-item" data-image="image 12.jpeg" aria-label="Open design preview 12">
-                <img src="image%2012.jpeg" alt="Graphic design preview 12" loading="lazy">
-              </button>
-
-              <button class="mosaic-item" data-image="image 13.jpeg" aria-label="Open design preview 13">
-                <img src="image%2013.jpeg" alt="Graphic design preview 13" loading="lazy">
-              </button>
-
-            </div>
-          </article>
-
-          <!-- WEBSITE PROJECTS -->
-          <div class="web-projects">
-
-            <!-- RESTAURANT WEBSITE -->
-            <article class="project-card">
-
-              <div
-                class="restaurant-preview"
-                role="img"
-                aria-label="Spice Courtyard restaurant website concept preview"
-              >
-
-                <div class="restaurant-sheet">
-                  <small>WELCOME TO</small>
-                  <h4>SPICE<br>COURTYARD</h4>
-                  <p>Authentic Halal Cuisine</p>
-                  <span class="restaurant-cta">EXPLORE OUR MENU</span>
-                </div>
-
-              </div>
-
-              <div class="project-info">
-
-                <span class="project-type">
-                  Restaurant Website Concept
-                </span>
-
-                <h3>Spice Courtyard Concept</h3>
-
-                <p>
-                  A restaurant website concept with a refined food-focused
-                  visual identity, menu presentation and responsive layout.
-                </p>
-
-                <div class="tags">
-                  <span>HTML</span>
-                  <span>CSS</span>
-                  <span>Responsive UI</span>
-                </div>
-
-                <a
-                  class="project-link"
-                  href="https://codewithsadee.github.io/grilli/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View Website ↗
-                </a>
-
-              </div>
-            </article>
-
-            <!-- SHOPIFY STORE -->
-            <article class="project-card">
-
-              <div class="web-preview shop-preview">
-                <img
-                  src="shopify-store.jpg"
-                  alt="Shopows online store preview"
-                  loading="lazy"
-                >
-              </div>
-
-              <div class="project-info">
-
-                <span class="project-type">
-                  E-commerce · Shopify
-                </span>
-
-                <h3>Shopows Store</h3>
-
-                <p>
-                  An online storefront focused on clear product presentation
-                  and a straightforward shopping experience.
-                </p>
-
-                <div class="tags">
-                  <span>Shopify</span>
-                  <span>E-commerce</span>
-                  <span>Store Design</span>
-                </div>
-
-                <a
-                  class="project-link"
-                  href="https://shopows.pk/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Visit Shopows ↗
-                </a>
-
-              </div>
-            </article>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="content-section" id="skills">
-      <div class="container">
-
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow">My toolkit</div>
-            <h2>
-              Skills I'm<br>
-              <span>developing.</span>
-            </h2>
-          </div>
-
-          <p>
-            Tools and skills I use across creative projects and website work.
-          </p>
-        </div>
-
-        <div class="skills-panel">
-          <div class="skill-list">
-            <span>Graphic Design</span>
-            <span>Web Development</span>
-            <span>Shopify</span>
-            <span>E-commerce</span>
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
+          <div class="tags">
             <span>Canva</span>
-            <span>Responsive Design</span>
-            <span>Social Media Design</span>
-            <span>Website Layouts</span>
-            <span>UI Design</span>
+            <span>Social Media</span>
+            <span>Visual Design</span>
+            <span>Creative Content</span>
           </div>
         </div>
 
-      </div>
-    </section>
+        <div class="design-mosaic">
 
-    <!-- CONTACT -->
-    <section class="content-section" id="contact">
-      <div class="container">
+          <button class="mosaic-item" data-image="image 1.jpeg" aria-label="Open design 1">
+            <img src="image%201.jpeg" alt="Graphic design preview 1" loading="lazy">
+          </button>
 
-        <div class="contact-panel">
+          <button class="mosaic-item" data-image="image 2.jpeg" aria-label="Open design 2">
+            <img src="image%202.jpeg" alt="Graphic design preview 2" loading="lazy">
+          </button>
 
-          <div>
-            <div class="eyebrow" style="color:#9fb2ff">
-              Have a project in mind?
+          <button class="mosaic-item" data-image="image 3.jpeg" aria-label="Open design 3">
+            <img src="image%203.jpeg" alt="Graphic design preview 3" loading="lazy">
+          </button>
+
+          <button class="mosaic-item" data-image="image 4.jpeg" aria-label="Open design 4">
+            <img src="image%204.jpeg" alt="Graphic design preview 4" loading="lazy">
+          </button>
+
+          <button class="mosaic-item" data-image="image 5.jpeg" aria-label="Open design 5">
+            <img src="image%205.jpeg" alt="Graphic design preview 5" loading="lazy">
+          </button>
+
+          <button class="mosaic-item" data-image="image 6.jpeg" aria-label="Open design 6">
+            <img src="image%206.jpeg" alt="Graphic design preview 6" loading="lazy">
+          </button>
+
+          <button class="mosaic-item" data-image="image 7.jpeg" aria-label="Open design 7">
+            <img src="image%207.jpeg" alt="Graphic design preview 7" loading="lazy">
+          </button>
+
+          <button class="mosaic-item" data-image="image 8.jpeg" aria-label="Open design 8">
+            <img src="image%208.jpeg" alt="Graphic design preview 8" loading="lazy">
+          </button>
+
+          <button class="mosaic-item" data-image="image 9.jpeg" aria-label="Open design 9">
+            <img src="image%209.jpeg" alt="Graphic design preview 9" loading="lazy">
+          </button>
+
+          <button class="mosaic-item" data-image="image 10.jpeg" aria-label="Open design 10">
+            <img src="image%2010.jpeg" alt="Graphic design preview 10" loading="lazy">
+          </button>
+
+          <button class="mosaic-item" data-image="image 12.jpeg" aria-label="Open design 12">
+            <img src="image%2012.jpeg" alt="Graphic design preview 12" loading="lazy">
+          </button>
+
+          <button class="mosaic-item" data-image="image 13.jpeg" aria-label="Open design 13">
+            <img src="image%2013.jpeg" alt="Graphic design preview 13" loading="lazy">
+          </button>
+
+        </div>
+      </article>
+
+      <!-- WEBSITE PROJECTS -->
+      <div class="web-projects">
+
+        <!-- RESTAURANT WEBSITE -->
+        <article class="project-card">
+
+          <div class="restaurant-preview">
+            <div class="restaurant-sheet">
+              <small>WELCOME TO</small>
+              <h4>SPICE<br>COURTYARD</h4>
+              <p>Authentic Halal Cuisine</p>
+              <span class="restaurant-cta">EXPLORE OUR MENU</span>
             </div>
-
-            <h2>
-              Let's make something<br>
-              useful together.
-            </h2>
-
-            <p>
-              Have an idea, need a design, or want to discuss a website?
-              Send me a message and tell me what you're planning.
-            </p>
           </div>
 
-          <div class="contact-buttons">
+          <div class="project-info">
+            <span class="project-type">Restaurant Website Concept</span>
+            <h3>Spice Courtyard Concept</h3>
+
+            <p>
+              A restaurant website concept with a refined food-focused
+              visual identity, menu presentation and responsive layout.
+            </p>
+
+            <div class="tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>Responsive UI</span>
+            </div>
 
             <a
-              class="btn btn-primary"
-              href="mailto:mhdxahsan@gmail.com"
-            >
-              Email me ↗
-            </a>
-
-            <a
-              class="btn btn-secondary"
-              href="https://wa.me/923319333080"
+              class="project-link"
+              href="https://codewithsadee.github.io/grilli/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              WhatsApp me ↗
+              View Website ↗
             </a>
+          </div>
+        </article>
 
+        <!-- SHOPIFY STORE -->
+        <article class="project-card">
+
+          <div class="web-preview shop-preview">
+            <img src="shopify-store.jpg" alt="Shopows online store preview" loading="lazy">
           </div>
 
-        </div>
+          <div class="project-info">
+            <span class="project-type">E-commerce · Shopify</span>
+            <h3>Shopows Store</h3>
+
+            <p>
+              An online storefront focused on clear product presentation
+              and a straightforward shopping experience.
+            </p>
+
+            <div class="tags">
+              <span>Shopify</span>
+              <span>E-commerce</span>
+              <span>Store Design</span>
+            </div>
+
+            <a
+              class="project-link"
+              href="https://shopows.pk/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit Shopows ↗
+            </a>
+          </div>
+        </article>
+
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-  </main>
+<!-- SKILLS -->
+<section class="content-section" id="skills">
+  <div class="container">
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container footer-inner">
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">My toolkit</div>
+        <h2>Skills I'm<br><span>developing.</span></h2>
+      </div>
 
-      <strong>
-        Muhammad Ahsan © <span id="year"></span>
-      </strong>
+      <p>Tools and skills I use across creative projects and website work.</p>
+    </div>
 
-      <div class="footer-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="mailto:mhdxahsan@gmail.com">Email</a>
+    <div class="skills-panel">
+      <div class="skill-list">
+        <span>Graphic Design</span>
+        <span>Web Development</span>
+        <span>Shopify</span>
+        <span>E-commerce</span>
+        <span>HTML5</span>
+        <span>CSS3</span>
+        <span>JavaScript</span>
+        <span>Canva</span>
+        <span>Responsive Design</span>
+        <span>Social Media Design</span>
+        <span>Website Layouts</span>
+        <span>UI Design</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="content-section" id="contact">
+  <div class="container">
+
+    <div class="contact-panel">
+
+      <div>
+        <div class="eyebrow" style="color:#9fb2ff">
+          Have a project in mind?
+        </div>
+
+        <h2>Let's make something<br>useful together.</h2>
+
+        <p>
+          Have an idea, need a design, or want to discuss a website?
+          Send me a message and tell me what you're planning.
+        </p>
+      </div>
+
+      <div class="contact-buttons">
+        <a class="btn btn-primary" href="mailto:mhdxahsan@gmail.com">
+          Email me ↗
+        </a>
 
         <a
+          class="btn btn-secondary"
           href="https://wa.me/923319333080"
           target="_blank"
           rel="noopener noreferrer"
         >
-          WhatsApp
+          WhatsApp me ↗
         </a>
       </div>
 
-      <span>Designed with care.</span>
-
     </div>
-  </footer>
-
-  <!-- IMAGE PREVIEW -->
-  <div
-    class="lightbox"
-    id="lightbox"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Design preview"
-  >
-
-    <button
-      class="lightbox-close"
-      id="lightboxClose"
-      aria-label="Close preview"
-    >
-      ×
-    </button>
-
-    <img
-      id="lightboxImage"
-      src=""
-      alt="Expanded design preview"
-    >
-
   </div>
+</section>
 
-  <script>
-    /* MOBILE NAVIGATION */
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
+</main>
 
-    menuToggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
 
-      menuToggle.setAttribute('aria-expanded', String(isOpen));
-      menuToggle.textContent = isOpen ? '×' : '☰';
+    <strong>Muhammad Ahsan © <span id="year"></span></strong>
+
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="mailto:mhdxahsan@gmail.com">Email</a>
+      <a href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+
+    <span>Designed with care.</span>
+  </div>
+</footer>
+
+<!-- IMAGE PREVIEW -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">×</button>
+  <img id="lightboxImage" src="" alt="Expanded design preview">
+</div>
+
+<script>
+"use strict";
+
+/* LOADING SCREEN */
+const pageLoader = document.getElementById("pageLoader");
+
+function hideLoader(){
+  if(pageLoader) pageLoader.classList.add("done");
+}
+
+window.addEventListener("load",()=>setTimeout(hideLoader,420));
+setTimeout(hideLoader,2400);
+
+/* CURRENT YEAR */
+document.getElementById("year").textContent=new Date().getFullYear();
+
+/* MOBILE NAVIGATION */
+const menuToggle=document.getElementById("menuToggle");
+const navLinks=document.getElementById("navLinks");
+
+menuToggle.addEventListener("click",()=>{
+  const isOpen=navLinks.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded",String(isOpen));
+  menuToggle.textContent=isOpen?"×":"☰";
+});
+
+navLinks.querySelectorAll("a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded","false");
+    menuToggle.textContent="☰";
+  });
+});
+
+/* CUSTOM CURSOR */
+const cursorDot=document.getElementById("cursorDot");
+const cursorRing=document.getElementById("cursorRing");
+const cursorGlow=document.getElementById("cursorGlow");
+
+const finePointer=window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+
+if(finePointer){
+  let mouseX=window.innerWidth/2;
+  let mouseY=window.innerHeight/2;
+  let ringX=mouseX,ringY=mouseY;
+  let glowX=mouseX,glowY=mouseY;
+
+  document.addEventListener("mousemove",event=>{
+    mouseX=event.clientX;
+    mouseY=event.clientY;
+
+    cursorDot.style.left=mouseX+"px";
+    cursorDot.style.top=mouseY+"px";
+  });
+
+  function animateCursor(){
+    ringX+=(mouseX-ringX)*.19;
+    ringY+=(mouseY-ringY)*.19;
+    glowX+=(mouseX-glowX)*.075;
+    glowY+=(mouseY-glowY)*.075;
+
+    cursorRing.style.left=ringX+"px";
+    cursorRing.style.top=ringY+"px";
+
+    cursorGlow.style.left=glowX+"px";
+    cursorGlow.style.top=glowY+"px";
+
+    requestAnimationFrame(animateCursor);
+  }
+
+  animateCursor();
+
+  document.querySelectorAll("a,button,.project-card,.service-card").forEach(item=>{
+    item.addEventListener("mouseenter",()=>{
+      document.body.classList.add("cursor-hover");
     });
 
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.textContent = '☰';
-      });
+    item.addEventListener("mouseleave",()=>{
+      document.body.classList.remove("cursor-hover");
     });
+  });
+}
 
-    /* CURRENT YEAR */
-    document.getElementById('year').textContent =
-      new Date().getFullYear();
+/* SCROLL REVEAL ANIMATIONS */
+const revealTargets=document.querySelectorAll(
+  ".section-heading,.about-lead,.about-panel,.service-card,.project-card,.skills-panel,.contact-panel"
+);
 
-    /* IMAGE LIGHTBOX */
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
+revealTargets.forEach(element=>element.classList.add("reveal"));
 
-    function closeLightbox() {
-      lightbox.classList.remove('open');
-      lightboxImage.src = '';
-    }
-
-    document.querySelectorAll('.mosaic-item').forEach(item => {
-      item.addEventListener('click', () => {
-        lightboxImage.src = item.dataset.image;
-        lightbox.classList.add('open');
-      });
-    });
-
-    document.getElementById('lightboxClose')
-      .addEventListener('click', closeLightbox);
-
-    lightbox.addEventListener('click', event => {
-      if (event.target === lightbox) {
-        closeLightbox();
+if("IntersectionObserver" in window){
+  const revealObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
       }
     });
+  },{threshold:.12});
 
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') {
-        closeLightbox();
-      }
-    });
-  </script>
+  revealTargets.forEach(element=>revealObserver.observe(element));
+}else{
+  revealTargets.forEach(element=>element.classList.add("visible"));
+}
+
+/* IMAGE LIGHTBOX */
+const lightbox=document.getElementById("lightbox");
+const lightboxImage=document.getElementById("lightboxImage");
+
+function closeLightbox(){
+  lightbox.classList.remove("open");
+  lightboxImage.src="";
+}
+
+document.querySelectorAll(".mosaic-item").forEach(item=>{
+  item.addEventListener("click",()=>{
+    lightboxImage.src=item.dataset.image;
+    lightbox.classList.add("open");
+  });
+});
+
+document.getElementById("lightboxClose").addEventListener("click",closeLightbox);
+
+lightbox.addEventListener("click",event=>{
+  if(event.target===lightbox) closeLightbox();
+});
+
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape") closeLightbox();
+});
+</script>
 
 </body>
 </html>
