@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#edf3ff" />
-  <meta name="description" content="Muhammad Ahsan — Graphic Designer and Web Developer." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#edf3ff">
+  <meta name="description" content="Muhammad Ahsan — Graphic Designer and Web Developer.">
   <title>Muhammad Ahsan | Portfolio</title>
+
   <style>
     :root {
       --bg: #edf3ff;
@@ -23,7 +24,11 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 86px;
+    }
 
     body {
       background: radial-gradient(ellipse at 85% 0%, rgba(205,220,255,.42), transparent 38%), var(--bg);
@@ -35,7 +40,11 @@
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; }
-    .container { width: min(var(--max), calc(100% - 44px)); margin: 0 auto; }
+
+    .container {
+      width: min(var(--max), calc(100% - 44px));
+      margin: 0 auto;
+    }
 
     /* NAVIGATION */
     .nav {
@@ -202,8 +211,15 @@
       margin-top: 30px;
     }
 
-    .btn { min-height: 46px; padding: 12px 17px; }
-    .btn-primary { background: var(--blue); color: white; }
+    .btn {
+      min-height: 46px;
+      padding: 12px 17px;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: white;
+    }
 
     .btn-secondary {
       background: white;
@@ -280,9 +296,21 @@
       padding: 15px 5px 2px;
     }
 
-    .portrait-note strong { display: block; font-size: 12px; }
-    .portrait-note span { display: block; color: var(--muted); font-size: 10px; }
-    .portrait-note b { color: var(--blue); font-size: 11px; }
+    .portrait-note strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .portrait-note span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .portrait-note b {
+      color: var(--blue);
+      font-size: 11px;
+    }
 
     /* GENERAL SECTIONS */
     section.content-section { padding: 82px 0; }
@@ -318,7 +346,8 @@
       gap: 22px;
     }
 
-    .about-lead, .about-panel, .service-card, .project-card, .contact-panel {
+    .about-lead, .about-panel, .service-card,
+    .project-card, .contact-panel {
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -370,8 +399,16 @@
       border-radius: 13px;
     }
 
-    .fact strong { display: block; color: var(--blue); font-size: 13px; }
-    .fact span { color: var(--muted); font-size: 9px; }
+    .fact strong {
+      display: block;
+      color: var(--blue);
+      font-size: 13px;
+    }
+
+    .fact span {
+      color: var(--muted);
+      font-size: 9px;
+    }
 
     /* SERVICES */
     .service-grid {
@@ -403,7 +440,10 @@
       font-weight: 800;
     }
 
-    .service-card h3 { margin-top: 18px; font-size: 14px; }
+    .service-card h3 {
+      margin-top: 18px;
+      font-size: 14px;
+    }
 
     .service-card p {
       margin-top: 8px;
@@ -413,7 +453,10 @@
     }
 
     /* PROJECTS */
-    .projects-wrap { display: grid; gap: 18px; }
+    .projects-wrap {
+      display: grid;
+      gap: 18px;
+    }
 
     .project-card {
       overflow: hidden;
@@ -470,7 +513,7 @@
       font-weight: 750;
     }
 
-    /* GRAPHIC DESIGN IMAGE COLLECTION */
+    /* GRAPHIC DESIGN COLLECTION */
     .design-mosaic {
       display: grid;
       grid-template-columns: repeat(4,1fr);
@@ -507,7 +550,9 @@
       transition: transform .35s;
     }
 
-    .mosaic-item:hover img { transform: scale(1.045); }
+    .mosaic-item:hover img {
+      transform: scale(1.045);
+    }
 
     .mosaic-item:focus-visible {
       outline: 3px solid var(--blue);
@@ -529,68 +574,71 @@
       background: linear-gradient(135deg,#e3ebff,#f2f6ff);
     }
 
-    .browser {
-      width: 100%;
-      max-width: 430px;
-      overflow: hidden;
-      border: 1px solid #d9deeb;
-      border-radius: 12px;
-      background: white;
-      box-shadow: 0 12px 35px #26365d18;
-    }
-
-    .browser-bar {
-      height: 25px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 0 10px;
-      background: #f2f6fd;
-      border-bottom: 1px solid #e8eaf0;
-    }
-
-    .browser-bar i {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #c5ccda;
-    }
-
-    .browser-content {
-      min-height: 155px;
+    /* SPICE COURTYARD RESTAURANT PREVIEW */
+    .restaurant-preview {
+      min-height: 245px;
       display: grid;
-      grid-template-columns: 1fr .8fr;
-      gap: 12px;
-      padding: 19px;
+      place-items: center;
+      padding: 24px;
+      background: radial-gradient(
+        ellipse at center,
+        #765638 0%,
+        #3e3028 58%,
+        #202b43 100%
+      );
+    }
+
+    .restaurant-sheet {
+      width: min(100%,390px);
+      min-height: 195px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      padding: 22px 16px;
+      border: 1px solid rgba(226,194,145,.78);
+      outline: 1px solid rgba(226,194,145,.25);
+      outline-offset: 6px;
+      color: #f8eddb;
+      text-align: center;
     }
 
-    .browser-lines b {
-      display: block;
-      width: 78%;
-      height: 9px;
-      margin-bottom: 9px;
-      border-radius: 5px;
-      background: #26365d;
+    .restaurant-sheet small {
+      color: #e5c18f;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 3px;
     }
 
-    .browser-lines span {
-      display: block;
-      width: 94%;
-      height: 5px;
-      margin-top: 6px;
-      border-radius: 4px;
-      background: #dce1ec;
+    .restaurant-sheet h4 {
+      margin-top: 10px;
+      font-family: Georgia,serif;
+      font-size: clamp(25px,4vw,39px);
+      font-weight: 500;
+      letter-spacing: 3px;
+      line-height: 1.08;
     }
 
-    .browser-lines span:last-child { width: 67%; }
-
-    .browser-art {
-      height: 118px;
-      border-radius: 8px;
-      background: linear-gradient(145deg,#15213c,#315cf5);
+    .restaurant-sheet p {
+      margin-top: 10px;
+      color: #ead5b7;
+      font-family: Georgia,serif;
+      font-size: 11px;
+      font-style: italic;
+      letter-spacing: 1px;
     }
 
+    .restaurant-sheet .restaurant-cta {
+      margin-top: 17px;
+      padding: 7px 12px;
+      border: 1px solid #d8b27e;
+      color: #f4d9b1;
+      font-size: 8px;
+      font-weight: 850;
+      letter-spacing: 1.8px;
+    }
+
+    /* SHOPIFY PROJECT */
     .shop-preview { background: #eaf0fa; }
 
     .shop-preview img {
@@ -602,7 +650,9 @@
       box-shadow: 0 12px 35px #26365d18;
     }
 
-    .project-info { padding: 23px 26px 26px; }
+    .project-info {
+      padding: 23px 26px 26px;
+    }
 
     .project-link {
       display: inline-flex;
@@ -638,7 +688,7 @@
       font-weight: 750;
     }
 
-    /* CONTACT + FOOTER */
+    /* CONTACT */
     .contact-panel {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -678,8 +728,11 @@
       color: white;
     }
 
-    .contact-buttons .btn-secondary:hover { border-color: #8098ff; }
+    .contact-buttons .btn-secondary:hover {
+      border-color: #8098ff;
+    }
 
+    /* FOOTER */
     footer {
       padding: 27px 0 35px;
       color: #7b8496;
@@ -695,10 +748,15 @@
     }
 
     .footer-inner strong { color: var(--ink); }
-    .footer-links { display: flex; gap: 17px; }
+
+    .footer-links {
+      display: flex;
+      gap: 17px;
+    }
+
     .footer-links a:hover { color: var(--blue); }
 
-    /* IMAGE LIGHTBOX */
+    /* IMAGE PREVIEW */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -736,15 +794,25 @@
     /* RESPONSIVE */
     @media (max-width: 900px) {
       .hero { gap: 38px; }
-      .service-grid { grid-template-columns: repeat(2,1fr); }
-      .design-project { grid-template-columns: 1fr; }
+
+      .service-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .design-project {
+        grid-template-columns: 1fr;
+      }
+
       .design-info { padding-bottom: 22px; }
+
       .design-mosaic { grid-auto-rows: 115px; }
     }
 
     @media (max-width: 700px) {
       .container { width: calc(100% - 32px); }
+
       .nav-inner { min-height: 68px; }
+
       .menu-toggle { display: block; }
       .nav-cta { display: none; }
 
@@ -782,9 +850,14 @@
       }
 
       section.content-section { padding: 65px 0; }
+
       .section-heading { display: block; }
       .section-heading p { margin-top: 15px; }
-      .about-grid, .web-projects { grid-template-columns: 1fr; }
+
+      .about-grid, .web-projects {
+        grid-template-columns: 1fr;
+      }
+
       .facts { grid-template-columns: repeat(3,1fr); }
 
       .design-mosaic {
@@ -815,12 +888,22 @@
         flex-wrap: wrap;
       }
 
-      .contact-buttons .btn { flex: 1 1 145px; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .contact-buttons .btn {
+        flex: 1 1 145px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
     }
 
     @media (max-width: 420px) {
-      .service-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+      .service-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+      }
+
       .service-card { padding: 17px; }
       .facts { gap: 6px; }
       .fact { padding: 10px; }
@@ -828,7 +911,9 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,*::before,*::after {
+      *,
+      *::before,
+      *::after {
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
       }
@@ -841,9 +926,13 @@
   <!-- NAVIGATION -->
   <header class="nav">
     <div class="container nav-inner">
+
       <a class="brand" href="#home" aria-label="Muhammad Ahsan home">
         <span class="brand-mark">MA.</span>
-        <span>Muhammad Ahsan<small>DESIGNER · DEVELOPER</small></span>
+        <span>
+          Muhammad Ahsan
+          <small>DESIGNER · DEVELOPER</small>
+        </span>
       </a>
 
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
@@ -855,7 +944,14 @@
       </nav>
 
       <a class="nav-cta" href="#contact">Let's talk ↗</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >☰</button>
+
     </div>
   </header>
 
@@ -863,10 +959,17 @@
 
     <!-- HERO -->
     <section class="container hero" id="home">
-      <div>
-        <div class="availability"><i></i> Available for opportunities</div>
 
-        <h1>Creative ideas.<br />Thoughtful <span>design.</span></h1>
+      <div>
+        <div class="availability">
+          <i></i>
+          Available for opportunities
+        </div>
+
+        <h1>
+          Creative ideas.<br>
+          Thoughtful <span>design.</span>
+        </h1>
 
         <p class="hero-copy">
           I'm Muhammad Ahsan, a graphic designer and web developer interested
@@ -887,8 +990,13 @@
       </div>
 
       <div class="portrait-wrap">
+
         <div class="portrait">
-          <img src="Porfolio%20Picture.jpg" alt="Muhammad Ahsan" fetchpriority="high" />
+          <img
+            src="Porfolio%20Picture.jpg"
+            alt="Muhammad Ahsan"
+            fetchpriority="high"
+          >
         </div>
 
         <div class="portrait-note">
@@ -898,17 +1006,23 @@
           </div>
           <b>Portfolio 2026</b>
         </div>
+
       </div>
     </section>
 
     <!-- ABOUT -->
     <section class="content-section" id="about">
       <div class="container">
+
         <div class="section-heading">
           <div>
             <div class="eyebrow">A little about me</div>
-            <h2>Design meets<br /><span>digital thinking.</span></h2>
+            <h2>
+              Design meets<br>
+              <span>digital thinking.</span>
+            </h2>
           </div>
+
           <p>
             I enjoy combining creativity and technology to make clear,
             useful and attractive digital experiences.
@@ -916,8 +1030,13 @@
         </div>
 
         <div class="about-grid">
+
           <div class="about-lead">
-            <h3>Hi, I'm Ahsan.<br />Good to have you here.</h3>
+            <h3>
+              Hi, I'm Ahsan.<br>
+              Good to have you here.
+            </h3>
+
             <p>
               I'm building my skills in graphic design and web development
               through practical projects. I enjoy learning, experimenting
@@ -926,10 +1045,11 @@
           </div>
 
           <div class="about-panel">
+
             <p>
               My interests include social media graphics, brand visuals,
-              responsive websites and e-commerce storefronts. I focus on clean
-              layouts, consistency and making each project easy to use.
+              responsive websites and e-commerce storefronts. I focus on
+              clean layouts, consistency and making each project easy to use.
             </p>
 
             <div class="facts">
@@ -937,15 +1057,18 @@
                 <strong>Visuals</strong>
                 <span>Graphic design</span>
               </div>
+
               <div class="fact">
                 <strong>Web</strong>
                 <span>Website layouts</span>
               </div>
+
               <div class="fact">
                 <strong>Stores</strong>
                 <span>E-commerce design</span>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -954,18 +1077,24 @@
     <!-- SERVICES -->
     <section class="content-section" id="services">
       <div class="container">
+
         <div class="section-heading">
           <div>
             <div class="eyebrow">What I work on</div>
-            <h2>Creative and digital<br /><span>services.</span></h2>
+            <h2>
+              Creative and digital<br>
+              <span>services.</span>
+            </h2>
           </div>
+
           <p>
-            A practical mix of design and web skills for brands, small
-            businesses and online stores.
+            A practical mix of design and web skills for brands,
+            small businesses and online stores.
           </p>
         </div>
 
         <div class="service-grid">
+
           <article class="service-card">
             <div class="service-icon">✳</div>
             <h3>Graphic Design</h3>
@@ -989,6 +1118,7 @@
             <h3>E-commerce</h3>
             <p>Digital storefronts that help businesses present products online.</p>
           </article>
+
         </div>
       </div>
     </section>
@@ -996,24 +1126,35 @@
     <!-- PROJECTS -->
     <section class="content-section" id="projects">
       <div class="container">
+
         <div class="section-heading">
           <div>
             <div class="eyebrow">Selected work</div>
-            <h2>Projects &<br /><span>creative work.</span></h2>
+            <h2>
+              Projects &<br>
+              <span>creative work.</span>
+            </h2>
           </div>
+
           <p>
-            A look at selected graphic design work, website concepts and
-            e-commerce projects.
+            A look at selected graphic design work, website concepts
+            and e-commerce projects.
           </p>
         </div>
 
         <div class="projects-wrap">
 
-          <!-- ALL GRAPHIC DESIGN IMAGES IN ONE PROJECT -->
+          <!-- GRAPHIC DESIGN COLLECTION -->
           <article class="project-card design-project">
+
             <div class="design-info">
-              <span class="project-type">Graphic design collection</span>
+
+              <span class="project-type">
+                Graphic design collection
+              </span>
+
               <h3>Visual Design Showcase</h3>
+
               <p>
                 A collection of social media creatives, promotional designs
                 and visual experiments. All design images are grouped
@@ -1027,8 +1168,10 @@
                 <span>Visual Design</span>
                 <span>Creative Content</span>
               </div>
+
             </div>
 
+            <!-- ALL DESIGN IMAGES TOGETHER -->
             <div class="design-mosaic" aria-label="Graphic design project previews">
 
               <button class="mosaic-item" data-image="image 1.jpeg" aria-label="Open design preview 1">
@@ -1085,59 +1228,94 @@
           <!-- WEBSITE PROJECTS -->
           <div class="web-projects">
 
+            <!-- RESTAURANT WEBSITE -->
             <article class="project-card">
-              <div class="web-preview">
-                <div class="browser">
-                  <div class="browser-bar">
-                    <i></i><i></i><i></i>
-                  </div>
-                  <div class="browser-content">
-                    <div class="browser-lines">
-                      <b></b>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
-                    <div class="browser-art"></div>
-                  </div>
+
+              <div
+                class="restaurant-preview"
+                role="img"
+                aria-label="Spice Courtyard restaurant website concept preview"
+              >
+
+                <div class="restaurant-sheet">
+                  <small>WELCOME TO</small>
+                  <h4>SPICE<br>COURTYARD</h4>
+                  <p>Authentic Halal Cuisine</p>
+                  <span class="restaurant-cta">EXPLORE OUR MENU</span>
                 </div>
+
               </div>
 
               <div class="project-info">
-                <span class="project-type">Website concept</span>
-                <h3>Restaurant Website Concept</h3>
+
+                <span class="project-type">
+                  Restaurant Website Concept
+                </span>
+
+                <h3>Spice Courtyard Concept</h3>
+
                 <p>
-                  A restaurant website concept exploring a focused visual
-                  identity, menu presentation and responsive layout.
+                  A restaurant website concept with a refined food-focused
+                  visual identity, menu presentation and responsive layout.
                 </p>
+
                 <div class="tags">
                   <span>HTML</span>
                   <span>CSS</span>
                   <span>Responsive UI</span>
                 </div>
+
+                <a
+                  class="project-link"
+                  href="https://codewithsadee.github.io/grilli/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Website ↗
+                </a>
+
               </div>
             </article>
 
+            <!-- SHOPIFY STORE -->
             <article class="project-card">
+
               <div class="web-preview shop-preview">
-                <img src="shopify-store.jpg" alt="Shopows online store preview" loading="lazy">
+                <img
+                  src="shopify-store.jpg"
+                  alt="Shopows online store preview"
+                  loading="lazy"
+                >
               </div>
 
               <div class="project-info">
-                <span class="project-type">E-commerce · Shopify</span>
+
+                <span class="project-type">
+                  E-commerce · Shopify
+                </span>
+
                 <h3>Shopows Store</h3>
+
                 <p>
                   An online storefront focused on clear product presentation
                   and a straightforward shopping experience.
                 </p>
+
                 <div class="tags">
                   <span>Shopify</span>
                   <span>E-commerce</span>
                   <span>Store Design</span>
                 </div>
-                <a class="project-link" href="https://shopows.pk/" target="_blank" rel="noopener noreferrer">
+
+                <a
+                  class="project-link"
+                  href="https://shopows.pk/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Visit Shopows ↗
                 </a>
+
               </div>
             </article>
 
@@ -1149,12 +1327,19 @@
     <!-- SKILLS -->
     <section class="content-section" id="skills">
       <div class="container">
+
         <div class="section-heading">
           <div>
             <div class="eyebrow">My toolkit</div>
-            <h2>Skills I'm<br /><span>developing.</span></h2>
+            <h2>
+              Skills I'm<br>
+              <span>developing.</span>
+            </h2>
           </div>
-          <p>Tools and skills I use across creative projects and website work.</p>
+
+          <p>
+            Tools and skills I use across creative projects and website work.
+          </p>
         </div>
 
         <div class="skills-panel">
@@ -1173,16 +1358,26 @@
             <span>UI Design</span>
           </div>
         </div>
+
       </div>
     </section>
 
     <!-- CONTACT -->
     <section class="content-section" id="contact">
       <div class="container">
+
         <div class="contact-panel">
+
           <div>
-            <div class="eyebrow" style="color:#9fb2ff">Have a project in mind?</div>
-            <h2>Let's make something<br />useful together.</h2>
+            <div class="eyebrow" style="color:#9fb2ff">
+              Have a project in mind?
+            </div>
+
+            <h2>
+              Let's make something<br>
+              useful together.
+            </h2>
+
             <p>
               Have an idea, need a design, or want to discuss a website?
               Send me a message and tell me what you're planning.
@@ -1190,9 +1385,25 @@
           </div>
 
           <div class="contact-buttons">
-            <a class="btn btn-primary" href="mailto:mhdxahsan@gmail.com">Email me ↗</a>
-            <a class="btn btn-secondary" href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">WhatsApp me ↗</a>
+
+            <a
+              class="btn btn-primary"
+              href="mailto:mhdxahsan@gmail.com"
+            >
+              Email me ↗
+            </a>
+
+            <a
+              class="btn btn-secondary"
+              href="https://wa.me/923319333080"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp me ↗
+            </a>
+
           </div>
+
         </div>
       </div>
     </section>
@@ -1202,23 +1413,53 @@
   <!-- FOOTER -->
   <footer>
     <div class="container footer-inner">
-      <strong>Muhammad Ahsan © <span id="year"></span></strong>
+
+      <strong>
+        Muhammad Ahsan © <span id="year"></span>
+      </strong>
 
       <div class="footer-links">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="mailto:mhdxahsan@gmail.com">Email</a>
-        <a href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+
+        <a
+          href="https://wa.me/923319333080"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>
       </div>
 
       <span>Designed with care.</span>
+
     </div>
   </footer>
 
   <!-- IMAGE PREVIEW -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Design preview">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">×</button>
-    <img id="lightboxImage" src="" alt="Expanded design preview">
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Design preview"
+  >
+
+    <button
+      class="lightbox-close"
+      id="lightboxClose"
+      aria-label="Close preview"
+    >
+      ×
+    </button>
+
+    <img
+      id="lightboxImage"
+      src=""
+      alt="Expanded design preview"
+    >
+
   </div>
 
   <script>
@@ -1228,6 +1469,7 @@
 
     menuToggle.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('open');
+
       menuToggle.setAttribute('aria-expanded', String(isOpen));
       menuToggle.textContent = isOpen ? '×' : '☰';
     });
@@ -1241,7 +1483,8 @@
     });
 
     /* CURRENT YEAR */
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
 
     /* IMAGE LIGHTBOX */
     const lightbox = document.getElementById('lightbox');
@@ -1259,14 +1502,19 @@
       });
     });
 
-    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxClose')
+      .addEventListener('click', closeLightbox);
 
     lightbox.addEventListener('click', event => {
-      if (event.target === lightbox) closeLightbox();
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
     });
 
     document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') closeLightbox();
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
     });
   </script>
 
