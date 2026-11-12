@@ -1,915 +1,1274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090b12">
-<meta name="description" content="Muhammad Ahsan — Graphic Designer, Web Developer and Shopify Store Designer.">
-<title>Muhammad Ahsan | Creative Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#edf3ff" />
+  <meta name="description" content="Muhammad Ahsan — Graphic Designer and Web Developer." />
+  <title>Muhammad Ahsan | Portfolio</title>
+  <style>
+    :root {
+      --bg: #edf3ff;
+      --surface: #ffffff;
+      --ink: #111827;
+      --muted: #667085;
+      --line: #dce5f3;
+      --blue: #315cf5;
+      --blue-dark: #2446c7;
+      --navy: #101a32;
+      --soft-blue: #e3ebff;
+      --radius: 22px;
+      --max: 1160px;
+      --shadow: 0 18px 55px rgba(18, 31, 66, .08);
+    }
 
-<style>
-:root {
-  --bg:#090b12;
-  --card:#111725;
-  --card2:#171e2d;
-  --text:#f5f7ff;
-  --muted:#a1aabd;
-  --line:rgba(183,197,225,.16);
-  --cyan:#62e7e1;
-  --violet:#9b83ff;
-  --radius:22px;
-  --max:1180px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{
-  min-height:100vh;overflow-x:hidden;isolation:isolate;
-  background:var(--bg);color:var(--text);
-  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
-  line-height:1.65;cursor:none
-}
-a{color:inherit;text-decoration:none}
-button,input,textarea{font:inherit}
-button{cursor:none}
-img{display:block;max-width:100%}
-.container{width:min(var(--max),calc(100% - 44px));margin:auto}
-::selection{background:var(--cyan);color:#071014}
-:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
 
-/* BACKGROUND */
-.background{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;
-  background:radial-gradient(ellipse at 15% 8%,#292044 0%,transparent 37%),
-  radial-gradient(ellipse at 90% 30%,#10313b 0%,transparent 35%),#090b12}
-.background:after{
-  content:"";position:absolute;inset:0;opacity:.16;
-  background-image:linear-gradient(#aab9dc12 1px,transparent 1px),
-  linear-gradient(90deg,#aab9dc12 1px,transparent 1px);
-  background-size:55px 55px;mask-image:linear-gradient(#000,transparent 85%)
-}
-.orb{position:absolute;width:330px;height:330px;border-radius:50%;
-  filter:blur(70px);opacity:.2;animation:orbFloat 14s ease-in-out infinite alternate}
-.orb.one{background:#7857f3;top:0;left:10%}
-.orb.two{background:#1dd3d1;right:-130px;top:40%;animation-delay:-5s}
-.orb.three{background:#427dff;left:-140px;top:1200px;animation-delay:-8s}
-@keyframes orbFloat{to{transform:translate(55px,70px) scale(1.15)}}
+    body {
+      background: radial-gradient(ellipse at 85% 0%, rgba(205,220,255,.42), transparent 38%), var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
 
-/* LOADER */
-.loader{position:fixed;inset:0;z-index:10000;background:#080a11;
-  display:grid;place-items:center;transition:opacity .6s,visibility .6s}
-.loader.done{opacity:0;visibility:hidden;pointer-events:none}
-.loader-inner{width:min(300px,85%);text-align:center}
-.loader-logo{font-size:38px;font-weight:950;letter-spacing:-3px}
-.loader-logo span{color:var(--cyan)}
-.loader-caption{color:#99a4ba;font-size:10px;letter-spacing:3px;text-transform:uppercase}
-.loader-track{height:3px;margin-top:25px;border-radius:9px;overflow:hidden;background:#202638}
-.loader-bar{height:100%;background:linear-gradient(90deg,var(--violet),var(--cyan));
-  animation:load 1.3s forwards}
-@keyframes load{from{width:0}to{width:100%}}
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 44px)); margin: 0 auto; }
 
-/* CUSTOM CURSOR */
-.cursor-dot,.cursor-ring,.cursor-glow{position:fixed;top:0;left:0;z-index:9400;
-  transform:translate(-50%,-50%);pointer-events:none}
-.cursor-dot{width:6px;height:6px;background:var(--cyan);border-radius:50%}
-.cursor-ring{width:32px;height:32px;border:1px solid #62e7e1ad;border-radius:50%;
-  transition:width .2s,height .2s}
-.cursor-glow{width:190px;height:190px;border-radius:50%;
-  background:radial-gradient(circle,#695de21a,transparent 70%)}
-body.cursor-hover .cursor-ring{width:50px;height:50px}
+    /* NAVIGATION */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(246,249,255,.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(214,225,244,.9);
+    }
 
-/* NAVIGATION */
-.navbar{position:sticky;top:0;z-index:100;background:#090b12d9;
-  backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
-.nav-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:900}
-.brand-mark{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;
-  color:#071014;background:linear-gradient(135deg,var(--cyan),#bcf9f4)}
-.brand small{display:block;font-size:9px;color:#8995ae;letter-spacing:1.5px}
-.nav-links{display:flex;align-items:center;gap:25px;font-size:12px;font-weight:750;color:#c5cde0}
-.nav-links a:hover,.footer-links a:hover{color:var(--cyan)}
-.menu-toggle{display:none;width:42px;height:42px;border:1px solid var(--line);
-  background:var(--card);color:#fff;border-radius:12px;font-size:20px}
-.nav-cta{padding:10px 16px;border-radius:30px;border:1px solid #62e7e14a;
-  color:var(--cyan);background:#62e7e10b;font-size:12px;font-weight:850}
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-/* BUTTONS */
-.button{min-height:46px;display:inline-flex;align-items:center;justify-content:center;
-  gap:9px;padding:12px 17px;border:1px solid var(--line);border-radius:12px;
-  font-size:12px;font-weight:850;transition:transform .25s,box-shadow .25s,background .25s}
-.button:hover{transform:translateY(-3px)}
-.button-primary{color:#071014;background:linear-gradient(115deg,var(--cyan),#b9ffed);border:0}
-.button-secondary{background:#141a29c9}
-.button-secondary:hover{border-color:var(--violet)}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 850;
+      letter-spacing: -.4px;
+    }
 
-/* GENERAL SECTIONS */
-section{padding:95px 0}
-.section-head{max-width:680px;margin-bottom:36px}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--cyan);
-  text-transform:uppercase;letter-spacing:2.5px;font-size:10px;font-weight:900}
-.eyebrow:before{content:"";width:22px;height:1px;background:var(--cyan)}
-.section-title{margin-top:13px;font-size:clamp(34px,5vw,58px);
-  font-weight:950;letter-spacing:-.065em;line-height:1.1}
-.section-title em{color:var(--cyan);font-family:Georgia,serif;font-weight:500}
-.section-description{max-width:610px;margin-top:16px;color:var(--muted);font-size:13px;line-height:1.95}
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      color: white;
+      border-radius: 12px;
+      font-size: 15px;
+      letter-spacing: -1px;
+    }
 
-/* HERO */
-.hero{min-height:680px;padding:75px 0 90px;display:grid;
-  grid-template-columns:1.08fr .82fr;align-items:center;gap:65px}
-.available{display:inline-flex;align-items:center;gap:10px;padding:8px 13px;
-  border:1px solid #62e7e12c;border-radius:50px;background:#62e7e10b;
-  color:#c7f7f0;font-size:11px;font-weight:800}
-.status-dot{width:8px;height:8px;background:#62e7a7;border-radius:50%;
-  box-shadow:0 0 13px #62e7a7;animation:pulse 2s infinite}
-@keyframes pulse{50%{box-shadow:0 0 0 7px #62e7a710}}
-.hero h1{margin-top:25px;font-size:clamp(47px,6.3vw,82px);
-  line-height:1.07;letter-spacing:-.075em;font-weight:950}
-.muted-word{color:#a5afc8}
-.highlight{color:var(--cyan);font-family:Georgia,serif;font-style:italic;font-weight:500}
-.typed-line{color:var(--cyan)}
-.hero-description{max-width:550px;margin-top:23px;color:#b5bfd4;font-size:14px;line-height:2}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:27px}
-.hero-foot{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;
-  color:#8692ab;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
-.hero-foot span+span:before{content:"/";color:var(--cyan);margin-right:10px}
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
 
-/* HERO IMAGE + 3D */
-.hero-stage{position:relative;width:min(100%,410px);justify-self:end;perspective:1200px}
-.hero-3d{position:relative;transform-style:preserve-3d;
-  animation:heroFloat 5s ease-in-out infinite}
-@keyframes heroFloat{0%,100%{transform:translateY(0) rotateY(-5deg)}
-  50%{transform:translateY(-12px) rotateY(5deg)}}
-.portrait-frame{position:relative;aspect-ratio:4/5;overflow:hidden;
-  border:1px solid #a89aff68;border-radius:180px 180px 28px 28px;
-  background:linear-gradient(145deg,#252448,#111e32,#192d3d);
-  box-shadow:0 35px 90px #0006,inset 0 0 40px #9b83ff15;transform:translateZ(20px)}
-.portrait-frame img{width:100%;height:100%;object-fit:cover;object-position:center 25%;
-  transition:transform .7s}
-.hero-stage:hover .portrait-frame img{transform:scale(1.04)}
-.hero-ring{position:absolute;inset:10% -12%;z-index:-1;border:1px solid #62e7e16b;
-  border-radius:50%;transform:rotate(-28deg);animation:spin 24s linear infinite}
-@keyframes spin{to{transform:rotate(332deg)}}
-.float-tag{position:absolute;z-index:3;padding:12px 15px;border:1px solid #ffffff22;
-  border-radius:13px;background:#101521d9;backdrop-filter:blur(15px);
-  box-shadow:0 15px 40px #0005;font-size:11px;font-weight:850}
-.tag-left{left:-40px;top:25%}.tag-right{right:-30px;bottom:17%}
-.float-tag span{display:block;color:var(--cyan);font-size:9px}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: #475467;
+      font-size: 12px;
+      font-weight: 700;
+    }
 
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;align-items:center}
-.about-card{border:1px solid var(--line);border-radius:22px;padding:27px;
-  background:linear-gradient(145deg,#171d2d,#0d121e);box-shadow:0 20px 60px #0003}
-.about-card h3{font-size:19px;margin-bottom:12px}
-.about-card p{font-size:13px;color:var(--muted);line-height:2}
-.about-points{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
-.about-point{border:1px solid var(--line);border-radius:12px;padding:14px;background:#ffffff04}
-.about-point strong{display:block;color:var(--cyan);font-size:19px}
-.about-point span{font-size:10px;color:var(--muted)}
+    .nav-links a:hover { color: var(--blue); }
 
-/* SERVICES */
-.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.service-card{padding:24px 21px;border:1px solid var(--line);border-radius:20px;
-  background:linear-gradient(150deg,#171d2d,#0d121e);transform-style:preserve-3d;
-  transition:transform .35s,border-color .3s,box-shadow .3s}
-.service-card:hover{transform:translateY(-7px) rotateX(2deg) rotateY(-2deg);
-  border-color:#62e7e15c;box-shadow:0 22px 45px #0003}
-.service-icon{width:47px;height:47px;display:grid;place-items:center;border-radius:14px;
-  color:var(--cyan);font-size:23px;background:#62e7e115}
-.service-card h3{margin-top:19px;font-size:15px}
-.service-card p{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.9}
+    .nav-cta, .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 800;
+      transition: .2s ease;
+    }
 
-/* PROJECTS */
-.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;perspective:1200px}
-.project-card{overflow:hidden;min-width:0;border:1px solid var(--line);border-radius:22px;
-  background:linear-gradient(150deg,#171b2e,#0d111f);transform-style:preserve-3d;
-  transition:transform .35s,border-color .3s,box-shadow .3s}
-.project-card:hover{border-color:#9b83ff75;box-shadow:0 28px 70px #0005}
-.project-visual{position:relative;overflow:hidden;aspect-ratio:16/10;background:#20243b}
-.project-visual img{width:100%;height:100%;object-fit:cover;transition:transform .65s}
-.project-card:hover .project-visual img{transform:scale(1.05)}
-.project-info{padding:24px}
-.project-type{color:var(--cyan);font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
-.project-info h3{margin-top:10px;font-size:23px;letter-spacing:-.7px}
-.project-info p{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.9}
-.project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
-.project-tags span{padding:5px 8px;border:1px solid #9b83ff29;border-radius:6px;
-  background:#9b83ff0e;color:#cbd1e6;font-size:9px}
-.project-bottom{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.visit-project{display:inline-flex;align-items:center;gap:8px;padding:10px 13px;
-  border:1px solid #62e7e14d;border-radius:10px;background:#62e7e10c;
-  color:var(--cyan);font-size:11px;font-weight:850}
-.visit-project:hover{background:var(--cyan);color:#071014}
-.restaurant-visual{display:flex;align-items:center;justify-content:center;padding:25px;
-  background:radial-gradient(ellipse at center,#62472e,#292033 55%,#111727);color:#f2e3c6}
-.restaurant-design{width:92%;height:86%;min-height:210px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;border:1px solid #c9a87880;text-align:center}
-.restaurant-design small{color:#d9b784;letter-spacing:3px}
-.restaurant-design h3{font:500 clamp(25px,3vw,42px) Georgia,serif;letter-spacing:4px;margin-top:13px}
-.restaurant-design em{margin-top:9px;font:italic 12px Georgia,serif}
-.shopify-card{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}
-.shopify-visual{height:100%;min-height:300px;aspect-ratio:auto;background:#e8e4da}
-.shopify-visual img{object-position:top center}
+    .nav-cta {
+      padding: 11px 16px;
+      color: white;
+      background: var(--blue);
+    }
 
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;align-items:start}
-.skill-cloud{display:flex;flex-wrap:wrap;gap:10px}
-.skill-cloud span{padding:12px 15px;border:1px solid var(--line);border-radius:10px;
-  background:#121627;color:#e6e8f6;font-size:11px;font-weight:750;transition:transform .2s}
-.skill-cloud span:before{content:"✦ ";color:var(--cyan)}
-.skill-cloud span:hover{transform:translateY(-4px)}
+    .nav-cta:hover, .btn-primary:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+    }
 
-/* GALLERY */
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.gallery-item{aspect-ratio:1/1;overflow:hidden;border-radius:15px;border:1px solid var(--line);
-  background:#121725;cursor:pointer;position:relative}
-.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s,opacity .3s}
-.gallery-item:hover img{transform:scale(1.07);opacity:.8}
-.gallery-modal{position:fixed;inset:0;z-index:9000;display:none;align-items:center;
-  justify-content:center;padding:20px;background:#050611f5;backdrop-filter:blur(12px)}
-.gallery-modal.open{display:flex}
-.gallery-modal img{max-width:95%;max-height:80vh;object-fit:contain;border-radius:12px}
-.gallery-close{position:absolute;right:20px;top:20px;width:44px;height:44px;
-  border:1px solid #ffffff40;border-radius:50%;background:#ffffff12;color:white;font-size:23px}
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      border-radius: 10px;
+      width: 42px;
+      height: 42px;
+      font-size: 20px;
+    }
 
-/* CONTACT */
-.contact-box{display:grid;grid-template-columns:1fr .7fr;align-items:center;gap:30px;
-  padding:clamp(27px,6vw,60px);border:1px solid #9b83ff40;border-radius:28px;
-  background:radial-gradient(ellipse at 100% 0%,#7353da35,transparent 45%),
-  linear-gradient(125deg,#1d183df5,#101d35f7,#191435f5)}
-.contact-box h2{font-size:clamp(36px,5vw,62px);line-height:1.08;letter-spacing:-.07em}
-.contact-box h2 em{color:var(--cyan);font-family:Georgia,serif;font-weight:500}
-.contact-box p{margin-top:18px;color:#c8c6e3;font-size:13px;line-height:1.9}
-.contact-actions{display:flex;flex-direction:column;gap:12px;width:100%;max-width:280px;justify-self:end}
-.contact-actions .button{width:100%;justify-content:space-between}
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr .75fr;
+      align-items: center;
+      gap: 75px;
+      min-height: 650px;
+      padding: 88px 0 92px;
+    }
 
-/* FOOTER */
-.footer{padding:28px 0 36px;color:#9ca7bf;font-size:10px}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:17px}
-.footer-brand{font-size:12px;font-weight:850;color:#f4f0ff}
-.footer-links{display:flex;flex-wrap:wrap;gap:18px}
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
 
-/* SCROLL ANIMATIONS */
-.reveal{opacity:0;transform:translateY(24px);
-  transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@keyframes cardEnter{from{opacity:0;transform:translateY(24px) rotateX(-5deg)}
-  to{opacity:1;transform:translateY(0) rotateX(0)}}
+    .eyebrow:before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--blue);
+    }
 
-/* AI CHAT */
-#portfolioAiLauncher{position:fixed;right:22px;bottom:22px;z-index:9950;
-  width:62px;height:62px;border:1px solid #ffffff4d;border-radius:50%;display:grid;
-  place-items:center;background:linear-gradient(135deg,var(--cyan),#a8fff1);
-  color:#071014;font-size:26px;font-weight:900;box-shadow:0 9px 35px #62e7e150;
-  animation:aiPulse 2.5s ease-in-out infinite;cursor:pointer}
-@keyframes aiPulse{50%{box-shadow:0 10px 42px #62e7e180;transform:scale(1.045)}}
-#portfolioAiPanel{position:fixed;right:22px;bottom:97px;z-index:9951;width:min(390px,calc(100vw - 28px));
-  height:min(580px,calc(100dvh - 125px));display:none;flex-direction:column;overflow:hidden;
-  border:1px solid #8f92b64a;border-radius:23px;background:#0d1220;
-  box-shadow:0 24px 85px #0009;backdrop-filter:blur(20px)}
-#portfolioAiPanel.open{display:flex;animation:chatIn .25s ease}
-@keyframes chatIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
-.ai-header{display:flex;align-items:center;gap:11px;padding:16px;border-bottom:1px solid var(--line);
-  background:linear-gradient(120deg,#151b30,#101925)}
-.ai-avatar{width:40px;height:40px;flex-shrink:0;display:grid;place-items:center;
-  border-radius:14px;background:linear-gradient(135deg,var(--cyan),var(--violet));color:#081117;font-size:20px}
-.ai-header-text{flex:1;min-width:0}
-.ai-header h3{font-size:14px}
-.ai-header p{font-size:10px;color:var(--muted)}
-.ai-online{display:inline-block;width:7px;height:7px;margin-right:5px;background:#62e7a7;border-radius:50%}
-.ai-icon-button{width:31px;height:31px;border:1px solid var(--line);border-radius:9px;
-  background:#ffffff09;color:#fff;font-size:17px}
-.ai-messages{flex:1;min-height:0;overflow:auto;padding:15px;display:flex;flex-direction:column;gap:11px;
-  overscroll-behavior:contain;scroll-behavior:smooth}
-.ai-message{max-width:91%;white-space:pre-wrap;overflow-wrap:anywhere;padding:11px 13px;
-  border-radius:14px;font-size:12px;line-height:1.75}
-.ai-message.bot{align-self:flex-start;background:#1a2232;color:#e9edf8;border-bottom-left-radius:4px}
-.ai-message.user{align-self:flex-end;background:#62e7e1;color:#061215;border-bottom-right-radius:4px}
-.ai-typing{display:flex;gap:5px;align-items:center;min-height:35px}
-.ai-typing i{width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:typing .8s infinite alternate}
-.ai-typing i:nth-child(2){animation-delay:.15s}.ai-typing i:nth-child(3){animation-delay:.3s}
-@keyframes typing{to{opacity:.25;transform:translateY(-4px)}}
-.ai-prompts{display:flex;gap:7px;flex-wrap:wrap;padding:0 14px 11px}
-.ai-prompts button{border:1px solid #62e7e133;border-radius:30px;padding:7px 10px;
-  background:#62e7e10c;color:#c9fbf4;font-size:10px;cursor:pointer}
-.ai-prompts[hidden]{display:none}
-.ai-form{display:flex;gap:8px;align-items:flex-end;padding:12px;border-top:1px solid var(--line);background:#101521}
-.ai-form textarea{flex:1;min-width:0;resize:none;max-height:100px;min-height:43px;padding:12px;
-  border:1px solid #ffffff20;border-radius:12px;background:#090e19;color:white;font-size:12px;outline:none}
-.ai-form textarea:focus{border-color:var(--cyan)}
-.ai-send{width:43px;height:43px;border:0;border-radius:12px;background:var(--cyan);
-  color:#061215;font-weight:950;font-size:19px;cursor:pointer}
-.ai-send:disabled{opacity:.5;cursor:not-allowed}
-.ai-note{text-align:center;color:#79859e;font-size:9px;padding:0 12px 10px;background:#101521}
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 11px;
+      border: 1px solid #dce4ff;
+      border-radius: 30px;
+      background: #fff;
+      color: #3450a7;
+      font-size: 10px;
+      font-weight: 800;
+    }
 
-/* RESPONSIVE */
-@media(max-width:950px){
-  .hero{gap:35px}
-  .service-grid{grid-template-columns:repeat(2,1fr)}
-  .about-grid,.skills-grid{gap:30px}
-  .shopify-card{grid-template-columns:1fr}
-  .shopify-visual{min-height:0;aspect-ratio:16/9}
-}
-@media(max-width:700px){
-  body,button{cursor:auto}
-  .cursor-dot,.cursor-ring,.cursor-glow{display:none!important}
-  .container{width:calc(100% - 32px)}
-  section{padding:70px 0}
-  .nav-inner{min-height:68px}
-  .menu-toggle{display:block}
-  .nav-cta{display:none}
-  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;align-items:flex-start;
-    flex-direction:column;gap:18px;padding:21px 25px;background:#0b0d1cf7;
-    border-bottom:1px solid var(--line)}
-  .nav-links.open{display:flex}
-  .hero{grid-template-columns:1fr;gap:48px;min-height:0;padding:55px 0 65px}
-  .hero h1{font-size:clamp(44px,11.4vw,70px)}
-  .hero-description{font-size:13px}
-  .hero-stage{width:min(82%,350px);justify-self:center}
-  .tag-left{left:-15px}.tag-right{right:-12px}
-  .about-grid,.skills-grid{grid-template-columns:1fr;gap:27px}
-  .project-grid{grid-template-columns:1fr}
-  .shopify-card{grid-column:auto}
-  .service-grid{grid-template-columns:1fr 1fr;gap:11px}
-  .service-card{padding:18px 15px}
-  .project-info{padding:20px}
-  .gallery-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .contact-box{grid-template-columns:1fr;gap:24px}
-  .contact-actions{justify-self:start;max-width:none}
-  .footer-inner{align-items:flex-start;flex-direction:column}
-  #portfolioAiLauncher{right:15px;bottom:15px;width:56px;height:56px}
-  #portfolioAiPanel{right:8px;bottom:80px;width:calc(100vw - 16px);
-    height:min(620px,calc(100dvh - 100px));border-radius:19px}
-  .ai-header{padding:12px}
-  .ai-messages{padding:12px}
-  .ai-message{font-size:12px}
-  .hero-3d{animation:heroFloat 5s ease-in-out infinite}
-  .project-card,.service-card{animation:cardEnter .75s both}
-  .project-card:nth-child(2){animation-delay:.12s}
-  .project-card:nth-child(3){animation-delay:.2s}
-  .service-card:nth-child(2){animation-delay:.08s}
-  .service-card:nth-child(3){animation-delay:.16s}
-  .service-card:nth-child(4){animation-delay:.24s}
-  .tag-left,.tag-right{animation:tagFloat 4s ease-in-out infinite alternate}
-}
-@keyframes tagFloat{to{transform:translateY(-9px)}}
-@media(prefers-reduced-motion:reduce){
-  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;
-  scroll-behavior:auto!important;transition-duration:.01ms!important}
-}
-</style>
+    .availability i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #20b77a;
+    }
+
+    h1 {
+      margin-top: 25px;
+      max-width: 700px;
+      font-size: clamp(46px, 6.5vw, 78px);
+      line-height: 1.04;
+      letter-spacing: -4.6px;
+      font-weight: 900;
+    }
+
+    h1 span { color: var(--blue); }
+
+    .hero-copy {
+      max-width: 570px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.95;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn { min-height: 46px; padding: 12px 17px; }
+    .btn-primary { background: var(--blue); color: white; }
+
+    .btn-secondary {
+      background: white;
+      border: 1px solid var(--line);
+      color: var(--ink);
+    }
+
+    .btn-secondary:hover {
+      border-color: #bdc9ff;
+      color: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+      color: #7a8496;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero-meta span + span:before {
+      content: "·";
+      color: var(--blue);
+      margin-right: 12px;
+    }
+
+    .portrait-wrap {
+      position: relative;
+      width: min(100%, 370px);
+      justify-self: end;
+      padding: 14px;
+      border: 1px solid #e4e8f2;
+      border-radius: 28px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .portrait-wrap:before {
+      content: "";
+      position: absolute;
+      width: 125px;
+      height: 125px;
+      right: -23px;
+      top: -23px;
+      border: 2px solid #cbd5ff;
+      border-radius: 25px;
+      z-index: -1;
+    }
+
+    .portrait {
+      aspect-ratio: 4 / 5;
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(145deg,#e5eafe,#d7e2f3);
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+    }
+
+    .portrait-note {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 15px 5px 2px;
+    }
+
+    .portrait-note strong { display: block; font-size: 12px; }
+    .portrait-note span { display: block; color: var(--muted); font-size: 10px; }
+    .portrait-note b { color: var(--blue); font-size: 11px; }
+
+    /* GENERAL SECTIONS */
+    section.content-section { padding: 82px 0; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      margin-top: 12px;
+      font-size: clamp(32px, 4.5vw, 49px);
+      line-height: 1.12;
+      letter-spacing: -2px;
+    }
+
+    .section-heading h2 span { color: var(--blue); }
+
+    .section-heading p {
+      max-width: 435px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 22px;
+    }
+
+    .about-lead, .about-panel, .service-card, .project-card, .contact-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .about-lead {
+      padding: 30px;
+      background: var(--navy);
+      color: white;
+    }
+
+    .about-lead h3 {
+      font-size: 23px;
+      line-height: 1.25;
+      letter-spacing: -.8px;
+    }
+
+    .about-lead p {
+      margin-top: 15px;
+      color: #c0cadf;
+      font-size: 12px;
+      line-height: 1.95;
+    }
+
+    .about-panel {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-panel p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 10px;
+      margin-top: 23px;
+    }
+
+    .fact {
+      padding: 14px;
+      background: #f1f5fc;
+      border: 1px solid #e2eaf6;
+      border-radius: 13px;
+    }
+
+    .fact strong { display: block; color: var(--blue); font-size: 13px; }
+    .fact span { color: var(--muted); font-size: 9px; }
+
+    /* SERVICES */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 14px;
+    }
+
+    .service-card {
+      padding: 23px;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+
+    .service-card:hover, .project-card:hover {
+      transform: translateY(-4px);
+      border-color: #cbd5ff;
+      box-shadow: var(--shadow);
+    }
+
+    .service-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--soft-blue);
+      color: var(--blue);
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .service-card h3 { margin-top: 18px; font-size: 14px; }
+
+    .service-card p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.85;
+    }
+
+    /* PROJECTS */
+    .projects-wrap { display: grid; gap: 18px; }
+
+    .project-card {
+      overflow: hidden;
+      transition: .2s ease;
+    }
+
+    .design-project {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+    }
+
+    .design-info {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project-type {
+      color: var(--blue);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .design-info h3, .project-info h3 {
+      margin-top: 10px;
+      font-size: 24px;
+      letter-spacing: -.8px;
+      line-height: 1.2;
+    }
+
+    .design-info p, .project-info p {
+      margin-top: 11px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 17px;
+    }
+
+    .tags span {
+      padding: 6px 9px;
+      border-radius: 7px;
+      background: #f0f3ff;
+      color: #455bb1;
+      font-size: 9px;
+      font-weight: 750;
+    }
+
+    /* GRAPHIC DESIGN IMAGE COLLECTION */
+    .design-mosaic {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-auto-rows: 105px;
+      gap: 8px;
+      padding: 15px;
+      background: #e8eef8;
+    }
+
+    .mosaic-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 11px;
+      border: 1px solid #e3e7ef;
+      background: #e1e9f5;
+      cursor: zoom-in;
+    }
+
+    .mosaic-item:nth-child(1),
+    .mosaic-item:nth-child(6) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .mosaic-item:nth-child(4),
+    .mosaic-item:nth-child(9) {
+      grid-column: span 2;
+    }
+
+    .mosaic-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .35s;
+    }
+
+    .mosaic-item:hover img { transform: scale(1.045); }
+
+    .mosaic-item:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    /* WEBSITE PROJECTS */
+    .web-projects {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .web-preview {
+      min-height: 215px;
+      display: grid;
+      place-items: center;
+      padding: 25px;
+      background: linear-gradient(135deg,#e3ebff,#f2f6ff);
+    }
+
+    .browser {
+      width: 100%;
+      max-width: 430px;
+      overflow: hidden;
+      border: 1px solid #d9deeb;
+      border-radius: 12px;
+      background: white;
+      box-shadow: 0 12px 35px #26365d18;
+    }
+
+    .browser-bar {
+      height: 25px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0 10px;
+      background: #f2f6fd;
+      border-bottom: 1px solid #e8eaf0;
+    }
+
+    .browser-bar i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #c5ccda;
+    }
+
+    .browser-content {
+      min-height: 155px;
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      gap: 12px;
+      padding: 19px;
+      align-items: center;
+    }
+
+    .browser-lines b {
+      display: block;
+      width: 78%;
+      height: 9px;
+      margin-bottom: 9px;
+      border-radius: 5px;
+      background: #26365d;
+    }
+
+    .browser-lines span {
+      display: block;
+      width: 94%;
+      height: 5px;
+      margin-top: 6px;
+      border-radius: 4px;
+      background: #dce1ec;
+    }
+
+    .browser-lines span:last-child { width: 67%; }
+
+    .browser-art {
+      height: 118px;
+      border-radius: 8px;
+      background: linear-gradient(145deg,#15213c,#315cf5);
+    }
+
+    .shop-preview { background: #eaf0fa; }
+
+    .shop-preview img {
+      width: 100%;
+      height: 215px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 10px;
+      box-shadow: 0 12px 35px #26365d18;
+    }
+
+    .project-info { padding: 23px 26px 26px; }
+
+    .project-link {
+      display: inline-flex;
+      margin-top: 16px;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .project-link:hover { color: var(--blue-dark); }
+
+    /* SKILLS */
+    .skills-panel {
+      padding: 27px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: white;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-list span {
+      padding: 10px 14px;
+      background: #f1f5fc;
+      border: 1px solid #e2eaf6;
+      border-radius: 10px;
+      color: #344054;
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    /* CONTACT + FOOTER */
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 28px;
+      padding: 42px;
+      background: var(--navy);
+      color: white;
+    }
+
+    .contact-panel h2 {
+      margin-top: 11px;
+      max-width: 570px;
+      font-size: clamp(32px,4.6vw,51px);
+      line-height: 1.12;
+      letter-spacing: -2px;
+    }
+
+    .contact-panel p {
+      max-width: 540px;
+      margin-top: 14px;
+      color: #c2cbe0;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 175px;
+    }
+
+    .contact-buttons .btn-secondary {
+      border-color: #34415e;
+      background: #182541;
+      color: white;
+    }
+
+    .contact-buttons .btn-secondary:hover { border-color: #8098ff; }
+
+    footer {
+      padding: 27px 0 35px;
+      color: #7b8496;
+      font-size: 10px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer-inner strong { color: var(--ink); }
+    .footer-links { display: flex; gap: 17px; }
+    .footer-links a:hover { color: var(--blue); }
+
+    /* IMAGE LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      background: rgba(9,15,30,.92);
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: min(100%,1100px);
+      max-height: 86vh;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border: 1px solid #ffffff55;
+      border-radius: 50%;
+      background: #ffffff15;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero { gap: 38px; }
+      .service-grid { grid-template-columns: repeat(2,1fr); }
+      .design-project { grid-template-columns: 1fr; }
+      .design-info { padding-bottom: 22px; }
+      .design-mosaic { grid-auto-rows: 115px; }
+    }
+
+    @media (max-width: 700px) {
+      .container { width: calc(100% - 32px); }
+      .nav-inner { min-height: 68px; }
+      .menu-toggle { display: block; }
+      .nav-cta { display: none; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        padding: 20px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 17px;
+        background: #f7f9ff;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-links.open { display: flex; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        padding: 62px 0 70px;
+        gap: 42px;
+      }
+
+      h1 {
+        font-size: clamp(45px,12vw,68px);
+        letter-spacing: -3px;
+      }
+
+      .portrait-wrap {
+        width: min(84%,350px);
+        justify-self: center;
+      }
+
+      section.content-section { padding: 65px 0; }
+      .section-heading { display: block; }
+      .section-heading p { margin-top: 15px; }
+      .about-grid, .web-projects { grid-template-columns: 1fr; }
+      .facts { grid-template-columns: repeat(3,1fr); }
+
+      .design-mosaic {
+        grid-template-columns: repeat(3,1fr);
+        grid-auto-rows: 95px;
+        gap: 6px;
+        padding: 10px;
+      }
+
+      .mosaic-item:nth-child(1),
+      .mosaic-item:nth-child(6) {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .mosaic-item:nth-child(4),
+      .mosaic-item:nth-child(9) {
+        grid-column: span 1;
+      }
+
+      .contact-panel {
+        grid-template-columns: 1fr;
+        padding: 29px;
+      }
+
+      .contact-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .contact-buttons .btn { flex: 1 1 145px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 420px) {
+      .service-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+      .service-card { padding: 17px; }
+      .facts { gap: 6px; }
+      .fact { padding: 10px; }
+      .design-mosaic { grid-auto-rows: 80px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,*::before,*::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<div class="background" aria-hidden="true">
-  <div class="orb one"></div><div class="orb two"></div><div class="orb three"></div>
-</div>
 
-<div class="loader" id="loader" aria-label="Loading portfolio">
-  <div class="loader-inner">
-    <div class="loader-logo">MA<span>.</span></div>
-    <div class="loader-caption">Creative Portfolio</div>
-    <div class="loader-track"><div class="loader-bar"></div></div>
-  </div>
-</div>
+  <!-- NAVIGATION -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="Muhammad Ahsan home">
+        <span class="brand-mark">MA.</span>
+        <span>Muhammad Ahsan<small>DESIGNER · DEVELOPER</small></span>
+      </a>
 
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-<header class="navbar">
-  <div class="container nav-inner">
-    <a href="#home" class="brand">
-      <span class="brand-mark">MA.</span>
-      <span>Muhammad Ahsan<small>DESIGNER · DEVELOPER</small></span>
-    </a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#home">Home</a><a href="#about">About</a>
-      <a href="#services">Services</a><a href="#projects">Projects</a>
-      <a href="#skills">Skills</a><a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="nav-cta" href="#contact">Let's Talk ↗</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
-  </div>
-</header>
-
-<main>
-  <section class="container hero" id="home">
-    <div class="hero-content">
-      <div class="available"><span class="status-dot"></span> Available for projects</div>
-      <h1>Designing<br>digital <span class="muted-word">ideas</span><br>into <span class="highlight typed-line" id="typedLine">reality.</span></h1>
-      <p class="hero-description">
-        I'm Muhammad Ahsan, a creative designer and web developer. I build attractive digital experiences,
-        modern websites, Shopify stores and engaging graphic designs that help businesses stand out.
-      </p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="#projects">Explore My Work ↗</a>
-        <a class="button button-secondary" href="#contact">Contact Me →</a>
-      </div>
-      <div class="hero-foot"><span>Graphic Design</span><span>Web Development</span><span>E-commerce</span></div>
+      <a class="nav-cta" href="#contact">Let's talk ↗</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
-    <div class="hero-stage">
-      <div class="hero-ring"></div>
-      <div class="hero-3d">
-        <div class="portrait-frame">
-          <img src="Porfolio%20Picture.jpg" alt="Muhammad Ahsan portfolio portrait" fetchpriority="high">
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="container hero" id="home">
+      <div>
+        <div class="availability"><i></i> Available for opportunities</div>
+
+        <h1>Creative ideas.<br />Thoughtful <span>design.</span></h1>
+
+        <p class="hero-copy">
+          I'm Muhammad Ahsan, a graphic designer and web developer interested
+          in creating clean visuals, modern websites and useful online
+          experiences for businesses.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">Explore my work ↗</a>
+          <a class="btn btn-secondary" href="#contact">Get in touch</a>
+        </div>
+
+        <div class="hero-meta">
+          <span>Graphic Design</span>
+          <span>Web Development</span>
+          <span>E-commerce</span>
         </div>
       </div>
-      <div class="float-tag tag-left">✦ Creative Designer<span>Visual identity & design</span></div>
-      <div class="float-tag tag-right">⌘ Web Developer<span>Websites & online stores</span></div>
-    </div>
-  </section>
 
-  <section id="about">
-    <div class="container about-grid">
-      <div class="section-head reveal">
-        <div class="eyebrow">About Me</div>
-        <h2 class="section-title">Creative thinking.<br><em>Digital solutions.</em></h2>
-        <p class="section-description">I combine design, technology and creativity to make useful, memorable digital experiences for businesses and individuals.</p>
-      </div>
-      <div class="about-card reveal">
-        <h3>Hi, I'm Muhammad Ahsan 👋</h3>
-        <p>My focus is on graphic designing, responsive web development, Shopify store design and e-commerce. I enjoy making clean layouts, strong visuals and practical online experiences that work across desktops and mobile phones.</p>
-        <div class="about-points">
-          <div class="about-point"><strong>Design</strong><span>Visual storytelling</span></div>
-          <div class="about-point"><strong>Web</strong><span>Responsive layouts</span></div>
-          <div class="about-point"><strong>Shopify</strong><span>E-commerce stores</span></div>
-          <div class="about-point"><strong>Creative</strong><span>Fresh ideas</span></div>
+      <div class="portrait-wrap">
+        <div class="portrait">
+          <img src="Porfolio%20Picture.jpg" alt="Muhammad Ahsan" fetchpriority="high" />
+        </div>
+
+        <div class="portrait-note">
+          <div>
+            <strong>Muhammad Ahsan</strong>
+            <span>Creative Designer & Web Developer</span>
+          </div>
+          <b>Portfolio 2026</b>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="services">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">What I Do</div>
-        <h2 class="section-title">Services that make<br><em>your brand shine.</em></h2>
-        <p class="section-description">Creative and digital services built around your needs, brand and audience.</p>
-      </div>
-      <div class="service-grid">
-        <article class="service-card reveal"><div class="service-icon">✦</div><h3>Graphic Design</h3><p>Social posts, promotional graphics, visual content and clean branded designs.</p></article>
-        <article class="service-card reveal"><div class="service-icon">⌘</div><h3>Web Development</h3><p>Responsive, modern websites with thoughtful layouts and engaging interactions.</p></article>
-        <article class="service-card reveal"><div class="service-icon">▧</div><h3>Shopify Design</h3><p>Storefront design focused on product presentation, usability and brand consistency.</p></article>
-        <article class="service-card reveal"><div class="service-icon">↗</div><h3>E-commerce</h3><p>Digital shopping experiences to help businesses showcase products online.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">Selected Work</div>
-        <h2 class="section-title">Some things I've<br><em>been working on.</em></h2>
-        <p class="section-description">A selection of creative work, website concepts and e-commerce experiences.</p>
-      </div>
-      <div class="project-grid">
-        <article class="project-card reveal tilt-card">
-          <div class="project-visual"><img src="image%201.jpeg" alt="Graphic design project preview" loading="lazy"></div>
-          <div class="project-info">
-            <span class="project-type">Graphic Design</span>
-            <h3>Graphic Design Collection</h3>
-            <p>A selection of visual designs, digital graphics and creative compositions.</p>
-            <div class="project-tags"><span>Canva</span><span>Social Media</span><span>Visual Design</span></div>
-            <div class="project-bottom"><a class="visit-project" href="#gallery">View Gallery ↗</a></div>
+    <!-- ABOUT -->
+    <section class="content-section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">A little about me</div>
+            <h2>Design meets<br /><span>digital thinking.</span></h2>
           </div>
-        </article>
-
-        <article class="project-card reveal tilt-card">
-          <div class="project-visual restaurant-visual">
-            <div class="restaurant-design"><small>WELCOME TO</small><h3>SPICE COURTYARD</h3><em>Authentic Halal Cuisine</em></div>
-          </div>
-          <div class="project-info">
-            <span class="project-type">Restaurant Website</span>
-            <h3>Spice Courtyard Concept</h3>
-            <p>A restaurant website concept with a refined food-focused look and a responsive design approach.</p>
-            <div class="project-tags"><span>HTML</span><span>CSS</span><span>Responsive UI</span></div>
-            <div class="project-bottom"><a class="visit-project" href="https://codewithsadee.github.io/grilli/" target="_blank" rel="noopener noreferrer">View Website ↗</a></div>
-          </div>
-        </article>
-
-        <article class="project-card shopify-card reveal tilt-card">
-          <div class="project-visual shopify-visual"><img src="shopify-store.jpg" alt="Shopify store project screenshot" loading="lazy"></div>
-          <div class="project-info">
-            <span class="project-type">Shopify · E-commerce</span>
-            <h3>Shopows Store</h3>
-            <p>An online storefront focused on browsing products, clean presentation and accessible shopping on desktop and mobile.</p>
-            <div class="project-tags"><span>Shopify</span><span>E-commerce</span><span>Store Design</span></div>
-            <div class="project-bottom"><a class="visit-project" href="https://shopows.pk/" target="_blank" rel="noopener noreferrer">Visit Shopows ↗</a></div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <div class="container skills-grid">
-      <div class="section-head reveal">
-        <div class="eyebrow">My Toolkit</div>
-        <h2 class="section-title">Skills built for<br><em>the digital world.</em></h2>
-        <p class="section-description">A practical mix of creative skills and web technologies for building polished online experiences.</p>
-      </div>
-      <div class="skill-cloud reveal">
-        <span>Graphic Designing</span><span>Web Development</span><span>Shopify</span>
-        <span>E-commerce</span><span>HTML5</span><span>CSS3</span><span>JavaScript</span>
-        <span>Canva</span><span>Responsive Design</span><span>UI/UX Thinking</span>
-        <span>Social Media Design</span><span>Website Layouts</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="gallery">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">Design Gallery</div>
-        <h2 class="section-title">A closer look at<br><em>my creative work.</em></h2>
-        <p class="section-description">Tap any image to view it larger. Keep your project images in the same folder as this HTML file.</p>
-      </div>
-      <div class="gallery-grid" id="galleryGrid">
-        <button class="gallery-item" data-image="image 1.jpeg" aria-label="View design 1"><img src="image%201.jpeg" alt="Design 1" loading="lazy"></button>
-        <button class="gallery-item" data-image="image 2.jpeg" aria-label="View design 2"><img src="image%202.jpeg" alt="Design 2" loading="lazy"></button>
-        <button class="gallery-item" data-image="image 3.jpeg" aria-label="View design 3"><img src="image%203.jpeg" alt="Design 3" loading="lazy"></button>
-        <button class="gallery-item" data-image="image 4.jpeg" aria-label="View design 4"><img src="image%204.jpeg" alt="Design 4" loading="lazy"></button>
-        <button class="gallery-item" data-image="image 5.jpeg" aria-label="View design 5"><img src="image%205.jpeg" alt="Design 5" loading="lazy"></button>
-        <button class="gallery-item" data-image="image 6.jpeg" aria-label="View design 6"><img src="image%206.jpeg" alt="Design 6" loading="lazy"></button>
-        <button class="gallery-item" data-image="image 7.jpeg" aria-label="View design 7"><img src="image%207.jpeg" alt="Design 7" loading="lazy"></button>
-        <button class="gallery-item" data-image="image 8.jpeg" aria-label="View design 8"><img src="image%208.jpeg" alt="Design 8" loading="lazy"></button>
-        <button class="gallery-item" data-image="image 9.jpeg" aria-label="View design 9"><img src="image%209.jpeg" alt="Design 9" loading="lazy"></button>
-        <button class="gallery-item" data-image="image 10.jpeg" aria-label="View design 10"><img src="image%2010.jpeg" alt="Design 10" loading="lazy"></button>
-        <button class="gallery-item" data-image="image 12.jpeg" aria-label="View design 12"><img src="image%2012.jpeg" alt="Design 12" loading="lazy"></button>
-        <button class="gallery-item" data-image="image 13.jpeg" aria-label="View design 13"><img src="image%2013.jpeg" alt="Design 13" loading="lazy"></button>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <div class="contact-box reveal">
-        <div>
-          <div class="eyebrow">Have a Project?</div>
-          <h2>Let's create<br>something <em>great.</em></h2>
-          <p>Have an idea, need a design, or want to build an online store? Contact me and tell me what you're planning.</p>
+          <p>
+            I enjoy combining creativity and technology to make clear,
+            useful and attractive digital experiences.
+          </p>
         </div>
-        <div class="contact-actions">
-          <a class="button button-primary" href="mailto:mhdxahsan@gmail.com">✉ Email Me <span>↗</span></a>
-          <a class="button button-secondary" href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">☏ WhatsApp Me <span>↗</span></a>
-          <a class="button button-secondary" href="https://shopows.pk/" target="_blank" rel="noopener noreferrer">▧ Shopows Store <span>↗</span></a>
+
+        <div class="about-grid">
+          <div class="about-lead">
+            <h3>Hi, I'm Ahsan.<br />Good to have you here.</h3>
+            <p>
+              I'm building my skills in graphic design and web development
+              through practical projects. I enjoy learning, experimenting
+              with ideas and turning concepts into real work.
+            </p>
+          </div>
+
+          <div class="about-panel">
+            <p>
+              My interests include social media graphics, brand visuals,
+              responsive websites and e-commerce storefronts. I focus on clean
+              layouts, consistency and making each project easy to use.
+            </p>
+
+            <div class="facts">
+              <div class="fact">
+                <strong>Visuals</strong>
+                <span>Graphic design</span>
+              </div>
+              <div class="fact">
+                <strong>Web</strong>
+                <span>Website layouts</span>
+              </div>
+              <div class="fact">
+                <strong>Stores</strong>
+                <span>E-commerce design</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="content-section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">What I work on</div>
+            <h2>Creative and digital<br /><span>services.</span></h2>
+          </div>
+          <p>
+            A practical mix of design and web skills for brands, small
+            businesses and online stores.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-icon">✳</div>
+            <h3>Graphic Design</h3>
+            <p>Social media posts, promotional graphics and visual content.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">⌘</div>
+            <h3>Web Development</h3>
+            <p>Responsive websites with clear layouts and useful interactions.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">▤</div>
+            <h3>Shopify Design</h3>
+            <p>Storefront presentation, product layouts and shopping experiences.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">↗</div>
+            <h3>E-commerce</h3>
+            <p>Digital storefronts that help businesses present products online.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="content-section" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">Selected work</div>
+            <h2>Projects &<br /><span>creative work.</span></h2>
+          </div>
+          <p>
+            A look at selected graphic design work, website concepts and
+            e-commerce projects.
+          </p>
+        </div>
+
+        <div class="projects-wrap">
+
+          <!-- ALL GRAPHIC DESIGN IMAGES IN ONE PROJECT -->
+          <article class="project-card design-project">
+            <div class="design-info">
+              <span class="project-type">Graphic design collection</span>
+              <h3>Visual Design Showcase</h3>
+              <p>
+                A collection of social media creatives, promotional designs
+                and visual experiments. All design images are grouped
+                together here as one project instead of being displayed
+                in a separate gallery.
+              </p>
+
+              <div class="tags">
+                <span>Canva</span>
+                <span>Social Media</span>
+                <span>Visual Design</span>
+                <span>Creative Content</span>
+              </div>
+            </div>
+
+            <div class="design-mosaic" aria-label="Graphic design project previews">
+
+              <button class="mosaic-item" data-image="image 1.jpeg" aria-label="Open design preview 1">
+                <img src="image%201.jpeg" alt="Graphic design preview 1" loading="lazy">
+              </button>
+
+              <button class="mosaic-item" data-image="image 2.jpeg" aria-label="Open design preview 2">
+                <img src="image%202.jpeg" alt="Graphic design preview 2" loading="lazy">
+              </button>
+
+              <button class="mosaic-item" data-image="image 3.jpeg" aria-label="Open design preview 3">
+                <img src="image%203.jpeg" alt="Graphic design preview 3" loading="lazy">
+              </button>
+
+              <button class="mosaic-item" data-image="image 4.jpeg" aria-label="Open design preview 4">
+                <img src="image%204.jpeg" alt="Graphic design preview 4" loading="lazy">
+              </button>
+
+              <button class="mosaic-item" data-image="image 5.jpeg" aria-label="Open design preview 5">
+                <img src="image%205.jpeg" alt="Graphic design preview 5" loading="lazy">
+              </button>
+
+              <button class="mosaic-item" data-image="image 6.jpeg" aria-label="Open design preview 6">
+                <img src="image%206.jpeg" alt="Graphic design preview 6" loading="lazy">
+              </button>
+
+              <button class="mosaic-item" data-image="image 7.jpeg" aria-label="Open design preview 7">
+                <img src="image%207.jpeg" alt="Graphic design preview 7" loading="lazy">
+              </button>
+
+              <button class="mosaic-item" data-image="image 8.jpeg" aria-label="Open design preview 8">
+                <img src="image%208.jpeg" alt="Graphic design preview 8" loading="lazy">
+              </button>
+
+              <button class="mosaic-item" data-image="image 9.jpeg" aria-label="Open design preview 9">
+                <img src="image%209.jpeg" alt="Graphic design preview 9" loading="lazy">
+              </button>
+
+              <button class="mosaic-item" data-image="image 10.jpeg" aria-label="Open design preview 10">
+                <img src="image%2010.jpeg" alt="Graphic design preview 10" loading="lazy">
+              </button>
+
+              <button class="mosaic-item" data-image="image 12.jpeg" aria-label="Open design preview 12">
+                <img src="image%2012.jpeg" alt="Graphic design preview 12" loading="lazy">
+              </button>
+
+              <button class="mosaic-item" data-image="image 13.jpeg" aria-label="Open design preview 13">
+                <img src="image%2013.jpeg" alt="Graphic design preview 13" loading="lazy">
+              </button>
+
+            </div>
+          </article>
+
+          <!-- WEBSITE PROJECTS -->
+          <div class="web-projects">
+
+            <article class="project-card">
+              <div class="web-preview">
+                <div class="browser">
+                  <div class="browser-bar">
+                    <i></i><i></i><i></i>
+                  </div>
+                  <div class="browser-content">
+                    <div class="browser-lines">
+                      <b></b>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <div class="browser-art"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-info">
+                <span class="project-type">Website concept</span>
+                <h3>Restaurant Website Concept</h3>
+                <p>
+                  A restaurant website concept exploring a focused visual
+                  identity, menu presentation and responsive layout.
+                </p>
+                <div class="tags">
+                  <span>HTML</span>
+                  <span>CSS</span>
+                  <span>Responsive UI</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="web-preview shop-preview">
+                <img src="shopify-store.jpg" alt="Shopows online store preview" loading="lazy">
+              </div>
+
+              <div class="project-info">
+                <span class="project-type">E-commerce · Shopify</span>
+                <h3>Shopows Store</h3>
+                <p>
+                  An online storefront focused on clear product presentation
+                  and a straightforward shopping experience.
+                </p>
+                <div class="tags">
+                  <span>Shopify</span>
+                  <span>E-commerce</span>
+                  <span>Store Design</span>
+                </div>
+                <a class="project-link" href="https://shopows.pk/" target="_blank" rel="noopener noreferrer">
+                  Visit Shopows ↗
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="content-section" id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">My toolkit</div>
+            <h2>Skills I'm<br /><span>developing.</span></h2>
+          </div>
+          <p>Tools and skills I use across creative projects and website work.</p>
+        </div>
+
+        <div class="skills-panel">
+          <div class="skill-list">
+            <span>Graphic Design</span>
+            <span>Web Development</span>
+            <span>Shopify</span>
+            <span>E-commerce</span>
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+            <span>Canva</span>
+            <span>Responsive Design</span>
+            <span>Social Media Design</span>
+            <span>Website Layouts</span>
+            <span>UI Design</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="content-section" id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <div class="eyebrow" style="color:#9fb2ff">Have a project in mind?</div>
+            <h2>Let's make something<br />useful together.</h2>
+            <p>
+              Have an idea, need a design, or want to discuss a website?
+              Send me a message and tell me what you're planning.
+            </p>
+          </div>
+
+          <div class="contact-buttons">
+            <a class="btn btn-primary" href="mailto:mhdxahsan@gmail.com">Email me ↗</a>
+            <a class="btn btn-secondary" href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">WhatsApp me ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <strong>Muhammad Ahsan © <span id="year"></span></strong>
+
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="mailto:mhdxahsan@gmail.com">Email</a>
+        <a href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+
+      <span>Designed with care.</span>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer class="footer">
-  <div class="container footer-inner">
-    <a href="#home" class="footer-brand">Muhammad Ahsan © <span id="year"></span></a>
-    <div class="footer-links">
-      <a href="#about">About</a><a href="#projects">Projects</a>
-      <a href="mailto:mhdxahsan@gmail.com">Email</a>
-      <a href="https://wa.me/923319333080" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-    </div>
-    <span>Designed with creativity ✦</span>
+  <!-- IMAGE PREVIEW -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Design preview">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close preview">×</button>
+    <img id="lightboxImage" src="" alt="Expanded design preview">
   </div>
-</footer>
 
-<div class="gallery-modal" id="galleryModal" role="dialog" aria-modal="true" aria-label="Image preview">
-  <button class="gallery-close" id="galleryClose" aria-label="Close image">×</button>
-  <img src="" alt="Expanded portfolio design" id="galleryModalImage">
-</div>
+  <script>
+    /* MOBILE NAVIGATION */
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
 
-<!-- Floating AI assistant -->
-<button id="portfolioAiLauncher" type="button" aria-label="Open AI assistant" aria-expanded="false">✦</button>
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.textContent = isOpen ? '×' : '☰';
+    });
 
-<section id="portfolioAiPanel" role="dialog" aria-label="AI assistant chat" aria-hidden="true">
-  <div class="ai-header">
-    <div class="ai-avatar">✦</div>
-    <div class="ai-header-text">
-      <h3>Ahsan's AI Assistant</h3>
-      <p><span class="ai-online"></span>Here to help · No login needed</p>
-    </div>
-    <button class="ai-icon-button" id="aiClear" title="Clear chat" aria-label="Clear chat">↻</button>
-    <button class="ai-icon-button" id="aiClose" title="Close chat" aria-label="Close chat">×</button>
-  </div>
-  <div class="ai-messages" id="aiMessages" aria-live="polite">
-    <div class="ai-message bot">Hi! 👋 I'm Ahsan's AI assistant. Ask me about his services, projects or skills — or ask a general question once the AI service is connected.</div>
-  </div>
-  <div class="ai-prompts" id="aiPrompts">
-    <button type="button" data-question="What services does Ahsan offer?">Services</button>
-    <button type="button" data-question="Tell me about Ahsan's projects.">Projects</button>
-    <button type="button" data-question="How can I contact Ahsan?">Contact</button>
-  </div>
-  <form class="ai-form" id="aiForm">
-    <textarea id="aiInput" rows="1" maxlength="1200" placeholder="Ask me anything..." aria-label="Your message" required></textarea>
-    <button class="ai-send" id="aiSend" type="submit" aria-label="Send message">➤</button>
-  </form>
-  <div class="ai-note">AI can make mistakes. Don't share passwords or private information.</div>
-</section>
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      });
+    });
 
-<script>
-"use strict";
+    /* CURRENT YEAR */
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-/* LOADER */
-window.addEventListener("load", () => {
-  window.setTimeout(() => document.getElementById("loader")?.classList.add("done"), 450);
-});
-document.getElementById("year").textContent = new Date().getFullYear();
+    /* IMAGE LIGHTBOX */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
 
-/* MOBILE NAVIGATION */
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-menuToggle.addEventListener("click", () => {
-  const open = navLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(open));
-  menuToggle.textContent = open ? "×" : "☰";
-});
-navLinks.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.textContent = "☰";
-  });
-});
-
-/* DESKTOP CUSTOM CURSOR */
-const cursorDot = document.getElementById("cursorDot");
-const cursorRing = document.getElementById("cursorRing");
-const cursorGlow = document.getElementById("cursorGlow");
-const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-if (finePointer) {
-  let mouseX = innerWidth / 2, mouseY = innerHeight / 2;
-  let ringX = mouseX, ringY = mouseY, glowX = mouseX, glowY = mouseY;
-  document.addEventListener("mousemove", event => {
-    mouseX = event.clientX; mouseY = event.clientY;
-    cursorDot.style.left = mouseX + "px";
-    cursorDot.style.top = mouseY + "px";
-  });
-  function animateCursor() {
-    ringX += (mouseX - ringX) * .18;
-    ringY += (mouseY - ringY) * .18;
-    glowX += (mouseX - glowX) * .08;
-    glowY += (mouseY - glowY) * .08;
-    cursorRing.style.left = ringX + "px";
-    cursorRing.style.top = ringY + "px";
-    cursorGlow.style.left = glowX + "px";
-    cursorGlow.style.top = glowY + "px";
-    requestAnimationFrame(animateCursor);
-  }
-  animateCursor();
-  document.querySelectorAll("a,button,.project-card,.service-card").forEach(item => {
-    item.addEventListener("mouseenter", () => document.body.classList.add("cursor-hover"));
-    item.addEventListener("mouseleave", () => document.body.classList.remove("cursor-hover"));
-  });
-}
-
-/* SECTION REVEALS */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      revealObserver.unobserve(entry.target);
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightboxImage.src = '';
     }
-  });
-}, { threshold: .12 });
-document.querySelectorAll(".reveal").forEach(element => revealObserver.observe(element));
 
-/* MOBILE 3D TILT: short touch effect, no hover required */
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
-    !finePointer) {
-  document.querySelectorAll(".tilt-card,.service-card").forEach(card => {
-    let resetTimer;
-    card.addEventListener("touchstart", event => {
-      const touch = event.touches[0];
-      if (!touch) return;
-      const rect = card.getBoundingClientRect();
-      const x = (touch.clientX - rect.left) / Math.max(rect.width, 1);
-      const y = (touch.clientY - rect.top) / Math.max(rect.height, 1);
-      card.style.transform =
-        "perspective(900px) rotateX(" + ((.5-y)*5) + "deg) rotateY(" +
-        ((x-.5)*5) + "deg) scale(1.008)";
-      clearTimeout(resetTimer);
-      resetTimer = setTimeout(() => card.style.transform = "", 650);
-    }, { passive:true });
-  });
-}
+    document.querySelectorAll('.mosaic-item').forEach(item => {
+      item.addEventListener('click', () => {
+        lightboxImage.src = item.dataset.image;
+        lightbox.classList.add('open');
+      });
+    });
 
-/* GALLERY MODAL */
-const galleryModal = document.getElementById("galleryModal");
-const galleryModalImage = document.getElementById("galleryModalImage");
-function closeGallery() {
-  galleryModal.classList.remove("open");
-  galleryModalImage.src = "";
-}
-document.querySelectorAll(".gallery-item").forEach(button => {
-  button.addEventListener("click", () => {
-    galleryModalImage.src = button.dataset.image;
-    galleryModal.classList.add("open");
-  });
-});
-document.getElementById("galleryClose").addEventListener("click", closeGallery);
-galleryModal.addEventListener("click", event => {
-  if (event.target === galleryModal) closeGallery();
-});
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape") {
-    closeGallery();
-    closeAiChat();
-  }
-});
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
 
-/* AI CHAT CONFIGURATION
-   Replace this placeholder after deploying portfolio-ai-worker.js.
-   Example: https://your-worker-name.workers.dev/chat
-   Never put your OpenAI API key in this HTML file.
-*/
-const AI_API_URL = "https://YOUR-CLOUDFLARE-WORKER.workers.dev/chat";
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) closeLightbox();
+    });
 
-const aiLauncher = document.getElementById("portfolioAiLauncher");
-const aiPanel = document.getElementById("portfolioAiPanel");
-const aiMessages = document.getElementById("aiMessages");
-const aiForm = document.getElementById("aiForm");
-const aiInput = document.getElementById("aiInput");
-const aiSend = document.getElementById("aiSend");
-const aiPrompts = document.getElementById("aiPrompts");
-const aiClear = document.getElementById("aiClear");
-const aiClose = document.getElementById("aiClose");
-const aiWelcome = "Hi! 👋 I'm Ahsan's AI assistant. Ask me about his services, projects or skills — or ask a general question once the AI service is connected.";
-const chatHistory = [];
-let chatBusy = false;
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeLightbox();
+    });
+  </script>
 
-function openAiChat() {
-  aiPanel.classList.add("open");
-  aiPanel.setAttribute("aria-hidden", "false");
-  aiLauncher.setAttribute("aria-expanded", "true");
-  aiLauncher.textContent = "×";
-  setTimeout(() => aiInput.focus({preventScroll:true}), 100);
-}
-function closeAiChat() {
-  aiPanel.classList.remove("open");
-  aiPanel.setAttribute("aria-hidden", "true");
-  aiLauncher.setAttribute("aria-expanded", "false");
-  aiLauncher.textContent = "✦";
-  aiPanel.style.height = "";
-  aiPanel.style.bottom = "";
-}
-aiLauncher.addEventListener("click", () => {
-  aiPanel.classList.contains("open") ? closeAiChat() : openAiChat();
-});
-aiClose.addEventListener("click", closeAiChat);
-
-function addChatMessage(text, sender) {
-  const message = document.createElement("div");
-  message.className = "ai-message " + (sender === "user" ? "user" : "bot");
-  // textContent avoids interpreting the visitor's text or AI response as HTML.
-  message.textContent = text;
-  aiMessages.appendChild(message);
-  aiMessages.scrollTop = aiMessages.scrollHeight;
-  return message;
-}
-function showTyping() {
-  const node = document.createElement("div");
-  node.className = "ai-message bot ai-typing";
-  node.setAttribute("aria-label", "Assistant is thinking");
-  for (let i=0;i<3;i++) node.appendChild(document.createElement("i"));
-  aiMessages.appendChild(node);
-  aiMessages.scrollTop = aiMessages.scrollHeight;
-  return node;
-}
-
-/* Lightweight browser-side guard.
-   The backend's moderation check is the important protection; this is only
-   a basic first layer and cannot catch every unsafe request. */
-function isUnsafeRequest(text) {
-  const q = text.toLowerCase();
-  const sexual = /\b(pornography|explicit sexual content|sexual role.?play|erotic sex)\b/.test(q);
-  const minors = /\b(sex|sexual|nude|naked|porn).{0,35}\b(child|children|minor|underage)\b|\b(child|children|minor|underage).{0,35}\b(sex|sexual|nude|naked|porn)\b/.test(q);
-  const selfHarm = /\b(suicide method|how to kill myself|ways to self.?harm|make myself bleed)\b/.test(q);
-  const violence = /\b(make a bomb|build a bomb|make an explosive|how to poison|hide a body|mass shooting instructions)\b/.test(q);
-  const cyberAbuse = /\b(steal passwords|steal credentials|deploy ransomware|make malware|create ransomware|hack someone's account)\b/.test(q);
-  return sexual || minors || selfHarm || violence || cyberAbuse;
-}
-const safetyReply = "I can't help with explicit sexual content or instructions that could harm people. I can still help with safe information, creativity, design, technology, and questions about Ahsan's portfolio.";
-
-function answerPortfolioFAQ(raw) {
-  const q = raw.toLowerCase();
-
-  if (/\b(hello|hi|hey|salam|assalam|good morning|good afternoon)\b/.test(q))
-    return "Hello! 👋 Welcome to Muhammad Ahsan's portfolio. Ask me about his services, skills, projects or contact details.";
-
-  if (/\b(contact|email|mail|whatsapp|phone|number|reach|hire|connect)\b/.test(q))
-    return "You can contact Ahsan by email at mhdxahsan@gmail.com or WhatsApp at +92 331 9333080. WhatsApp: https://wa.me/923319333080";
-
-  if (/\b(service|services|offer|provide|what does ahsan do|what does he do)\b/.test(q))
-    return "Ahsan focuses on graphic design, web development, Shopify store design and e-commerce. Contact him to discuss your requirements.";
-
-  if (/\b(project|portfolio|gallery|designs|website|shopows|restaurant|spice courtyard|store)\b/.test(q))
-    return "This portfolio features a graphic design gallery, a restaurant website concept and the Shopows Shopify store at https://shopows.pk/. The restaurant project link is https://codewithsadee.github.io/grilli/.";
-
-  if (/\b(skill|skills|technology|tech|html|css|javascript|shopify|coding|canva)\b/.test(q))
-    return "Ahsan's skills include graphic designing, web development, Shopify, e-commerce, HTML, CSS, JavaScript, responsive design and Canva.";
-
-  if (/\b(about|who is|who's|muhammad ahsan|ahs(an)?)\b/.test(q))
-    return "Muhammad Ahsan is a creative designer and web developer focused on graphic design, responsive websites, Shopify stores and e-commerce. I'm an AI helper, not Ahsan himself.";
-
-  if (/\b(price|pricing|cost|rate|budget|charge|how much)\b/.test(q))
-    return "Prices aren't listed here. Email mhdxahsan@gmail.com or message https://wa.me/923319333080 with your project details to discuss pricing.";
-
-  if (/\b(thank|thanks|appreciate)\b/.test(q))
-    return "You're welcome! 😊 Contact Ahsan at mhdxahsan@gmail.com or https://wa.me/923319333080.";
-
-  return "I can answer questions about Ahsan's portfolio, services, skills, projects and contact details. To answer general questions, connect the AI backend by setting AI_API_URL in this file and deploying the Worker.";
-}
-
-async function getAiReply() {
-  const configured = !AI_API_URL.includes("YOUR-CLOUDFLARE-WORKER");
-  if (!configured) return answerPortfolioFAQ(chatHistory[chatHistory.length-1].content);
-
-  const response = await fetch(AI_API_URL, {
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({messages:chatHistory.slice(-10)})
-  });
-
-  let data;
-  try { data = await response.json(); }
-  catch (_) { throw new Error("The AI service returned an unreadable response."); }
-
-  if (!response.ok) throw new Error(data?.error || "The AI service is temporarily unavailable.");
-  if (!data || typeof data.reply !== "string" || !data.reply.trim())
-    throw new Error("The AI service returned an empty response.");
-  return data.reply.trim();
-}
-
-async function sendAiMessage(raw) {
-  const text = raw.trim();
-  if (!text || chatBusy) return;
-
-  if (text.length > 1200) {
-    addChatMessage("Please keep each message under 1,200 characters.", "bot");
-    return;
-  }
-
-  addChatMessage(text, "user");
-  aiInput.value = "";
-  aiPrompts.hidden = true;
-
-  if (isUnsafeRequest(text)) {
-    addChatMessage(safetyReply, "bot");
-    return;
-  }
-
-  chatBusy = true;
-  aiSend.disabled = true;
-  const typing = showTyping();
-
-  chatHistory.push({role:"user",content:text});
-  while (chatHistory.length > 10) chatHistory.shift();
-
-  try {
-    const reply = await getAiReply();
-    typing.remove();
-    addChatMessage(reply, "bot");
-    chatHistory.push({role:"assistant",content:reply});
-    while (chatHistory.length > 10) chatHistory.shift();
-  } catch (error) {
-    typing.remove();
-    addChatMessage(answerPortfolioFAQ(text) +
-      "\n\nNote: the live AI service could not be reached. Check the Worker URL and configuration.", "bot");
-  } finally {
-    chatBusy = false;
-    aiSend.disabled = false;
-    aiInput.focus({preventScroll:true});
-    aiMessages.scrollTop = aiMessages.scrollHeight;
-  }
-}
-
-aiForm.addEventListener("submit", event => {
-  event.preventDefault();
-  sendAiMessage(aiInput.value);
-});
-aiPrompts.querySelectorAll("button[data-question]").forEach(button => {
-  button.addEventListener("click", () => sendAiMessage(button.dataset.question || ""));
-});
-aiClear.addEventListener("click", () => {
-  chatHistory.length = 0;
-  aiMessages.replaceChildren();
-  addChatMessage(aiWelcome, "bot");
-  aiPrompts.hidden = false;
-  aiInput.value = "";
-  aiInput.focus({preventScroll:true});
-});
-
-/* Keep the chat visible when the mobile keyboard opens */
-if (window.visualViewport) {
-  const adjustChat = () => {
-    if (innerWidth <= 700 && aiPanel.classList.contains("open")) {
-      const height = window.visualViewport.height;
-      aiPanel.style.height = Math.max(250,Math.min(620,height-100)) + "px";
-      aiPanel.style.bottom = Math.max(8,innerHeight-height+78) + "px";
-    }
-  };
-  window.visualViewport.addEventListener("resize", adjustChat);
-  window.visualViewport.addEventListener("scroll", adjustChat);
-  aiLauncher.addEventListener("click", () => setTimeout(adjustChat,80));
-}
-</script>
 </body>
 </html>
